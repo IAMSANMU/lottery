@@ -1,0 +1,15 @@
+cron4j=dcInfoTask,ypTask,termTask
+dcInfoTask.cron=*/5 * * * *
+dcInfoTask.class=com.lottery.task.DcInfoTask
+dcInfoTask.daemon=true
+dcInfoTask.enable=true
+
+ypTask.cron=*/5 * * * *
+ypTask.class=com.lottery.task.DcYpTask
+ypTask.daemon=true
+ypTask.enable=true
+
+termTask.cron=*/5 * * * *
+termTask.class=com.lottery.task.TermTask
+termTask.daemon=true
+termTask.enable=true

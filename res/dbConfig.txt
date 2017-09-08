@@ -1,0 +1,4 @@
+jdbcUrl = jdbc:mysql://localhost:3306/lottery
+user = root
+password =sanmu
+devMode = true
