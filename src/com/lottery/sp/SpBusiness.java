@@ -13,7 +13,6 @@ import org.jsoup.select.Elements;
 
 import com.lottery.common.model.DcSpfSp;
 import com.lottery.common.utils.HttpUtil;
-
 public class SpBusiness {
 	private static final String W500_SP_URL = "http://trade.500.com/bjdc//?expect=";
 	private static final String OKOOO_SP_URL = "http://www.okooo.com/Upload/xml/danchang/WDL.xml";
