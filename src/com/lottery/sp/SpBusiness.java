@@ -18,7 +18,6 @@ public class SpBusiness {
 	private static final String W500_SP_URL = "http://trade.500.com/bjdc//?expect=";
 	private static final String OKOOO_SP_URL = "http://www.okooo.com/Upload/xml/danchang/WDL.xml";
 	private static final String OKOOO_DC_URL = "http://www.okooo.com/danchang/";
-
 	private static Logger log = Logger.getLogger(SpBusiness.class);
 
 	private static String snatchOkCurrentTerm() {
@@ -37,7 +36,7 @@ public class SpBusiness {
 	}
 
 	public static List<DcSpfSp> snatchOkSp(String dcTerm) throws Exception {
-		List<DcSpfSp> list=new ArrayList<DcSpfSp>();
+		List<DcSpfSp> list = new ArrayList<DcSpfSp>();
 		try {
 			String url = OKOOO_SP_URL;
 			String currentTerm = snatchOkCurrentTerm();
