@@ -1,4 +1,4 @@
-package com.lottery.sp;
+package com.lottery.odds.sp;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
@@ -50,9 +50,9 @@ public class SpBusiness {
 					DcSpfSp sp = new DcSpfSp();
 					sp.setLineId(ele.attr("n"));
 					sp.setTerm(currentTerm);
-					sp.setHomeSp(new BigDecimal(ele.attr("c1")));
-					sp.setDrawSp(new BigDecimal(ele.attr("c3")));
-					sp.setGuestSp(new BigDecimal(ele.attr("c5")));
+					sp.setHomeSp(Double.parseDouble(ele.attr("c1")));
+					sp.setDrawSp(Double.parseDouble(ele.attr("c3")));
+					sp.setGuestSp(Double.parseDouble(ele.attr("c5")));
 					sp.setLastUpDate(new Date());
 					list.add(sp);
 				}

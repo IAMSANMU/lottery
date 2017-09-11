@@ -1,6 +1,5 @@
 package com.lottery.dc;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -11,73 +10,121 @@ import org.apache.commons.lang.StringUtils;
 
 import com.jfinal.core.Controller;
 import com.lottery.common.model.DcArrange;
+import com.lottery.common.model.DcDxp;
+import com.lottery.common.model.DcOp;
 import com.lottery.common.model.DcSpfSp;
 import com.lottery.common.model.DcYp;
 import com.lottery.common.model.LotteryTerm;
 import com.lottery.common.utils.DateUtil;
-import com.lottery.pojo.DcBetInfo;
-import com.lottery.sp.SpService;
+import com.lottery.odds.OddsBusiness;
+import com.lottery.odds.dxp.DxpService;
+import com.lottery.odds.op.OpService;
+import com.lottery.odds.sp.SpService;
+import com.lottery.odds.yp.YpService;
 import com.lottery.term.TermService;
-import com.lottery.yp.YpService;
 
 public class DcController extends Controller {
 	DcService dcService = new DcService();
 	TermService termService = new TermService();
 	YpService ypService = new YpService();
+	OpService opService = new OpService();
+	DxpService dxpService = new DxpService();
 	SpService spService = new SpService();
-
+	final String OP_TAG="O_";
+	final String YP_TAG="Y_";
+	final String DXP_TAG="D_";
+	final String SHOWTIME_TAG="T_";
 	public void index() {
-
 		String term = getAttr("term");
 		getInfo(term);
-		render("index.jsp");
+		render("index.html");
 	}
 
 	private void getInfo(String term) {
+		boolean isBack=false;
 		LotteryTerm currentTerm = null;
+		LotteryTerm dbTerm=termService.getCurrentTerm();
 		if (StringUtils.isNotEmpty(term)) {
 			currentTerm = termService.getTerm(term);
+			isBack=!dbTerm.getTerm().equals(currentTerm);
 		} else {
 			currentTerm = termService.getCurrentTerm();
 		}
+		setAttr("isBack",isBack);
 		// 获取对阵数据
-		setAttr("currentTerm", currentTerm.getTerm());
+		setAttr("currentTerm", currentTerm);
+		setAttr("nowTerm",dbTerm);
 
 		List<DcArrange> dcList = dcService.getDcList(currentTerm);
+		Map<Integer,DcArrange> dcMap=new HashMap<Integer, DcArrange>();
+		if(dcList!=null){
+			for (DcArrange dc : dcList) {
+				dcMap.put(dc.getId(), dc);
+			}
+		}
+		
 		setAttr("dcList", dcList);
 		// 计算停售场次
 		stopCount(dcList);
 		// 获取期数列表
 		getTermList();
-
 		// 获取sp数据
-		
+		Map<Integer, DcSpfSp> spMap=getSp(currentTerm);
 		// 获取yp数据
-		
-		
-		//获取投注比
-		
-		
+		getYp(currentTerm,dcMap,spMap);
+		//欧赔
+		getOp(currentTerm);
+		//大小盘
+		getDxp(currentTerm);
+
 	}
-	private void getYp(LotteryTerm term,List<DcArrange> raceList){
-		
-		String company=DcYp.COMAPNY.get("皇冠");
-		List<DcYp> ypList = ypService.getList(term.getTerm(),company);
-		
-		Map<String, DcYp> ypMap = new HashMap<String, DcYp>();
-		for (DcYp yp : ypList) {
-			if (yp!=null&&yp.getCompany() != null) {
-				ypMap.put(String.valueOf(yp.getMatchId()), yp);
+	private void getOp(LotteryTerm term){
+		List<DcOp> opList=opService.getList(term.getTerm(), "avg");
+		Map<String,DcOp> opMap=new HashMap<String, DcOp>();
+		if(opList!=null){
+			for (DcOp dcOp : opList) {
+				opMap.put(OP_TAG+dcOp.getMatchId(), dcOp);
 			}
 		}
-		setAttr(company + "YpMap", ypMap);
-		//计算盈利比
 		
+		setAttr("opMap",opMap);
+	}
+	private void getDxp(LotteryTerm term){
+		String company = OddsBusiness.COMAPNY.get("皇冠");
+		List<DcDxp> dxpList=dxpService.getList(term.getTerm(), company);
 		
-		
-		
-		
-		
+		Map<String,DcDxp> dxpMap=new HashMap<String, DcDxp>();
+		if(dxpMap!=null){
+			for (DcDxp dcDxp : dxpList) {
+				dxpMap.put(DXP_TAG+dcDxp.getMatchId(), dcDxp);
+			}
+		}
+		setAttr("dxpMap", dxpMap);
+	}
+	private Map<Integer, DcSpfSp> getSp(LotteryTerm term) {
+		List<DcSpfSp> spList = spService.getSpList(term.getTerm());
+		Map<Integer,DcSpfSp> spMap=new HashMap<Integer, DcSpfSp>();
+		for (DcSpfSp dcSpfSp : spList) {
+			spMap.put(dcSpfSp.getMatchId(), dcSpfSp);
+		}
+		setAttr("spMap",spMap);
+		return spMap;
+	}
+
+	private void getYp(LotteryTerm term, Map<Integer,DcArrange> dcMap,Map<Integer,DcSpfSp> spMap) {
+		String company = OddsBusiness.COMAPNY.get("皇冠");
+		List<DcYp> ypList = ypService.getList(term.getTerm(), company);
+		Map<String, DcYp> ypMap = new HashMap<String, DcYp>();
+		for (DcYp yp : ypList) {
+			if (yp != null && yp.getCompany() != null) {
+				int matchId=yp.getMatchId();
+				DcArrange dcArrange= dcMap.get(matchId);
+				DcSpfSp dcSp=spMap.get(matchId);
+				ypMap.put(YP_TAG+matchId, yp);
+				yp.getNewylb(dcSp, dcArrange.getRqs());
+			}
+		}
+		setAttr("ypMap", ypMap);
 	}
 
 	private void getTermList() {
@@ -123,94 +170,9 @@ public class DcController extends Controller {
 		setAttr("termCountMap", termMap);
 		setAttr("gameCountMap", gameCountMap);
 		setAttr("rqCountMap", rqCountMap);
-		
 
 	}
 
-	private void getYlb(List<DcArrange> dcList,LotteryTerm term) {
-//			Map<Integer, DcSpfSp> tzbMap = spService.getSpList(term);
-//			
-//			Map<Integer, DcBetInfo> infoMap=new HashMap<Integer, DcBetInfo>();
-//			for(Integer tzbKey:tzbMap.keySet()){
-//				LotteryDcSpfaward award=tzbMap.get(tzbKey);
-//				DcBetInfo betInfo=new DcBetInfo();
-//				betInfo.setWinBetRate(1/award.getHomeWinAward());
-//				betInfo.setDrawBetRate(1/award.getDrawAward());
-//				betInfo.setLoseBetRate(1/award.getGuestWinAward());
-//				infoMap.put(tzbKey, betInfo);
-//			}
-//			//亚赔
-//			Map<String, List<FootballYp>> footballYpMap = new HashMap<String, List<FootballYp>>();
-//			CustomerContextHolder.setCustomerType(DataSourceMap.SLAVE);
-//			List<FootballYp> ypList = footballDataService.getDcYpDateCompany(term);
-//			for (String company : FootballYp.COMAPNY.values()) {
-//				Map<String, FootballYp> ypMap = new HashMap<String, FootballYp>();
-//				if(company.equals("huangguan") || company.equals("ribo")){
-//					getRequest().setAttribute(company + "YpMap", ypMap);
-//				}
-//			}
-//			for (FootballYp yp : ypList) {
-//				if (yp!=null&&yp.getCompany() != null) {
-//					Map<String, FootballYp> tempYpMap = (Map<String, FootballYp>) getRequest().getAttribute(
-//							FootballYp.COMAPNY.get(yp.getCompany()) + "YpMap");
-//					if (tempYpMap != null) {
-//						tempYpMap.put(String.valueOf(yp.getMatchId()), yp);
-//					}
-//				}
-//				if(footballYpMap.get(FootballYp.COMAPNY.get(yp.getCompany()))!=null){
-//					footballYpMap.get(FootballYp.COMAPNY.get(yp.getCompany())).add(yp);
-//				}else{
-//					List<FootballYp> list = new ArrayList<FootballYp>();
-//					list.add(yp);
-//					footballYpMap.put(FootballYp.COMAPNY.get(yp.getCompany()), list);
-//				}
-//			}
-//			Map<String, String> ypylbMap = FootballYp.getNewYlbJsonMapByWbwDcBetCompanyInfo(footballYpMap, infoMap, raceList);
-//			getRequest().setAttribute("ypylbMap", ypylbMap);
-//			//欧赔
-//			CustomerContextHolder.setCustomerType(DataSourceMap.SLAVE);
-//			List<FootballOp> opList = footballDataService.getDcOpDate(term);
-//			for (String company : FootballOp.COMAPNY.values()) {
-//				Map<String, FootballOp> opMap = new HashMap<String, FootballOp>();
-//				if(company.equals("huangguan")||company.equals("avg")){
-//					getRequest().setAttribute(company + "OpMap", opMap);
-//				}
-//			}
-//			for (FootballOp op : opList) {
-//				if (op!=null&&op.getCompany() != null) {
-//					Map<String, FootballOp> tempOpMap = (Map<String, FootballOp>) getRequest().getAttribute(
-//							FootballOp.COMAPNY.get(op.getCompany()) + "OpMap");
-//					if (tempOpMap != null) {
-//						tempOpMap.put(String.valueOf(op.getMatchId()), op);
-//					}
-//				}
-//			}
-//			//新欧赔盈利比
-//			Map<String, String> opylbMap = new HashMap<String, String>();
-//			for(DcArrange race : raceList){
-//				L2:
-//				for (String company : FootballYp.COMAPNY.values()) {
-//					List<FootballYp> list = footballYpMap.get(company);
-//					if(list != null){
-//						for(FootballYp yp : list){
-//							if(yp.getMatchId() != null && race.getOutid() != null && yp.getMatchId().equals(new Integer(race.getOutid()))){
-//								opylbMap.putAll(getWinRate(ypylbMap, race, yp));
-//								break L2;
-//							}
-//						}
-//					}
-//				}
-//			}
-//			getRequest().setAttribute("opylbMap", opylbMap);
-//			//大小指数
-//			CustomerContextHolder.setCustomerType(DataSourceMap.SLAVE);
-//			Map<String, FootballDxp> dxpMap = footballDataService.getDxpData(term);
-//			getRequest().setAttribute("dxpMap", dxpMap);
-//			CustomerContextHolder.setCustomerType(DataSourceMap.SLAVE);
-//			Map<String, LotteryDcJqsaward> jqsAwardMap = lotteryDcSpService.getJQSAward(term);
-//			Map<String, String> dxpylbMap = FootballDxp.getNewYlbJsonMap(dxpMap, jqsAwardMap, raceList);
-//			getRequest().setAttribute("dxpylbMap", dxpylbMap);
-	}
 
 	private void stopCount(List<DcArrange> dcList) {
 		int cnt = 0;
@@ -219,7 +181,7 @@ public class DcController extends Controller {
 			if (dc.getStatus() != 1) {
 				cnt++;
 			} else {
-				isShow.put(dc.getIntTime(), true);
+				isShow.put(SHOWTIME_TAG+dc.getIntTime(), true);
 			}
 		}
 		setAttr("stopCount", cnt);

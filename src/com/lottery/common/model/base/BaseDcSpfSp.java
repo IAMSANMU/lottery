@@ -27,31 +27,31 @@ public abstract class BaseDcSpfSp<M extends BaseDcSpfSp<M>> extends Model<M> imp
 		return getStr("term");
 	}
 
-	public M setHomeSp(java.math.BigDecimal HomeSp) {
+	public M setHomeSp(java.lang.Double HomeSp) {
 		set("HomeSp", HomeSp);
 		return (M)this;
 	}
 
-	public java.math.BigDecimal getHomeSp() {
-		return get("HomeSp");
+	public java.lang.Double getHomeSp() {
+		return getDouble("HomeSp");
 	}
 
-	public M setGuestSp(java.math.BigDecimal GuestSp) {
+	public M setGuestSp(java.lang.Double GuestSp) {
 		set("GuestSp", GuestSp);
 		return (M)this;
 	}
 
-	public java.math.BigDecimal getGuestSp() {
-		return get("GuestSp");
+	public java.lang.Double getGuestSp() {
+		return getDouble("GuestSp");
 	}
 
-	public M setDrawSp(java.math.BigDecimal DrawSp) {
+	public M setDrawSp(java.lang.Double DrawSp) {
 		set("DrawSp", DrawSp);
 		return (M)this;
 	}
 
-	public java.math.BigDecimal getDrawSp() {
-		return get("DrawSp");
+	public java.lang.Double getDrawSp() {
+		return getDouble("DrawSp");
 	}
 
 	public M setLastUpDate(java.util.Date LastUpDate) {

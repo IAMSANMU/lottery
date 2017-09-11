@@ -1,0 +1,1351 @@
+@charset "gb2312";
+/*说明：
+* 此样式表是全站引用的样式表
+*/
+
+/*重置样式*/ 
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,h6,pre,code,form,fieldset,legend,input,button,textarea,p,blockquote,th,td { margin:0; padding:0; }
+fieldset,img { border: 0; }abbr,acronym { border: 0; font-variant: normal; }
+:focus { outline: 0; }
+address,caption,cite,code,dfn,em,th,var,
+optgroup { font-style:normal; font-weight: inherit; }
+abbr, acronym { border: 0; font-variant: normal; }
+input, button, textarea, select, optgroup, option { font-family: inherit; font-size: inherit; font-style: inherit; font-weight: inherit;}
+ul,li,dl,dt,dd{list-style: none;}
+
+/*layout 清除浮动*/
+.layout:after{display:block;visibility:hidden;font-size:0;content:" ";clear: both;height: 0;}
+.layout{display:block;}
+html[xmlns] .layout{display:block;}
+* html .layout{height:1%;}
+
+.layout{width:1000px;margin:0 auto;}
+
+/*导航层*/
+.topDIV .topBorder { display: inline-block; width: 1000px; }
+.topDIV .navigationDIV { display: inline-block; width: 1000px; border: 0px solid; text-align: left; margin:0px auto; }
+.topDIV .navigationDIV .logoDIV { height: 62px; display: inline-block; font-size: 0px; white-space: nowrap; }
+.topDIV .navigationDIV .logoDIV span { display: inline-block; vertical-align: top; border: 0px solid; }
+.topDIV .navigationDIV .logoDIV span.logo { width: 178px; text-align: center; height:62px; overflow:hidden; }
+.topDIV .navigationDIV .logoDIV span.logo a { display: inline-block; width: 150px; height: 55px; margin-top: 5px; background-image: url("http://img.cailele.com/img_new/logo.gif"); background-repeat: no-repeat; background-position: left top; }
+.topDIV .navigationDIV .logoDIV span.link { width: 620px; margin-top: 34px; height: 28px; font-size: 0px; white-space: nowrap; }
+.topDIV .navigationDIV .logoDIV span.link label { display: inline-block; background-image: url("http://img.cailele.com/img_new/top/top_bg.gif"); background-repeat: no-repeat; font-size: 14px; vertical-align: middle; height: 28px; }
+.topDIV .navigationDIV .logoDIV span.link label a { font-size: 14px; font-weight: bold; display: inline-block; }
+.topDIV .navigationDIV .logoDIV span.link label.home { width: 70px; background-position: left -30px; position: absolute; height: 31px; margin-top: -1px; z-index: 1; }
+.topDIV .navigationDIV .logoDIV span.link label.home a { color: #ffffff; width: 35px; border: 0px solid; margin-left: 7px; margin-top: 7px; line-height: 20px; padding-left: 20px; }
+.topDIV .navigationDIV .logoDIV span.link label.l { margin-left: 75px; width: 5px; background-position: left -90px; border: 0px solid; }
+.topDIV .navigationDIV .logoDIV span.link label.m { background-position: left -130px; background-repeat: repeat-x; color: #fbbe6b; line-height: 28px; }
+.topDIV .navigationDIV .logoDIV span.link label.m a { font-size: 14px; font-weight: bold; color: #c36e00; margin: 0px 8px 0px 8px; }
+.topDIV .navigationDIV .logoDIV span.link label.r { margin-left: 0px; width: 8px; background-position: right -90px; }
+.topDIV .navigationDIV .logoDIV span.link label.lotteryNews,
+.topDIV .navigationDIV .logoDIV span.link label.lotteryNews-hover { width:83px; margin-left:5px; text-align:left; cursor: pointer; border:0px solid; }
+.topDIV .navigationDIV .logoDIV span.link label.lotteryNews { background-position: -110px -515px; }
+.topDIV .navigationDIV .logoDIV span.link label.lotteryNews-hover { background-position: -110px -590px; }
+.topDIV .navigationDIV .logoDIV span.link label.lotteryNews a,
+.topDIV .navigationDIV .logoDIV span.link label.lotteryNews-hover a { display:inline-block; width:78px; height:28px; border:0px solid; }
+.topDIV .navigationDIV .logoDIV span.link label.lotteryNews font.whiteLine { display: none; }
+.topDIV .navigationDIV .logoDIV span.link label.lotteryNews-hover font.whiteLine { display: block; width: 78px; height: 2px; line-height: 2px; font-size: 0px; background-color: #ffffff; margin-top: 27px; margin-left:1px; position: absolute; z-index: 4; }
+.topDIV .navigationDIV .logoDIV span.link label.lotteryNews label.newMenuList { display: none; }
+.topDIV .navigationDIV .logoDIV span.link label.lotteryNews-hover label.newMenuList { display: block; clear:both; height: 138px; width: 216px; border: 1px solid #f76e19; background-color: #ffffff; background-image:none; position: absolute; z-index: 3; text-align: left; font-size: 0px; overflow: hidden; margin-top: 28px; }
+.topDIV .navigationDIV .logoDIV span.link label.lotteryNews-hover label.newMenuList a { font-size: 12px; font-weight: normal; display: inline-block; width: 72px; text-align: center; border: 0px solid; height: 14px; line-height: 14px; margin: 4px 0px 4px 0px; color: #000000; }
+.topDIV .navigationDIV .logoDIV span.link label.lotteryNews-hover label.newMenuList a:hover { text-decoration: underline; }
+.topDIV .navigationDIV .logoDIV span.link label.lotteryNews-hover label.newMenuList a.title { color:#787878; margin: 8px 0px 5px 0px; }
+.topDIV .navigationDIV .logoDIV span.link label.lotteryNews-hover label.newMenuList a.lottery-new-red { color:#ee0000; font-weight: bold; }
+.topDIV .navigationDIV .logoDIV span.link label.lotteryNews-hover label.newMenuList label.bottomLabel { background-color: #f16a17; border-top:1px solid #fe8134; height: 22px; line-height: 22px; text-align: center; width: 216px; display: inline-block; background-image: none; cursor: default; }
+.topDIV .navigationDIV .logoDIV span.link label.lotteryNews-hover label.newMenuList label.bottomLabel a { display: inline; background-color: transparent; border: 0px solid; color: #ffffff; height: 22px; line-height: 22px; }
+.topDIV .navigationDIV .logoDIV span.link label.lotteryNews label.newMenuBg { display: none; }
+.topDIV .navigationDIV .logoDIV span.link label.lotteryNews-hover label.newMenuBg { display: block; height: 143px; width: 216px; background-color: #000000; background-image:none; position: absolute; z-index: 2; text-align: left; margin-left: 5px; margin-top: 28px; opacity: 0.2;  filter: alpha(opacity:20);
+-moz-opacity: 0.2; -khtml-opacity: 0.2; }
+
+.topDIV .navigationLongDIV { border: 0px solid; width: 1000px; display: inline-block; text-align: left; margin:0px auto; }
+.topDIV .navigationLongDIV span { display: inline-block; background-image: url("http://img.cailele.com/img_new/top/top_bg.gif"); background-repeat: no-repeat; vertical-align: middle; height: 36px; }
+.topDIV .navigationLongDIV span.l { width: 5px; background-position: left -170px; }
+.topDIV .navigationLongDIV span.menu,
+.topDIV .navigationLongDIV span.menuhover { width: 180px; background-position: -5px -170px; cursor: default; }
+.topDIV .navigationLongDIV span.menu label,
+.topDIV .navigationLongDIV span.menuhover label { display: inline-block; width: 152px; height: 30px; background-image: url("http://img.cailele.com/img_new/top/top_bg.gif"); background-repeat: no-repeat; margin-top: 4px; font-size: 14px; color: #ededed; font-weight: bold; text-align: center; padding-left: 20px; line-height: 30px; cursor: default; }
+.topDIV .navigationLongDIV span.menu label { background-position: left -255px; }
+.topDIV .navigationLongDIV span.menuhover label { background-position: left -295px; }
+.topDIV .navigationLongDIV span.menu label b,
+.topDIV .navigationLongDIV span.menuhover label b { color: #ffffff; font-size: 14px; font-family: "Arial"; display: inline-block; margin: 0px 3px 0px 3px; cursor: default; }
+.topDIV .navigationLongDIV span.m { width: 810px; background-position: left -215px; background-repeat: repeat-x; color: #ffad6d; }
+.topDIV .navigationLongDIV span.m a { color: #ffffff; display: inline-block; margin: 10px 6px; }
+.topDIV .navigationLongDIV span.m a img { position: absolute; margin-top: -8px; margin-left: 45px; }
+.topDIV .navigationLongDIV span.m a:hover { text-decoration: underline; }
+.topDIV .navigationLongDIV span.m a.mobileBuy { float: right; background-image: url("http://img.cailele.com/img_new/top/top_mobile_bg.png"); display: inline-block; width: 72px; height: 15px; margin: 7px 3px; text-align: right; line-height: 12px; padding-top: 5px; padding-right: 8px; behavior: url(/js/iepngfix.htc); }
+.topDIV .navigationLongDIV span.r { width: 5px; background-position: right -170px; }
+/*下拉菜单面板*/
+#downpanelDIV { display:none; width: 290px; position: absolute; margin-top: 34px; z-index:100000; }
+#downpanelbgDIV { background-image: url("http://img.cailele.com/img_new/top/menu_bg.png"); background-repeat: no-repeat; background-position:left top; width:300px; height:360px; position: absolute; z-index:99999; margin-top: 34px; display:none; behavior: url(/js/iepngfix.htc); }
+.downpanel { width: 290px; display: inline-block; border:0px solid; }
+.downpanel div { background-image: url("http://img.cailele.com/img_new/top/downpanel_bg.gif"); background-repeat: no-repeat; }
+.downpanel .d-top { background-position: left top; height: 14px; font-size:0px; }
+.downpanel .d-bottom { background-position: right bottom; height: 6px; font-size:0px; }
+.downpanel .d-center { width: 288px; border-left: 1px solid #bbccd6; border-right: 1px solid #bbccd6; background-image: none; background-color: #f6f9fe; height:325px; overflow:hidden; }
+.downpanel .d-center ul { margin: 0px; }
+.downpanel .d-center ul li { border-bottom:1px dotted #bbccd6; margin:0; padding:3px 0; }/*sq加的手机样式*/
+.downpanel .d-center ul li span.l b.b-sj { background:url(http://img.cailele.com/img_new/top/top_bg.gif) no-repeat -41px -635px; }
+.downpanel .d-center ul li span { display: inline-block; vertical-align: middle; background-image: none; height: auto; }
+.downpanel .d-center ul li span.l { width: 50px; text-align: center; }
+.downpanel .d-center ul li span.l a { display: none; }
+.downpanel .d-center ul li span.l b { display: inline-block; width:27px; height:27px; background-image: url("http://img.cailele.com/img_new/top/top_bg.gif"); background-repeat: no-repeat; }
+.downpanel .d-center ul li span.l b.b-r { background-position: left -635px; }
+.downpanel .d-center ul li span.l b.b-g { background-position: -40px -555px; }
+.downpanel .d-center ul li span.l b.b-f { background-position: -80px -555px; }
+.downpanel .d-center ul li span.l b.b-t { background-position: -120px -555px; }
+.downpanel .d-center ul li span.l b.b-z { background-position: -160px -555px; }
+.downpanel .d-center ul li span.l font { display: block; text-align: center; color: #ff0000; margin-top: 4px; }
+.downpanel .d-center ul li span.r { width: 235px; font-size: 0px; }
+.downpanel .d-center ul li span.r label { float:left; display: inline-block; width: 76px; /*padding-left: 1px;*/
+    margin-top: 5px; white-space:nowrap; overflow:visible; border:0px solid; height:14px; line-height:14px; }
+.downpanel .d-center ul li span.r label.title { display: block; border-bottom: 1px dotted #e3ebf7; font-size: 14px; color: #ff0000; width: 240px; font-family: "Microsoft YaHei"; margin-bottom: 5px; line-height: 20px; height: 20px; }
+.downpanel .d-center ul li span.r label a { color: #333333; text-decoration: none; }
+.downpanel .d-center ul li span.r label a.float,
+.downpanel .d-center ul li span.r label img.float { position: absolute; margin-top:-15px; margin-left:5px; }
+.downpanel .d-center ul li span.r label img.abs { position: absolute; }
+.downpanel .d-center ul li span.r label a:hover { text-decoration: underline; }
+.downpanel .d-center ul li span.r label a.menu-red { color:#b8170f; font-weight:normal; }
+.downpanel .d-center ul li span.r label a.menu-disable { color:#a0a0a0; font-weight:normal; }/*add by houxinghai 2012-07-25*/
+/*活动页面头部样式*/
+.hdTopLineBg { height: 50px; width: 100%; background-image: url("http://img.cailele.com/img_new/top/top_hd_bg.gif"); background-position: left top; background-repeat: repeat-x; text-align: center; background-color: #ff9900; min-width:1000px; }
+.hdTopLineBg .hdTopLine { height: 50px; width: 1000px; display: inline-block; text-align: left; font-size: 0px; white-space: nowrap; }
+.hdTopLineBg .hdTopLine span { display: inline-block; vertical-align: middle; height: 50px; border: 0px solid; }
+.hdTopLineBg .hdTopLine span.logo { width: 150px; }
+.hdTopLineBg .hdTopLine span.logo a.cllLogo { display: inline-block; height: 50px; background-image: url("http://img.cailele.com/img_new/top/top_hd_bg.gif?tag=20120702"); background-repeat: no-repeat; width: 150px; background-position: left -55px; }
+.hdTopLineBg .hdTopLine span.r { width: 850px; text-align: right; color: #ffffff; }
+.hdTopLineBg .hdTopLine span.r label { display: inline-block; vertical-align: middle; border: 0px solid; margin-top: 18px; height: 16px; }
+.hdTopLineBg .hdTopLine span.r a { display: inline-block; margin: 0px 3px 0px 3px; color: #ffffff; text-decoration: none; }
+.hdTopLineBg .hdTopLine span.r a:hover { text-decoration: underline; }
+.hdTopLineBg .hdTopLine span.r a.mobileBuy { background-image: url("http://img.cailele.com/img_new/top/top_mobile_bg.png"); display: inline-block; width: 72px; height: 15px; margin: -3px 3px; text-align: right; line-height: 12px; padding-top: 5px; padding-right: 8px; behavior: url(/js/iepngfix.htc); }
+/*新手帮助*/
+.foothelper { border: 1px solid #d9d9d9; width: 1000px; display: inline-block; margin-top: 10px; text-align: left; font-size:12px; }
+.foothelper * { font-size:12px; }
+.foothelper .foothelperDIV { border: 1px solid #ffffff; height: 105px; background-image: url("http://img.cailele.com/img_new/foot/footHelperBg.jpg"); background-repeat: repeat-x; background-position: left top; }
+.foothelper .foothelperDIV ul { list-style: none; height: 105px; margin:0px; }
+.foothelper .foothelperDIV ul li { float: left; margin: 15px 0px 0px 30px; height: 80px; width: 290px; background-image: url("http://img.cailele.com/img_new/foot/footHelperBg.jpg"); background-repeat: no-repeat; padding-left: 0px; border-right: 1px solid #bbbbbb; }
+.foothelper .foothelperDIV ul li span { display:inline-block; border:0px solid; vertical-align: top; }
+.foothelper .foothelperDIV ul li span.spanl { width:65px; height:70px; }
+.foothelper .foothelperDIV ul li span.spanl a { display: inline-block; width:65px; height:65px; margin-top:5px; margin-left:0px; }
+.foothelper .foothelperDIV ul li span.spanr { width:205px; height:80px; margin-left:15px; }
+.foothelper .foothelperDIV ul li span.spanr a.helptitle { color: #666666; display: block; margin-bottom: 5px; font-weight:bold; }
+.foothelper .foothelperDIV ul li span.spanr a { color: #666666; display: inline-block; line-height: 18px; margin:0px 10px 0px 0px; }
+.foothelper .foothelperDIV ul li.l { background-position: left -105px; }
+.foothelper .foothelperDIV ul li.m { background-position: left -190px; }
+.foothelper .foothelperDIV ul li.r { background-position: left -275px; border-right: 0px; }
+
+
+.footDIV .bottomLine .friendDIV-left { float:left; width:78px; }
+.footDIV .bottomLine .friendDIV-left ul { background-color:#f8f8f8; }
+.footDIV .bottomLine .friendDIV-left ul li { border-bottom:1px solid #cccccc; border-right:1px solid #cccccc; height:34px; line-height:34px; text-align:center; cursor:default; }
+.footDIV .bottomLine .friendDIV-left ul li.current { border-right:0px; background-color:#ffffff; }
+.footDIV .bottomLine .friendDIV-right { float:left; width:900px; padding:5px 10px 5px 10px; color:#dddddd; }
+.footDIV .bottomLine .friendDIV-right a { display:inline-block; margin:0px 8px 0px 8px; height:20px; line-height:20px; color:#666; text-decoration:none; }
+.footDIV .bottomLine .friendDIV-right a:hover { color:#ff0000; text-decoration:underline; }
+
+
+/*底部导航*/
+.footDIV .bottompicDIV { width:1000px; display:inline-block; border-top: 2px solid #f56d00; padding-top:10px; }
+.noborder{ border-top:none;}
+.border{ border-top: 2px solid #f56d00; margin-top:15px;}
+.footDIV .bottompicDIV a { display:inline-block; border:0px solid; margin:0 3px; width:110px; height:45px; }
+.footDIV .bottompicDIV a.bottomicon { background-image: url("http://img.cailele.com/img_new/index/foot_icon.png"); background-repeat: no-repeat; vertical-align:top; }
+.footDIV .bottompicDIV a.bottomicon1 { background-position: left top; }
+.footDIV .bottompicDIV a.bottomicon2 { background-position: left -50px; }
+.footDIV .bottompicDIV a.bottomicon3 { background-position: left -100px; }
+.footDIV .bottompicDIV a.bottomicon4 { background-position: left -150px; }
+.footDIV .bottompicDIV a.bottomicon5 { background-position: left -200px; }
+.footDIV .bottompicDIV a.bottomicon6 { background-position: left -250px; text-align:right; text-decoration:none; }
+.footDIV .bottompicDIV a.bottomicon6 font { font-size:9px; line-height:9px; height:9px; color:#ffffff; text-decoration:none; display:inline-block; margin-top:33px; margin-right:2px; font-family:"Arial"; }
+.footDIV .bottompicDIV a.bottomicon7{width:123px;background-position: left -420px;}
+.footDIV .bottompicDIV a.bottomicon8{width:48px;height:46px;background-position: left -470px;}
+.footDIV .bottompicDIV a.bottomicon9{width:48px;height:46px;background-position: left -530px;}
+.footDIV .bottompicDIV a.bottomicon10{background-position: left -581px;}
+.footDIV ul.bottomList {   }
+.footDIV ul.bottomList li { text-align:center; line-height:25px; height:25px; color:#666; }
+.footDIV ul.bottomList li a { color:#666; text-decoration:none; margin-right:4px; margin-left:7px;}
+.footDIV ul.bottomList li a.nomar{ margin-right:0px;}
+.footDIV ul.bottomList li a:hover { color:#ff0000; text-decoration: underline; }
+.footDIV ul.bottomList li label.foot-red { color:#ff0000; }
+.footDIV ul.bottomList li font { font-family:Verdana,Simsun; font-size:12px; }
+.footDIV ul.bottomList li i { font-family:Verdana,Simsun; font-size:12px; font-style:normal; }
+
+.footDIV .bankDIV { text-align:center; margin:6px 0px 6px 0px; }
+.footDIV .bankDIV a.backlink { display:inline-block; border:0px solid; margin: 0px 5px 0px 5px; background-image: url("http://img.cailele.com/img_new/index/foot_icon.png"); background-repeat: no-repeat; width:120px; height:35px; }
+.footDIV .bankDIV a.backlink1 { background-position: left -300px; }
+.footDIV .bankDIV a.backlink2 { background-position: left -340px; }
+.footDIV .bankDIV a.backlink3 { background-position: left -380px; }
+
+/*2014-10月新版底部导航*/
+.footDIV .aa{ width:1000px; display:inline-block; border-top: 2px solid #f56d00; padding-top:10px; }
+.footDIV .aa a {  border:0px solid; margin:0 3px; display:inline-block; width:108px; height:45px; }
+.footDIV .aa a.bottompic{ background:url(http://img.cailele.com/img_new/index/foot_icon.png) no-repeat; }
+.footDIV .aa a.bottompic1{ background-position:0px 0px;  }
+.footDIV .aa a.bottompic2{ background-position:-126px 0px;  }
+.footDIV .aa a.bottompic3{ background-position:0px -632px;  }
+.footDIV .aa a.bottompic4{ background-position:0px -790px;  }
+.footDIV .aa a.bottompic5{ background-position:0px -841px;  }
+.footDIV .aa a.bottompic6{ background-position:0px -734px; }
+.footDIV .aa a.bottompic7{ background-position:0px -683px;  }
+.footDIV .aa a.bottompic8{ background-position:0px -945px; }
+.footDIV .aa a.bottompic9{ background-position:0px -994px; }
+.footDIV .aa a.bottompic10{display:inline-block; width:48px; height:46px; background-position:0px -1043px; }
+.footDIV .aa a.bottompic11{display:inline-block; width:48px; height:46px; background-position:-55px -1043px; }
+
+.bLine{ width:1000px;  display:inline-block;  padding-top:10px; clear:both;}
+.foot_pic{ width:510px; float:left;  }
+.foot_pic a{ display:inline-block; width:120px; height:35px; float:left; margin-bottom:8px; }
+.foot_pic a.bottompic{ background:url(http://img.cailele.com/img_new/index/foot_icon_new.png) no-repeat; }
+.foot_pic a.bottompic1{ background-position:0px 0px; margin-right:6px; }
+.foot_pic a.bottompic2{ background-position:-126px 0px; margin-right:6px; }
+.foot_pic a.bottompic3{ background-position:-252px 0px; margin-right:6px; }
+.foot_pic a.bottompic4{ background-position:-379px 0px;  }
+.foot_pic a.bottompic5{ background-position:0px -43px; margin-right:6px; }
+.foot_pic a.bottompic6{ background-position:-126px -43px; margin-right:6px; }
+.foot_pic a.bottompic7{ background-position:-252px -43px; margin-right:6px; }
+.foot_pic a.bottompic8{ background-position:-379px -43px; }
+.follow_us{ width:120px; float:left;}
+.follow_us h4{ line-height:38px; text-align:center; font-size:12px; margin-bottom:5px; }
+.follow_us a{ display:inline-block; width:35px; height:35px; background:url(http://img.cailele.com/img_new/index/foot_icon_new.png) no-repeat; }
+.follow_us a.xlwb{ background-position:-224px -90px; float:left; margin-left:15px; margin-right:5px; }
+.follow_us a.txwb{  background-position:-269px -90px; float:left; margin-left:10px; margin-right:5px;}
+
+
+.foot_infor{ float:right;}
+.foot_infor ul.bottom_list li { text-align:center; line-height:19px; height:19px; color:#333333; }
+.foot_infor ul.bottom_list li a { color:#000000; text-decoration:none; }
+.foot_infor ul.bottom_list li a:hover { color:#ff0000; text-decoration: underline; }
+.foot_infor ul.bottom_list li label.foot-red { color:#ff0000; }
+.foot_infor ul.bottom_list li i { font-family:Verdana, Simsun; font-size:12px; font-style:normal; }
+.foot_infor ul.bottom_list li.mar_top{ margin-top:6px;}
+
+/*活动页面的底部导航*/
+.bottomDIV { text-align: center; width: 100%; }
+.bottomLine { color: #666; text-align: center; font-family:"宋体"; line-height:20px; }
+.bottomLine .copyright { width: 1000px; border-top: 1px solid #cccccc; display: inline-block; padding-top: 10px; margin-top: 10px; }
+.bottomLine a { color:#666; text-decoration: none; display: inline-block; margin: 0px 5px 0px 5px; }
+.bottomLine a:hover { text-decoration: underline; }
+.bottomLine .bottomNaDIV {margin-top:10px;color:#666; }
+.bottomLine .bottomNaDIV a { margin: 0px 10px 0px 10px; }
+/*按钮*/
+a.btnBuy-orange,
+a.btnBuy-orange:hover,
+a.btnBeginCalc,
+a.btnClearSetup,
+a.btnSelectOk-orange,
+a.btnSelectOk-gray,
+a.btnComeBuy-orange,
+a.btnSubstituteBuy-orange,
+a.btnBuy-gray,
+a.btnBuy-gray:hover,
+a.btnCalcing { background-image: url('http://img.cailele.com/img_new/common/common.jpg'); background-repeat: no-repeat; display: inline-block; }
+* a.btnBuy-orange,
+* a.btnBuy-orange:hover,
+* a.btnBeginCalc,
+* a.btnClearSetup,
+* a.btnSelectOk-orange,
+* a.btnSelectOk-gray,
+* a.btnComeBuy-orange,
+* a.btnSubstituteBuy-orange,
+* a.btnBuy-gray,
+* a.btnCalcing
+* a.btnBuy-gray:hover { background-image: url('http://img.cailele.com/img_new/common/common.jpg'); }
+/*确认购买按钮-橙色*//*发起合买-橙色*//*确认购买按钮-灰色*/
+a.btnBuy-orange,
+a.btnBuy-orange:hover,
+a.btnComeBuy-orange,
+a.btnSubstituteBuy-orange,
+a.btnSubstituteBuy-orange:hover,
+a.btnBuy-gray,
+a.btnBuy-gray:hover { width: 172px; height: 43px; display:none; }
+a.btnBuy-orange { background-position: left 0px; display:none; }
+a.btnBuy-orange:hover { background-position: left -50px; }
+a.btnBuy-gray { background-position: left -530px; }
+/*发起合买*/
+a.btnComeBuy-orange { background-position: left -330px; }
+a.btnComeBuy-orange:hover { background-position: left -380px; }
+/*发起代购*/
+a.btnSubstituteBuy-orange { background-position: left -430px; }
+a.btnSubstituteBuy-orange:hover { background-position: left -480px; }
+/*选好了*/
+a.btnSelectOk-orange,
+a.btnSelectOk-gray { width:162px; height:39px; }
+a.btnSelectOk-orange { background-position: left -100px; }
+a.btnSelectOk-orange:hover { background-position: left -150px; }
+a.btnSelectOk-gray { background-position: left -200px; }
+/*开始计算&清空重置*/
+a.btnBeginCalc,
+a.btnClearSetup,
+a.btnCalcing { width:75px; height:27px; }
+a.btnBeginCalc { background-position: left -250px; }
+a.btnClearSetup { background-position: -100px -250px; }
+a.btnCalcing{background-position:left -580px;}
+/*alert提示层*/
+.alert-confirmWinDIV { width:370px; background-color:#ffffff; display:none; font-family:Microsoft Yahei,Simsun,Tahoma, Geneva, sans-serif;}
+.textDIV li{ border-bottom:1px #e8e7e7 dashed; height:35px; line-height:35px; font-size:12px;}
+.textDIV li .festoon{color:#000; font-weight:bold;}
+.textDIV li .category{ padding-left:10px;}
+.textDIV .remove{ border-bottom:none;}
+.textDIV .headline { float:left; display:inline-block;width:70px; color:#333;}
+.textDIV .scheme{ float:left; display:inline-block; width:360px; color:#8f8e8e;}
+.textDIV .scheme .fund{color:#e4393c; font-weight:bold;}
+.textDIV .scheme .value{color:#e4393c;}
+.textDIV .advice{ background:#fff8f7; border:1px #ffd5d5 solid; margin:10px auto 0 auto; width:260px; height:30px; line-height:30px; color:#e4393c; text-align:center;}
+.textDIV .reminder{ text-align:center;}
+.alert-confirmWinDIV .textDIV { padding:20px 30px 20px 30px; font-size:14px; white-space:normal; word-wrap:break-word; word-break:break-all; }
+.alert-confirmWinDIV .textDIV a,
+.alert-confirmWinDIV .textDIV a:visited{color:#1e50a2;}
+.alert-confirmWinDIV .textDIV a:hover{color:#e4393c;}
+.alert-confirmWinDIV .btnDIV { background-color:#ffffff; padding:10px 0px 10px 0px; text-align:center; border-top:1px solid #f8f8f8; margin:0px 10px 0px 10px; }
+.alert-confirmWinDIV .btnDIV a { display:inline-block; background: url('http://img.cailele.com/img_new/common/common.jpg') no-repeat; width:65px; height:27px; line-height:25px; font-size:14px; font-weight:bold; text-align:center; }
+.alert-confirmWinDIV .btnDIV a.ok,
+.alert-confirmWinDIV .btnDIV a.ok:visited{ margin:0 5px; background:#e4393c;border-radius:2px;color:#fff;display:inline-block;font-family:Microsoft Yahei,Simsun;font-size:14px;font-weight:normal;height:28px;line-height:28px;padding:0 15px;text-align:center;}
+.alert-confirmWinDIV .btnDIV a.ok:hover{ background:#f55100; color:#fff;}
+.alert-confirmWinDIV .btnDIV a.cancel,
+.alert-confirmWinDIV .btnDIV a.cancel:visited{ margin:0 5px; background:#8c8c8c;border-radius:2px;color:#fff;display:inline-block;font-family:Microsoft Yahei,Simsun;font-size:14px;font-weight:normal;height:28px;line-height:28px;padding:0 15px;text-align:center;}
+.alert-confirmWinDIV .btnDIV a.cancel:hover{ background:#b1b1b1; color:#fff;}
+
+.alert-balancewindow{ width:500px; background-color:#ffffff; display:none; font-family:Microsoft Yahei,Simsun,Tahoma, Geneva, sans-serif;}
+.alert-balancewindow .textDIV { padding:20px 30px 20px 30px; font-size:14px; white-space:normal; word-wrap:break-word; word-break:break-all; }
+.alert-balancewindow .btnDIV { background-color:#ffffff; padding:10px 0px 10px 0px; text-align:center; border-top:1px solid #f8f8f8; margin:0px 10px 0px 10px; }
+.alert-balancewindow .btnDIV a { display:inline-block; background: url('http://img.cailele.com/img_new/common/common.jpg') no-repeat; width:65px; height:27px; line-height:25px; font-size:14px; font-weight:bold; text-align:center; }
+.alert-balancewindow .btnDIV a.ok,
+.alert-balancewindow .btnDIV a.ok:visited{ margin:0 5px; background:#e4393c;border-radius:2px;color:#fff;display:inline-block;font-family:Microsoft Yahei,Simsun;font-size:14px;font-weight:normal;height:28px;line-height:28px;padding:0 15px;text-align:center;}
+.alert-balancewindow .btnDIV a.ok:hover{ background:#f55100; color:#fff;}
+.alert-balancewindow .btnDIV a.cancel,
+.alert-balancewindow .btnDIV a.cancel:visited{ margin:0 5px; background:#8c8c8c;border-radius:2px;color:#fff;display:inline-block;font-family:Microsoft Yahei,Simsun;font-size:14px;font-weight:normal;height:28px;line-height:28px;padding:0 15px;text-align:center;}
+.alert-balancewindow .btnDIV a.cancel:hover{ background:#b1b1b1; color:#fff;}
+/*选号列表*/
+.tradeListDIV { border:1px solid #7f9db9; background-color:#ffffff; margin:0px; padding:1px; overflow-x:hidden; overflow-y:auto; }
+.tradeListDIV table.tradeListTable { width:100%; }
+.tradeListDIV table.tradeListTable tr.tradeListItemTR td,
+.tradeListDIV table.tradeListTable tr.tradeListItemTR-hover td { background-color:#ffffff; line-height:20px; font-family: "Verdana"; border-bottom:0px solid #fcfcfc; overflow:hidden; cursor:default; }
+.tradeListDIV table.tradeListTable tr.tradeListItemTR-hover td { background-color:#cbd9f0; }
+.tradeListDIV table.tradeListTable tr.tradeListItemTR td.nameTD,
+.tradeListDIV table.tradeListTable tr.tradeListItemTR-hover td.nameTD { color:#000000; padding:0px 0px 0px 0px; text-align:center; border-right:1px solid #ffffff; font-weight:normal; vertical-align:middle; white-space:nowrap; }
+.tradeListDIV table.tradeListTable tr.tradeListItemTR td.nameTD label,
+.tradeListDIV table.tradeListTable tr.tradeListItemTR-hover td.nameTD label { display:inline-block; border:0px solid; }
+.tradeListDIV table.tradeListTable tr.tradeListItemTR td.nameTD { background-color:#fafafa; }
+.tradeListDIV table.tradeListTable tr.tradeListItemTR-hover td.nameTD { background-color:#b7caea; }
+.tradeListDIV table.tradeListTable tr.tradeListItemTR td.numTD,
+.tradeListDIV table.tradeListTable tr.tradeListItemTR-hover td.numTD { color:#000000; border:0px solid; vertical-align:top; }
+.tradeListDIV table.tradeListTable tr.tradeListItemTR td.numTD .numD,
+.tradeListDIV table.tradeListTable tr.tradeListItemTR-hover td.numTD .numD { white-space:normal; word-break:break-all; word-wrap:break-word; overflow:hidden; border:0px solid; }
+.tradeListDIV table.tradeListTable tr.tradeListItemTR td.numTD .numD { font-weight:normal; }
+.tradeListDIV table.tradeListTable tr.tradeListItemTR-hover td.numTD .numD { font-weight:normal; }
+.tradeListDIV table.tradeListTable tr.tradeListItemTR td.delTD,
+.tradeListDIV table.tradeListTable tr.tradeListItemTR-hover td.delTD { width:10px; vertical-align:top; border:0px solid; }
+.tradeListDIV table.tradeListTable tr.tradeListItemTR td.delTD font.del { display:none; }
+.tradeListDIV table.tradeListTable tr.tradeListItemTR-hover td.delTD font.del,
+.tradeListDIV table.tradeListTable tr.tradeListItemTR-hover td.delTD font.del-h { border:0px solid #000000; display:inline-block; width:15px; height:15px; background:url("http://img.cailele.com/img_new/lottery/gd11x5/gd11x5.gif") no-repeat; margin:2px 0px 0px 0px; padding:0px; display:inline-block; cursor:pointer; }
+.tradeListDIV table.tradeListTable tr.tradeListItemTR-hover td.delTD font.del { background-position:-188px -600px; }
+.tradeListDIV table.tradeListTable tr.tradeListItemTR-hover td.delTD font.del-h { background-position:-168px -600px; }
+
+/*购买按钮上面的协议样式*/
+.agreement { display:inline-block;width:285px;margin:10px 0 10px -50px; padding:3px; font-weight:normal !important; color:#333333; _position:relative; _left:-60px; }
+.agreement input { vertical-align:middle; }
+.agreement a,
+.agreement a:visited { color:#065cc3; }
+.agreement a:hover { color:#F00; }
+.striking { background:#FF6; }
+.downpanel .d-center ul li.col2 { padding:10px 0; }
+
+/*----------弹出定制跟单层----------*/
+#handtailorDIV {display:none;overflow:hidden;width:450px;position:absolute;}
+#handtailorDIV .middle { height: auto; border-left: 1px solid #e66c01; border-right: 1px solid #e66c01; border-bottom: 1px solid #e66c01; background-color: #ffffff; padding-top: 0px; padding-bottom: 15px; padding-top: 15px; line-height: 25px; text-align: left; }
+#handtailorDIV .middle .line { }
+#handtailorDIV .middle .line span { display: inline-block; vertical-align: middle; }
+#handtailorDIV .middle .line span.l { width: 150px; text-align: center; }
+#handtailorDIV .middle .line span.l img { width: 100px; height: 100px; border: 1px solid #cccccc; }
+#handtailorDIV .middle .line span.r { width: 280px; }
+#handtailorDIV .middle dl { width: 416px; margin-left: 10px; border: 1px solid #ffd7a1; background-color: #fff2d8; margin-top: 10px; padding: 5px; }
+#handtailorDIV .middle dl dt { font-weight: bold; }
+#handtailorDIV .middle dl dd { margin-left: 10px; }
+#handtailorDIV .middle dl input { margin: 0px 3px 0px 3px; }
+#handtailorDIV .middle dl input.text { height: 18px; line-height: 18px; width: 40px; text-align: center; border: 1px solid #aaaaaa; }
+#handtailorDIV .middle a.dzBtn { background-image: url("http://img.cailele.com/img_new/hm/following/dz.gif"); background-repeat: no-repeat; display: inline-block; width: 172px; height: 43px; }
+#handtailorDIV .middle a.dzBtn { background-position: left -top; }
+#handtailorDIV .middle a.dzBtn:hover { background-position: left -50px; }
+
+
+/*-----------------------------------------以下部分是网站 v2版本样式-----------------------------------------*/
+@font-face {font-family: 'iconfont';src: url('/css/iconfont/iconfont.eot'); /* IE9*/src: url('/css/iconfont/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */url('/css/iconfont/iconfont.woff') format('woff'), /* chrome、firefox */url('/css/iconfont/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/url('/css/iconfont/iconfont.svg#uxiconfont') format('svg'); /* iOS 4.1- */}
+.iconfont{font-family:"iconfont" !important;font-size:16px;font-style:normal;-webkit-font-smoothing: antialiased;-webkit-text-stroke-width: 0.2px;-moz-osx-font-smoothing: grayscale;color:#333333;}
+/*----------清除浮动----------*/
+/*
+将需要清除浮动的层或元素在这里添加
+*/
+.layout:after, .module .hd_in:after, .module .bd_in:after, .module .ft_in:after{content:'\0020';display:block;height:0;line-height:0;font-size:0;clear:both;visibility:hidden;}
+.layout, .module .hd_in, .module .bd .bd_in, .module .ft_in{*zoom:1;}
+
+.mainer{overflow:hidden;width:1000px;margin:0 auto;}
+.layout{width:1000px;margin:0 auto;}
+
+/*用了main_sprite.png背景的样式*/
+.nav_quick .slogan,
+.navigation .nav li .ihome,
+.service .online li a,
+.service .online li a:visited{background:url(http://img.cailele.com/img_new/common/main_sprite.png) no-repeat;}
+/*----------全站通用小图标----------*/
+/*16x16*/
+.ico{display:inline-block;width:16px;height:16px;background:url(http://img.cailele.com/img_new/common/web_icons.gif) no-repeat; vertical-align:middle;}
+.ico_correct{background-position:0 0;}
+.ico_close{background-position:0 -16px;}
+.ico_down_gray{background-position:0 -32px;}
+.ico_down_yellow{background-position:0 -48px;}
+.ico_up_gray{background-position:0 -64px;}
+.ico_up_yellow{background-position:0 -80px;}
+.ico_star_gray{background-position:0 -96px;}
+.ico_star_yellow{background-position:0 -112px;}
+.ico_close2{background-position:0 -128px;}
+.ico_arrow_d{background-position:0 -144px;}
+.ico_arrow_u{background-position:0 -160px;}
+.ico_arrow_l{background-position:0 -176px;}
+.ico_arrow_r{background-position:0 -192px;}
+.ico_clock{background-position:0 -208px;}
+.ico_guide{background-position:0 -224px;}
+
+/*----------全站通用module模型----------*/
+/*-----基本模型-----*/
+.module{}
+.module .hd{}
+.module .hd .hd_in{}
+.module .bd{}
+.module .bd .bd_in{}
+.module .ft{display:none;}
+.module .ft .ft_in{}
+
+/*-----模型风格-----*/
+/*默认风格*/
+.mod_default{margin:10px 0;border:#d8d8d8 1px solid;color:#252525;font-family:Arial, Helvetica, sans-serif;}
+.mod_default .hd .hd_in{height:30px;line-height:30px;background:url(http://img.cailele.com/img_new/common/mod_def_hd.png) repeat-x 0 bottom #f2f2f2;}
+.mod_default .hd .tit{float:left;margin:0 0 0 5px;font-size:14px; text-shadow:1px 1px 1px #fff;}
+.mod_default .hd .more{float:right;display:inline-block;margin:0 5px 0 0;padding:0 8px 0 0;background:url(http://img.cailele.com/img_new/common/icon_arrow_right.png) no-repeat right 10px;color:#3e3e3e;text-shadow:1px 1px 1px #fff;}
+.mod_default .hd .more:hover{color:#f06600;}
+.mod_default .bd .mod_list{}
+
+.mod_default .module_tab{float:right;margin-right:-1px;}
+.mod_default .module_tab a,
+.mod_default .module_tab a:visited{float:left;display:inline-block;height:30px;padding:0 10px;color:#333333;}
+.mod_default .module_tab a:hover{ text-decoration:none;color:#f06600;}
+.mod_default .module_tab .current{border-left:#d8d8d8 1px solid;border-right:#d8d8d8 1px solid;background:url(http://img.cailele.com/img_new/common/tag_head_line.png) repeat-x #ffffff;font-weight:bold;}
+
+/*网站内页模型风格*/
+.mod_sider{margin:5px auto;border:#d8d8d8 1px solid;color:#252525;font-family:Arial,Simsun;}
+.mod_sider .hd .hd_in{height:30px;line-height:30px;background:#f2f2f2;border-bottom:#dcdbe0 1px solid;}
+.mod_sider .hd .tit{float:left;margin:0 0 0 5px;font-size:14px;}
+.mod_sider .hd .more{float:right;display:inline-block;margin:0 5px 0 0;padding:0 8px 0 0;background:url(http://img.cailele.com/img_new/common/icon_arrow_right.png) no-repeat right 10px;color:#3e3e3e;}
+.mod_sider .hd .more:hover{color:#f06600;}
+.mod_sider .hd .notes{color:#999;}
+
+/*文章列表*/
+.mod_sider .art_list{width:95%;margin:0 auto;font-family:Simsun;}
+.mod_sider .art_list li{overflow:hidden;height:26px;line-height:26px;border-bottom:#d8d8d8 1px dotted;}
+.mod_sider .art_list li a,
+.mod_sider .art_list li a:visited{color:#2D374B;}
+.mod_sider .art_list li a:hover{color:#f06600;}
+.mod_sider .art_list .dat{display:none;}
+
+/*标题背景渐变灰 风格*/
+.mod_grad{border:#d8d8d8 1px solid;color:#252525;font-family:Arial, Helvetica, sans-serif;}
+.mod_grad .hd .hd_in{height:30px;line-height:30px;background:url(http://img.cailele.com/img_new/common/mod_grad_hd.png) repeat-x #f8f8f8;}
+.mod_grad .hd .tit{float:left;margin:0 0 0 5px;font-size:14px; text-shadow:1px 1px 1px #fff;}
+.mod_grad .hd .more{float:right;display:inline-block;margin:0 5px 0 0;padding:0 8px 0 0;background:url(http://img.cailele.com/img_new/common/icon_arrow_right.png) no-repeat right 10px;color:#3e3e3e;text-shadow:1px 1px 1px #fff;}
+.mod_grad .hd .more:hover{color:#f06600;}
+.mod_grad .bd .mod_list{}
+
+/*----------全站通用按钮模型----------*/
+.btn_module{display:inline-block;}
+
+.cll_radio,
+.cll_radio:visited{display:inline-block;*display:inline;*zoom:1;margin-right:3px;padding:2px 5px;border:#c7c7c7 1px solid;background:#fff;color:#525252 !important; text-decoration:none !important;}
+.cll_radio_sel,
+.cll_radio_sel:visited{border:#ff6600 2px solid;/*background:#fff7ea;*/background:url(http://img.cailele.com/img_new/common/ico_correct.gif) no-repeat right bottom #fff7ea;color:#333333 !important; text-decoration:none !important;}
+
+/*---按钮风格---*/
+
+/*橙色风格-直角*/
+.btn_s_orange,
+.btn_s_orange:visited{display:inline-block;padding:8px 15px;border:#f1a452 1px solid;background:url(http://img.cailele.com/img_new/common/gradient_orange1_default.png) repeat-x #ffefbe;color:#9b4c01;font-size:14px;font-family:Arial;text-decoration:none;text-shadow:1px 1px 0 #ffffff;}
+.btn_s_orange:hover{border:#e67e0e 1px solid;background:url(http://img.cailele.com/img_new/common/gradient_orange1_hover.png) repeat-x #ffdf7e;color:#9b4c01; text-decoration:none;}
+
+
+/*----------头部部分样式----------*/
+/*-----头部其它登录-----*/
+.topDIV {width:100%;min-width:1000px;text-align:center;font-family:Arial,Simsun;font-size:12px;color:#666666;}
+.topDIV a,
+.topDIV a:visited{text-decoration:none;}
+.topLineDIV{width:100%;height:32px;background:#f7f7f7;border-bottom:#eeeeee 1px solid;}
+
+/*顶部层主要部分*/
+.topLineContentDIV{width:1000px;height:31px;margin:0 auto;line-height:31px;text-align:left;}
+.topLineContentDIV span{display:inline-block;line-height:31px;height:31px;vertical-align:top;white-space:nowrap;}
+.topLineContentDIV span font{display:inline-block;height:31px;line-height:31px;vertical-align:top;color:#777777;font-size:12px;}
+.topLineContentDIV span.l {width:550px;}
+.topLineContentDIV span.l label.img { color:#73a6e0; }
+.topLineContentDIV span.l label.img img { vertical-align:middle; margin-right:5px; }
+.topLineContentDIV span.l a.username { color:#888888; font-weight:bold; }
+.topLineContentDIV span.l a.username:hover { color:#777777; text-decoration:underline; }
+.topLineContentDIV span.l span { display: inline-block; height:31px; line-height:31px; vertical-align:top; }
+.topLineContentDIV span.l span.walletInfo,
+.topLineContentDIV span.l span.walletInfoHover { margin:0px; display: inline-block; width:70px; border:0px solid; text-align:left; padding:0px; vertical-align:top;white-space:nowrap; }
+.topLineContentDIV span.l span.walletInfo label { display:none; }
+.topLineContentDIV span.l span.walletInfo a.myinfo,
+.topLineContentDIV span.l span.walletInfoHover a.myinfo { background-image: url("http://img.cailele.com/img_new/top/top_bg.gif"); background-repeat: no-repeat;padding:0px 13px 0px 5px; display:inline-block; position:relative; height:20px; line-height:20px; vertical-align:top;margin-top:6px;*+margin-top:4px;}
+.topLineContentDIV span.l span.walletInfo a.myinfo { background-position:right -26px; border:0px solid; margin:6px 0px 0px 1px; *+margin-top:4px;}
+.topLineContentDIV span.l span.walletInfoHover a.myinfo { z-index:50003; color:#ff0000; margin:1px 0px 0px 0px; text-decoration:underline; background-position:right -48px; border-top: 1px solid #777777; border-right: 1px solid #777777; border-left: 1px solid #777777; background-color:#ffffff;margin-top:6px;*+margin-top:4px;}
+.topLineContentDIV span.l span.walletInfoHover label { display:inline-block; position:absolute; border:1px solid #777777; margin:26px 0px 0px 0px; background-color:#ffffff; font-family:"Arial"; z-index:50002; padding:5px 10px 5px 10px; vertical-align:top; max-width:200px;line-height:22px;_width:175px;}
+.topLineContentDIV span.l span.walletInfoHover label * { height:18px; line-height:18px; }
+.topLineContentDIV span.l span.walletInfoHover label b { color:#ff0000; display:inline-block; margin:0px 3px 0px 3px; }
+.topLineContentDIV span.l span.walletInfoHover label a.float { float:right; color:#ff0000; margin-right:0px; margin-top: 5px;margin-left:0; }
+.topLineContentDIV span.l span.walletInfoHover label a.float:hover { text-decoration:underline; }
+.topLineContentDIV span.l span.walletInfoHover label a.annal {float:left;margin-left:0px; margin-top: 5px; color:#ff0000; }
+.topLineContentDIV span.l span.walletInfoHover label a.annal:hover { text-decoration:underline; }
+.topLineContentDIV span.l span.walletInfoHover label a.refresh { background-image: url("http://img.cailele.com/img_new/top/top_bg.gif"); background-repeat: no-repeat; background-position: -180px -473px; vertical-align: middle; margin-left:12px; width:auto; margin-right:0px; padding-left:18px; }
+.topLineContentDIV span.l a.top-orangeBtn,
+.topLineContentDIV span.l a.top-blueBtn {display:inline-block;width:36px;height:18px;line-height:18px;margin:0;margin-top:7px;margin-right:5px;background:#f56d00;text-align:center; color:#ffffff;vertical-align:top;border-radius:2px;}
+.topLineContentDIV span.l a.top-blueBtn:hover{background:#da251d;}
+.topLineContentDIV a.BtnVIP { background-image: url("http://img.cailele.com/img_new/top/bnt_bg_vip.gif") no-repeat 0 3px; background-repeat: no-repeat; width:35px; height:18px; line-height:18px; margin-top:3px; text-align:center; display:inline-block; vertical-align:top; color:#ffffff; }
+.topLineContentDIV span.l a.top-orangeBtn {margin-left:5px;background:#f56d00;}
+.topLineContentDIV span.l a.top-orangeBtn:hover{background:#da251d;}
+.topLineContentDIV span.l a.top-blueBtn {background:#208300;}
+.topLineContentDIV span.l a.top-blueBtn:hover{background:#da251d;}
+.topLineContentDIV span.l a.promo,
+.topLineContentDIV span.l a.promo:visited{display:inline-block;width:46px;height:18px;line-height:18px;margin:0;margin-top:7px;margin-right:5px;background:#da251d;text-align:center; color:#ffffff;vertical-align:top;border-radius:2px;}
+.topLineContentDIV span.l a.promo:hover{background:#da251d;}
+.topLineContentDIV span.r { width: 450px; text-align: right; margin-right:0px; border:0px solid; }
+.topLineContentDIV a { color: #777777; margin: 0px 8px 0px 8px; vertical-align:top; height:31px; line-height:31px; display:inline-block; }
+.topLineContentDIV a.null { margin: 0px 0px 0px 0px; }
+.topLineContentDIV a.loginA { color: #1470b6; }
+.topLineContentDIV a.exit { margin: 0px 3px 0px 3px; }
+.topLineContentDIV a:hover { color: #ff0000; }
+.topLineContentDIV a.red { color: #ff0000; border:0px; background-image:none; margin: 0px 8px 0px 8px; display:inline-block; width:50px; font-weight:normal; }
+.topLineContentDIV a.recommend { font-weight:bold; color:#ff0000; }/*add by houxinghai 2012-07-27*/
+.topLineContentDIV a.top-red { color: #ff0000; }
+.topLineContentDIV a.top-red img { border:0px solid; margin-top:4px; }
+
+.topLineContentDIV label.navigationLabel,
+.topLineContentDIV label.navigationLabelHover { display: inline-block; margin: 0px 0px 0px 8px; padding: 0px 0px 0px 0px; cursor: default; color: #777777; height: 25px; line-height: 25px; width: 65px; vertical-align: top; text-align: right; border:0px;font-size:12px;}
+.topLineContentDIV label.navigationLabel font,
+.topLineContentDIV label.navigationLabelHover font { background-image: url("http://img.cailele.com/img_new/top/top_bg.gif"); background-repeat: no-repeat; display: inline-block; margin-right: 0px; margin: 0px 0px 0px 0px; padding: 0px 12px 0px 5px; cursor: default; position:relative; z-index: 99996;font-size:12px;}
+.topLineContentDIV label.navigationLabel font { width:48px; background-position: right -25px; }
+.topLineContentDIV label.navigationLabelHover font { border-left: 1px solid #777777; border-top: 1px solid #777777; border-right: 1px solid #777777; color: #ff0000; background-color: #ffffff; background-position: right -48px; width:47px; margin-left:-1px; height:20px; line-height:20px; margin-top: 1px; }
+
+.topLineContentDIV .cpNavigationDIV{display:none;position:absolute;overflow:hidden;margin-left:778px;margin-top:-4px;background:#ffffff;border:1px solid #777777;z-index:99995;white-space:normal;}
+.topLineContentDIV .cpNavigationDIV dl{width:220px;}
+.topLineContentDIV .cpNavigationDIV dd{margin: 5px 0px 3px 0px;padding-bottom:0;border-bottom: 1px solid #eeeeee;}
+.topLineContentDIV .cpNavigationDIV label{display:block;height:15px;line-height: 15px;margin: 0px 5px 5px 5px; padding-left:15px;color: #777777;background: url(http://img.cailele.com/img_new/top/top_bg.gif) no-repeat -190px -30px;vertical-align:top;font-weight:bold;}
+.topLineContentDIV .cpNavigationDIV a{display:inline-block;height:16px;line-height:16px;margin:0px 10px 0px 15px;color:#666666;}
+.topLineContentDIV .cpNavigationDIV a.nav-red{color:#ff0000;}
+.topLineContentDIV .cpNavigationDIV a:hover{color: #ff0000;text-decoration:underline;}
+
+.topLineContentDIV .otherLoginLabel { position: absolute; height: 25px; overflow: hidden; margin-top: 0px; margin-left: 1px;z-index:30000;}
+.topLineContentDIV .otherLoginLabel a { display: block; z-index:30000;}
+.topLineContentDIV .otherLoginLabel a.tt,
+.topLineContentDIV .otherLoginLabel_hover a.tt { background-image: url("http://img.cailele.com/img_new/top/top_bg.gif"); background-repeat: no-repeat; display: inline-block; margin: 0px 0px 0px 0px; padding: 0px 12px 0px 5px; z-index:30000;}
+
+/*----顶部登录qq图标样式----*/
+.topLineContentDIV .otherLoginLabel a.tt { background-position:right -706px;z-index:30000; }
+.topLineContentDIV .otherLoginLabel_hover a.tt { background-position: right -777px; color: #ff0000;z-index:30000;; }
+.topLineContentDIV .otherLoginLabel_hover { position: absolute; border:1px solid; width: 70px; height: 31px; overflow: hidden; background-color: #ffffff; height:auto;z-index:30000; }
+.topLineContentDIV .otherLoginLabel_hover a { display: block; height: 31px; line-height: 31px; z-index:30000;}
+
+.topLineContentDIV .otherLoginLabel a.tt i{ display:inline-block; width:17px; height:21px;  background:url(http://img.cailele.com/img_new/common/login_icon.png)  no-repeat -55px 0px; margin-top:5px; float:left;}
+.topLineContentDIV .otherLoginLabel_hover a.tt i{ display:inline-block; width:17px; height:21px;  background:url(http://img.cailele.com/img_new/common/login_icon.png)  no-repeat -55px 0px; margin-top:5px; float:left;}
+
+
+
+
+/*-----顶部下拉广告-----*/
+#sliderAD{position:relative;display:none;width:1000px;height:80px;margin:0 auto;background:#C00;}
+#sliderADclose{position:absolute;right:5px;top:5px;display:block;width:16px;height:16px;text-align:center;line-height:16px;font-family:Arial;color:#999;border:#d4d4d4 1px solid;background:#FFF;cursor:pointer;}
+#sliderADclose:hover{background:#f5841e;border:#d5610d 1px solid;color:#FFF;}
+.slider_img{width:1000px;height:80px;}
+
+#bgImg{position:relative;overflow:hidden;width:100%;}
+#bgImg #adBig, #bgImg #adSmall{overflow:hidden;position:relative;zoom:1;}
+#bgImg .big_in, #bgImg .small_in{position:relative;width:1000px;margin:0 auto;}
+#bgImg .big_warp{}
+#bgImg .small_warp{background:#FFF;}
+#bgImg .close,
+#bgImg .close:visited{position:absolute;right:5px;top:5px;width:26px;height:26px;line-height:26px;background:url(http://img.cailele.com/img_new/common/slider_close.png) no-repeat; font-family:Microsoft Yahei,Simsun;font-size:14px;text-align:center;border-radius:2px;}
+#bgImg .close:hover{background:url(http://img.cailele.com/img_new/common/slider_close.png) no-repeat 0 -26px;}
+
+/*-------------------- 顶部样式 --------------------*/
+/*-----最顶部-----*/
+.sitenav{border-bottom:#eeeeee 1px solid;background:#f5f5f5;font-family:Arial,Simsun;_font-family:Simsun;color:#666;z-index:900;}
+.sitenav .layout{height:35px;*zoom:1;}
+.sitenav .layout:after{content:'\0020';display:block;height:0;line-height:0;font-size:0;clear:both;visibility:hidden;}
+.sitenav a,
+.sitenav a:visited{color:#666;}
+.sitenav a:hover{color:#e4393c;}
+.sitenav s{margin:0 5px;color:#c7c7c7;font-style:normal;text-decoration:none;}
+.sitenav .sitelogin,
+.sitenav .sitenavbar{height:35px;*display:inline;*zoom:1;}
+
+.sitenav .cllmenu:after{content:'\0020';display:block;height:0;line-height:0;font-size:0;clear:both;visibility:hidden;}
+.sitenav .cllmenu{*zoom:1;}
+.sitenav .cllmenu{background:#F7F7F7;}
+.sitenav .cllmenu .menu{float:left;background:none;border:none;height:auto;position:static;width:auto;}
+.sitenav .cllmenu .pipe{float:left;padding:0 5px;line-height:32px;font-family:Simsun;color:#b0b0b0;}
+.sitenav .cllmenu .menu a,
+.sitenav .cllmenu .menu a:visited{color:#666666;text-decoration:none;}
+.sitenav .cllmenu .menu a:hover{color:#E64346;}
+.sitenav .cllmenu .menu_hover{}
+.sitenav .cllmenu .menu_hd{position:relative;display:inline-block;*display:inline;*zoom:1;height:32px;line-height:32px;padding:0 2px 0 5px;border:#F7F7F7 1px solid;border-bottom:none;cursor:pointer;font-size:0;z-index:1002;}
+.sitenav .cllmenu .menu_hd a,
+.sitenav .cllmenu .menu_hd a:visited{padding-right:3px;font-size:12px;vertical-align:middle;}
+.sitenav .cllmenu .menu_hover .menu_hd{border:#eeeeee 1px solid;border-bottom:none;background:#ffffff;}
+.sitenav .cllmenu .menu_bd{display:none;position:relative;margin-top:-1px;z-index:1001;}
+.sitenav .cllmenu .menu_hover .menu_bd{display:block;}
+.sitenav .cllmenu .menu_bd .menu_bd_panel{position:absolute;top:0;left:0;width:72px;border:#eeeeee 1px solid;background:#FFF;}
+.sitenav .cllmenu .meun_list .menu_bd_panel{padding:5px 0;}
+.sitenav .cllmenu .meun_list .menu_bd_panel a,
+.sitenav .cllmenu .meun_list .menu_bd_panel a:visited{display:block;line-height:28px;padding:0 5px;}
+.sitenav .cllmenu .meun_list .menu_bd_panel a:hover{background:#f5f5f5;color:#666666;}
+.sitenav .cllmenu .arrow{position:relative;display:inline-block;width:8px;height:8px;margin:12px 3px;padding:0;font-size:0;line-height:0; vertical-align:middle;transition: transform .2s;-moz-transition:-moz-transform .2s;/* Firefox */-webkit-transition: -webkit-transform .2s;/* Safari and Chrome */-o-transition: -o-transform .2s;/* Opera */}
+.sitenav .cllmenu .arrow .s1,
+.sitenav .cllmenu .arrow .s2{position:absolute;left:50%;top:50%;display:inline-block;border:4px dashed transparent;}
+.sitenav .cllmenu .arrow .s1{border-top-style:solid;border-top-color:#9c9c9c;margin:-2px 0 0 -4px;/*居中后偏移*/}
+.sitenav .cllmenu .arrow .s2{border-top-style:solid;border-top-color:#f7f7f7;margin:-3px 0 0 -4px;/*居中*/}
+.sitenav .cllmenu .menu_hover .arrow{transform:rotate(-180deg);-moz-transform:rotate(-180deg); /* Firefox */-webkit-transform:rotate(-180deg); /* Safari and Chrome */-o-transform:rotate(-180deg); /* Opera */}
+.sitenav .cllmenu .menu_hover .arrow .s1{border-top-style:dashed\9;border-top-color:transparent\9;border-bottom-style:solid\9;border-bottom-color:#b0b0b0\9;margin:-7px 0 0 -4px\9;}
+.sitenav .cllmenu .menu_hover .arrow .s2{border-top-style:dashed\9;border-top-color:transparent\9;border-bottom-style:solid\9;border-bottom-color:#ffffff\9;margin:-6px 0 0 -4px\9;}
+
+/*左边*/
+.sitenav .sitelogin{float:left;}
+.sitenav .sitelogin:after{content:'\0020';display:block;height:0;line-height:0;font-size:0;clear:both;visibility:hidden;}
+.sitenav .sitelogin .signinfo{float:left;line-height:35px;}
+.sitenav .sitelogin .signinfo .welcome{color:#999;}
+.sitenav .sitelogin .signinfo a.signin,
+.sitenav .sitelogin .signinfo a.signin:visited{color:#ff4201;}
+.sitenav .sitelogin .signinfo a.signin:hover{color:#e4393c;}
+.sitenav .sitelogin .signinfo a.alipay{}
+.sitenav .sitelogin .signinfo a.alipay .iconfont_hd{margin-right:2px;color:#ff7017;}
+.sitenav .sitelogin .unlogin{}
+.sitenav .sitelogin .unlogin .cllmenu{float:left;display:inline-block;*display:inline;*zoom:1;margin-left:-5px;background:#f5f5f5;vertical-align:middle;}
+.sitenav .sitelogin .unlogin .cllmenu .menu_hd{height:34px;line-height:34px;}
+.sitenav .sitelogin .unlogin .cllmenu .menu_bd .menu_bd_panel{width:96px;}
+.sitenav .sitelogin .unlogin .third_party .iconfont_hd{margin-right:3px;font-size:18px;}
+.sitenav .sitelogin .unlogin .third_party .menu_hd .iconfont_hd{color:#318ece;font-size:17px;}
+.sitenav .sitelogin .unlogin .third_party .qq	  .iconfont_hd{color:#318ece;}
+.sitenav .sitelogin .unlogin .third_party .alipay .iconfont_hd{color:#ff7017;}
+.sitenav .sitelogin .unlogin .third_party .tianya .iconfont_hd{color:#3793e5;}
+.sitenav .sitelogin .unlogin .third_party .baidu  .iconfont_hd{color:#4a85e9;}
+.sitenav .sitelogin .unlogin .third_party .tenpay .iconfont_hd{color:#0056ad;}
+.sitenav .sitelogin .unlogin .third_party .tianyi .iconfont_hd{color:#8ab015;}
+.sitenav .sitelogin .logging{}
+.sitenav .sitelogin .logging .cllloading{}
+.sitenav .sitelogin .logging .loadimg{width:16px;height:16px;background:url(http://img.cailele.com/img_new/loading.gif) no-repeat;}
+.sitenav .sitelogin .logging p{display:inline-block;*display:inline;*zoom:1;height:35px;line-height:35px;margin:0;}
+.sitenav .sitelogin .logged{}
+.sitenav .sitelogin .logged .loginedinfo{float:left;line-height:35px;}
+.sitenav .sitelogin .logged a.user,
+.sitenav .sitelogin .logged a.user:visited{}
+.sitenav .sitelogin .logged .iconvip{margin:0 0 0 3px;font-size:14px;color:#ff500b; vertical-align:middle;}
+.sitenav .sitelogin .logged .cllmenu{float:left;display:inline-block;*display:inline;*zoom:1;margin-left:5px;background:#f5f5f5;vertical-align:middle;}
+.sitenav .sitelogin .logged .cllmenu .pipe{line-height:35px;padding:0;}
+.sitenav .sitelogin .logged .cllmenu .menu_hd{height:34px;line-height:34px;}
+.sitenav .sitelogin .logged .cllmenu .menu_bd .menu_bd_panel{width:160px;}
+.sitenav .sitelogin .logged .menuaccount .accbox{padding:3px 10px;}
+.sitenav .sitelogin .logged .menuaccount .accbox p{margin:5px 0;}
+.sitenav .sitelogin .logged .menuaccount .accbox .operate{text-align:right;}
+.sitenav .sitelogin .logged .menuaccount .accbox .operate .iconfont_hd{font-size:12px;color:#666;}
+.sitenav .sitelogin .logged .menuaccount .accbox .operate a:hover .iconfont_hd{color:#f55100;}
+.sitenav .sitelogin .logged .menuaccount .accbox .count{color:#da251d;}
+.sitenav .sitelogin .logged .menuaccount .accbox .freeze .count{color:#004ac5;}
+.sitenav .sitelogin .logged .menuaccount .accbox .integral .count{color:#666;}
+.sitenav .sitelogin .logged .menuaccount .accbox .gotouc{margin-top:10px;}
+.sitenav .sitelogin .logged .menuaccount .accbox .gotouc a,
+.sitenav .sitelogin .logged .menuaccount .accbox .gotouc a:visited{display:block;padding:5px 0;border:#cfcfcf 1px dotted;text-align:center;font-family:Microsoft Yahei,Simsun;}
+.sitenav .sitelogin .logged .menuaccount .accbox .gotouc a:hover{background:#f55100;border:#f55100 1px dotted;color:#fff;}
+.sitenav .sitelogin .logged .finance{float:left;height:35px;line-height:35px;margin-left:5px;}
+.sitenav .sitelogin .logged .finance .cllbtn a, 
+.sitenav .sitelogin .logged .finance .cllbtn a:visited{height:18px;line-height:18px;_margin:8px 0;padding:0 8px;background:#e4393c;color:#fff; vertical-align:middle;}
+.sitenav .sitelogin .logged .finance .cllbtn em{font-size:12px;}
+.sitenav .sitelogin .logged .finance .draw{margin:0 5px 0 3px;}
+.sitenav .sitelogin .logged .finance .draw a,
+.sitenav .sitelogin .logged .finance .draw a:visited{background:#5094d6;}
+.sitenav .sitelogin .logged .finance .draw a:hover{background:#f55100;}
+.sitenav .sitelogin .logged .finance .getpromo{margin-left:-3px;}
+.sitenav .sitelogin .logged .finance .getpromo a,
+.sitenav .sitelogin .logged .finance .getpromo a:visited{background:#f56d00;}
+.sitenav .sitelogin .logged .finance .getpromo a:hover{background:#f55100;}
+.sitenav .sitelogin .logged .finance .promo{margin:0 5px;}
+.sitenav .sitelogin .logged .finance .promo a,
+.sitenav .sitelogin .logged .finance .promo a:visited{color:#e4393c;}
+.sitenav .sitelogin .logged .finance .promo a:hover{color:#f55100;}
+/*右边*/
+.sitenav .sitenavbar{float:right;width:255px;}
+.sitenav .sitenavbar .cllmenu .menu_hd{height:34px;line-height:34px;}
+.sitenav .sitenavbar .cllmenu .pipe{line-height:35px;padding:0;}
+.sitenav .sitenavbar .preferential .iconfont_hd{margin-right:2px;font-size:14px;color:#e4393c;}
+.sitenav .sitenavbar .preferential .menu_bd .menu_bd_panel{width:102px;}
+
+/*-----弹出登录框-----*/
+#loginDIV{display:none;position:absolute;overflow:hidden;width:380px;}
+#loginDIVbg{display:none;position:absolute;background:#000;opacity:0.3;filter: alpha(opacity:60);-moz-opacity:0.3;-khtml-opacity:0.3;}
+#loginDIV .top{height:38px;line-height:38px;padding-left:10px;padding-right:6px;font-size:14px;color:#000;font-weight:bold;background:#fafafa;border-bottom: 1px solid #d8d8d8;}
+#loginDIV .top a.float,
+#loginDIV .top a.floathover { float: right; width: 17px; height: 17px; margin-top: 12px; color: #ffffff; background-image: url("http://img.cailele.com/img_new/common/main_sprite_v3.png"); background-repeat: no-repeat; display: inline-block; }
+#loginDIV .top a.float { background-position: -200px -33px; }
+#loginDIV .top a.floathover { background-position:-220px -33px; }
+#loginDIV .middle { height: auto;  background-color: #ffffff; padding-top: 0px; padding-bottom: 15px; padding-top:15px; }
+#loginDIV .middle span { display: block; padding: 8px 0px 8px 0px; }
+#loginDIV .middle label { display: inline-block; width: 90px; padding-right:10px; text-align: right; vertical-align: middle; color: #666666; }
+#loginDIV .middle span label.error { display: block; width:280px; text-align:left; margin-left:30px; margin-right:30px; border:1px solid #ff7c7c; background-color:#fff6f1; color:#333333; padding-left:30px; padding-top:0px; padding-bottom:0px; background-image: url("http://img.cailele.com/img_new/top/top_bg.gif"); background-repeat: no-repeat; background-position: 10px -490px; }
+#loginDIV .middle input { height: 22px; line-height: 22px; width: 170px; padding: 2px 5px 2px 5px; font-family: "Arial"; font-weight: bold; border-width: 1px; border-style: solid; vertical-align: middle; border-color: #ff0000; color: #000000; font-size:14px; background-image: url("http://img.cailele.com/img_new/top/top_bg.gif"); background-repeat: repeat-x; background-position: left -435px; }
+#loginDIV .middle input.gray { background-position: left -330px; border-color: #cccccc; color: #cccccc; font-size:14px; }
+#loginDIV .middle span a.login { background-image: url("http://img.cailele.com/img_new/top/top_bg.gif"); background-repeat: no-repeat; width: 90px; height: 30px; text-align: center; line-height: 30px; display: inline-block; margin-left: 0px; margin-right: 10px; background-position: left -365px; color: #fffaf7; font-size:14px; font-weight:bold; }
+#loginDIV .middle span a.null { background-image:none; margin-left:8px; width:auto; margin-right:8px; }
+#loginDIV .middle span a.refresh { background-image: url("http://img.cailele.com/img_new/top/top_bg.gif"); background-repeat: no-repeat; background-position: left -475px; vertical-align: middle; margin-left:8px; width:auto; margin-right:8px; padding-left:18px; line-height:16px; height:16px; }
+#loginDIV .middle span img#validateImg { vertical-align: middle; width: 70px; margin-left: 10px; height: 28px; cursor: pointer; }
+#loginDIV .middle span font.clear { background-image: url("http://img.cailele.com/img_new/top/top_bg.gif"); background-repeat: no-repeat; background-position: right -295px; vertical-align: middle; width: 14px; height: 16px; display: inline-block; cursor: pointer; margin-right:10px; }
+#loginDIV .bottom { background-position: -500px bottom; height: 10px; }
+
+/*-------------------- 头部样式 --------------------*/
+@font-face {font-family: 'iconfont';src: url('/css/iconfont/iconfont.eot'); /* IE9*/src: url('/css/iconfont/iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */url('/css/iconfont/iconfont.woff') format('woff'), /* chrome、firefox */url('/css/iconfont/iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/url('/css/iconfont/iconfont.svg#uxiconfont') format('svg'); /* iOS 4.1- */}
+.iconfont_hd{font-family:"iconfont" !important;font-size:16px;font-style:normal;-webkit-font-smoothing: antialiased;-webkit-text-stroke-width: 0.2px;-moz-osx-font-smoothing: grayscale;color:#333333;}
+
+
+/*-----网站页头-----*/
+.headerarea{background:url(http://img.cailele.com/img_new/common/hd_bg_v4_b.jpg) no-repeat center top;}
+/*.headerarea{background:url(http://img.cailele.com/img_new/common/hd_bg_2015qm.jpg) no-repeat center top;}*/
+.header{overflow:hidden;width:auto;height:auto;margin-bottom:0;text-align:center;z-index:800;}
+.header .layout{height:70px;background:url(http://img.cailele.com/img_new/common/hd_bg_v3.jpg) no-repeat;background:none;}
+/*彩乐乐logo*/
+.header .logo{float:left;width:auto;height:auto;margin:13px 0 0 15px;background:none;}
+.header .logo a,
+.header .logo a:visited{overflow:hidden;display:block;width:156px;height:44px;background:url(http://img.cailele.com/img_new/common/sprite-v4.png) no-repeat 0 0;text-indent:-999em;}
+.header .sublogo{float:left;overflow:hidden;display:block;width:126px;height:24px; background:url(http://img.cailele.com/img_new/common/sprite-v4.png) no-repeat -160px 0;  margin:22px 0 0 5px;text-indent:-9999em;}
+/*.header .sublogo{float:left;overflow:hidden;display:block;width:134px;height:70px; background:url(http://img.cailele.com/img_new/banner/201605/2016duanwu.png) no-repeat;  margin:0;text-indent:-9999em;}*/
+.header .honbo_intro,
+.header .honbo_intro:visited{float:right;overflow:hidden;display:block;width:142px;height:29px;margin:20px 25px 0 0;background:url(http://img.cailele.com/img_new/common/main_sprite_v3.png) no-repeat -666px -70px;text-indent:-9999px;}
+.header .promo{float:left;}
+.header .promo a,
+.header .promo a:visited{display:block;width:350px;height:70px;margin-left:10px;}
+
+/*顶部客服*/
+.service{float:right;font-size:12px;font-family:Arial,Simsun;text-align:right;}
+.service a,
+.service a:visited{font-family:Tahoma,Simsun;color:#666;}
+.service .iconfont_hd{margin-right:3px;color:#e4393c;font-size:20px;}
+.service .hongbo{display:block;text-align:right;}
+.service .hongbo a,
+.service .hongbo a:visited{overflow:hidden;display:inline-block;width:176px;height:15px;line-height:1000px;margin:12px 0 3px 0;color:#666;background:url(http://img.cailele.com/img_new/common/sprite-v4.png) no-repeat 0 -54px;}
+.service .hongbo em{color:#e4393c;}
+.service .chat a,
+.service .chat a:visited{display:inline-block;*display:inline;*zoom:1;padding:0 5px 0 5px;height:26px;line-height:26px;border:#dddddd 1px solid;border-radius:2px;}
+.service .chat a:hover{border-color:#f55100;background:#f55100;color:#fff;}
+.service .chat a:hover .iconfont_hd{color:#fff;}
+.service .chat a.ol,
+.service .chat a.ol:visited{background:#97bc21;border-color:#97bc21;color:#fff;}
+.service .chat a.ol:hover{border-color:#f55100;background:#f55100;color:#fff;}
+.service .chat a.ol .iconfont_hd{color:#fff;}
+.service .chat .iconfont_hd{ }
+.service .chat .txt{font-family:Microsoft Yahei,Simsun;font-size:13px;}
+.service .chat .tel{}
+.service .chat .tel .txt{font-family:Tahoma, Geneva, sans-serif;font-size:14px;font-weight:bold; font-style:italic;}
+
+/*-------------------- 导航样式 --------------------*/
+.navigation{text-align:center;z-index:700;}
+.navigation .layout{position:relative;z-index:821;}
+
+/*彩种导航*/
+.menu_panel{float:left;display:block;width:250px;height:38px;text-align:center;cursor:pointer;z-index:301;}
+.menu_panel .txt{position:relative;overflow:hidden;display:block;height:38px;line-height:38px;background:#3679bd;text-align:center;font-size:14px;font-family:Simsun;color:#fff;font-style:normal;font-weight:bold;}
+.menu_panel .txt .arrow{position:absolute;top:5px;right:10px;display:inline-block;width:8px;height:8px;margin:12px 3px;padding:0;font-size:0;line-height:0; vertical-align:middle;transition: transform .2s;-moz-transition:-moz-transform .2s;/* Firefox */-webkit-transition: -webkit-transform .2s;/* Safari and Chrome */-o-transition: -o-transform .2s;/* Opera */}
+.menu_panel .txt .arrow .s1,
+.menu_panel .txt .arrow .s2{position:absolute;left:50%;top:50%;display:inline-block;border:5px dashed transparent;}
+.menu_panel .txt .arrow .s1{border-top-style:solid;border-top-color:#fff;margin:-2px 0 0 -4px;/*居中后偏移*/}
+.menu_panel .txt .arrow .s2{border-top-style:solid;border-top-color:#f7f7f7;margin:-3px 0 0 -4px;/*居中*/display:none;}
+.menu_panel .txt b{padding-left:10px;font-size:14px;color:#fff;}
+.menu_panel .txt b em{margin-left:3px;font-family:Tahoma,Simsun;font-size:11px;}
+.menu_panel .hover{}
+.menu_box{position:absolute;top:38px;left:0;line-height:12px;z-index:301;}
+.menu_box .menu_box_in{width:248px;height:489px;border:#cedde4 1px solid;border-top:none;background:#f8fcff;font-size:0;letter-spacing:-5px;}
+.menu_box .d_top{display:none;}
+.menu_box .d_center{}
+.menu_box .d_center ul{*zoom:1;}
+.menu_box .d_center ul:after{content:'\0020';display:block;height:0;line-height:0;font-size:0;clear:both;visibility:hidden;}
+.menu_box .d_center ul li{float:left;position:relative;width:100%;padding-bottom:9px;border-bottom:#cedde4 1px dotted;background:#f8fcff;text-align:left;*display:inline;*zoom:1;}
+.menu_box .d_center ul li:after{content:'\0020';display:block;height:0;line-height:0;font-size:0;clear:both;visibility:hidden;}
+.menu_box .d_center ul li:hover{background:#fffde8;}
+.menu_box .d_center ul li.jingji{padding-bottom:12px;border-bottom:none;}
+.menu_box .d_center .d_title{height:24px;line-height:24px;margin-top:6px;font-size:0;letter-spacing:normal; vertical-align:top;}
+.menu_box .d_center .d_title i{display:inline-block;*display:inline;*zoom:1;width:18px;height:18px;margin:0 5px 0 3px;vertical-align:middle;font-size:22px;vertical-align:middle;}
+.menu_box .d_center .gaopin .d_title i{color:#f56293;}
+.menu_box .d_center .shuzi  .d_title i{color:#3679bd;}
+.menu_box .d_center .jingji .d_title i{color:#749415;}
+.menu_box .d_center .beidan .d_title i{color:#b58571;}
+.menu_box .d_center .zuqiu  .d_title i{color:#878787;}
+.menu_box .d_center .d_title strong{display:inline-block;height:18px;color:#333;font-size:13px;font-family:Microsoft Yahei,Simsun;font-weight:bold;vertical-align:middle;}
+.menu_box .d_center .gaopin .d_title strong{color:#f56293;}
+.menu_box .d_center .shuzi .d_title strong{color:#3679bd;}
+.menu_box .d_center .jingji .d_title strong{color:#749415;}
+.menu_box .d_center .d_title em{display:inline-block;height:18px;margin-left:5px;color:#959593;font-family:Arial,Simsun;font-size:12px;font-style:normal;vertical-align:middle;}
+.menu_box .d_center .d_title a,
+.menu_box .d_center .d_title a:visited{display:inline-block;height:18px;margin-left:5px;color:#f55100;font-size:12px;font-style:normal;vertical-align:middle;font-weight:normal;}
+.menu_box .d_center .d_title a:hover{color:#f55100;}
+.menu_box .d_center .d_lottery{float:left;padding:0 5px;}
+.menu_box .d_center .d_lottery .category{display:block;width:100%;*zoom:1;}
+.menu_box .d_center .d_lottery .category:after{content:'\0020';display:block;height:0;line-height:0;font-size:0;clear:both;visibility:hidden;}
+.menu_box .d_center .d_lottery .category label{float:left;display:block;*display:inline;*zoom:1;width:79px;height:14px;line-height:14px;margin-top:8px;background:none;font-size:12px;letter-spacing:normal;font-family:Microsoft Yahei,Arial,Simsun;*font-family:Simsun;}
+.menu_box .d_center .d_lottery .category a,
+.menu_box .d_center .d_lottery .category a:visited{position:relative;color:#333;}
+.menu_box .d_center .d_lottery .category a:hover{color:#f55100;}
+.menu_box .d_center .d_lottery .category img{position:absolute;}
+.menu_box .d_center .d_lottery .category a.menu-red{color:#B8170F;}
+.menu_box .d_center .d_lottery .category a.menu-green{color:#3b8207;}
+.menu_box .d_center .d_lottery .category a.menu-disable{color:#A0A0A0;}
+.menu_box .d_center .d_lottery .category a.disable{/*color:#b2b2b2;*/}
+.menu_box .d_center .d_lottery .category a.addward,
+.menu_box .d_center .d_lottery .category a.addward:visited{color:#B8170F;}
+.menu_box .d_center .d_lottery .category a.two_award{color:#B8170F;}
+.menu_box .d_center .d_lottery .category a.only2{color:#B8170F;}
+.menu_box .d_center .d_lottery .category a.red_packet{color:#B8170F;}
+.menu_box .d_center .d_lottery .category i{display:none;position:absolute;top:-10px;width:18px;height:18px;line-height:18px;margin-left:-3px;font-size:0;background:url(http://img.cailele.com/img_new/common/iconflags.gif) no-repeat;}
+.menu_box .d_center .d_lottery .category a.addward i{display:inline-block;background-position:0 0;}/*加奖*/
+.menu_box .d_center .d_lottery .category a.new i{display:inline-block;background-position:0 -18px;display:none;}/*全新*/
+.menu_box .d_center .d_lottery .category a.sell i{display:inline-block;background-position:0 -36px;}/*开售*/
+.menu_box .d_center .d_lottery .category a.hot i{display:inline-block;  background-position:0 -54px; }/*火热*/
+.menu_box .d_center .d_lottery .category a.arena i{display:inline-block;background-position:0 -72px;}/*擂台*/
+.menu_box .d_center .d_lottery .category a.only i{display:inline-block;background-position:0 -90px;}/*独家*/
+.menu_box .d_center .d_lottery .category a.only2 i{display:inline-block;background-position:0 0;}/*独家加奖*/
+.menu_box .d_center .d_lottery .category a.uni i{display:inline-block;background-position:0 -108px;}/*普及*/
+/*.menu_box .d_center .d_lottery .category a.two_award i{display:inline-block;top:-3px;width:16px;height:16px;background:url(http://img.cailele.com/img_new/common/web_icons.gif) no-repeat 0 -368px;}奖上奖*/
+.menu_box .d_center .d_lottery .category a.two_award i{display:inline-block;background-position:0 0;}/*奖上奖*/
+.menu_box .d_center .d_lottery .category a.beat i{display:inline-block;background-position:0 -126px;}/*公测*/
+.menu_box .d_center .d_lottery .category a.red_packet i{display:inline-block;background-position:0 -144px;}/*红包*/
+.menu_box .d_center .d_lottery .category a.phone i{display:inline-block;top:-3px;width:16px;height:16px;background:url(http://img.cailele.com/img_new/common/web_icons.gif) no-repeat 0 -240px;}/*手机*/
+.menu_box .d_center .d_lottery .category a.pk i{display:inline-block;top:-1px;width:19px;height:15px;background:url(http://img.cailele.com/img_new/common/icon_pk.png) no-repeat;}/*PK*/
+.menu_box .d_center .d_lottery .category a.ar_award,
+.menu_box .d_center .d_lottery .category a.ar_award:visited{color:#B8170F;}
+.menu_box .d_center .d_lottery .category a.ar_award i{display:inline-block;background-position:0 -280px;top:0;}/*擂台&加奖闪动*/
+.menu_box .d_center .d_lottery .category a.ye_award i{display:inline-block;top:-3px;width:16px;height:16px;background:url(http://img.cailele.com/img_new/common/web_icons.gif) no-repeat 0 -368px;}/*金币-奖*/
+.menu_box .d_center .d_lottery .category a.zero i{display:inline-block;top:-3px;width:16px;height:16px;background:url(http://img.cailele.com/img_new/common/lot_guide_flags.gif) no-repeat 0 -144px;}/*0元购*/
+.menu_box .d_center .d_lottery .category a.jingxi i{display:inline-block;top:-3px;width:16px;height:16px;background:url(http://img.cailele.com/img_new/common/jingxi.gif) no-repeat ;}/*惊喜*/
+.menu_box .d_center .gaopin .d_lottery .category{margin-bottom:3px;}
+/*下面是一彩种区别与其它彩种的样式*/
+.menu_box .d_center .d_lottery .category #lt_klpk3{width:80px;}
+.menu_box .d_center .d_lottery .category #lt_klsf i,
+.menu_box .d_center .d_lottery .category #lt_cqklsf i{margin-left:-5px;}
+.menu_box .d_center .ticai .d_lottery .category label{margin-top:7px;}
+.menu_box .d_center .zuqiu .d_lottery .category label{width:55px;*width:54px;margin-top:7px;}
+.menu_box .d_center .getmore{float:left;display:none;width:250px;height:130px;background:#fff;border:#accad9 1px solid;border-left:none;}
+.menu_box .d_center .getmore .d_lottery{margin-left:-10px;padding-top:30px;}
+.menu_box .d_center .arrow{float:right;position:absolute;right:0;top:70px;display:inline-block;*display:inline;*zoom:1;width:16px;height:16px;padding:0;background:none;font-size:0;line-height:0; vertical-align:middle;transition: transform .2s;-moz-transition:-moz-transform .2s;/* Firefox */-webkit-transition: -webkit-transform .2s;/* Safari and Chrome */-o-transition: -o-transform .2s;/* Opera */}
+.menu_box .d_center .arrow .s1,
+.menu_box .d_center .arrow .s2{position:absolute;top:0;left:0;display:inline-block;border:8px dashed transparent;}
+.menu_box .d_center .arrow .s1{border-left-style:solid;border-left-color:#ff4400;margin-left:2px;}
+.menu_box .d_center .arrow .s2{border-left-style:solid;border-left-color:#f8fcff;}
+.menu_box .d_center .menuhover{}
+.menu_box .d_center .menuhover .getmore{position:absolute;left:248px;top:-1px;display:block;*display:inline;*zoom:1;}
+.menu_box .d_center .menuhover .arrow{display:none;}
+.menu_box .d_center ul li.jingji:hover .getmore{background:#fffde8;}
+.menu_box .d_bottom{display:none;}
+
+/*主导航*/
+.navigation{}
+.navigation .nav{float:left;_display:inline;width:618px;height:38px;line-height:38px;margin:0;padding:0;background:#ff7300;*zoom:1;}
+.navigation .nav:after{content:'\0020';display:block;height:0;line-height:0;font-size:0;clear:both;visibility:hidden;}
+.navigation .nav li{float:left;width:88px;}
+.navigation .nav li .iconfont_hd{font-size:18px;}
+.navigation .nav li a, 
+.navigation .nav li a:visited{float:none;overflow:hidden;position:relative;display:block;height:38px;line-height:38px;padding:0;text-align:center;font-size:15px;color:#fff;font-weight:bold;font-family:Simsun;text-decoration:none;}
+.navigation .nav li a .iconfont_hd{color:#fff;}
+.navigation .nav li a span{font-size:15px;}
+.navigation .nav li a:hover{background:#ee5a00;}
+.navigation .nav li a:hover .iconfont_hd{color:#fff;}
+.navigation .nav li.current a,
+.navigation .nav li.current a:visited{background:#ee5a00;}
+.navigation .nav li.current .iconfont_hd{color:#fff;}
+.navigation .nav li .home .iconfont_hd{margin-right:3px;color:#fff;}
+.navigation .nav li .infotit .iconfont_hd{margin-left:3px;font-size:12px;}
+.navigation .nav li .drawing{position:relative;display:block;height:38px;text-align:center;font-size:14px;color:#fff;font-weight:bold;font-family:Microsoft YaHei,Simsun;}
+.navigation .nav li .hover{height:38px;background:#ee5a00;color:#fff;}
+.navigation .nav li .hover a.infotit,
+.navigation .nav li .hover a.infotit:visited{background:none;color:#fff;}
+.navigation .nav li .hover a.infotit:hover{background:#ee5a00;}
+.navigation .nav li .hover a.infotit .iconfont_hd{color:#fff;}
+.navigation .nav li .drawing .infobox{position:absolute;left:0;top:38px;width:86px;border:#d8d8d8 1px solid;border-top:none;background:#fff;font-size:0;*letter-spacing:normal;*word-spacing:-1px;}
+.navigation .nav li .drawing .infobox a,
+.navigation .nav li .drawing .infobox a:visited{display:block;height:40px;line-height:40px;border-bottom:#ccc 1px dotted;font-size:14px;color:#333;}
+.navigation .nav li .drawing .infobox a:hover{background:#fffde8;color:#333;}
+.navigation .nav li .drawing .infobox .gg{border-bottom:none;}
+.navigation .app{float:left;position:relative;width:132px;height:38px;background:#ff7300;z-index:102;}
+.navigation .app a,
+.navigation .app a:visited{overflow:hidden;display:block;height:38px;line-height:38px;text-align:center;}
+.navigation .app a:hover{background:#ee5a00;}
+.navigation .app a i,
+.navigation .app a:visited i{float:left;overflow:hidden;display:inline-block;*display:inline;*zoom:1;height:38px;cursor:pointer;}
+.navigation .app a .iconphone{width:24px;height:38px;line-height:38px;font-size:23px;color:#fffc00;}
+.navigation .app a .icontxt1,
+.navigation .app a .icontxt2{width:58px;line-height:42px;font-size:60px;color:#fffc00;}
+.navigation .app a .icontxt2{width:50px;color:#fff;}
+.navigation .app a:hover i{color:#fffc00;}
+.navigation .app .qr_code_box{display:none;position:absolute;top:38px;right:0;width:165px;text-align:left;color:#333;}
+.navigation .app .qr_code_box .bd{padding:5px;border:#bbbbbb 1px solid;background:#fff;}
+.navigation .app .qr_code_box .bd .title{display:block;font-size:14px;font-weight:bold;}
+.navigation .app .qr_code_box .bd .subtxt{display:block;padding:5px 0;line-height:1.5;color:#999;}
+.navigation .app .qr_code_box .bd .qr_code{display:block;width:120px;height:120px;margin:0 auto;border:none;background:url(http://img.cailele.com/img_new/common/qr_code.jpg) no-repeat;/*background:url(http://img.cailele.com/img_new/common/qr_code.jpg) no-repeat;*/}
+.navigation .app_hover a,
+.navigation .aaa_hover a:visited{background:#ee5a00;}
+
+/*快速链接*/
+.nav_quick{font-size:12px;text-align:center;}
+.nav_quick .layout{position:relative;width:998px;height:27px;line-height:27px;border:#d8d8d8 1px solid;border-top:none;background:url(http://img.cailele.com/img_new/common/quick_nav_bg.jpg) repeat-x #f3f3f3;color:#c7c7c7;text-align:left;}
+.nav_quick .quick_links a,
+.nav_quick .quick_links a:visited{color:#666666;text-decoration:none;}
+.nav_quick .quick_links a:hover{color:#f06600;}
+.nav_quick .quick_links a em{color:#F00;}
+.nav_quick .quick_links b{padding:0 0 0 10px;color:#666666;}
+.nav_quick .quick_links .new,
+.nav_quick .quick_links .new:visited{position:relative;display:inline-block;}
+.nav_quick .quick_links .new i{display:inline-block;width:15px;height:16px;background:url(http://img.cailele.com/img/images/iconxin5.gif) no-repeat;}
+.nav_quick .slogan{position:absolute;right:10px;top:7px;overflow:hidden;display:block;width:148px;height:15px;background-position:-620px 0;text-indent:-999em;}
+
+.nav_quick2{font-size:12px;text-align:center;}
+.nav_quick2 .layout{position:relative;width:720px;height:28px;line-height:28px;color:#c7c7c7;text-align:left;background:#f5f5f5;}
+.nav_quick2 .quick_links a,
+.nav_quick2 .quick_links a:visited{color:#666666;text-decoration:none;}
+.nav_quick2 .quick_links a:hover{color:#f06600;}
+.nav_quick2 .quick_links a em{color:#F00;}
+.nav_quick2 .quick_links b{padding:0 0 0 10px;color:#666666;}
+.nav_quick2 .quick_links .new,
+.nav_quick2 .quick_links .new:visited{position:relative;display:inline-block;}
+.nav_quick2 .quick_links .new i{display:inline-block;width:30px;height:21px;_margin:6px 0 5px 0;_vertical-align:middle;background:url(http://img.cailele.com/img_new/images/icon-gongce.gif) no-repeat;}
+.nav_quick2 .slogan{position:absolute;right:10px;top:7px;overflow:hidden;display:block;width:116px;height:16px;background:url(http://img.cailele.com/img_new/common/main_sprite_v3.png) no-repeat;background-position:-720px 0;text-indent:-999em;}
+
+
+/*面包屑导航*/
+.bread{width:1000px;margin:8px auto;color:#999;}
+.bread a,
+.bread a:visited{color:#666;}
+.bread a:hover{color:#f06600;}
+
+/*-------------------- 内容部分 --------------------*/
+.mainer{z-index:600;}
+.mainer .layout{}
+.mainer .left, .mainer .middle, .mainer .right{float:left;_display:inline;}
+.mainer .left{margin:0;}
+
+/*横幅广告1000x80*/
+.adbanner { display:block; width:1000px; height:80px; margin:10px auto; }
+.adbanner img { width:1000px; height:80px; }
+
+/*中奖喜报*/
+.goodnews{overflow:hidden;height:155px;border:#f9d0a2 1px solid;background:#fffcf5;}
+.goodnews .tit{height:28px;line-height:28px;background:#fef1d8;}
+.goodnews .tit em{float:left;overflow:hidden;display:inline-block;width:76px;height:15px;margin:8px 0 0 5px;background:url(http://img.cailele.com/img_new/lottery/home/goodnews_tit.png) no-repeat;text-indent:-9999px;}
+.goodnews .tit span{float:right;overflow:hidden;display:inline-block;width:109px;height:28px;background:url(http://img.cailele.com/img_new/lottery/home/goodnews_info.png) no-repeat;text-indent:-9999px;}
+.goodnews .gbody{padding-top:10px;}
+.goodnews .gbody .gn_box{overflow:hidden;height:48px;margin-top:4px;}
+.goodnews .gbody .gn_box .icon{float:left;display:block;width:23%;height:48px;}
+.goodnews .gbody .gn_box .tc{background:url(http://img.cailele.com/img_new/lottery/home/tc_icon_lottery.png) no-repeat center center;}
+.goodnews .gbody .gn_box .fc{background:url(http://img.cailele.com/img_new/lottery/home/fc_icon_lottery.png) no-repeat center center;}
+.goodnews .gbody .tcbox{border-bottom:#f9d0a2 1px dotted;}
+.goodnews .gbody .gn_box .gn_list{float:left;width:77%;height:48px;}
+.goodnews .gbody .gn_box .gn_list li{overflow:hidden;height:24px;line-height:24px;}
+.goodnews .gbody .gn_box .gn_list a,
+.goodnews .gbody .gn_box .gn_list a:visited{color:#444444;}
+.goodnews .gbody .gn_box .gn_list a:hover{color:#c36e00;}
+
+/*返回顶部*/
+#topcontrol{width:100%;z-index:-1;}
+.scrolltop{width:1000px;*width:1100px;margin:0 auto;}
+.scrolltop span{float:right;width:40px;height:40px;margin-right:-50px;*margin-right:0;background:url(http://img.cailele.com/img_new/common/main_sprite_v3.png) no-repeat 0 -290px;cursor:pointer;}
+
+/*----------------------投注记录数据列表----------------------*/
+.record_tb_area{}
+
+.data_table{border-collapse:collapse;border-spacing:0;border:#dcdbe0 1px solid;}
+.data_table .uarrow{font-family:Simsun;font-weight:bold;}
+
+.def_style_dtb{width:100%;font-family:Arial;font-size:12px;}
+.def_style_dtb a,
+.def_style_dtb a:visited{color:#1e50a2;}
+.def_style_dtb a:hover{color:#f06600;}
+.def_style_dtb th,
+.def_style_dtb td{padding:8px 0;text-align:center;}
+.def_style_dtb thead{}
+.def_style_dtb thead th,
+.def_style_dtb thead td{background:url(http://img.cailele.com/img/hm/bgth01.gif) 0 bottom repeat-x #ffffff;border-right:#dbdbdb 1px solid;border-bottom:#ffd800 1px solid;color:#2d384a;font-weight:normal;font-size:12px;}
+.def_style_dtb tbody th,
+.def_style_dtb tbody td{border-bottom:#dde6ed 1px solid;color:#666666;white-space:normal;word-break:break-all;}
+.def_style_dtb tbody .highlight{background:#fafafa;}
+.def_style_dtb tbody .plan{word-break:break-all;text-align:left;padding-left:8px;}
+
+.def_style_dtb .detail,
+.def_style_dtb .detail:visited{color:#214fa4; text-decoration:underline;}
+.def_style_dtb .detail:hover{color:#f06600;}
+.def_style_dtb .c02{color:red;font-weight:normal;}
+.def_style_dtb .buy_dbt,
+.def_style_dtb .buy_dbt:visited{width:62px;height:20px;padding:0;font-size:12px;line-height:20px;color:#b96300;}
+.def_style_dtb font{font-size:12px;}
+.def_style_dtb .no_win{color:#aeaeae}/*未中奖*/
+.def_style_dtb .no_open{color:#038a03}/*未开奖*/
+.def_style_dtb .win{color:#da0000}/*未开奖*/
+
+.data_table .cllloading p{margin:120px 0;}
+.data_table .cllnodata p{margin:120px 0;}
+
+
+
+
+/*-----参与合买数据列表-----*/
+.condition{padding:8px 0;border-bottom:#dcdbe0 1px solid;}
+.condition .condi_list{padding-left:15px;}
+.condition .condi_list li{float:left;margin-right:3px;}
+.condition .condi_list li input{vertical-align:middle;}
+.condition .condi_list li .btn_condi{width:73px;height:20px;line-height:20px;border:none;background:url(http://img.cailele.com/img/hm/hm_v3_bgbnt01.gif) no-repeat;text-align:center;color:#ffffff;cursor:pointer;}
+.condition .condi_list li .sel_condi{width:80px;height:20px;line-height:20px;}
+.condition .condi_list li .input_condi{width:180px;height:18px;line-height:18px;border:#7f9db9 1px solid;}
+.gomai{display:block;width:37px; height:19px;margin:0 auto;background:url(http://img.cailele.com/img/hm/bg02.gif?tag=2) no-repeat -770px -93px;cursor:pointer;text-indent:-9999px;}
+
+/*等级规则说明*/
+.grade_rule{margin:10px auto;}
+.grade_rule .hd{overflow:hidden;height:34px;line-height:34px;background:url(http://img.cailele.com/img/hm/bg02.gif?tag=2) no-repeat 0 -216px;}
+.grade_rule .hd .tit{float:left;margin-left:30px;font-size:14px;color:#2d374b;}
+.grade_rule .hd .readme,
+.grade_rule .hd .readme:visited{float:right;margin-right:10px;color:#214fa4;}
+.grade_rule .hd .readme:hover{color:#f06600;}
+.grade_rule .bd{padding-top:10px;border:#dcdbe0 1px solid;border-top:none;}
+.grade_rule .bd .rule_info_tb{width:98%;margin:0 auto;}
+.grade_rule .bd .rule_info_tb th,
+.grade_rule .bd .rule_info_tb td{color:#666666;line-height:1.7;}
+.grade_rule .bd .explain{padding:8px 0;background:#f8f8f8;border-top:#ededed 1px solid;text-align:center;color:#666666;}
+.grade_rule .bd .explain em{color:#af0000;font-weight:bold;}
+
+/*-----新用户充值20送10弹窗-----*/
+.alert_bg{position:fixed;top:0;left:0;width:100%;height:100%;background:#000;z-index:99999;opacity: 0.5;filter: progid:DXImageTransform.Microsoft.Alpha(opacity=50);-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(opacity=50)";}
+/* IE6浏览器的特有方法 */
+* html,* html body{background-image:url(about:blank);background-attachment:fixed}
+* html .alert_bg{position:absolute;left:expression(eval(document.documentElement.scrollLeft));top:expression(eval(document.documentElement.scrollTop));}
+
+.guide_reg_box{position:fixed;top:50%;left:50%;width:714px;height:340px;margin:-170px 0 0 -357px;background:url(http://img.cailele.com/img_new/common/guide_reg_bg.png) no-repeat;z-index:100000;}
+* html .guide_reg_box{position:absolute;left:expression(eval(document.documentElement.scrollLeft+514));top:expression(eval(document.documentElement.scrollTop+357));}
+
+.guide_reg_box .close,
+.guide_reg_box .close:visited{position:absolute;right:25px;top:-15px;display:block;width:41px;height:41px;background:url(http://img.cailele.com/img_new/common/guide_reg_close.png) no-repeat;}
+.guide_reg_box .reg_now{position:absolute;left:285px;top:215px;width:230px;height:48px;background:url(http://img.cailele.com/img_new/common/guide_reg_btn.png) no-repeat;}
+
+/*购彩页面追号样式*/
+.base_chase{float:left;width:510px;margin:8px auto;background:#f7f7f7;border:1px #f1f1f1 solid;padding:10px 18px;}
+.base_chase .chase_how{padding:5px 0 10px 0;}
+.base_chase .chase_count{width:250px; border:1px solid #f1f1f1; background:#fff; margin-top:-5px; padding-top:5px; height:17px; overflow:hidden; text-align:center; float:right;}
+.base_chase .chase_condition{padding:0 0 10px;}
+.base_chase .chase_list{background:#fff; border:1px solid #e0e2e1; padding:10px; height:120px; overflow-y:scroll;}
+.base_chase .chase_list .floatl4{float:left;width: 230px;text-align:center;}
+
+/*----------全局应用文字小提示----------*/
+.colorTip{display:none;position:absolute;left:50%;top:-30px;padding:6px;background-color:white;font-family:Arial,Simsun,Helvetica,sans-serif;font-size:12px;font-style:normal;line-height:1;text-decoration:none;text-align:center;text-shadow:0 0 1px white;white-space:nowrap;-moz-border-radius:2px;-webkit-border-radius:2px;border-radius:2px;}
+
+.pointyTip,.pointyTipShadow{position:absolute;left:50%;bottom:-12px;display:block;overflow:hidden;width:0;height:0;margin-left:-6px;border:6px dashed transparent;border-top-style:solid;}
+
+.pointyTipShadow{border-width:7px;bottom:-14px;margin-left:-7px;}
+
+.colorTipContainer{position:relative;text-decoration:none !important;}
+
+
+/* 6 Available Color Themes */
+.white .pointyTip{ border-top-color:white;}
+.white .pointyTipShadow{ border-top-color:#ddd;}
+.white .colorTip{background-color:white;border:1px solid #DDDDDD;color:#555555;}
+
+.yellow .pointyTip{ border-top-color:#f9f2ba;}
+.yellow .pointyTipShadow{ border-top-color:#e9d315;}
+.yellow .colorTip{background-color:#f9f2ba;border:1px solid #e9d315;color:#5b5316;}
+
+.blue .pointyTip{ border-top-color:#d9f1fb;}
+.blue .pointyTipShadow{ border-top-color:#7fcdee;}
+.blue .colorTip{background-color:#d9f1fb;border:1px solid #7fcdee;color:#1b475a;}
+
+.green .pointyTip{ border-top-color:#f2fdf1;}
+.green .pointyTipShadow{ border-top-color:#b6e184;}
+.green .colorTip{background-color:#f2fdf1;border:1px solid #b6e184;color:#558221;}
+
+.red .pointyTip{ border-top-color:#bb3b1d;}
+.red .pointyTipShadow{ border-top-color:#8f2a0f;}
+.red .colorTip{background-color:#bb3b1d;border:1px solid #8f2a0f;color:#fcfcfc;text-shadow:none;}
+
+.black .pointyTip{ border-top-color:#333;}
+.black .pointyTipShadow{ border-top-color:#111;}
+.black .colorTip{background-color:#333;border:1px solid #111;color:#fcfcfc;text-shadow:none;}
+
+/*----------购彩页投注记录v3----------*/
+#record{clear:both;}
+.lot_record{width:100%;margin:10px auto;clear:both;}
+.lot_record .hd .hd_in{height:30px;background:#f2f2f2;border:#dcdbe0 1px solid;border-bottom:none;}
+.lot_record .hd .tit{float:left;margin:0 0 0 5px;line-height:30px;font-size:14px;}
+.lot_record .hd .category{float:left;}
+.lot_record .hd .category .category_list{}
+.lot_record .hd .category .category_list li{float:left;border-right:#dcdbe0 1px solid;}
+.lot_record .hd .category .category_list li a,
+.lot_record .hd .category .category_list li a:visited{display:block;width:90px;height:30px;line-height:30px;text-align:center;color:#000000;font-size:14px;}
+.lot_record .hd .category .category_list li a:hover{color:#f06600;}
+.lot_record .hd .category .category_list .current a,
+.lot_record .hd .category .category_list .current a:visited{position:relative;bottom:-1px;background:#fafafa;font-weight:bold;}
+.lot_record .hd .category .category_list .current a:hover{color:#000000;}
+.lot_record .bd{}
+.lot_record .bd_in{}
+
+.lot_record .bd .def_style_dtb{}
+.lot_record .bd .def_style_dtb th,
+.lot_record .bd .def_style_dtb td{border:none;word-break:break-all;}
+.lot_record .bd .def_style_dtb thead th, 
+.lot_record .bd .def_style_dtb thead td{background:#fff;border-bottom:#c9dff7 2px solid;}
+.lot_record .bd .def_style_dtb tbody th,
+.lot_record .bd .def_style_dtb tbody td{border-right:#dcdbe0 1px solid;border-bottom:#dcdbe0 1px solid;}
+.lot_record .bd .def_style_dtb a.skin_def,
+.lot_record .bd .def_style_dtb a.skin_def:visited{color:#666666;}
+.lot_record .bd .def_style_dtb a.skin_def:hover{color:#f06600;}
+.lot_record .bd .def_style_dtb em{color:#f00;}
+.lot_record .record_data_tb{width:100%;border-collapse:collapse;border-spacing:0;font-family:Arial,Simsun;color:#666666;}
+.lot_record .record_data_tb th,
+.lot_record .record_data_tb td{padding:5px 0;text-align:center;font-weight:normal;word-break:break-all;}
+.lot_record .record_data_tb s{font-family:Simsun; font-style:normal; text-decoration:none;}
+.lot_record .record_data_tb a,
+.lot_record .record_data_tb a:visited{color:#1e50a2;}
+.lot_record .record_data_tb a:hover{color:#f06600;}
+.lot_record .record_data_tb a.buy_again,
+.lot_record .record_data_tb a.buy_again:visited{color:#ff6666;}
+.lot_record .record_data_tb tr.highlight{background:#fbfafa;}
+.lot_record .record_data_tb thead tr{}
+.lot_record .record_data_tb thead th,
+.lot_record .record_data_tb thead td{padding:10px 0;color:#333;border-bottom:#c9dff7 2px solid;background:#fafafa;}
+.lot_record .record_data_tb thead td{}
+.lot_record .record_data_tb tbody th,
+.lot_record .record_data_tb tbody td{}
+.lot_record .record_data_tb tbody td{border-left:#dcdbe0 1px solid;border-bottom:#dcdbe0 1px solid;}
+.lot_record .record_data_tb tbody th{border-bottom:#dcdbe0 1px solid;}
+.lot_record .record_data_tb tbody .b_plan{padding-left:8px;text-align:left;}
+.lot_record .record_data_tb tbody .a,
+.lot_record .record_data_tb tbody .b{display:block;height:18px;line-height:18px;}
+
+.lot_record .paginator{float:right;padding:5px 1px 0 0;}
+.lot_record .paginator a,
+.lot_record .paginator a:visited{float:left;overflow:hidden;display:block;width:45px;height:18px;line-height:20px;margin-right:3px;border:#d3d3d4 1px solid;background:#fff;color:#2d384a;text-align:center;}
+.lot_record .paginator a:hover{border:#f0a452 1px solid;background:#fef2cc;color:#f06600;}
+.lot_record .paginator .flip{float:left;line-height:20px;margin-right:5px;font-family:Arial, Helvetica, sans-serif;}
+.lot_record .paginator .flip em{color:#f06600;}
+
+/*----------购彩页彩种停售提示----------*/
+.lot_stop_msg{width:1000px;margin:5px auto;font-family:Arial,Microsoft Yahei,Simsun;clear:both;}
+.lot_stop_msg_in{background:#3a3a3a;border:#3a3a3a 1px solid;}
+.lot_stop_msg p{padding:8px;line-height:1.8;font-size:14px;text-align:center;color:#fff;}
+.lot_stop_msg p .a,
+.lot_stop_msg p .b{display:block;}
+.lot_stop_msg p .a{font-size:16px;}
+.lot_stop_msg p em{font-size:14px;}
+.lot_stop_msg p a,
+.lot_stop_msg p a:visited{color:#ff9c00;}
+.lot_stop_msg p a:hover{text-decoration:underline;}
+.second{ position:relative;}
+.second .lot_stop_msg_in{background:#227bd6;border:none;}
+.second p{ padding:8px 130px 8px 8px;}
+.second p .a{ color:#f6ff00;}
+.second p .c{ font-size:30px; font-weight:bold;}
+.second p em{font-size:16px;}
+.second p .c a,
+.second p .c a:visited{ color:#FFF;}
+.second p .c a:hover{color:#FF0; text-decoration:none;}
+/*.second .codes{ position:absolute;background:url(http://img.cailele.com/img_new/common/lottery_ewm_guanjia.png) no-repeat; width:84px; height:84px; top:7px; right:170px;}*/
+.second .codes{ position:absolute;background:url(http://img.cailele.com/img_new/luck/luck-code-small.jpg) no-repeat; width:85px; height:85px; top:7px; right:100px;}
+
+/*----------新版首页入口----------*/
+.new_website_warp{position:fixed;_position:absolute;top:120px;left:0;width:100%;height:1px;font-size:0;z-index:0;}
+.new_website_warp_in{position:relative;width:1200px;height:1px;font-size:0;margin:0 auto;}
+.new_website{position:absolute;right:0;float:right;display:inline-block;*display:inline;*zoom:1;width:90px;height:90px;background:#d90000;z-index:1000;}
+.new_website_warp .old_website,
+.new_website_warp .old_website:visited{position:absolute;right:0;top:95px;display:block;width:90px;height:50px;line-height:50px;background:#eee;border:#ccc 1px solid;text-align:center;color:#848484;font-family:Microsoft Yahei,Simsun;font-weight:bold;font-size:16px;}
+.new_website_warp .old_website:hover{background:#f55c00;color:#fff;border:#de5300 1px solid;}
+
+/*----------悬浮二维码样式----------*/
+.qr_code_float{position:fixed;left:50%;top:160px;width:100px;margin-left:505px;background:#fff;}
+* html .qr_code_float{position:absolute;left:expression(eval(document.documentElement.scrollLeft+50%));top:expression(eval(document.documentElement.scrollTop+160))}
+.qr_code_float_in{}
+.qr_code{position:relative;padding-top:5px;border:#eff0f0 1px solid;text-align:center;}
+.qr_code:hover{background:#eff0f0;border:#dddddd 1px solid;}
+.qr_code a,
+.qr_code a:visited{display:block;color:#aaaaaa;}
+.qr_code a:hover{color:#aaaaaa;}
+.qr_code .qr_c{}
+.qr_code .qr_c .t{display:block;margin:5px 0;}
+.qr_close{height:14px;}
+.qr_close .close,
+.qr_close .close:visited{float:right;width:16px;height:14px;line-height:14px;text-align:center;background:#d7d7d6;color:#fff;font-family:Verdana,Simsun;}
+
+/*-----返回旧版提示-----*/
+.goold{width:460px;height:200px;font-family:Microsoft Yahei,Simsun;}
+.goold_in{width:95%;margin:0 auto;}
+.goold .msg_ico,
+.goold .msg_con{float:left;height:140px;}
+.goold .msg_ico{width:40%;background:url(http://img.cailele.com/img_new/index/goold_ico.png) no-repeat center center;}
+.goold .msg_con{width:60%;font-size:14px;}
+.goold .msg_con p{margin-top:10px;line-height:1.8;}
+.goold .msg_con p a,
+.goold .msg_con p a:visited{color:#f00; text-decoration:underline;}
+.goold .oper{padding-top:10px;text-align:center;clear:both;}
+.goold .oper a,
+.goold .oper a:visited{display:inline-block;width:120px;height:30px;line-height:30px;text-align:center;background:#f66c00;color:#fff;font-family:Microsoft Yahei,Simsun;font-size:14px;border-radius:2px;}
+.goold .oper a:hover{background:#af0000;}
+.goold .oper a.cancel{margin-left:10px;background:#208300;}
+.goold .oper a.cancel:hover{background:#af0000;}
+
+/*-----彩票大管家弹出对话框-----*/
+.hellogj{width:460px;height:260px;font-family:Microsoft Yahei,Simsun;}
+.hellogj_in{width:95%;margin:0 auto;}
+.hellogj .msg_ico,
+.hellogj .msg_con{float:left;height:140px;}
+.hellogj .msg_ico{width:40%;background:url(http://img.cailele.com/img_new/subject/guanjia/smiley.png) no-repeat center center;}
+.hellogj .msg_con{width:60%;font-size:14px;}
+.hellogj .msg_con p{margin-top:10px;line-height:1.8;}
+.hellogj .msg_con p a,
+.hellogj .msg_con p a:visited{color:#f00; text-decoration:underline;}
+.hellogj .msg_con p em{color:#F00;}
+.hellogj .msg_con .titl{margin-top:25px;font-size:16px;font-weight:bold;}
+.hellogj .trailer{clear:both;}
+.hellogj .trailer p{padding:5px;border:1px solid #ffde8e;border-radius:3px;background:#ffffe9;color:#e4393c;text-align:center;}
+.hellogj .trailer p a,
+.hellogj .trailer p a:visited{color:#284cb5;}
+.hellogj .trailer p a:hover{color:#e4393c;}
+.hellogj .oper{padding-top:10px;text-align:center;clear:both;}
+.hellogj .oper:hover{text-decoration:none;}
+.hellogj .oper .cllbtn a,
+.hellogj .oper .cllbtn a:visited{width:100px;}
+.hellogj .oper .cllbtn a:hover{text-decoration:none;}
+.hellogj .oper .cancel a,
+.hellogj .oper .cancel a:visited{border:#dfdfdf 1px solid;background:#fff;color:#333;text-decoration:none;}
+.hellogj .oper .cancel a:hover{border:#ea3700 1px solid;background:#f55100;color:#fff;}
+.hellogj .oper .config{margin-right:10px;}
+.hellogj .show_again{padding:10px 0;text-align:center;}
+.hellogj .show_again .cllcheckbox .select,
+.hellogj .show_again .cllcheckbox .select:visited{width:auto !important;}
+
+/*-----大管家领红包弹出对话框-----*/
+.aroun{width:460px; font-family:Microsoft Yahei,Simsun;}
+.aroun_in{ width:95%;margin:0 auto; padding:15px 0;}
+.aroun_in .front{}
+.aroun_in .front .t1{ font-size:18px; color:#444; text-align:center;}
+.aroun_in .front .t2{ margin-bottom:10px; font-size:30px; font-weight:bold; color:#F00; text-align:center;}
+.aroun_in .front .packets{ background:url(http://img.cailele.com/img_new/subject/2016chujie/20160120_index_hongbao.jpg) no-repeat; margin:0 auto; width:150px; height:179px; cursor: pointer;}
+.aroun_in .backs{}
+.aroun_in .backs .t3{ font-size:18px; color:#444; text-align:center;}
+.aroun_in .backs .t4{ font-size:40px; font-weight:bold; color:#F00; text-align:center;}
+.aroun_in .backs .t5{ font-size:16px; color:#444; text-align:center;}
+.aroun_in .backs .t6{ font-size:22px; font-weight:bold; color:#444; text-align:center;}
+.aroun_in .backs .happy{ display:block; margin-top:10px; text-align:center;}
+.aroun_in .backs .happy a,
+.aroun_in .backs .happy a:visited{ display:inline-block; background:#f55100; width:130px; height:34px; line-height:34px; font-size:14px; font-weight:bold; color:#FFF; border-radius:3px; text-align:center;}
+
+/*-----网站顶部通告-----*/
+.announcement{border:#f0d584 1px solid;background:#fffcde;}
+.announcement .inner{width:1000px;height:30px;line-height:30px;margin:0 auto;font-family:Arial,Simsun;color:#e4393c;text-align:center;}
+.announcement em{font-weight:bold;}
+.announcement a,
+.announcement a:visited{color:#005ea7; text-decoration:underline;}
+.announcement a:hover{color:#e4393c;}
+
+
+/*-----积分夺宝上线弹窗广告-----*/
+.scoverbg{position:fixed;_position:absolute;top:0;right:0;bottom:0;left:0;width:100%;height:100%;background:#000;filter:alpha(opacity=60);-moz-opacity:0.60;opacity:0.60;z-index:10000;}
+.yungou_dialog{}
+.yungou_dialog .alertbox{position:fixed;_position:absolute;top:50%;left:50%;width:629px;height:595px;margin:-297px 0 0 -314px;z-index:100001; background:none !important; border:none !important;}
+/*.yungou_dialog .alertbox a.con,
+.yungou_dialog .alertbox a.con:visited{display:block;width:100%;height:100%;background:url(http://img.cailele.com/img_new/home/yungou-alert-2.png) no-repeat;}*/
+
+.yungou_dialog .alertbox a.con,
+.yungou_dialog .alertbox a.con:visited{display:block;width:100%;height:100%;_background:url(http://img.cailele.com/img_new/banner/201606/20160627-go-tan.png) no-repeat; filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(enabled=true, sizingMethod=noscale, src="http://img.cailele.com/img_new/banner/201606/20160627-go-tan.png");
+background:none;}
+
+.yungou_dialog .alertbox a.close,
+.yungou_dialog .alertbox a.close:visited{position:absolute;right:100px;top:60px;display:block;width:34px;height:34px;background:url(http://img.cailele.com/img_new/common/close.png) no-repeat;}
+.yungou_dialog .alertbox .show_again{position:absolute;left:250px;bottom:200px;}
+.yungou_dialog .alertbox .show_again .cllcheckbox a{padding:3px 5px;background:green;}
+.yungou_dialog .alertbox .show_again .cllcheckbox em{color:#fff;}
+
+/*----------------------网站底部样式----------------------*/
+/*底部导航*/
+.footnav{margin-top:15px;clear:both;}
+.footnav .inner{width:1000px;margin:0 auto;padding-top:10px;border-top:2px solid #f56d00;text-align:center;color:#999;}
+.footnav a,
+.footnav a:visited{margin:0 10px;color:#666;}
+.footnav a:hover{color:#e4393c;}
+/*底部公司信息*/
+.footbase{}
+.footbase .inner{width:1000px;margin:0 auto;padding:10px 0;text-align:center;color:#666;}
+.footbase .company_info{}
+.footbase .cinfo a,
+.footbase .cinfo a:visited{margin:0 10px;color:#666;}
+.footbase .cinfo a:hover{text-decoration:underline;}
+.footbase .company_slogan{color:#e4393c;}
+.footbase img{margin:0 3px;vertical-align:middle;}
+/*底部图片链接*/
+.footsecurity .inner{width:1000px;margin:0 auto;text-align:center;}
+.footsecurity a {display:inline-block;width:108px;height:45px;margin:0 3px;}
+.footsecurity a.bottompic{background:url(http://img.cailele.com/img_new/index/foot_icon.png) no-repeat;}
+.footsecurity a.bottompic1{background-position:0px 0px;}
+.footsecurity a.bottompic2{background-position:-126px 0px;}
+.footsecurity a.bottompic3{background-position:0px -632px;}
+.footsecurity a.bottompic4{background-position:0px -790px;}
+.footsecurity a.bottompic5{background-position:0px -841px;}
+.footsecurity a.bottompic6{background-position:0px -734px; }
+.footsecurity a.bottompic7{background-position:0px -683px;}
+.footsecurity a.bottompic8{background-position:0px -945px;}
+.footsecurity a.bottompic9{background-position:0px -994px;}
+.footsecurity a.bottompic10{width:48px; height:46px; background-position:0px -1043px; }
+.footsecurity a.bottompic11{width:48px; height:46px; background-position:-55px -1043px;}
+/*底部热点链接*/
+.footguide{width:1000px;margin:5px auto;}
+.footguide .inner{overflow:hidden;padding:5px 0;border:#e1e1e1 1px solid;color:#666;}
+.footguide a,
+.footguide a:visited{display:inline-block;*display:inline;*zoom:1;margin-right:5px;color:#666;}
+.footguide a:hover{color:#e4393c;}
+.footguide .hotlinks{padding:0 5px;font-family:Arial,Simsun;*zoom:1;}
+.footguide .hotlinks:after{content:'\0020';display:block;height:0;line-height:0;font-size:0;clear:both;visibility:hidden;}
+.footguide .hotlinks .title,
+.footguide .hotlinks .links,
+.footguide .hotlinks .more{float:left;display:block;height:26px;line-height:26px;}
+.footguide .hotlinks .title{width:80px;padding:0;text-align:center;font-size:12px;font-weight:bold;}
+.footguide .hotlinks .links{overflow:hidden;width:948px;text-align:center;}
+.footguide .hotlinks .more{width:40px;text-align:center;}
+
+
+
+/*网站配色*/
+/*
+.sitenav{background:#2663a4;}
+.sitenav .sitelogin .signinfo .welcome{color:#fff;}
+.sitenav a, .sitenav a:visited{color:#fff;}
+.sitenav .cllmenu{background:none !important;}
+.sitenav .menu_hd{border:none;}
+.cllmenu .menu a, .cllmenu .menu a:visited{color:#FFF !important;}
+
+
+.headerarea{}
+.header .layout{height:80px;}
+.header .logo{margin-top:18px;}
+.header .sublogo{margin-top:28px;}
+.service .hongbo{display:none;}
+.service .chat{display:inline-block;margin-top:25px;}
+.service .chat .txt{color:#666;}
+.service .chat .tel .txt{font-size:15px;font-family:Arial;color:#666;}
+.menu_box{}
+.menu_panel{border-bottom:none !important;}
+.menu_panel .txt{background:#3592e2 !important;}
+.menu_box .menu_box_in{border-color:#b3d4f0;}
+
+.navigation{}
+.navigation .nav,
+.navigation .app{background:#ff6b00;border-bottom:none;}
+.navigation .nav li a,
+.navigation .nav li a:hover,
+.navigation .nav li a .iconfont_hd{color:#fff !important;}
+.navigation .app a .iconphone,
+.navigation .app a .icontxt1{color:#ff0 !important;}
+.navigation .app a .icontxt2{color:#fff !important;}
+.navigation .nav li a.home{background:#fe500b;}
+.navigation .nav li a.home, 
+.navigation .nav li a.home:visited,
+.navigation .nav li a.home .iconfont_hd{color:#fff !important;}
+*/

@@ -50,7 +50,6 @@ public class BaseConfig extends JFinalConfig {
 		// 加载少量必要配置，随后可用PropKit.get(...)获取值
 		PropKit.use("dbConfig.txt");
 		me.setDevMode(PropKit.getBoolean("devMode", false));
-		me.setViewType(ViewType.JSP);
 	}
 	
 	/**
@@ -62,8 +61,9 @@ public class BaseConfig extends JFinalConfig {
 	}
 	
 	public void configEngine(Engine me) {
-//		me.addSharedFunction("/common/_layout.html");
-//		me.addSharedFunction("/common/_paginate.html");
+		me.setDevMode(true);
+		me.addSharedFunction("/common/_layout.html");
+		me.addSharedFunction("/common/_paginate.html");
 	}
 	
 	public static DruidPlugin createDruidPlugin() {

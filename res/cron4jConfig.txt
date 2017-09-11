@@ -1,13 +1,13 @@
-cron4j=dcInfoTask,ypTask,termTask
+cron4j=dcInfoTask,oddsTask,termTask
 dcInfoTask.cron=*/5 * * * *
 dcInfoTask.class=com.lottery.task.DcInfoTask
 dcInfoTask.daemon=true
 dcInfoTask.enable=true
 
-ypTask.cron=*/5 * * * *
-ypTask.class=com.lottery.task.DcYpTask
-ypTask.daemon=true
-ypTask.enable=true
+oddsTask.cron=*/5 * * * *
+oddsTask.class=com.lottery.task.DcOddsTask
+oddsTask.daemon=true
+oddsTask.enable=true
 
 termTask.cron=*/5 * * * *
 termTask.class=com.lottery.task.TermTask

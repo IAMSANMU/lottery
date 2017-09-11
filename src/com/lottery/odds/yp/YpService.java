@@ -1,4 +1,4 @@
-package com.lottery.yp;
+package com.lottery.odds.yp;
 
 import java.util.List;
 

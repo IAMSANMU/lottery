@@ -17,6 +17,8 @@ public class _MappingKit {
 
 	public static void mapping(ActiveRecordPlugin arp) {
 		arp.addMapping("dc_arrange", "id", DcArrange.class);
+		arp.addMapping("dc_dxp", "id", DcDxp.class);
+		arp.addMapping("dc_op", "id", DcOp.class);
 		arp.addMapping("dc_spf_sp", "id", DcSpfSp.class);
 		arp.addMapping("dc_yp", "id", DcYp.class);
 		arp.addMapping("lottery_term", "id", LotteryTerm.class);

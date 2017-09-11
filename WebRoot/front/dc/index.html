@@ -1,0 +1,46 @@
+#@layout()
+#define main()
+<!--中间begin-->
+<div id="container" class="mainer">
+    <div class="clearfix lottery_main">
+    	<!--左右布局页面begin-->
+    	<div class="clearfix column_wapper">
+    	<!--购彩页面左边部分begin-->
+    	<div class="lo_mainer">
+        	<!--切换菜单begin-->
+        	<div class="lot_tab_box">
+                <div class="hc_sel_box">
+                	<span class="txt" style="margin-right:10px;">
+                		<input type="checkbox" id="stopCheck" class="stopCheck_box" #if(isback) checked="true" #end />
+                		<font class="stopCheck_div">已停售[<span id="stopCount">#(stopCount)</span>场]
+                		</font>
+                	</span>
+                	<span class="txt">赛事回查：</span>
+			        <select name="termValue" id="termValue">
+				        #for(x:termList)
+				        	#if(x.term==nowTerm)
+				        	 <option value="#(x.term)" style="color: red;" selected="selected">#(x.term)</option>
+				        	#else
+				        		<option value="#(x.term)">#(x.term)</option>
+				        	#end
+				        #end
+					</select>
+                </div>
+            </div>
+            <!--切换菜单end-->
+            
+            <div class="ht_data_box">
+           		#@dataTable()
+            </div>
+            <div class="clear">
+            </div>
+        </div>
+        <!--购彩页面左边部分end-->
+        </div>
+        <!--左右布局页面end-->
+    </div>
+    <!----------------------------------------------------------------------------------------------------------------------相关文章部分-->
+</div>
+<!--中间end-->
+
+

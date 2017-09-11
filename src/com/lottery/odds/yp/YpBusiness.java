@@ -1,4 +1,4 @@
-package com.lottery.yp;
+package com.lottery.odds.yp;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -15,47 +15,29 @@ import com.lottery.common.model.DcArrange;
 import com.lottery.common.model.DcYp;
 import com.lottery.common.utils.DateUtil;
 import com.lottery.common.utils.HttpUtil;
+import com.lottery.odds.OddsBusiness;
 
 public class YpBusiness {
 	public static final String ASIA_ODDS_URL = "http://odds.500.com/fenxi/yazhi-";
 	private static Logger log = Logger.getLogger(YpBusiness.class);
 
 	public static String getRealHtml(DcArrange match, String oddId) throws Exception {
-		String html;
-		try {
-			String url = ASIA_ODDS_URL + oddId;
-			html = HttpUtil.getUrl(url);
-			if (match.getHomeId() != null && match.getGuestId() != null) {
-				Document doc = Jsoup.parse(html);
-				String str = "_" + match.getHomeId() + "_" + match.getGuestId();
-				String homeIdStr = doc.select(".against_a>a").first().attr("href");
-				String guestIdStr = doc.select(".against_b>a").first().attr("href");
-				int homeId = Integer.parseInt(homeIdStr.replaceAll("500\\.com|\\D", ""));
-				int guestId = Integer.parseInt(guestIdStr.replaceAll("500\\.com|\\D", ""));
-				String equalsStr = "_" + homeId + "_" + guestId;
-				if (!str.equals(equalsStr)) { // 主客队不一致.获取反转html
-					html = HttpUtil.getUrl(url + "-r--1");
-				}
-			}
-		} catch (Exception e) {
-			log.error("--------获取亚盘数据页面错误------" + e.getMessage());
-			e.printStackTrace();
-			throw e;
-		}
+		String url = ASIA_ODDS_URL + oddId;
+		String html = OddsBusiness.getRealHtml(url, match.getHomeId(), match.getGuestId());
 		return html;
 	}
 
 	/*
 	 * 即时亚盘
 	 */
-	public static List<DcYp> GetNowYp(String html) throws Exception {
+	public static List<DcYp> getNowYp(String html) throws Exception {
 		List<DcYp> list = new ArrayList<DcYp>();
 		try {
 			Document doc = Jsoup.parse(html);
 			Elements trEles = doc.select("#datatb tr[id]");
 			for (Element trEle : trEles) {
 				String company = trEle.child(1).text().trim();
-				String cllCompany = DcYp.WBW2CLLCOMPANY.get(company);
+				String cllCompany = OddsBusiness.WBW2CLLCOMPANY.get(company);
 				if (StringUtils.isNotEmpty(cllCompany)) {
 					DcYp yp = new DcYp();
 					yp.setCompany(cllCompany);
@@ -95,9 +77,8 @@ public class YpBusiness {
 					yp.setGuest(Double.parseDouble(guestTd.text()));
 					yp.setGuestChange(guestChange);
 					String timeStr = trEle.child(5).text().trim();
-					
-					
-					Date time = DateUtil.formatDate(DateUtil.getNowYear()+"-"+timeStr, "yyyy-MM-dd HH:mm");
+
+					Date time = DateUtil.formatDate(DateUtil.getNowYear() + "-" + timeStr, "yyyy-MM-dd HH:mm");
 					yp.setTime(time);
 					yp.setCreateTime(new Date());
 					yp.setIsFirst(false);
@@ -105,7 +86,7 @@ public class YpBusiness {
 				}
 			}
 		} catch (Exception e) {
-			log.error("--------[yp抓取]抓取即时亚盘错误--------"+e.getMessage());
+			log.error("--------[yp抓取]抓取即时亚盘错误--------" + e.getMessage());
 			e.printStackTrace();
 			throw e;
 		}
@@ -116,7 +97,7 @@ public class YpBusiness {
 	/*
 	 * 初盘
 	 */
-	public static List<DcYp> GetFirstYp(String html) throws Exception {
+	public static List<DcYp> getFirstYp(String html) throws Exception {
 
 		List<DcYp> list = new ArrayList<DcYp>();
 		try {
@@ -124,7 +105,7 @@ public class YpBusiness {
 			Elements trEles = doc.select("#datatb tr[id]");
 			for (Element trEle : trEles) {
 				String company = trEle.child(1).text().trim();
-				String cllCompany = DcYp.WBW2CLLCOMPANY.get(company);
+				String cllCompany = OddsBusiness.WBW2CLLCOMPANY.get(company);
 				if (!StringUtils.isNotEmpty(cllCompany)) {
 					DcYp yp = new DcYp();
 					yp.setCompany(cllCompany);
@@ -142,7 +123,7 @@ public class YpBusiness {
 					yp.setGuest(Double.parseDouble(guestTd.text()));
 					yp.setGuestChange(0);
 					String timeStr = trEle.child(10).text().trim();
-					Date time = DateUtil.formatDate(DateUtil.getNowYear()+"-"+timeStr, "yyyy-MM-dd HH:mm");
+					Date time = DateUtil.formatDate(DateUtil.getNowYear() + "-" + timeStr, "yyyy-MM-dd HH:mm");
 					yp.setTime(time);
 					yp.setCreateTime(new Date());
 					yp.setIsFirst(true);
@@ -150,7 +131,7 @@ public class YpBusiness {
 				}
 			}
 		} catch (Exception e) {
-			log.error("--------[yp抓取]抓取初盘错误--------"+e.getMessage());
+			log.error("--------[yp抓取]抓取初盘错误--------" + e.getMessage());
 			e.printStackTrace();
 			throw e;
 		}
@@ -162,7 +143,7 @@ public class YpBusiness {
 		DcArrange dc = new DcArrange().setHomeId(867).setGuestId(1775);
 		try {
 			String html = getRealHtml(dc, "698100");
-			GetNowYp(html);
+			getNowYp(html);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

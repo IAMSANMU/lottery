@@ -1,4 +1,4 @@
-package com.lottery.sp;
+package com.lottery.odds.sp;
 
 import java.util.List;
 
