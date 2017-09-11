@@ -37,7 +37,7 @@ public class TermBusiness {
 			term.setTerm(issue);
 			term.setStartTime(beginDate);
 			term.setEndTime(endDate);
-			term.setCreatTime(new Date());
+			term.setCreateTime(new Date());
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -59,7 +59,7 @@ public class TermBusiness {
 			term = new LotteryTerm();
 			term.setTerm(arr[0]);
 			term.setEndTime(DateUtil.getDateFormat(arr[1]));
-			term.setCreatTime(new Date());
+			term.setCreateTime(new Date());
 		} catch (Exception e) {
 			log.error("[彩期抓取]抓取彩期数据错误"+e.getMessage());
 			e.printStackTrace();

@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 
 import com.lottery.common.model.DcArrange;
@@ -29,53 +30,87 @@ public class DcInfoTask implements Runnable {
 	@Override
 	public void run() {
 		LotteryTerm term = termService.getCurrentTerm();
-		try {
-			log.info("---[对阵截止]北单赛事截止开始-----");
-			stop(term);
-			log.info("---[对阵截止]北单赛事截止结束-----");
-		} catch (Exception e1) {
-			e1.printStackTrace();
-			log.info("---[对阵截止]北单赛事截止错误-----");
-		}
-		try {
-			log.info("---[对阵抓取]北单赛事维护开始-----");
-			snatchMatch(term);
-			log.info("---[对阵抓取]北单期数维护结束-----");
-		} catch (Exception e) {
-			e.printStackTrace();
-			log.info("---北单期数维护错误-----");
-		}
-		try {
-			log.info("---[sp抓取]北单sp维护开始-----");
-			snatchSp(term);
-			log.info("---[sp抓取]北单sp维护结束-----");
-		} catch (Exception e) {
-			e.printStackTrace();
-			log.info("---[sp抓取]北单sp维护错误-----");
+		if (term != null) {
+			try {
+				log.info("---[对阵抓取]北单赛事维护开始-----");
+				snatchMatch(term);
+				log.info("---[对阵抓取]北单期数维护结束-----");
+			} catch (Exception e) {
+				e.printStackTrace();
+				log.info("---北单期数维护错误-----");
+			}
+			try {
+				log.info("---[sp抓取]北单sp维护开始-----");
+				snatchSp(term);
+				log.info("---[sp抓取]北单sp维护结束-----");
+			} catch (Exception e) {
+				e.printStackTrace();
+				log.info("---[sp抓取]北单sp维护错误-----");
+			}
+			try {
+				log.info("---[对阵截止]北单赛事截止开始-----");
+				stop(term);
+				log.info("---[对阵截止]北单赛事截止结束-----");
+			} catch (Exception e1) {
+				e1.printStackTrace();
+				log.info("---[对阵截止]北单赛事截止错误-----");
+			}
+			try {
+				log.info("---[赛果抓取]北单赛事赛果抓取开始-----");
+				snatchScore(term);
+				log.info("---[赛果抓取]北单赛事赛果抓取结束-----");
+			} catch (Exception e1) {
+				e1.printStackTrace();
+				log.info("---[赛果抓取]北单赛事赛果抓取错误-----");
+			}
 		}
 
 	}
 
 	private void snatchSp(LotteryTerm term) throws Exception {
 		List<DcSpfSp> list = SpBusiness.snatchOkSp(term.getTerm());
-		Map<String,DcSpfSp> snatchMap=new HashMap<String,DcSpfSp>();
+		Map<String, DcSpfSp> snatchMap = new HashMap<String, DcSpfSp>();
 		for (DcSpfSp dc : list) {
 			snatchMap.put(dc.getLineId(), dc);
 		}
-		//判断数据库sp是否有变化
-		List<DcSpfSp> dbList=spService.getSpList(term.getTerm());
+		// 判断数据库sp是否有变化
+		List<DcSpfSp> dbList = spService.getSpList(term.getTerm());
 		for (DcSpfSp db : dbList) {
-			if(snatchMap.containsKey(db.getLineId())){
-				DcSpfSp snatchSp=snatchMap.get(db.getLineId());
-				if(!db.getSpStr().equals(snatchSp.getSpStr())){
-					//sp有变化保存
-					log.info("[sp抓取]===term"+snatchSp.getTerm()+"的lineId的"+snatchSp.getLineId()+"sp有变化保存");
+			if (snatchMap.containsKey(db.getLineId())) {
+				DcSpfSp snatchSp = snatchMap.get(db.getLineId());
+				if (!db.getSpStr().equals(snatchSp.getSpStr())) {
+					// sp有变化保存
+					log.info("[sp抓取]===term" + snatchSp.getTerm() + "的lineId的" + snatchSp.getLineId() + "sp有变化保存");
 					snatchSp.setMatchId(db.getId()).save();
 				}
 			}
 		}
 	}
 
+	private void snatchScore(LotteryTerm term){
+		List<DcArrange> snatchList= DcBusiness.snatchDcScore(term.getTerm());
+		
+		List<DcArrange> dbList = dcService.getDcList(term);
+		Map<String, DcArrange> dbMap = new HashMap<String, DcArrange>();
+		for (DcArrange dc : dbList) {
+			dbMap.put(dc.getLineId(), dc);
+		}
+		for (DcArrange dc : snatchList) {
+			if(dbMap.containsKey(dc.getLineId())) {
+				DcArrange dbDc=dbMap.get(dc.getLineId());
+				String half = dc.getHalfScore();
+				String whole = dc.getWholeScore();
+				String dbHalf = dbDc.getHalfScore();
+				String dbWhole = dbDc.getWholeScore();
+				if (!half.equals(dbHalf) || whole.equals(dbWhole)) {
+					dbDc.setHalfScore(half);
+					dbDc.setWholeScore(whole);
+					dbDc.update();
+					log.info("----[对阵信息]保存比赛结果----");
+				}
+			}
+		}
+	}
 	private void stop(LotteryTerm term) {
 		dcService.stopMatch(term);
 	}
@@ -92,9 +127,11 @@ public class DcInfoTask implements Runnable {
 			if (!dbMap.containsKey(boutIndex)) {
 				dc.save();
 				dbMap.put(boutIndex, dc);
-				log.info("---北单彩期" + term.getTerm() + "抓取赛程:" + boutIndex + "--主队VS客队:" + dc.getHome() + "vs"
+				log.info("---[对阵信息]北单彩期" + term.getTerm() + "抓取赛程:" + boutIndex + "--主队VS客队:" + dc.getHome() + "vs"
 						+ dc.getGuest() + ";比赛时间:" + DateUtil.getDateTimeFormat(dc.getMatchTime()) + ";让球:"
 						+ dc.getRqs() + "---");
+			} else {
+				
 			}
 		}
 	}

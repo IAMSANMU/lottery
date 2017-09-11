@@ -63,13 +63,13 @@ public abstract class BaseLotteryTerm<M extends BaseLotteryTerm<M>> extends Mode
 		return getInt("isCurrent");
 	}
 
-	public M setCreatTime(java.util.Date creatTime) {
-		set("creatTime", creatTime);
+	public M setCreateTime(java.util.Date createTime) {
+		set("createTime", createTime);
 		return (M)this;
 	}
 
-	public java.util.Date getCreatTime() {
-		return get("creatTime");
+	public java.util.Date getCreateTime() {
+		return get("createTime");
 	}
 
 }

@@ -24,8 +24,6 @@ public class TermTask implements Runnable{
 			log.error("---[彩期抓取]北单期数维护出现错误-----");
 			e.printStackTrace();
 		}
-		
-		
 	}
 	
 	private LotteryTerm buildNewTerm(LotteryTerm snatchTerm){

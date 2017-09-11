@@ -33,33 +33,35 @@ public class DcOddsTask implements Runnable {
 
 	public void run() {
 		LotteryTerm term = termService.getCurrentTerm();
-		List<DcArrange> dcList = dcService.getDcList(term);
-		try {
-			log.info("----------[yp抓取]抓取亚盘开始-------------");
-			snatchYp(dcList);
-			log.info("----------[yp抓取]抓取亚盘结束-------------");
-		} catch (Exception e) {
-			e.printStackTrace();
-			log.info("----------[yp抓取]抓取亚盘错误-------------");
+		if (term != null) {
+			List<DcArrange> dcList = dcService.getDcList(term);
+			try {
+				log.info("----------[yp抓取]抓取亚盘开始-------------");
+				snatchYp(dcList);
+				log.info("----------[yp抓取]抓取亚盘结束-------------");
+			} catch (Exception e) {
+				e.printStackTrace();
+				log.info("----------[yp抓取]抓取亚盘错误-------------");
+			}
+
+			try {
+				log.info("----------[op抓取]抓取op开始-------------");
+				snatchOp(dcList);
+				log.info("----------[op抓取]抓取op结束-------------");
+			} catch (Exception e) {
+				e.printStackTrace();
+				log.info("----------[op抓取]抓取op错误-------------");
+			}
+			try {
+				log.info("----------[dxp抓取]抓取大小盘开始-------------");
+				snatchDxp(dcList);
+				log.info("----------[dxp抓取]抓取大小盘结束-------------");
+			} catch (Exception e) {
+				e.printStackTrace();
+				log.info("----------[dxp抓取]抓取大小盘错误-------------");
+			}
 		}
-		
-		try {
-			log.info("----------[op抓取]抓取op开始-------------");
-			snatchOp(dcList);
-			log.info("----------[op抓取]抓取op结束-------------");
-		} catch (Exception e) {
-			e.printStackTrace();
-			log.info("----------[op抓取]抓取op错误-------------");
-		}
-		try {
-			log.info("----------[dxp抓取]抓取大小盘开始-------------");
-			snatchDxp(dcList);
-			log.info("----------[dxp抓取]抓取大小盘结束-------------");
-		} catch (Exception e) {
-			e.printStackTrace();
-			log.info("----------[dxp抓取]抓取大小盘错误-------------");
-		}
-		
+
 	}
 
 	private void snatchOp(List<DcArrange> matchList) throws Exception {
@@ -119,8 +121,9 @@ public class DcOddsTask implements Runnable {
 							int homeChange = getChange(dbNowOp.getHome(), nowOp.getHome());
 							int drawChange = getChange(dbNowOp.getDraw(), nowOp.getDraw());
 							int guestChange = getChange(dbNowOp.getGuest(), nowOp.getGuest());
-							//有一个变化就保存数据
-							if (homeChange != 0 || drawChange != 0 || guestChange != 0) {							nowOp.setHomeChange(homeChange);
+							// 有一个变化就保存数据
+							if (homeChange != 0 || drawChange != 0 || guestChange != 0) {
+								nowOp.setHomeChange(homeChange);
 								nowOp.setDrawChange(drawChange);
 								nowOp.setGuestChange(guestChange);
 								nowOp.setMatchId(match.getId());

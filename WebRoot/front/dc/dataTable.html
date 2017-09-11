@@ -1,4 +1,3 @@
-#define dataTable()
 <!--足球胜平负数据begin-->
 <div id="float_div" class="float_div">
 	<table class="match_table dcspf_data_zy" cellpadding="0" cellspacing="0" id="dcTable">
@@ -113,7 +112,7 @@
 						</tr>
 					</tbody>
 			#else
-				<tbody class="race #if(for.odd)highlight #end  #if(x.status!=0') STOP_BUY  #end #(!stopIsChecked) hidden #end"
+				<tbody class="race #if(for.odd) highlight #end  #if(x.status!=0') STOP_BUY  #end #(!stopIsChecked) hidden #end"
 				 matchKey="#(x.lineId)"
 					gameName="#(x.matchName)"
 					showKey="#(x.lineId)"

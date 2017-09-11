@@ -9,12 +9,12 @@ public class TermService {
 	
 	
 	public Page<LotteryTerm> getTermByPage(int pageIndex,int pageSize){
-		return dao.paginate(pageIndex, pageSize, "select * ","from term order by createTime desc");
+		return dao.paginate(pageIndex, pageSize, "select * ","from lottery_term order by createTime desc");
 	}
 	
 	
 	public LotteryTerm getCurrentTerm(){
-		String sql="select * from term where isCurrent=1";
+		String sql="select * from lottery_term where isCurrent=1";
 		return dao.findFirst(sql);
 	}
 	public void saveTerm(LotteryTerm term){
@@ -24,7 +24,7 @@ public class TermService {
 		term.update();
 	}
 	public LotteryTerm getTerm(String termNo){
-		String sql="select * from term where term=?";
+		String sql="select * from lottery_term where term=?";
 		return dao.findFirst(sql,termNo);
 	}
 	
