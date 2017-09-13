@@ -8,7 +8,7 @@ public class OpService {
 	private static DcOp dao = new DcOp().dao();
 
 	public List<DcOp> get(int matchId) {
-		String sql = "select op.* From dc_op op Where  op.id in (Select Max(Id) From dc_op  where matchId =:matchId group by company,isFirst)";
+		String sql = "select op.* From dc_op op Where  op.id in (Select Max(Id) From dc_op  where matchId =? group by company,isFirst)";
 		return dao.find(sql, matchId);
 	}
 

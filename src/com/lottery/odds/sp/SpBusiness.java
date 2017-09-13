@@ -1,6 +1,5 @@
 package com.lottery.odds.sp;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -26,7 +25,7 @@ public class SpBusiness {
 			String html = HttpUtil.getUrl(url);
 			// 解析html
 			Document doc = Jsoup.parse(html);
-			term = doc.select("#SelectLotteryNo").first().val();
+			term = doc.select("#SelectLotteryNo > option[selected]").first().val();
 		} catch (Exception e) {
 			log.error("[sp抓取]===抓取澳客当前期错误===");
 			e.printStackTrace();
@@ -40,7 +39,7 @@ public class SpBusiness {
 			String url = OKOOO_SP_URL;
 			String currentTerm = snatchOkCurrentTerm();
 			if (!currentTerm.equals(dcTerm)) {
-				log.error("[sp抓取]===澳客北单当前期与本地不一致===");
+				log.error("[sp抓取]===澳客"+currentTerm+"北单当前期与本地"+dcTerm+"不一致===");
 			} else {
 				String html = HttpUtil.getUrl(url);
 				// 解析xml
@@ -67,5 +66,7 @@ public class SpBusiness {
 	}
 
 	public static void main(String[] args) {
+		String term=snatchOkCurrentTerm();
+		System.out.println("term="+term);
 	}
 }

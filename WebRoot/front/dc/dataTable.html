@@ -1,68 +1,86 @@
 <!--足球胜平负数据begin-->
 <div id="float_div" class="float_div">
-	<table class="match_table dcspf_data_zy" cellpadding="0" cellspacing="0" id="dcTable">
+	<table class="match_table dcspf_data_zy" cellpadding="0"
+		cellspacing="0" id="dcTable">
 		<colgroup>
-	 		<col width="40" />
-	        <col width="50" />
-	        <col width="55" />
-	        <col width="115" />
-	        <col width="50" />
-	        <col width="50" />
-	        <col width="85"/>
-	        <col width="52" />
-	        <col width="41" />
-	        <col width="55" />
-	        <col width="55" />
-	        <col width="55" />
-	        <col width="41" />
-	 	</colgroup>
+			<col width="40">
+			<col width="50">
+			<col width="55">
+
+			<col width="65">
+			<col width="30">
+			<col width="65">
+
+			<col width="60">
+			<col>
+			<col width="60">
+
+			<col width="40">
+			<col width="40">
+			<col width="40">
+
+			<col width="40">
+			<col width="40">
+			<col width="40">
+
+			<col width="40">
+			<col width="40">
+			<col width="40">
+
+			<col width="30">
+			<col width="60">
+			<col width="60">
+		</colgroup>
+
 		<thead class="hd">
-		<tr>
-       	<th colspan="2" >
-		</th>
-        <th class="t_race_time" rowspan="2">
-        	<div class="timer">
-	           	<a href="javascript:;" data="matchTime" class="turntab">开赛时间<i class="arrow"><s class="s1"></s><s class="s2"></s></i></a>
-	            <a href="javascript:;" data="endTime" class="turntab current">截止时间<i class="arrow"><s class="s1"></s><s class="s2"></s></i></a>
-			</div>
-        </th>
-        <th class="t_race_team" colspan="3">
-        	对阵
-        </th>
-        <th colspan="3">庄家盈利指数</th>
-        <th colspan="3">大小球指数</th>
-        <th colspan="3">
-       		<div class="timer">
-	           	<a href="javascript:;" data="tzb" class="turntab current">投注比<i class="arrow"><s class="s1"></s><s class="s2"></s></i></a>
-	            <a href="javascript:;" data="op" class="turntab ">欧赔<i class="arrow"><s class="s1"></s><s class="s2"></s></i></a>
-           </div>
-        </th>
-        <th colspan="3">即时SP</th>
-        <th rowspan="2">
-			析
-		</th>
-		<th colspan="2">
-			比分
-		</th>
-      </tr>
-     <tr>
-        <th class="t_race_num">编号</th>
-        <th class="t_race_group">赛事</th>
-        <th class=""> 主队</th>
-        <th class="">让球</th>
-        <th class="">客队</th>
-        <th class="">主队盈利</th>
-        <th class="">盘口</th>
-        <th class="">客队盈利</th>
-        <th class="">大球</th>
-        <th class="">盘口</th>
-        <th class="">小球</th>
-        <th class="">胜</th>
-        <th class="">平</th>
-        <th class="">负</th>
-        <th class="">半场</th>
-        <th class="">全场</th>
-      </tr>
+			<tr>
+				<th colspan="2">#include("tabFilte.html")</th>
+				<th class="t_race_time" rowspan="2">
+					<div class="timer">
+						<a href="javascript:;" data-show="race_mt" data-hide="race_et"
+							class="turntab">开赛时间<i class="arrow"><s class="s1"></s><s
+								class="s2"></s></i></a> <a href="javascript:;" data-show="race_et"
+							data-hide="race_mt" class="turntab current">截止时间<i
+							class="arrow"><s class="s1"></s><s class="s2"></s></i></a>
+					</div>
+				</th>
+				<th class="t_race_team" colspan="3">对阵</th>
+				<th colspan="3">庄家盈利指数</th>
+				<th colspan="3">大小球指数</th>
+				<th colspan="3" class="t_race_time">
+					<div class="timer">
+						<a href="javascript:;" data-show="race_tzb" data-hide="race_op"
+							class="turntab current">投注比<i class="arrow"><s class="s1"></s><s
+								class="s2"></s></i></a> <a href="javascript:;" data-show="race_op"
+							data-hide="race_tzb" class="turntab ">欧&nbsp;&nbsp;&nbsp;&nbsp;赔<i class="arrow"><s
+								class="s1"></s><s class="s2"></s></i></a>
+					</div>
+				</th>
+				<th colspan="3">即时SP</th>
+				<th rowspan="2">析</th>
+				<th colspan="2">比分</th>
+			</tr>
+			<tr>
+				<th class="t_race_num">编号</th>
+				<th class="t_race_group">赛事</th>
+				<th class="">主队</th>
+				<th class="">让球</th>
+				<th class="">客队</th>
+				<th class="">主队盈利</th>
+				<th class="">盘口</th>
+				<th class="">客队盈利</th>
+				<th class="">大球</th>
+				<th class="">盘口</th>
+				<th class="">小球</th>
+				<th class="">胜</th>
+				<th class="">平</th>
+				<th class="">负</th>
+				<th class="">胜</th>
+				<th class="">平</th>
+				<th class="">负</th>
+				<th class="">半场</th>
+				<th class="">全场</th>
+			</tr>
 		</thead>
 	</table>
 </div>
@@ -70,177 +88,131 @@
 	<table class="match_table dcspf_data_zy" id="raceTable" cellpadding="0"
 		cellspacing="0">
 		<colgroup>
-	 		<col width="40" />
-	        <col width="50" />
-	        <col width="55" />
-	        <col width="80" />
-	        <col width="50" />
-	        <col width="80" />
-	        <col width="50" />
-	        <col width="80"/>
-	        <col width="50" />
-	        <col width="52" />
-	        <col width="50" />
-	        <col width="50" />
-	        <col width="52" />
-	        <col width="50" />
-	        <col width="50" />
-	        <col width="52" />
-	        <col width="50" />
-	        <col width="50" />
-	        <col width="55" />
-	        <col width="" />
-	 	</colgroup>
-		#set(showDate='abc')
-		#set(stopIsChecked=isBack)
-		#for(x:raceList)
-			#if(matchshowDateDate=='abc' || x.matchDate!=showDate)
-				#if(!isShowMap["T_"+x.intTime]&&!shopIsChecked)
+			<col width="40">
+			<col width="50">
+			<col width="55">
+
+			<col width="65">
+			<col width="30">
+			<col width="65">
+
+			<col width="60">
+			<col>
+			<col width="60">
+
+			<col width="40">
+			<col width="40">
+			<col width="40">
+
+			<col width="40">
+			<col width="40">
+			<col width="40">
+
+			<col width="40">
+			<col width="40">
+			<col width="40">
+
+			<col width="30">
+			<col width="60">
+			<col width="60">
+		</colgroup>
+
+		#set(showDate="abc") 
+		#for(x:raceList) 
+			#if(showDate =="abc" || x.matchDate!=showDate)
+		 		#if(!isShowMap["T_"+x.intTime] && !isBack)
 					#set(race_cnt=0)
 				#else 
 					#set(race_cnt=1)
-					<tbody class="race_date #if(race_cnt==0) hidden STOP_BUY #end" >
+				#end
+					<tbody class="race_date 
+						#if(race_cnt==0)
+							 hidden STOP_BUY 
+						#end
+					">
 						<tr>
-							<th colspan="13">
+							<th colspan="21">
 								<div class="race_date_sprite">
-									<b class="time" val="#(x.intTime)">
-									#(x.matchDate)
-									<a href="javascript:;" class="hiding">隐藏</a>
+									<b class="time" val="#(x.intTime)"> #(x.matchDate)
+									<a href="javascript:;" class="hiding"></a>
 									</b>
 								</div>
 							</th>
 						</tr>
 					</tbody>
-			#else
-				<tbody class="race #if(for.odd) highlight #end  #if(x.status!=0') STOP_BUY  #end #(!stopIsChecked) hidden #end"
-				 matchKey="#(x.lineId)"
-					gameName="#(x.matchName)"
-					showKey="#(x.lineId)"
-					game="#(x.matchName)"
-					concede="#(x.rqs)"
-					>
-					<tr>
-						<td class="race_num">
-							<a href="javascript:;" class="game_num" title="隐藏">
-								#(x.lineId)<s></s>
-							</a>
-						</td>
-						<td class="race_game"
-							 #if(gameColor!=null) 
-							 	class="bd_r " style="background:#(x.matchColor)"
-							 #else 
-							 	class="bg01 bd_r race_group" style="background:#ff00ff"
-							 #end	
-						>
-							<span class="r_game" style="color:#fff;cursor:pointer;">
-							 #(x.matchName)
-							</span>
-							<a href="javascript:;" title="置顶" class="att_text"
-									style="display: none;">↑</a>
-						</td>
-						<td class="race_time">
-							<span class="r_time matchTime" style="display: none">
-								#date(x.matchTime,"MM-dd")
-								<br />
-								#date(x.matchTime,"HH:mm")
-							</span>
-							<span class="r_time endTime">
-								#date(x.endTime,"MM-dd")
-								<br />
-								#date(x.endTime,"HH:mm")
-							</span>
-						</td>
-						<td >
-							#(x.home)
-						</td>
-						<td >
-							#(x.rqs)
-						</td>
-						<td >
-							#(x.guest)
-						</td>
-						<td >
-							#(ypMap["Y_"+x.id].homeYlb)
-						</td>
-						<td >
-							#(ypMap["Y_"+x.id].pankou)
-						</td>
-						<td >
-							#(ypMap["Y_"+x.id].guestYlb)
-						</td>
-						<td >
-							#(dxpMap["Y_"+x.id].big)
-						</td>
-						<td >
-							#(dxpMap["Y_"+x.id].pankou)
-						</td>
-						<td >
-							#(dxpMap["Y_"+x.id].small)
-						</td>
-						
-						<td >
-							<span class="tzb">
-								#(spMap["S_"+x.id].homeBetStr)
-							</span>
-							<span class="op">
-								#(opMap["O_"+x.id].home)
-							</span>
-						</td>
-						<td >
-							<span class="tzb">
-								#(spMap["S_"+x.id].drawBetStr)
-							</span>
-							<span class="op">
-								#(opMap["O_"+x.id].draw)
-							</span>
-						</td>
-						<td >
-							<span class="tzb">
-								#(spMap["S_"+x.id].guestBetStr)
-							</span>
-							<span class="op">
-								#(opMap["O_"+x.id].guest)
-							</span>
-						</td>
-						<td>
-							#(dxpMap["Y_"+x.id].pankou)
-						</td>
-						<td >
-							#(dxpMap["Y_"+x.id].small)
-						</td>
-						
-						<td >
-							#(spMap["S_"+x.id].homeSp)
-						</td>
-						<td >
-							#(spMap["S_"+x.id].drawSp)
-						</td>
-						<td >
-							#(spMap["S_"+x.id].guestSp)
-						</td>
-						 <td>
-						 	<a target="_blank" href="http://odds.500.com/fenxi/shuju-#(x.oddId).shtml">析</a>
-				        </td>
-				        <td>
-				        	#if(x.halfScore=="")
-				        		未开赛
-				        	#else
-				        		x.halfScore
-				        	#end
-				        </td>
-						 <td>
-							#if(x.wholeScore=="")
-				        		未开赛
-				        	#else
-				        		x.wholeScore
-				        	#end
-				        </td>
-					</tr>
-				</tbody>
-				#set(showDate=x.matchDate)
 			#end
-		#end
+		<tbody
+			class="race #if(for.odd) highlight #end  #if(x.status!=0) STOP_BUY #if(!isBack) hidden #end  #end "
+			matchKey="#(x.lineId)" gameName="#(x.matchName)" concede="#(x.rqs)" data-matchId="#(x.id)"
+			endTime="#(x.intTime)">
+			<tr>
+				<td class="race_num"><a href="javascript:;" class="game_num"
+					title="隐藏"> #(x.lineId)<s></s>
+				</a></td>
+				<td class="race_game" #if(x.matchColor!="" ) class="bd_r "
+					style="background: #(x.matchColor)" #else
+					class="bg01 bd_r race_group" style="background:#ff00ff" #end>
+					<span class="r_game" style="color: #fff; cursor: pointer;"> #(x.matchName) </span>
+					 <a href="javascript:;" title="置顶" class="att_text" style="display: none">↑</a> 
+				</td>
+				<td class="race_time"><span class="r_time race_mt"
+					style="display: none"> #date(x.matchTime,"MM-dd") <br />
+						#date(x.matchTime,"HH:mm")
+				</span> <span class="r_time race_et"> #date(x.endTime,"MM-dd") <br />
+						#date(x.endTime,"HH:mm")
+				</span></td>
+				<td>#(x.home)</td>
+				<td><em
+					class=" #if(x.rqs > 0) red #elseif(x.rqs < 0) green #end">
+						#if(x.rqs >0) +#(x.rqs) #else #(x.rqs) #end </em></td>
+				<td>#(x.guest)</td>
+				<td style="cursor: pointer;" class="yptd"><em
+					class='#if(ypMap["Y_"+x.id].homeIsMinus??false) red #end'>
+						#(ypMap["Y_"+x.id].homeYlb ??) 
+					</em>
+				</td>
+				<td style="cursor: pointer;" class="yptd">#(ypMap["Y_"+x.id].pankou??)</td>
+				<td style="cursor: pointer;" class="yptd">
+					<em class='#if(ypMap["Y_"+x.id].guestIsMinus??false) red #end'>
+						#(ypMap["Y_"+x.id].guestYlb ??) 
+					</em>
+				</td>
+				<td>#(dxpMap["D_"+x.id].big??)</td>
+				<td>#(dxpMap["D_"+x.id].pankou??)</td>
+				<td>#(dxpMap["D_"+x.id].small??)</td>
+				<td><span class="race_tzb">
+						#(spMap["S_"+x.id].homeBetStr??) </span> <span class="race_op"
+					style="display: none"> #(opMap["O_"+x.id].home??) </span></td>
+				<td><span class="race_tzb">
+						#(spMap["S_"+x.id].drawBetStr??) </span> <span class="race_op"
+					style="display: none"> #(opMap["O_"+x.id].draw??) </span></td>
+				<td><span class="race_tzb">
+						#(spMap["S_"+x.id].guestBetStr??) </span> <span class="race_op"
+					style="display: none"> #(opMap["O_"+x.id].guest??) </span></td>
+				<td>#(spMap["S_"+x.id].homeSp??)</td>
+				<td>#(spMap["S_"+x.id].drawSp??)</td>
+				<td>#(spMap["S_"+x.id].guestSp??)</td>
+				<td><a target="_blank"
+					href="http://odds.500.com/fenxi/shuju-#(x.oddId).shtml">析</a>
+					#include("yp.html")
+				</td>
+				<td>#(x.halfScore??"未赛")
+				</td>
+				<td>#(x.wholeScore??"未赛")</td>
+			</tr>
+		</tbody>
+		#set(showDate=x.matchDate) #end
 	</table>
-	<%@include file="/lottery/jingcaiv3/common.jsp"%>
+	<a href="javascript:;" class="hide_games " id="recover"
+		#if(race_cnt==0) 
+			style="display: none"
+		 #end>
+		 已隐藏(<em id="hideCount">0</em>)场
+	</a> 
+	<a id="worldcupGames" class="wc_games " href="javascript:;"
+		#if(race_cnt==0) 
+			style="display: none"
+	 	#end
+	 >只看五大联赛</a>
 </div>
 <!--让球胜平负数据end-->

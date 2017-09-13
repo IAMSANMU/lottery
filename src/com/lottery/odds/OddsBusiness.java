@@ -31,7 +31,7 @@ public class OddsBusiness {
 		COMAPNY.put("沙巴","shaba");
 		
 		WBW2CLLCOMPANY.put("永利高", "永利高");
-		WBW2CLLCOMPANY.put("Singbet(皇冠)", "皇冠");
+		WBW2CLLCOMPANY.put("皇冠", "皇冠");
 		WBW2CLLCOMPANY.put("伟德", "伟德");
 		WBW2CLLCOMPANY.put("立博", "立博");
 		WBW2CLLCOMPANY.put("澳门", "澳门");

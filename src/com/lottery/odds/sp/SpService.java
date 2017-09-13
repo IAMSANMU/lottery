@@ -11,4 +11,9 @@ public class SpService {
 		String sql = "select sp.* from dc_spf_sp sp where sp.id in(select MAX(id) from dc_spf_sp where term=? group by matchId)";
 		return dao.find(sql, term);
 	}
+	public DcSpfSp getCurrentSp(int matchId){
+		String sql="select sp.* from dc_spf_sp sp where sp.id in(select MAX(id) from dc_spf_sp where matchId=?)";
+		return dao.findFirst(sql,matchId);
+	}
+	
 }

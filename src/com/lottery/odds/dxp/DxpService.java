@@ -8,7 +8,7 @@ public class DxpService {
 	private static DcDxp dao = new DcDxp().dao();
 
 	public List<DcDxp> get(int matchId) {
-		String sql = "select yp.* From dc_dxp yp Where  yp.id in (Select Max(tmpYp.Id) From dc_dxp  tmpYp where tmpYp.matchId =:matchId group by company,isFirst)";
+		String sql = "select yp.* From dc_dxp yp Where  yp.id in (Select Max(tmpYp.Id) From dc_dxp  tmpYp where tmpYp.matchId =? group by company,isFirst)";
 		return dao.find(sql, matchId);
 	}
 	public List<DcDxp> getList(String term,String company){

@@ -10,9 +10,12 @@ import com.lottery.common.model.LotteryTerm;
 public class DcService {
 	private static final DcArrange dao = new DcArrange().dao();
 	
+	public DcArrange getById(int id){
+		return dao.findById(id);
+	}
 	
 	public void stopMatch(LotteryTerm currentTerm){
-		String sql="update dc_arrange  set  status=1 where endTime >=now() and term=?";
+		String sql="update dc_arrange  set  status=1 where endTime <=now() and term=?";
 		Db.update(sql,currentTerm.getTerm());
 	}
 	/*

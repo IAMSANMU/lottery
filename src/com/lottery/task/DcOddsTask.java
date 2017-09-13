@@ -196,7 +196,10 @@ public class DcOddsTask implements Runnable {
 							nowYp.save();
 						} else {
 							// 判断时间是否一致,不一致就保持
-							if (!dbNowYp.getTime().equals(nowYp.getTime())) {
+							if (dbNowYp.getTime().compareTo(nowYp.getTime())!=0) {
+								nowYp.setMatchId(match.getId());
+								nowYp.setTerm(match.getTerm());
+								nowYp.setLineId(match.getLineId());
 								nowYp.save();
 							}
 						}
@@ -259,7 +262,10 @@ public class DcOddsTask implements Runnable {
 							nowDxp.save();
 						} else {
 							// 判断时间是否一致,不一致就保持
-							if (!dbNowDxp.getTime().equals(nowDxp.getTime())) {
+							if (dbNowDxp.getTime().compareTo(nowDxp.getTime())!=0) {
+								nowDxp.setMatchId(match.getId());
+								nowDxp.setTerm(match.getTerm());
+								nowDxp.setLineId(match.getLineId());
 								nowDxp.save();
 							}
 						}

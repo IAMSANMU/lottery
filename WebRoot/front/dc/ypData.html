@@ -1,0 +1,52 @@
+<table border="0" cellspacing="0" cellpadding="0" style="width:480px;border-left:1px #dfdfdf solid; border-top:1px #dfdfdf solid;">
+	#for(x:list)
+		<tr style="background:#fcfcfc;" align="center">
+			<td width="46">
+				#(x.home)
+				#if(x.homeChange==1)
+					<img src="http://img.cailele.com/img/lottery/up.gif" alt="升"/>
+				#elseif(x.homeChange==-1)
+					<img src="http://img.cailele.com/img/lottery/down.gif" alt="降" />
+				#end
+			</td>
+			<td width="80">
+				#(x.pankou??)
+			</td>
+			<td width="46">
+				#(x.guest)
+				#if(x.guestChange==1)
+					<img src="http://img.cailele.com/img/lottery/up.gif" alt="升"/>
+				#elseif(x.guestChange==-1)
+					<img src="http://img.cailele.com/img/lottery/down.gif" alt="降" />
+				#end
+			</td>
+			<td width="90">
+				<em class='#if(x.homeIsMinus??false) red #end'>
+					#(x.homeYlb??)
+					#if(x.homeChange==1)
+						<img src="http://img.cailele.com/img/lottery/up.gif" alt="升"/>
+					#elseif(x.homeChange==-1)
+						<img src="http://img.cailele.com/img/lottery/down.gif" alt="降" />
+					#end
+				</em>
+			</td>
+			<td width="90" >
+				<em class='#if(x.guestIsMinus??false) red #end'>
+					#(x.guestYlb??)
+					#if(x.guestChange==1)
+						<img src="http://img.cailele.com/img/lottery/up.gif" alt="升"/>
+					#elseif(x.guestChange==-1)
+						<img src="http://img.cailele.com/img/lottery/down.gif" alt="降" />
+					#end
+				</em>
+			</td>
+			<td align="right">
+				#if(x.isFirst)
+					<em class="red">初盘</em>
+				#else
+					#date(x.time,"yyyy-MM-dd HH:mm")
+				#end
+			</td>
+		</tr>
+	#end
+</table>	

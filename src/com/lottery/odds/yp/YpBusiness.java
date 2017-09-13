@@ -36,7 +36,7 @@ public class YpBusiness {
 			Document doc = Jsoup.parse(html);
 			Elements trEles = doc.select("#datatb tr[id]");
 			for (Element trEle : trEles) {
-				String company = trEle.child(1).text().trim();
+				String company = trEle.child(1).text().trim().replace("  ", "");
 				String cllCompany = OddsBusiness.WBW2CLLCOMPANY.get(company);
 				if (StringUtils.isNotEmpty(cllCompany)) {
 					DcYp yp = new DcYp();
@@ -61,12 +61,16 @@ public class YpBusiness {
 						pkChange = changeEle.text().equals("升") ? 1 : -1;
 					}
 					String pk = pankouTd.text();
+					int index = pk.indexOf(" ");
+					if (index > -1) {
+						pk = pk.substring(0, index);
+					}
 					Double numPk = Double.parseDouble(pankouTd.attr("ref").trim());
 					yp.setPankou(pk);
 					yp.setPankouChange(pkChange);
 					yp.setNumPankou(numPk);
 
-					Element guestTd = trEle.child(2);
+					Element guestTd = trEle.child(4);
 					changeStr = guestTd.attr("class").trim();
 					int guestChange = 0;
 					if (changeStr.equals("red_up")) {
@@ -106,7 +110,7 @@ public class YpBusiness {
 			for (Element trEle : trEles) {
 				String company = trEle.child(1).text().trim();
 				String cllCompany = OddsBusiness.WBW2CLLCOMPANY.get(company);
-				if (!StringUtils.isNotEmpty(cllCompany)) {
+				if (StringUtils.isNotEmpty(cllCompany)) {
 					DcYp yp = new DcYp();
 					yp.setCompany(cllCompany);
 					Element homeTd = trEle.child(6);
@@ -119,10 +123,10 @@ public class YpBusiness {
 					yp.setPankouChange(0);
 					yp.setNumPankou(numPk);
 
-					Element guestTd = trEle.child(9);
+					Element guestTd = trEle.child(8);
 					yp.setGuest(Double.parseDouble(guestTd.text()));
 					yp.setGuestChange(0);
-					String timeStr = trEle.child(10).text().trim();
+					String timeStr = trEle.child(9).text().trim();
 					Date time = DateUtil.formatDate(DateUtil.getNowYear() + "-" + timeStr, "yyyy-MM-dd HH:mm");
 					yp.setTime(time);
 					yp.setCreateTime(new Date());
@@ -140,10 +144,14 @@ public class YpBusiness {
 	}
 
 	public static void main(String[] args) {
-		DcArrange dc = new DcArrange().setHomeId(867).setGuestId(1775);
+		// String a=null;
+		// System.out.println(StringUtils.isNotEmpty(a));
+//		DcArrange dc = new DcArrange().setHomeId(867).setGuestId(1775);
 		try {
-			String html = getRealHtml(dc, "698100");
-			getNowYp(html);
+			String url=ASIA_ODDS_URL+662467;
+			String html =HttpUtil.getUrl(url); 
+			List<DcYp> list = getNowYp(html);
+			System.out.println(list);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

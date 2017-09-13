@@ -36,7 +36,7 @@ public class DxpBusiness {
 			Document doc = Jsoup.parse(html);
 			Elements trEles = doc.select("#datatb tr[id]");
 			for (Element trEle : trEles) {
-				String company = trEle.child(1).text().trim();
+				String company = trEle.child(1).text().trim().replace("  ", "");
 				String cllCompany = OddsBusiness.WBW2CLLCOMPANY.get(company);
 				if (StringUtils.isNotEmpty(cllCompany)) {
 					DcDxp dxp = new DcDxp();
@@ -60,7 +60,7 @@ public class DxpBusiness {
 					dxp.setPankou(pk);
 					dxp.setPankouChange(pkChange);
 
-					Element smallTd = trEle.child(2);
+					Element smallTd = trEle.child(4);
 					changeStr = smallTd.attr("class").trim();
 					int smallChange = 0;
 					if (changeStr.equals("red_up")) {
@@ -99,12 +99,11 @@ public class DxpBusiness {
 			for (Element trEle : trEles) {
 				String company = trEle.child(1).text().trim();
 				String cllCompany = OddsBusiness.WBW2CLLCOMPANY.get(company);
-				if (!StringUtils.isNotEmpty(cllCompany)) {
+				if (StringUtils.isNotEmpty(cllCompany)) {
 					DcDxp dxp = new DcDxp();
 					dxp.setCompany(cllCompany);
 
 					Element bigTd = trEle.child(6);
-					String changeStr = bigTd.attr("class").trim();
 					int bigChange = 0;
 
 					dxp.setBig(Double.parseDouble(bigTd.text()));
@@ -140,8 +139,9 @@ public class DxpBusiness {
 	public static void main(String[] args) {
 		DcArrange dc = new DcArrange().setHomeId(867).setGuestId(1775);
 		try {
-			String html = getRealHtml(dc, "698100");
-			getNowDxp(html);
+			String html = getRealHtml(dc, "662467");
+			List<DcDxp> list=getNowDxp(html);
+			System.out.println(list);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

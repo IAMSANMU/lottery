@@ -1,0 +1,65 @@
+<div id="filterSelBox" class="filter_sel">
+	<a href="javascript:;" class="f_sel" id="filterSwitch">赛事筛选<i></i>
+	</a>
+	<div class="present_box">
+		<div class="con_line">
+			<dl class="games_filter" id="filter">
+				<dt>
+					<span class="tit">&gt; 让球</span>
+					<span class="close_btn"><a href="javascript:;" class="key skin_def r_recom" id="filterClose"><span>关闭</span></a></span>
+				</dt>
+                    <dd id="rqFilte" class="clearfix">
+						<ul class="clearfix list">
+                           <li><input type="checkbox" checked="checked" value="brq"> 不让球[#(rqCountMap['brq']??)场]</li>
+                           <li><input type="checkbox" checked="checked" value="rq">让球[#(rqCountMap['rq']??)场]</li>
+						</ul>
+					</dd>
+				<dt>
+					<span class="tit">&gt; 联赛</span>
+				</dt>
+				<dd class="clearfix" id="gameNameFilte">
+					<ul class="clearfix list">
+						#for(x:gameCountMap)
+							<li ><input type="checkbox" value="#(x.key)" checked="checked"/> 
+							<em style="padding:2px 2px 2px 2px;background:#(x.value.matchColor);color:white">
+								#(x.key)
+							</em>
+							[#(x.value.matchCount)场]</li>
+						#end
+					</ul>
+					<div class="oper_line">
+						<a href="javascript:;" option="1">全选</a><a href="javascript:;"
+							option="2">反选</a><a href="javascript:;" option="0">清</a>
+					</div>
+				</dd>
+				<dt>
+					<span class="tit">&gt; 日期</span>
+				</dt>
+				<dd class="clearfix" id="endTimeFilter">
+					<ul class="clearfix list">
+						#for(x:termCountMap)
+							<li>
+								#set(isCheck='T_'+x.value)
+								<input type="checkbox" value="#(x.value)" checked="checked" 
+									#if(!isShowMap[isCheck]) 
+										disabled="true" 
+									#end
+								/>
+								#(x.key)
+							</li>
+						#end
+					</ul>
+					<div class="oper_line">
+						<a href="javascript:;" option="1">全选</a><a href="javascript:;"
+							option="2">反选</a><a href="javascript:;" option="0">清</a>
+					</div>
+				</dd>
+			</dl>
+			<div class="config_line">
+				已隐藏在售
+				<em id="hideCount_filte">0</em> 场&nbsp;
+				<a href="javascript:;" class="hide_games" id="recover_filte">恢复</a>
+			</div>
+		</div>
+	</div>
+</div>

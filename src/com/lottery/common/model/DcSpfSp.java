@@ -1,6 +1,5 @@
 package com.lottery.common.model;
 
-import java.math.BigDecimal;
 import java.text.DecimalFormat;
 
 import com.lottery.common.model.base.BaseDcSpfSp;
@@ -12,7 +11,7 @@ import com.lottery.common.utils.ArithUtil;
 @SuppressWarnings("serial")
 public class DcSpfSp extends BaseDcSpfSp<DcSpfSp> {
 	private String spStr;
-	private DecimalFormat df = new DecimalFormat("0.0%");
+	private DecimalFormat df = new DecimalFormat("0%");
 
 	public String getSpStr() {
 		return getHomeSp() + "_" + getDrawSp() + "_" + getGuestSp();
@@ -27,32 +26,45 @@ public class DcSpfSp extends BaseDcSpfSp<DcSpfSp> {
 	private String drawBetStr;
 
 	public Double getHomeBet() {
-		homeBet = ArithUtil.div(1d, getHomeSp());
+		if (getHomeSp() == null || getHomeSp() == 0d) {
+			homeBet = 0d;
+		} else {
+			homeBet = ArithUtil.div(1d, getHomeSp());
+		}
 		return homeBet;
 	}
 
 	public Double getGuestBet() {
-		guestBet = ArithUtil.div(1d, getGuestSp());
+		if (getGuestSp() == null || getGuestSp() == 0d) {
+			guestBet = 0d;
+		} else {
+			guestBet = ArithUtil.div(1d, getGuestSp());
+		}
 		return guestBet;
 	}
 
 	public Double getDrawBet() {
-		drawBet = ArithUtil.div(1d, getDrawSp());
+
+		if (getDrawSp() == null || getDrawSp() == 0d) {
+			drawBet = 0d;
+		} else {
+			drawBet = ArithUtil.div(1d, getDrawSp());
+		}
 		return drawBet;
 	}
 
 	public String getHomeBetStr() {
-		homeBetStr = df.format(homeBet);
+		homeBetStr = df.format(getHomeBet());
 		return homeBetStr;
 	}
 
 	public String getGuestBetStr() {
-		guestBetStr =df.format(guestBet);
+		guestBetStr = df.format(getGuestBet());
 		return guestBetStr;
 	}
 
 	public String getDrawBetStr() {
-		drawBetStr =df.format(drawBet);
+		drawBetStr = df.format(getDrawBet());
 		return drawBetStr;
 	}
 

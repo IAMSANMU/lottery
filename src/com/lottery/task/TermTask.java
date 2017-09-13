@@ -54,6 +54,8 @@ public class TermTask implements Runnable{
 						log.info("----[彩期抓取]更新彩期" + dbTerm.getTerm() + "的截止时间before:" + before + ",after:" + after + "---");
 					}
 				}else{
+					//更新彩期
+					dbTerm.setIsCurrent(0).update();
 					//彩期不一致 插入新
 					term=buildNewTerm(snatchTerm);
 				}

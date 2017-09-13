@@ -69,7 +69,7 @@ public class OpBusiness {
 			list.add(nowOp);
 
 		} catch (Exception e) {
-			log.error("--------[yp抓取]抓取即时亚盘错误--------" + e.getMessage());
+			log.error("--------[op抓取]抓取OP错误--------" + e.getMessage());
 			e.printStackTrace();
 			throw e;
 		}
@@ -82,8 +82,9 @@ public class OpBusiness {
 	public static void main(String[] args) {
 		DcArrange dc = new DcArrange().setHomeId(867).setGuestId(1775);
 		try {
-			String html = getRealHtml(dc, "698100");
-			getOp(html);
+			String html = getRealHtml(dc, "662467");
+			List<DcOp> list=getOp(html);
+			System.out.println(list);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

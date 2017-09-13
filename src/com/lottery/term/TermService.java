@@ -1,6 +1,8 @@
 package com.lottery.term;
 
 
+import java.util.List;
+
 import com.jfinal.plugin.activerecord.Page;
 import com.lottery.common.model.LotteryTerm;
 
@@ -9,7 +11,7 @@ public class TermService {
 	
 	
 	public Page<LotteryTerm> getTermByPage(int pageIndex,int pageSize){
-		return dao.paginate(pageIndex, pageSize, "select * ","from lottery_term order by createTime desc");
+		return dao.paginate(pageIndex, pageSize, "select * ","from lottery_term order by term desc");
 	}
 	
 	
@@ -26,6 +28,14 @@ public class TermService {
 	public LotteryTerm getTerm(String termNo){
 		String sql="select * from lottery_term where term=?";
 		return dao.findFirst(sql,termNo);
+	}
+	public LotteryTerm getPrevTerm(String currentTerm){
+		LotteryTerm term=null;
+		List<LotteryTerm> list=dao.paginate(1, 1, "select * ","from lottery_term where term < ?").getList();
+		if(!list.isEmpty()){
+			term=list.get(0);
+		}
+		return term;
 	}
 	
 }

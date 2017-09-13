@@ -1,0 +1,32 @@
+<div class="absoluteDIV ypDiv"
+	style="position: relative; z-index: 1001; display: none"
+	id="ypDiv_#(x.id)" >
+	<div
+		style="width: 497px; border: 1px #049 solid; background: #fff; padding: 1px; position: absolute; top: 20px; right: -100px;">
+		<table class="titleTable" style="width: 497px; background: #049;"
+			border="0" cellpadding="0" cellspacing="0">
+			<tr style="background: #049;">
+				<td align="left"
+					style="width: 480px; color: #ffffff; height: 25px; line-height: 25px; font-size: 12px;"><font>#(x.home) vs #(x.guest)</font>
+					<font></font></td>
+				<td align="right" style="width: 17px;"><img
+					src="http://img.cailele.com/img/images/close3.gif" alt="关闭"
+					class="hand ypClose" onclick="$('#ypDiv_#(x.id)').hide(); return false;" style="cursor: pointer;" /></td>
+			</tr>
+		</table>
+		<table class="listTable" border="0" cellspacing="0" cellpadding="0"
+			style="width: 497px; border-left: 1px #dfdfdf solid; border-top: 1px #dfdfdf solid;">
+			<tr class="title" style="background: #ebebeb;" align="center">
+				<td width="50">主队</td>
+				<td width="70">盘口</td>
+				<td width="50">客队</td>
+				<td width="90">主盈利比</td>
+				<td width="90">客盈利比</td>
+				<td>更新时间</td>
+			</tr>
+		</table>
+		<div class="listDIV"
+			style="height: 191px; position: relative; overflow-y: scroll; overflow-x: hidden;"
+			id="ypList_#(x.id)">数据载入中......</div>
+	</div>
+</div>
