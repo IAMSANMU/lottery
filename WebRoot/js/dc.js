@@ -241,7 +241,6 @@ $(function(){
 	}).on("click",".yptd",function(){
 		var tbody=$(this).closest("tbody");
 		var matchId=tbody.data("matchid");
-		console.log(matchId)
 		loadYpOdd(matchId);
 	})
 	//raceTable 绑定时间end
