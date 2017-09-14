@@ -129,7 +129,7 @@ public class DcInfoTask implements Runnable {
 				String whole = dc.getWholeScore();
 				String dbHalf = dbDc.getHalfScore();
 				String dbWhole = dbDc.getWholeScore();
-				if (!half.equals(dbHalf) || whole.equals(dbWhole)) {
+				if (!half.equals(dbHalf) || !whole.equals(dbWhole)) {
 					dbDc.setHalfScore(half);
 					dbDc.setWholeScore(whole);
 					dbDc.update();

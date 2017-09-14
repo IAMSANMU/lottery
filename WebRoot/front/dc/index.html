@@ -12,6 +12,18 @@
 <script src="#(basepath)/js/jquery.min.js" type="text/javascript" ></script>
 <script src="#(basepath)/js/matchUtil.js" type="text/javascript" ></script>
 <script src="#(basepath)/js/dc.js" type="text/javascript" ></script>
+<script type="text/javascript">
+$(function(){
+	$('.gotop').click(function() {
+	    $('body').stop().animate({
+	        'scrollTop': 0,
+	        'duration': 100,
+	        'easing': 'ease-in'
+	    })
+	});
+});
+
+</script>
 </head>
 <body class="dcBody_zy">
 
@@ -78,6 +90,10 @@
         <!--左右布局页面end-->
     </div>
     <!----------------------------------------------------------------------------------------------------------------------相关文章部分-->
+    
+    <div class="gotop">
+	<a href="javascript:void(0)"></a> 
+</div>
 </div>
 <!--中间end-->
 
