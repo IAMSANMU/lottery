@@ -143,7 +143,7 @@ public class DcOddsTask implements Runnable {
 	}
 
 	private int getChange(Double oldSp, Double newSp) {
-		return oldSp == newSp ? 0 : (oldSp > newSp ? 1 : -1);
+		return oldSp.doubleValue() == newSp.doubleValue() ? 0 : (oldSp.doubleValue() > newSp.doubleValue() ? 1 : -1);
 	}
 
 	private void snatchYp(List<DcArrange> matchList) throws Exception {
@@ -277,6 +277,11 @@ public class DcOddsTask implements Runnable {
 				throw e;
 			}
 		}
+	}
+	public static void main(String[] args) {
+		Double a=1.5d;
+		Double b=1.5d;
+		System.out.println(a.doubleValue()==b.doubleValue());
 	}
 
 }
