@@ -8,7 +8,7 @@ public class FrontRoute extends Routes {
 	@Override
 	public void config() {
 		setBaseViewPath("/front");
-		add("/dc", DcController.class,"/dc");
+		add("/", DcController.class,"/dc");
 	}
 
 }

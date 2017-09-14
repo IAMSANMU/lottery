@@ -88,7 +88,7 @@ $(function(){
 	function loadYpOdd(matchId){
 		$(".ypDiv").hide();
 		$("#ypDiv_"+matchId).show();
-		$("#ypList_"+matchId).load("/Lottery/dc/ypOdd",{matchId:matchId},function(){
+		$("#ypList_"+matchId).load("ypOdd",{matchId:matchId},function(){
 			
 		});
 	}

@@ -6,6 +6,7 @@ import com.jfinal.config.Interceptors;
 import com.jfinal.config.JFinalConfig;
 import com.jfinal.config.Plugins;
 import com.jfinal.config.Routes;
+import com.jfinal.ext.handler.ContextPathHandler;
 import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.cron4j.Cron4jPlugin;
@@ -61,7 +62,7 @@ public class BaseConfig extends JFinalConfig {
 	}
 	
 	public void configEngine(Engine me) {
-		me.setDevMode(true);
+		me.setDevMode(PropKit.getBoolean("devMode", false));
 		me.addSharedFunction("/common/_layout.html");
 		me.addSharedFunction("/common/_paginate.html");
 	}
@@ -100,6 +101,6 @@ public class BaseConfig extends JFinalConfig {
 	 * 配置处理器
 	 */
 	public void configHandler(Handlers me) {
-		
+		me.add(new ContextPathHandler("basepath"));
 	}
 }

@@ -1,4 +1,4 @@
-jdbcUrl = jdbc:mysql://localhost:3306/lottery
+jdbcUrl = jdbc:mysql://120.78.71.53:3306/lottery
 user = root
-password =sanmu
+password =iTHINK!@#456
 devMode = true
