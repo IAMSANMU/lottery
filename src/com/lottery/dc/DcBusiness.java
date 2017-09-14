@@ -88,9 +88,9 @@ public class DcBusiness {
 			for (Element tr : trEles) {
 				Elements tdEles=tr.select("td");
 				//是否完结
-				String endStr=tdEles.get(4).val();
+				String endStr=tdEles.get(4).text();
 				if(endStr.equals("完")){
-					String lineId=tdEles.get(0).val();
+					String lineId=tdEles.get(0).text();
 					//全场比分
 					Elements hrefs=tdEles.get(6).select("a");
 					String wholeScore=hrefs.get(0).text()+" - "+hrefs.get(2).text();
@@ -112,7 +112,9 @@ public class DcBusiness {
 	}
 
 	public static void main(String[] args) {
-		DcBusiness.snatchDcMatch();
+//		DcBusiness.snatchDcMatch();
+		List<DcArrange> list=snatchDcScore("170903");
+		System.out.println(list);
 	}
 
 }

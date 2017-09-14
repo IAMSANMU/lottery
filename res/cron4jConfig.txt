@@ -2,7 +2,7 @@ cron4j=termTask,dcInfoTask,oddsTask
 termTask.cron=*/2 * * * *
 termTask.class=com.lottery.task.TermTask
 termTask.daemon=true
-termTask.enable=true
+termTask.enable=false
 
 dcInfoTask.cron=*/2 * * * *
 dcInfoTask.class=com.lottery.task.DcInfoTask
@@ -12,5 +12,5 @@ dcInfoTask.enable=true
 oddsTask.cron=*/2 * * * *
 oddsTask.class=com.lottery.task.DcOddsTask
 oddsTask.daemon=true
-oddsTask.enable=true
+oddsTask.enable=false
 

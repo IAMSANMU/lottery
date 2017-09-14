@@ -31,7 +31,7 @@ public class DcInfoTask implements Runnable {
 	public void run() {
 		LotteryTerm term = termService.getCurrentTerm();
 		if (term != null) {
-			LotteryTerm prevTerm=termService.getTerm(term.getTerm());
+			LotteryTerm prevTerm = termService.getTerm(term.getTerm());
 			try {
 				log.info("---[对阵抓取]北单赛事维护开始-----");
 				snatchMatch(term);
@@ -51,8 +51,8 @@ public class DcInfoTask implements Runnable {
 			try {
 				log.info("---[对阵截止]北单赛事截止开始-----");
 				stop(term);
-				//更新上一期
-				if(prevTerm!=null){
+				// 更新上一期
+				if (prevTerm != null) {
 					stop(prevTerm);
 				}
 				log.info("---[对阵截止]北单赛事截止结束-----");
@@ -61,20 +61,20 @@ public class DcInfoTask implements Runnable {
 				log.info("---[对阵截止]北单赛事截止错误-----");
 			}
 			try {
-				log.info("---[赛果抓取"+term.getTerm()+"]北单赛事赛果抓取开始-----");
+				log.info("---[赛果抓取" + term.getTerm() + "]北单赛事赛果抓取开始-----");
 				snatchScore(term);
-				log.info("---[赛果抓取"+term.getTerm()+"]北单赛事赛果抓取结束-----");
+				log.info("---[赛果抓取" + term.getTerm() + "]北单赛事赛果抓取结束-----");
 			} catch (Exception e1) {
 				e1.printStackTrace();
-				log.info("---[赛果抓取"+term.getTerm()+"]北单赛事赛果抓取错误-----");
+				log.info("---[赛果抓取" + term.getTerm() + "]北单赛事赛果抓取错误-----");
 			}
 			try {
-				log.info("---[赛果抓取"+prevTerm.getTerm()+"]北单赛事赛果抓取开始-----");
+				log.info("---[赛果抓取" + prevTerm.getTerm() + "]北单赛事赛果抓取开始-----");
 				snatchScore(prevTerm);
-				log.info("---[赛果抓取"+prevTerm.getTerm()+"]北单赛事赛果抓取结束-----");
+				log.info("---[赛果抓取" + prevTerm.getTerm() + "]北单赛事赛果抓取结束-----");
 			} catch (Exception e1) {
 				e1.printStackTrace();
-				log.info("---[赛果抓取"+prevTerm.getTerm()+"]北单赛事赛果抓取错误-----");
+				log.info("---[赛果抓取" + prevTerm.getTerm() + "]北单赛事赛果抓取错误-----");
 			}
 		}
 
@@ -86,47 +86,45 @@ public class DcInfoTask implements Runnable {
 		// 判断数据库sp是否有变化
 		List<DcSpfSp> dbList = spService.getSpList(term.getTerm());
 		for (DcSpfSp db : dbList) {
-			dbMap.put(db.getLineId(),db);
+			dbMap.put(db.getLineId(), db);
 		}
-		
+
 		List<DcArrange> dbDcList = dcService.getDcList(term);
 		Map<String, DcArrange> dbDcMap = new HashMap<String, DcArrange>();
 		for (DcArrange dc : dbDcList) {
 			dbDcMap.put(dc.getLineId(), dc);
 		}
-		
-		
+
 		for (DcSpfSp sp : list) {
-			if(dbMap.containsKey(sp.getLineId())){
-				DcSpfSp db=dbMap.get(sp.getLineId());
-				if (!db.getSpStr().equals(sp.getSpStr())) {
-					// sp有变化保存
-					log.info("[sp抓取]===term" + sp.getTerm() + "的lineId的" + sp.getLineId() + "sp有变化保存");
-					sp.setMatchId(db.getId()).save();
-				}
-			}else{ //sp不存在 ,保存数据
-				
-				DcArrange dc=dbDcMap.get(sp.getLineId());
-				if(dc!=null){
+			DcArrange dc = dbDcMap.get(sp.getLineId());
+			if (dc != null) {
+				if (dbMap.containsKey(sp.getLineId())) {
+					DcSpfSp db = dbMap.get(sp.getLineId());
+					if (!db.getSpStr().equals(sp.getSpStr())) {
+						// sp有变化保存
+						log.info("[sp抓取]===term" + sp.getTerm() + "的lineId的" + sp.getLineId() + "sp有变化保存");
+						sp.setMatchId(dc.getId()).save();
+					}
+				} else { // sp不存在 ,保存数据
 					log.info("[sp抓取]===term" + sp.getTerm() + "的lineId的" + sp.getLineId() + "抓取新sp保存");
 					sp.setMatchId(dc.getId()).save();
 				}
 			}
 		}
-		
+
 	}
 
-	private void snatchScore(LotteryTerm term){
-		List<DcArrange> snatchList= DcBusiness.snatchDcScore(term.getTerm());
-		
+	private void snatchScore(LotteryTerm term) {
+		List<DcArrange> snatchList = DcBusiness.snatchDcScore(term.getTerm());
+
 		List<DcArrange> dbList = dcService.getDcList(term);
 		Map<String, DcArrange> dbMap = new HashMap<String, DcArrange>();
 		for (DcArrange dc : dbList) {
 			dbMap.put(dc.getLineId(), dc);
 		}
 		for (DcArrange dc : snatchList) {
-			if(dbMap.containsKey(dc.getLineId())) {
-				DcArrange dbDc=dbMap.get(dc.getLineId());
+			if (dbMap.containsKey(dc.getLineId())) {
+				DcArrange dbDc = dbMap.get(dc.getLineId());
 				String half = dc.getHalfScore();
 				String whole = dc.getWholeScore();
 				String dbHalf = dbDc.getHalfScore();
@@ -135,11 +133,12 @@ public class DcInfoTask implements Runnable {
 					dbDc.setHalfScore(half);
 					dbDc.setWholeScore(whole);
 					dbDc.update();
-					log.info("----[对阵信息]保存比赛结果----");
+					log.info("----[对阵信息]保存比赛结果 "+dbDc.getHome()+"VS"+dbDc.getGuest()+"----");
 				}
 			}
 		}
 	}
+
 	private void stop(LotteryTerm term) {
 		dcService.stopMatch(term);
 	}
@@ -160,7 +159,7 @@ public class DcInfoTask implements Runnable {
 						+ dc.getGuest() + ";比赛时间:" + DateUtil.getDateTimeFormat(dc.getMatchTime()) + ";让球:"
 						+ dc.getRqs() + "---");
 			} else {
-				
+
 			}
 		}
 	}
