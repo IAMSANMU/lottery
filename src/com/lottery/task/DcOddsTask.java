@@ -1,5 +1,7 @@
 package com.lottery.task;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -9,13 +11,17 @@ import org.apache.log4j.Logger;
 import com.lottery.common.model.DcArrange;
 import com.lottery.common.model.DcDxp;
 import com.lottery.common.model.DcOp;
+import com.lottery.common.model.DcSpfSp;
 import com.lottery.common.model.DcYp;
 import com.lottery.common.model.LotteryTerm;
+import com.lottery.common.utils.DateUtil;
 import com.lottery.dc.DcService;
 import com.lottery.odds.dxp.DxpBusiness;
 import com.lottery.odds.dxp.DxpService;
 import com.lottery.odds.op.OpBusiness;
 import com.lottery.odds.op.OpService;
+import com.lottery.odds.sp.SpBusiness;
+import com.lottery.odds.sp.SpService;
 import com.lottery.odds.yp.YpBusiness;
 import com.lottery.odds.yp.YpService;
 import com.lottery.term.TermService;
@@ -29,12 +35,23 @@ public class DcOddsTask implements Runnable {
 	private YpService ypService = new YpService();
 	private OpService opService = new OpService();
 	private DxpService dxpService = new DxpService();
+	private SpService spService = new SpService();
 	private static Logger log = Logger.getLogger(DcOddsTask.class);
 
 	public void run() {
 		LotteryTerm term = termService.getCurrentTerm();
 		if (term != null) {
 			List<DcArrange> dcList = dcService.getDcList(term);
+			
+			try {
+				log.info("---[sp抓取]北单sp维护开始-----");
+				snatchSp(term);
+				log.info("---[sp抓取]北单sp维护结束-----");
+			} catch (Exception e) {
+				e.printStackTrace();
+				log.info("---[sp抓取]北单sp维护错误-----");
+			}
+			
 			try {
 				log.info("----------[yp抓取]抓取亚盘开始-------------");
 				snatchYp(dcList);
@@ -64,6 +81,40 @@ public class DcOddsTask implements Runnable {
 
 	}
 
+	private void snatchSp(LotteryTerm term) throws Exception {
+		List<DcSpfSp> list = SpBusiness.snatchOkSp(term.getTerm());
+		Map<String, DcSpfSp> dbMap = new HashMap<String, DcSpfSp>();
+		// 判断数据库sp是否有变化
+		List<DcSpfSp> dbList = spService.getSpList(term.getTerm());
+		for (DcSpfSp db : dbList) {
+			dbMap.put(db.getLineId(), db);
+		}
+
+		List<DcArrange> dbDcList = dcService.getDcList(term);
+		Map<String, DcArrange> dbDcMap = new HashMap<String, DcArrange>();
+		for (DcArrange dc : dbDcList) {
+			dbDcMap.put(dc.getLineId(), dc);
+		}
+
+		for (DcSpfSp sp : list) {
+			DcArrange dc = dbDcMap.get(sp.getLineId());
+			if (dc != null) {
+				if (dbMap.containsKey(sp.getLineId())) {
+					DcSpfSp db = dbMap.get(sp.getLineId());
+					if (!db.getSpStr().equals(sp.getSpStr())) {
+						// sp有变化保存
+						log.info("[sp抓取]===term" + sp.getTerm() + "的lineId的" + sp.getLineId() + "sp有变化保存");
+						sp.setMatchId(dc.getId()).save();
+					}
+				} else { // sp不存在 ,保存数据
+					log.info("[sp抓取]===term" + sp.getTerm() + "的lineId的" + sp.getLineId() + "抓取新sp保存");
+					sp.setMatchId(dc.getId()).save();
+				}
+			}
+		}
+
+	}
+	
 	private void snatchOp(List<DcArrange> matchList) throws Exception {
 		for (DcArrange match : matchList) {
 			String oddId = match.getOddId();
@@ -189,18 +240,25 @@ public class DcOddsTask implements Runnable {
 					for (String company : nowYpMap.keySet()) {
 						DcYp dbNowYp = dbNowYpMap.get(company);
 						DcYp nowYp = nowYpMap.get(company);
-						if (dbNowYp == null) {
-							nowYp.setMatchId(match.getId());
-							nowYp.setTerm(match.getTerm());
-							nowYp.setLineId(match.getLineId());
-							nowYp.save();
-						} else {
-							// 判断时间是否一致,不一致就保持
-							if (dbNowYp.getTime().compareTo(nowYp.getTime())!=0) {
+						DcYp firstYp=firstYpMap.get(company);
+						
+						//初盘不等于即时盘, 则保存
+						if(firstYp!=null && nowYp.getTime().compareTo(firstYp.getTime())!=0){
+							//即时盘跟数据库对比
+							if (dbNowYp == null) {
 								nowYp.setMatchId(match.getId());
 								nowYp.setTerm(match.getTerm());
 								nowYp.setLineId(match.getLineId());
 								nowYp.save();
+							} else {
+								// 判断时间是否一致,不一致就保持
+								//抓取到的时间要大于数据库的时间
+								if (nowYp.getTime().compareTo(dbNowYp.getTime())==1) {
+									nowYp.setMatchId(match.getId());
+									nowYp.setTerm(match.getTerm());
+									nowYp.setLineId(match.getLineId());
+									nowYp.save();
+								}
 							}
 						}
 					}
@@ -255,18 +313,24 @@ public class DcOddsTask implements Runnable {
 					for (String company : nowDxpMap.keySet()) {
 						DcDxp dbNowDxp = dbNowDxpMap.get(company);
 						DcDxp nowDxp = nowDxpMap.get(company);
-						if (dbNowDxp == null) {
-							nowDxp.setMatchId(match.getId());
-							nowDxp.setTerm(match.getTerm());
-							nowDxp.setLineId(match.getLineId());
-							nowDxp.save();
-						} else {
-							// 判断时间是否一致,不一致就保持
-							if (dbNowDxp.getTime().compareTo(nowDxp.getTime())!=0) {
+						DcDxp firstDxp=firstDxpMap.get(company);
+						
+						//初盘不等于即时盘, 则保存
+						if(firstDxp!=null && nowDxp.getTime().compareTo(firstDxp.getTime())!=0){
+							if (dbNowDxp == null) {
 								nowDxp.setMatchId(match.getId());
 								nowDxp.setTerm(match.getTerm());
 								nowDxp.setLineId(match.getLineId());
 								nowDxp.save();
+							} else {
+								// 判断时间是否一致,不一致就保持
+								//抓取到的时间要大于数据库的时间
+								if (nowDxp.getTime().compareTo(dbNowDxp.getTime())==1) {
+									nowDxp.setMatchId(match.getId());
+									nowDxp.setTerm(match.getTerm());
+									nowDxp.setLineId(match.getLineId());
+									nowDxp.save();
+								}
 							}
 						}
 					}
@@ -279,9 +343,13 @@ public class DcOddsTask implements Runnable {
 		}
 	}
 	public static void main(String[] args) {
-		Double a=1.5d;
-		Double b=1.5d;
-		System.out.println(a.doubleValue()==b.doubleValue());
+		Calendar cal=Calendar.getInstance();
+		Date a=cal.getTime();
+		cal.add(Calendar.DAY_OF_MONTH, 1);
+		Date b=cal.getTime();
+		System.out.println(DateUtil.getDateTimeFormat(a));
+		System.out.println(DateUtil.getDateTimeFormat(b));
+		System.out.println(b.compareTo(a));
 	}
 
 }

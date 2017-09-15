@@ -123,7 +123,7 @@ public class DxpBusiness {
 					Date time = DateUtil.formatDate(DateUtil.getNowYear()+"-"+timeStr, "yyyy-MM-dd HH:mm");
 					dxp.setTime(time);
 					dxp.setCreateTime(new Date());
-					dxp.setIsFirst(false);
+					dxp.setIsFirst(true);
 					list.add(dxp);
 				}
 			}

@@ -1,4 +1,4 @@
-jdbcUrl = jdbc:mysql://120.78.71.53:3306/lottery
+jdbcUrl = jdbc:mysql://120.78.71.53:3306/kf_lottery
 user = root
 password =iTHINK!@#456
 devMode = true

@@ -24,7 +24,7 @@ public class DcInfoTask implements Runnable {
 
 	private DcService dcService = new DcService();
 	private TermService termService = new TermService();
-	private SpService spService = new SpService();
+
 	private static Logger log = Logger.getLogger(TermTask.class);
 
 	@Override
@@ -40,14 +40,7 @@ public class DcInfoTask implements Runnable {
 				e.printStackTrace();
 				log.info("---北单期数维护错误-----");
 			}
-			try {
-				log.info("---[sp抓取]北单sp维护开始-----");
-				snatchSp(term);
-				log.info("---[sp抓取]北单sp维护结束-----");
-			} catch (Exception e) {
-				e.printStackTrace();
-				log.info("---[sp抓取]北单sp维护错误-----");
-			}
+		
 			try {
 				log.info("---[对阵截止]北单赛事截止开始-----");
 				stop(term);
@@ -80,39 +73,7 @@ public class DcInfoTask implements Runnable {
 
 	}
 
-	private void snatchSp(LotteryTerm term) throws Exception {
-		List<DcSpfSp> list = SpBusiness.snatchOkSp(term.getTerm());
-		Map<String, DcSpfSp> dbMap = new HashMap<String, DcSpfSp>();
-		// 判断数据库sp是否有变化
-		List<DcSpfSp> dbList = spService.getSpList(term.getTerm());
-		for (DcSpfSp db : dbList) {
-			dbMap.put(db.getLineId(), db);
-		}
 
-		List<DcArrange> dbDcList = dcService.getDcList(term);
-		Map<String, DcArrange> dbDcMap = new HashMap<String, DcArrange>();
-		for (DcArrange dc : dbDcList) {
-			dbDcMap.put(dc.getLineId(), dc);
-		}
-
-		for (DcSpfSp sp : list) {
-			DcArrange dc = dbDcMap.get(sp.getLineId());
-			if (dc != null) {
-				if (dbMap.containsKey(sp.getLineId())) {
-					DcSpfSp db = dbMap.get(sp.getLineId());
-					if (!db.getSpStr().equals(sp.getSpStr())) {
-						// sp有变化保存
-						log.info("[sp抓取]===term" + sp.getTerm() + "的lineId的" + sp.getLineId() + "sp有变化保存");
-						sp.setMatchId(dc.getId()).save();
-					}
-				} else { // sp不存在 ,保存数据
-					log.info("[sp抓取]===term" + sp.getTerm() + "的lineId的" + sp.getLineId() + "抓取新sp保存");
-					sp.setMatchId(dc.getId()).save();
-				}
-			}
-		}
-
-	}
 
 	private void snatchScore(LotteryTerm term) {
 		List<DcArrange> snatchList = DcBusiness.snatchDcScore(term.getTerm());
