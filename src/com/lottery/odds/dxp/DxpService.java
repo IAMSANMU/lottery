@@ -3,6 +3,7 @@ package com.lottery.odds.dxp;
 import java.util.List;
 
 import com.lottery.common.model.DcDxp;
+import com.lottery.common.model.DcYp;
 
 public class DxpService {
 	private static DcDxp dao = new DcDxp().dao();
@@ -17,6 +18,10 @@ public class DxpService {
 		return dao.find(sql,term,company);
 		
 		
+	}
+	public List<DcDxp> getHistoryList(int matchId,String company){
+		String sql="select * from dc_dxp   where company=? and matchId=? order by time desc";
+		return dao.find(sql,company,matchId);
 	}
 
 }

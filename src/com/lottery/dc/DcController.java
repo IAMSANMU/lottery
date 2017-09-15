@@ -69,6 +69,37 @@ public class DcController extends Controller {
 		
 		
 	}
+	
+	
+	public void dxpOdd(){
+		String matchId=getPara("matchId");
+		if(StringUtils.isNotEmpty(matchId)){
+			int mid=Integer.parseInt(matchId);
+			//获取对阵让球信息
+			DcArrange dcInfo=dcService.getById(mid);
+			
+			String company = "皇冠";
+			List<DcDxp> list=dxpService.getHistoryList(mid, company);
+//			for (DcYp dcYp : list) {
+//				dcYp.getNewylb(dcSp, dcInfo.getRqs());
+//			}
+			setAttr("list",list);
+			render("ypData.html");
+		}else{
+			renderText("参数错误");
+		}
+		
+	}
+	
+	public void opOdd(){
+		
+		
+	}
+	
+	
+	
+	
+	
 	private void getInfo(String term) {
 		boolean isBack=false;
 		LotteryTerm currentTerm = null;

@@ -117,6 +117,9 @@ public class DcOddsTask implements Runnable {
 	
 	private void snatchOp(List<DcArrange> matchList) throws Exception {
 		for (DcArrange match : matchList) {
+			if(match.getStatus()==1){ //停售的不抓取
+				continue;
+			}
 			String oddId = match.getOddId();
 			try {
 				if (oddId != null) {
@@ -138,9 +141,9 @@ public class DcOddsTask implements Runnable {
 
 					for (DcOp op : snatchList) {
 						if (op.getIsFirst()) {
-							nowOpMap.put(op.getCompany(), op);
-						} else {
 							firstOpMap.put(op.getCompany(), op);
+						} else {
+							nowOpMap.put(op.getCompany(), op);
 						}
 					}
 					// 保存初盘
@@ -155,7 +158,7 @@ public class DcOddsTask implements Runnable {
 					}
 					// 保存即时盘
 					for (String company : nowOpMap.keySet()) {
-						DcOp dbNowOp = nowOpMap.get(company);
+						DcOp dbNowOp = dbNowOpMap.get(company);
 						DcOp nowOp = nowOpMap.get(company);
 						if (dbNowOp == null) {
 							nowOp.setMatchId(match.getId());
@@ -199,6 +202,9 @@ public class DcOddsTask implements Runnable {
 
 	private void snatchYp(List<DcArrange> matchList) throws Exception {
 		for (DcArrange match : matchList) {
+			if(match.getStatus()==1){ //停售的不抓取
+				continue;
+			}
 			String oddId = match.getOddId();
 			try {
 				if (oddId != null) {
@@ -273,6 +279,9 @@ public class DcOddsTask implements Runnable {
 
 	private void snatchDxp(List<DcArrange> matchList) throws Exception {
 		for (DcArrange match : matchList) {
+			if(match.getStatus()==1){ //停售的不抓取
+				continue;
+			}
 			String oddId = match.getOddId();
 			try {
 				if (oddId != null) {

@@ -14,7 +14,6 @@ import org.jsoup.select.Elements;
 import com.lottery.common.model.DcArrange;
 import com.lottery.common.model.DcDxp;
 import com.lottery.common.utils.DateUtil;
-import com.lottery.common.utils.HttpUtil;
 import com.lottery.odds.OddsBusiness;
 
 public class DxpBusiness {
@@ -97,7 +96,7 @@ public class DxpBusiness {
 			Document doc = Jsoup.parse(html);
 			Elements trEles = doc.select("#datatb tr[id]");
 			for (Element trEle : trEles) {
-				String company = trEle.child(1).text().trim();
+				String company =  trEle.child(1).text().trim().replace("  ", "");
 				String cllCompany = OddsBusiness.WBW2CLLCOMPANY.get(company);
 				if (StringUtils.isNotEmpty(cllCompany)) {
 					DcDxp dxp = new DcDxp();
