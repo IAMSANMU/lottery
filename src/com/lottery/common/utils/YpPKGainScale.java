@@ -66,7 +66,7 @@ public class YpPKGainScale {
 		Double[] myBetScale = getNewBetPercent(dcBetScale, concede, pankou);
 		if (myBetScale[0] == null || myBetScale[1] == null) {
 			result[0] = null;
-			result[0] = null;
+			result[1] = null;
 		} else {
 			result[0] = myBetScale[1] - (myBetScale[0] * waterLevel[0]);
 			result[1] = myBetScale[0] - (myBetScale[1] * waterLevel[1]);

@@ -12,5 +12,5 @@ dcInfoTask.enable=false
 oddsTask.cron=*/2 * * * *
 oddsTask.class=com.lottery.task.DcOddsTask
 oddsTask.daemon=true
-oddsTask.enable=true
+oddsTask.enable=false
 

@@ -6,11 +6,14 @@ var _config={
 	stopRace:[],
 	stopRaceDate:[],
 	showStop:false,
-	fiveGameStr:",英超,德甲,西甲,意甲,法甲,"
+	fiveGameStr:",英超,德甲,西甲,意甲,法甲,",
+	hylbArr:[],
+	gylbArr:[],
+	pkArr:[]
 }
 
 $(function(){
-	//加载数据
+	// 加载数据
 	function loadInit(){
 		var raceList=$("#raceTable > tbody.race");
 		var len=raceList.length;
@@ -30,6 +33,18 @@ $(function(){
 			if(isStop){
 				_config.stopRace.push(_this[0]);
 			}
+			_config.hylbArr.push({
+				"matchKey":matchKey*1,
+				"filter":_this.data("hylb")*1		
+			});
+			_config.gylbArr.push({
+				"matchKey":matchKey*1,
+				"filter":_this.data("gylb")*1
+			})
+			_config.pkArr.push({
+				"matchKey":matchKey*1,
+				"filter":_this.data("pk")*1
+			});
 		}
 		
 		
@@ -63,7 +78,7 @@ $(function(){
 		$("#hideCount,#hideCount_filte").html(hideRaces.length);
 	}
 	
-	//还原隐藏
+	// 还原隐藏
 	function reShow(){
 		$("#filter :checkbox").attr("checked",true);
 		var $infos=$.matchInfo();
@@ -72,7 +87,7 @@ $(function(){
 		});
 		domToggle();
 	}
-	//同步"已隐藏场数的"位置
+	// 同步"已隐藏场数的"位置
 	function synOffset(){
 		var showRaceDate=$("#raceTable > tbody.race_date:visible");
 		if(showRaceDate.length<1){
@@ -84,7 +99,7 @@ $(function(){
 		}
 	}
 	
-	//加载亚盘信息
+	// 加载亚盘信息
 	function loadYpOdd(matchId){
 		$(".ypDiv").hide();
 		$("#ypDiv_"+matchId).show();
@@ -92,21 +107,21 @@ $(function(){
 			
 		});
 	}
-	//点击已停售
+	// 点击已停售
 	$("#stopCheck").click(function(){
 		_config.showStop=this.checked;
-		if(_config.showStop){ //显示
+		if(_config.showStop){ // 显示
 			$(_config.stopRace).removeClass("hidden");
 			$(_config.stopRaceDate).removeClass("hidden");
 		}else{
 			$(_config.stopRace).addClass("hidden");
 			$(_config.stopRaceDate).addClass("hidden");
 		}
-		//还原隐藏的场次
+		// 还原隐藏的场次
 		reShow();
 	});
 	$("#worldcupGames").click(function(){
-		//勾选5大联赛
+		// 勾选5大联赛
 		var isShow=!$(this).hasClass("wc_select");
 		$("#gameNameFilte :checkbox").each(function(){
 			var val=","+$(this).val()+",";
@@ -118,13 +133,13 @@ $(function(){
 		});
 		filte();
 	});
-	//日期回查
+	// 日期回查
 	$("#termValue").change(function(){
 		var term=$(this).val();
 		location.href=location.pathname+"?term="+term;
 	});
 	
-	//开赛时间与截止时间切换事件
+	// 开赛时间与截止时间切换事件
 	$("a.turntab").click(function(){
 		if($(this).hasClass("current")){
 			return false;
@@ -136,7 +151,7 @@ $(function(){
 		$("#raceTable").find("."+hide).hide();
 	});
 	
-	//赛事赛选begin
+	// 赛事赛选begin
 	$("#filterSelBox").on("click","#filterSwitch",function(){
 		$("#filterSelBox").toggleClass("f_hover");
 	}).on("click","#filterClose",function(){
@@ -165,12 +180,12 @@ $(function(){
 	}).on("click","#recover_filte",function(){
 		reShow();
 	})
-	//end 赛事筛选
+	// end 赛事筛选
 	$("#recover").click(function(){
 		reShow();
 	});
 
-	//绑定table事件
+	// 绑定table事件
 	$("#raceTable").on("hover","tbody.race",function(e){
 		if(e.type=="mouseenter"){
 			$(this).find("td.race_num  a.game_num").addClass("game_num_hover");
@@ -183,7 +198,7 @@ $(function(){
 			$(this).find("td.race_num  a.game_num").removeClass("game_num_hover");
 			$(this).find("td.race_num  a.game_num > s").removeClass("s_hover");
 		}
-	}).on("click","a.game_num",function(){//删除
+	}).on("click","a.game_num",function(){// 删除
 		var matchKey=$(this).closest("tbody").attr("matchkey");
 		var $info=$.matchInfo(matchKey);
 		if($info.top){
@@ -192,20 +207,20 @@ $(function(){
 		$info.del=true;
 		domToggle(matchKey);
 		
-	}).on("click","a.att_text",function(){//置顶
+	}).on("click","a.att_text",function(){// 置顶
 		$(this).removeClass("att_text").addClass("att_text_down").html("↓").attr("title","取消置顶");
 		var matchKey=$(this).closest("tbody").attr("matchkey");
 		var $info=$.matchInfo(matchKey);
 		$info.top=true;
 		
-		//插入个标记,记录原来位置
+		// 插入个标记,记录原来位置
 		var dom=$($info.dom);
 		var cloneDom=$("<tbody></tbody>");
 		cloneDom.addClass("raceClone").attr("showKey",matchKey).hide();
 		dom.before(cloneDom);
 		_config.topZone.before(dom);
 		synOffset();
-	}).on("click","a.att_text_down",function(){//取消置顶
+	}).on("click","a.att_text_down",function(){// 取消置顶
 		$(this).removeClass("att_text_down").addClass("att_text").html("↑").attr("title","置顶");
 		
 		var matchKey=$(this).closest("tbody").attr("matchkey");
@@ -243,7 +258,7 @@ $(function(){
 		var matchId=tbody.data("matchid");
 		loadYpOdd(matchId);
 	})
-	//raceTable 绑定时间end
+	// raceTable 绑定时间end
 	
 	function divMove(){
 		var $div=$("#float_div");
@@ -251,7 +266,7 @@ $(function(){
 		var divTop=$div.offset().top;
 		divMove_base($div,divTop);
 	}
-	//表头 跟随事件
+	// 表头 跟随事件
 	function divMove_base($div,divtop){
 		var top = $(document).scrollTop();
 		if(divtop < top){
@@ -264,9 +279,9 @@ $(function(){
 	$(window).bind("scroll",function(){
 		divMove()
 	});
-	//赛事筛选
+	// 赛事筛选
 	function filte(){
-		var filteStop=_config.showStop;//是否筛选已截止的赛事
+		var filteStop=_config.showStop;// 是否筛选已截止的赛事
 		var showRace=[];
 		var hideRace=[];
 		
@@ -304,7 +319,7 @@ $(function(){
 					}
 					isHide=gameHideFlag;
 				}
-				//若赛事名无限制则判断时间
+				// 若赛事名无限制则判断时间
 				if(!isHide ){
 					var timeHideFlag=true;
 					var endTime=dom.attr("endTime");
@@ -316,7 +331,7 @@ $(function(){
 					}
 					isHide=timeHideFlag;
 				}
-				//让球判断
+				// 让球判断
 				if(!isHide ){
 					var timeHideFlag=true;
 					for(var i=0;i<rqs.length;i++){
@@ -361,6 +376,59 @@ $(function(){
 		}else{
 			$("#worldcupGames").removeClass("wc_select");
 		}
+	}
+	// 盈利比排序
+	// 盘口排序
+	$(".sortYp").click(function(){
+		var sort=$(this).data("sort");
+		var sortArr=sort=="hylb"?_config.hylbArr:(sort=="gylb"?_config.gylbArr:_config.pkArr);
+		var sortType=$(this).data("stype") || 0;
+		
+		sortType=(++sortType)>2?0:sortType;
+		//排序
+		sortArr=arraySort(sortArr,sortType);
+		//排序dom
+		//先隐藏,再排序,再显示 避免多次渲染dom
+		
+		$("#raceTable").hide();
+		var raceDates=$("#raceTable tbody.race_date");
+		for(var i in sortArr){
+			var tr=sortArr[i];
+			var info=$.matchInfo(tr.matchKey);
+			var dom=info.dom;
+			if(!info.top){
+				raceDates.filter("[data-time='"+info.endTime+"']").after(dom);
+				
+			}
+		}
+		$("#raceTable").show();
+		
+		var sortHtml=sortType==1?"↑":(sortType==2?"↓":"");
+		
+		$(".sortYp").data("stype",0);
+		$(".sortYp em").empty();
+		
+		$(this).data("stype",sortType);
+		$(this).find("em").text(sortHtml);
+		
+	});
+	
+	function arraySort(arrays,orderBy){
+		//0,1,2=还原,升序,降序
+		if(orderBy==1){
+			arrays.sort(function(a,b){
+				return a["filter"]<b["filter"]?1:-1;
+			})
+		}else if(orderBy==2) {
+			arrays.sort(function(a,b){
+				return a["filter"] > b["filter"]?1:-1;
+			})
+		}else{
+			arrays.sort(function(a,b){
+				return b["matchKey"]>a["matchKey"]?1:-1;
+			});
+		}
+		return arrays;
 	}
 	
 });

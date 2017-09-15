@@ -76,7 +76,7 @@
 /*数据表公共样式*/
 .match_table{position:relative;border-top: none;border-right:none;border-bottom: 1px solid #cbcbcb;border-left: 1px solid #cbcbcb;border-spacing:0;/*border-collapse:collapse;border-spacing:0;border: 1px solid #cbcbcb;*/width:100%;z-index:0;}
 .match_table th,
-.match_table td{border-top:1px solid #cbcbcb;border-right:1px solid #cbcbcb;border-bottom:none;border-left:0;/*border:#cbcbcb 1px solid;*/font-weight:normal;font-family:Arial;text-align:center;color:#333333;}
+.match_table td{border-top:1px solid #cbcbcb;border-right:1px solid #cbcbcb;border-bottom:none;border-left:0;/*border:#cbcbcb 1px solid;*/font-weight:normal;font-family:Arial;text-align:center;color:#333333;height:30px;}
 .match_table th{padding:3px 0;}
 .match_table i{font-style:normal; }
 .match_table .tips{display:inline-block;*display:inline;*zoom:1;width:12px;height:12px;margin:0 3px;background:#b2b2b2; vertical-align:middle;font-size:11px;-moz-border-radius:5px;-webkit-border-radius:5px;border-radius:5px;}
@@ -181,6 +181,7 @@
 .match_table tbody .handicap .s_rinfo{font-weight:bold;}
 .match_table tbody .handicap .s_rinfo .red{color:#af0000;}
 .match_table tbody .handicap .s_rinfo .green{color:#075b06;}
+.match_table tbody .race_sp {background:#BBD7F1}
 
 .race_bf .jq,.race_bf .s{color: #AB0000;font-weight: bold;font-size: 14px;}
 .bm_hd_in .title .match{padding-left:90px;}

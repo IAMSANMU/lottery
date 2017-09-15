@@ -29,6 +29,10 @@ public class DcYp extends BaseDcYp<DcYp> {
 			if (result[0] != null) {
 				DecimalFormat df = new DecimalFormat("0%");
 				DecimalFormat df1 = new DecimalFormat("0.0");
+				DecimalFormat df2 = new DecimalFormat("#.00");
+				setHylb(Double.parseDouble(df2.format(result[0])));
+				setGylb(Double.parseDouble(df2.format(result[1])));
+				
 				setHomeYlb(df.format(result[0]));
 				setGuestYlb(df.format(result[1]));
 				setHomeIsMinus(result[0]<0);
@@ -41,6 +45,8 @@ public class DcYp extends BaseDcYp<DcYp> {
 
 	// 盈利比
 	private String homeYlb;
+	private Double hylb;
+	private Double gylb;
 	private Boolean homeIsMinus;//是否负数
 
 	private Boolean guestIsMinus;//是否负数
@@ -85,6 +91,22 @@ public class DcYp extends BaseDcYp<DcYp> {
 
 	public void setGuestIsMinus(Boolean guestIsMinus) {
 		this.guestIsMinus = guestIsMinus;
+	}
+
+	public Double getHylb() {
+		return hylb;
+	}
+
+	public void setHylb(Double hylb) {
+		this.hylb = hylb;
+	}
+
+	public Double getGylb() {
+		return gylb;
+	}
+
+	public void setGylb(Double gylb) {
+		this.gylb = gylb;
 	}
 
 }

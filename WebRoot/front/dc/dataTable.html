@@ -66,9 +66,9 @@
 				<th class="">主队</th>
 				<th class="">让球</th>
 				<th class="">客队</th>
-				<th class="">主队盈利</th>
-				<th class="">盘口</th>
-				<th class="">客队盈利</th>
+				<th class="sortYp" style="cursor: pointer;" data-sort="hylb">主队盈利<em></em></th>
+				<th class="sortYp" style="cursor: pointer;" data-sort="pk">盘口<em></em></th>
+				<th class="sortYp" style="cursor: pointer;" data-sort="gylb">客队盈利<em></em></th>
 				<th class="">大球</th>
 				<th class="">盘口</th>
 				<th class="">小球</th>
@@ -129,7 +129,7 @@
 						#if(race_cnt==0)
 							 hidden STOP_BUY 
 						#end
-					">
+					" data-time="#(x.intTime)">
 						<tr>
 							<th colspan="21">
 								<div class="race_date_sprite">
@@ -144,7 +144,11 @@
 		<tbody
 			class="race #if(for.odd) highlight #end  #if(x.status!=0) STOP_BUY #if(!isBack) hidden #end  #end "
 			matchKey="#(x.lineId)" gameName="#(x.matchName)" concede="#(x.rqs)" data-matchId="#(x.id)"
-			endTime="#(x.intTime)">
+			endTime="#(x.intTime)"
+			data-hylb='#(ypMap["Y_"+x.id].hylb ??-100)'
+			data-gylb='#(ypMap["Y_"+x.id].gylb ??-100)'
+			data-pk='#(ypMap["y_"+x.numPankou??-100])'
+			>
 			<tr>
 				<td class="race_num"><a href="javascript:;" class="game_num"
 					title="隐藏"> #(x.lineId)<s></s>
@@ -189,9 +193,9 @@
 				<td><span class="race_tzb">
 						#(spMap["S_"+x.id].guestBetStr??) </span> <span class="race_op"
 					style="display: none"> #(opMap["O_"+x.id].guest??) </span></td>
-				<td>#(spMap["S_"+x.id].homeSp??)</td>
-				<td>#(spMap["S_"+x.id].drawSp??)</td>
-				<td>#(spMap["S_"+x.id].guestSp??)</td>
+				<td class="race_sp">#(spMap["S_"+x.id].homeSp??)</td>
+				<td class="race_sp">#(spMap["S_"+x.id].drawSp??)</td>
+				<td class="race_sp">#(spMap["S_"+x.id].guestSp??)</td>
 				<td><a target="_blank"
 					href="http://odds.500.com/fenxi/shuju-#(x.oddId).shtml">析</a>
 					#include("yp.html")
