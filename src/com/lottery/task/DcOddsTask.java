@@ -82,7 +82,7 @@ public class DcOddsTask implements Runnable {
 	}
 
 	private void snatchSp(LotteryTerm term) throws Exception {
-		List<DcSpfSp> list = SpBusiness.snatchOkSp(term.getTerm());
+		List<DcSpfSp> list = SpBusiness.snatchAiboSP(term.getTerm());
 		Map<String, DcSpfSp> dbMap = new HashMap<String, DcSpfSp>();
 		// 判断数据库sp是否有变化
 		List<DcSpfSp> dbList = spService.getSpList(term.getTerm());
