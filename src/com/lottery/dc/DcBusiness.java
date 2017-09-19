@@ -55,7 +55,7 @@ public class DcBusiness {
 				dc.setMatchColor(json.getString("bgColor"));
 				dc.setStatus(json.getString("disabled").equals("yes") ? 1 : 0);
 				dc.setOddId(ele.attr("fid"));
-
+				dc.setUniqueId(dc.getTerm()+"_"+dc.getLineId());
 				String homeIdStr = ele.child(3).select("a").first().attr("href");
 				String guestIdStr = ele.child(5).select("a").first().attr("href");
 				int homeId = Integer.parseInt(homeIdStr.replaceAll("500\\.com|\\D", ""));

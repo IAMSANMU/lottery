@@ -180,4 +180,13 @@ public abstract class BaseDcArrange<M extends BaseDcArrange<M>> extends Model<M>
 		return getInt("guestId");
 	}
 
+	public M setUniqueId(java.lang.String uniqueId) {
+		set("uniqueId", uniqueId);
+		return (M)this;
+	}
+
+	public java.lang.String getUniqueId() {
+		return getStr("uniqueId");
+	}
+
 }
