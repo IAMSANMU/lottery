@@ -15,7 +15,7 @@ public class DcService {
 	}
 	
 	public void stopMatch(LotteryTerm currentTerm){
-		String sql="update dc_arrange  set  status=1 where endTime <=now() and term=?";
+		String sql="update dc_arrange  set  status=1 where endTime <=now() and status=0 and term=?";
 		Db.update(sql,currentTerm.getTerm());
 	}
 	/*

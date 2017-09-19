@@ -31,7 +31,7 @@ public class DcInfoTask implements Runnable {
 	public void run() {
 		LotteryTerm term = termService.getCurrentTerm();
 		if (term != null) {
-			LotteryTerm prevTerm = termService.getTerm(term.getTerm());
+			LotteryTerm prevTerm = termService.getPrevTerm(term.getTerm());
 			try {
 				log.info("---[对阵抓取]北单赛事维护开始-----");
 				snatchMatch(term);

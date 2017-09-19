@@ -31,7 +31,7 @@ public class TermService {
 	}
 	public LotteryTerm getPrevTerm(String currentTerm){
 		LotteryTerm term=null;
-		List<LotteryTerm> list=dao.paginate(1, 1, "select * ","from lottery_term where term < ?").getList();
+		List<LotteryTerm> list=dao.paginate(1, 1, "select * ","from lottery_term where term < "+currentTerm+" order by term desc").getList();
 		if(!list.isEmpty()){
 			term=list.get(0);
 		}
