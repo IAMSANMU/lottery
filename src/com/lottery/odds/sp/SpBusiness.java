@@ -79,7 +79,7 @@ public class SpBusiness {
 			// 解析html
 			Document doc = Jsoup.parse(html);
 			term = doc.select(".choose .fr .fl").first().text();
-			term = term.replaceAll("\\D", "");
+			term = 1+term.replaceAll("\\D", "");
 		} catch (Exception e) {
 			log.error("[sp抓取]===抓取澳客当前期错误===");
 			e.printStackTrace();
@@ -94,7 +94,7 @@ public class SpBusiness {
 			String aiboTerm = dcTerm.substring(1);
 
 			String url = AIBO_SP_URL + aiboTerm;
-			String currentTerm = snatchOkCurrentTerm();
+			String currentTerm = snatchAiboCurrentTerm();
 			if (!currentTerm.equals(dcTerm)) {
 				log.error("[sp抓取]===爱波" + currentTerm + "北单当前期与本地" + dcTerm + "不一致===");
 			} else {
@@ -132,7 +132,7 @@ public class SpBusiness {
 		// String term=snatchOkCurrentTerm();
 		// System.out.println("term="+term);
 		try {
-			List<DcSpfSp> list=snatchAiboSP("170903");
+			List<DcSpfSp> list=snatchAiboSP("170904");
 			System.out.println(list.get(0).getSpStr());
 		} catch (Exception e) {
 
