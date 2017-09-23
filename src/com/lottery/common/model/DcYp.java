@@ -21,25 +21,29 @@ public class DcYp extends BaseDcYp<DcYp> {
 	 * @return
 	 */
 	public void getNewylb(DcSpfSp dcSp, int concede) {
-		if (dcSp != null ) {
-			Double[] betScale = new Double[] { dcSp.getHomeBet() / 100, dcSp.getDrawBet() / 100,
-					dcSp.getGuestBet() / 100 };
-			Double[] waterLevel = new Double[] { getHome(), getGuest() };
-			Double[] result = YpPKGainScale.getGainScale(betScale, waterLevel, concede, getNumPankou());
-			if (result[0] != null) {
-				DecimalFormat df = new DecimalFormat("0%");
-				DecimalFormat df1 = new DecimalFormat("0.0");
-				DecimalFormat df2 = new DecimalFormat("#.00");
-				setHylb(Double.parseDouble(df2.format(result[0])));
-				setGylb(Double.parseDouble(df2.format(result[1])));
-				
-				setHomeYlb(df.format(result[0]));
-				setGuestYlb(df.format(result[1]));
-				setHomeIsMinus(result[0]<0);
-				setGuestIsMinus(result[1]<0);
-				String pkylb = "(" + df1.format((Math.abs(result[0]) + Math.abs(result[1])) * 100) + ")";
-				setPkYlb(pkylb);
+		try {
+			if (dcSp != null ) {
+				Double[] betScale = new Double[] { dcSp.getHomeBet() / 100, dcSp.getDrawBet() / 100,
+						dcSp.getGuestBet() / 100 };
+				Double[] waterLevel = new Double[] { getHome(), getGuest() };
+				Double[] result = YpPKGainScale.getGainScale(betScale, waterLevel, concede, getNumPankou());
+				if (result[0] != null) {
+					DecimalFormat df = new DecimalFormat("0%");
+					DecimalFormat df1 = new DecimalFormat("0.0");
+					DecimalFormat df2 = new DecimalFormat("#.00");
+					setHylb(Double.parseDouble(df2.format(result[0])));
+					setGylb(Double.parseDouble(df2.format(result[1])));
+					
+					setHomeYlb(df.format(result[0]));
+					setGuestYlb(df.format(result[1]));
+					setHomeIsMinus(result[0]<0);
+					setGuestIsMinus(result[1]<0);
+					String pkylb = "(" + df1.format((Math.abs(result[0]) + Math.abs(result[1])) * 100) + ")";
+					setPkYlb(pkylb);
+				}
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
 		}
 	}
 
