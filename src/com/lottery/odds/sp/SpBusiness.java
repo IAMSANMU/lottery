@@ -90,34 +90,35 @@ public class SpBusiness {
 	public static List<DcSpfSp> snatchAiboSP(String dcTerm) throws Exception {
 		List<DcSpfSp> list = new ArrayList<DcSpfSp>();
 		try {
-
-			String aiboTerm = dcTerm.substring(1);
-
-			String url = AIBO_SP_URL + aiboTerm;
-			String currentTerm = snatchAiboCurrentTerm();
+			
+			String url = AIBO_DC_URL;
+			String html = HttpUtil.getUrl(url);
+			Document doc = Jsoup.parse(html);
+			String currentTerm = doc.select(".choose .fr .fl").first().text();
+			currentTerm = 1+currentTerm.replaceAll("\\D", "");
 			if (!currentTerm.equals(dcTerm)) {
 				log.error("[sp抓取]===爱波" + currentTerm + "北单当前期与本地" + dcTerm + "不一致===");
 			} else {
-				String html = HttpUtil.getUrl(url);
-				JSONObject rows = JSONObject.parseObject(html);
-				if (rows.getBoolean("Success")) {
-					JSONArray jarray = rows.getJSONArray("Data");
-					for (Object obj : jarray) {
-						JSONObject tmpObj = (JSONObject) obj;
-						String lineId = tmpObj.getString("GameNo");
-						String[] spArr = tmpObj.getString("Sp").split(",");
+				
+				Elements trs=doc.select("tr[id*=tr_]");
+				for (Element trEle : trs) {
+					try {
+						String lineId=trEle.child(0).text();
+						Elements spEle=trEle.child(7).select("span[id*=b_chk]");
+						String homeSp=spEle.get(0).select("em").first().text();
+						String drawSp=spEle.get(1).select("em").first().text();
+						String guestSp=spEle.get(2).select("em").first().text();
+						
 						DcSpfSp sp = new DcSpfSp();
 						sp.setLineId(lineId);
 						sp.setTerm(currentTerm);
-						sp.setHomeSp(Double.parseDouble(spArr[0]));
-						sp.setDrawSp(Double.parseDouble(spArr[1]));
-						sp.setGuestSp(Double.parseDouble(spArr[2]));
+						sp.setHomeSp(Double.parseDouble(homeSp));
+						sp.setDrawSp(Double.parseDouble(drawSp));
+						sp.setGuestSp(Double.parseDouble(guestSp));
 						sp.setLastUpDate(new Date());
 						list.add(sp);
+					} catch (Exception e) {
 					}
-
-				} else {
-					log.error("[sp抓取]===爱波" + currentTerm + " 数据抓取失败===");
 				}
 			}
 		} catch (Exception e) {
@@ -127,13 +128,54 @@ public class SpBusiness {
 		}
 		return list;
 	}
+	
+//	public static List<DcSpfSp> snatchAiboSP(String dcTerm) throws Exception {
+//		List<DcSpfSp> list = new ArrayList<DcSpfSp>();
+//		try {
+//
+//			String aiboTerm = dcTerm.substring(1);
+//
+//			String url = AIBO_SP_URL + aiboTerm;
+//			String currentTerm = snatchAiboCurrentTerm();
+//			if (!currentTerm.equals(dcTerm)) {
+//				log.error("[sp抓取]===爱波" + currentTerm + "北单当前期与本地" + dcTerm + "不一致===");
+//			} else {
+//				String html = HttpUtil.getUrl(url);
+//				JSONObject rows = JSONObject.parseObject(html);
+//				if (rows.getBoolean("Success")) {
+//					JSONArray jarray = rows.getJSONArray("Data");
+//					for (Object obj : jarray) {
+//						JSONObject tmpObj = (JSONObject) obj;
+//						String lineId = tmpObj.getString("GameNo");
+//						String[] spArr = tmpObj.getString("Sp").split(",");
+//						DcSpfSp sp = new DcSpfSp();
+//						sp.setLineId(lineId);
+//						sp.setTerm(currentTerm);
+//						sp.setHomeSp(Double.parseDouble(spArr[0]));
+//						sp.setDrawSp(Double.parseDouble(spArr[1]));
+//						sp.setGuestSp(Double.parseDouble(spArr[2]));
+//						sp.setLastUpDate(new Date());
+//						list.add(sp);
+//					}
+//
+//				} else {
+//					log.error("[sp抓取]===爱波" + currentTerm + " 数据抓取失败===");
+//				}
+//			}
+//		} catch (Exception e) {
+//			log.error("[sp抓取]===aiBo sp抓取出现错误===");
+//			e.printStackTrace();
+//			throw e;
+//		}
+//		return list;
+//	}
 
 	public static void main(String[] args) {
 		// String term=snatchOkCurrentTerm();
 		// System.out.println("term="+term);
 		try {
 			List<DcSpfSp> list=snatchAiboSP("170904");
-			System.out.println(list.get(0).getSpStr());
+			System.out.println(list.size());
 		} catch (Exception e) {
 
 		}
