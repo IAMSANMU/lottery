@@ -21,6 +21,9 @@ public class _MappingKit {
 		arp.addMapping("dc_op", "id", DcOp.class);
 		arp.addMapping("dc_spf_sp", "id", DcSpfSp.class);
 		arp.addMapping("dc_yp", "id", DcYp.class);
+		arp.addMapping("lot_admin", "Id", LotAdmin.class);
+		arp.addMapping("lot_user", "Id", LotUser.class);
+		arp.addMapping("lot_user_buylog", "Id", LotUserBuylog.class);
 		arp.addMapping("lottery_term", "id", LotteryTerm.class);
 	}
 }

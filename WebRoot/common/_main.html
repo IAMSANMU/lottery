@@ -1,0 +1,59 @@
+﻿
+<div class="wrapper wrapper-content animated fadeInRight">
+    <div class="hidden">
+        <input type="hidden" id="_tab" value="#(tab)" />
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="tabs-container">
+                <ul class="nav nav-tabs" id="myTabs">
+                	#for(x:tabs)
+                		#set(arr=x.split("_"))
+                        <li class='#(arr[1] == tab ? "active" : "")'>
+                        	<a data-toggle="tab" href="#tab" data-type="#(arr[1])" aria-expanded="true"> #(arr[0])</a>
+	                    </li>
+                    #end
+                </ul>
+                <div class="tab-content">
+                    <div id="tab" class="tab-pane active">
+                        <div class="panel-body">
+                            <div class="ibox">
+                                <div class="ibox-title">
+                                    <h5>搜索</h5>
+                                    <div class="ibox-tools">
+                                        <a class="collapse-link">
+                                            <i class="fa fa-chevron-up"></i>
+                                        </a>
+                                        <a class="close-link">
+                                            <i class="fa fa-times"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="ibox-content" id="search-content">
+                                    <div class="row">
+                                        #@searchbar()
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    #@toolbar()
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="ibox-content">
+                                        <div class="table-responsive">
+                                            #@table()
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

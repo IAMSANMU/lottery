@@ -64,6 +64,7 @@ public class BaseConfig extends JFinalConfig {
 	public void configEngine(Engine me) {
 		me.setDevMode(PropKit.getBoolean("devMode", false));
 		me.addSharedFunction("/common/_layout.html");
+		me.addSharedFunction("/common/_emptyLayout.html");
 		me.addSharedFunction("/common/_paginate.html");
 	}
 	
