@@ -1,6 +1,7 @@
 package com.lottery.common.model.base;
 
 import com.jfinal.plugin.activerecord.Model;
+import com.alibaba.fastjson.annotation.JSONField;
 import com.jfinal.plugin.activerecord.IBean;
 
 /**
@@ -31,7 +32,7 @@ public abstract class BaseLotUser<M extends BaseLotUser<M>> extends Model<M> imp
 		set("pwd", pwd);
 		return (M)this;
 	}
-
+	@JSONField(serialize=false)
 	public java.lang.String getPwd() {
 		return getStr("pwd");
 	}
@@ -71,12 +72,12 @@ public abstract class BaseLotUser<M extends BaseLotUser<M>> extends Model<M> imp
 	public java.lang.String getEmail() {
 		return getStr("email");
 	}
-
 	public M setStartTime(java.util.Date startTime) {
 		set("startTime", startTime);
 		return (M)this;
 	}
 
+	@JSONField(format="yyyy/MM/dd")
 	public java.util.Date getStartTime() {
 		return get("startTime");
 	}
@@ -86,6 +87,7 @@ public abstract class BaseLotUser<M extends BaseLotUser<M>> extends Model<M> imp
 		return (M)this;
 	}
 
+	@JSONField(format="yyyy/MM/dd")
 	public java.util.Date getEndTime() {
 		return get("endTime");
 	}
@@ -99,11 +101,13 @@ public abstract class BaseLotUser<M extends BaseLotUser<M>> extends Model<M> imp
 		return get("isStop");
 	}
 
+	
 	public M setCreateTime(java.util.Date createTime) {
 		set("createTime", createTime);
 		return (M)this;
 	}
 
+	@JSONField(format="yyyy/MM/dd")
 	public java.util.Date getCreateTime() {
 		return get("createTime");
 	}

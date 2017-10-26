@@ -1,6 +1,5 @@
 package com.lottery.admin;
 
-import com.alibaba.fastjson.JSONObject;
 import com.jfinal.core.Controller;
 import com.jfinal.kit.HashKit;
 import com.jfinal.kit.StrKit;
@@ -45,6 +44,6 @@ public class AdminController extends Controller  {
 			adminService.update(admin);
 			json.setSuccess(true);
 		}
-		renderText(JSONObject.toJSONString(json));
+		renderText(json.toJsonString());
 	}
 }

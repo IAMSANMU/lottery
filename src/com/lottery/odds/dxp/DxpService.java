@@ -3,10 +3,9 @@ package com.lottery.odds.dxp;
 import java.util.List;
 
 import com.lottery.common.model.DcDxp;
-import com.lottery.common.model.DcYp;
 
 public class DxpService {
-	private static DcDxp dao = new DcDxp().dao();
+	DcDxp dao = new DcDxp().dao();
 
 	public List<DcDxp> get(int matchId) {
 		String sql = "select yp.* From dc_dxp yp Where  yp.id in (Select Max(tmpYp.Id) From dc_dxp  tmpYp where tmpYp.matchId =? group by company,isFirst)";

@@ -1,5 +1,8 @@
 package com.lottery.common.utils;
 
+import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.serializer.SerializerFeature;
+
 public class JsonResult<T> {
 
 	private Boolean success;
@@ -29,5 +32,8 @@ public class JsonResult<T> {
 	public void setData(T data) {
 		this.data = data;
 	}
-
+	
+	public String toJsonString() {
+		return JSONObject.toJSONString(this,SerializerFeature.WriteMapNullValue);
+	}
 }

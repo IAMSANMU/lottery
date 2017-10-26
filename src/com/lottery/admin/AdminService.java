@@ -3,7 +3,7 @@ package com.lottery.admin;
 import com.lottery.common.model.LotAdmin;
 
 public class AdminService {
-	private static final LotAdmin dao = new LotAdmin().dao();
+	LotAdmin dao = new LotAdmin().dao();
 	
 	public LotAdmin login(String account,String pwd){
 		String sql="select * from lot_admin where account=? and pwd=? ";

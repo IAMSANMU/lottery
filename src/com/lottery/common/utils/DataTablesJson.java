@@ -3,6 +3,7 @@ package com.lottery.common.utils;
 import java.util.List;
 
 import com.alibaba.fastjson.JSONObject;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 
 public class DataTablesJson<T> {
 	private long recordsTotal;
@@ -10,8 +11,8 @@ public class DataTablesJson<T> {
 
 	private List<T> data;
 
-	public String ToJsonString() {
-		return JSONObject.toJSONString(this);
+	public String toJsonString() {
+		return JSONObject.toJSONString(this,SerializerFeature.WriteMapNullValue);
 	}
 
 	public long getRecordsTotal() {

@@ -5,7 +5,7 @@ import java.util.List;
 import com.lottery.common.model.DcYp;
 
 public class YpService {
-	private static DcYp dao = new DcYp().dao();
+	DcYp dao = new DcYp().dao();
 
 	public List<DcYp> get(int matchId) {
 		String sql = "select yp.* From dc_yp yp Where  yp.id in (Select Max(tmpYp.Id) From dc_yp  tmpYp where tmpYp.matchId =? group by company,isFirst)";

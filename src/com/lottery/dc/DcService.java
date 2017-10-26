@@ -8,7 +8,7 @@ import com.lottery.common.model.LotteryTerm;
 
 
 public class DcService {
-	private static final DcArrange dao = new DcArrange().dao();
+	DcArrange dao = new DcArrange().dao();
 	
 	public DcArrange getById(int id){
 		return dao.findById(id);

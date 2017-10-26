@@ -7,7 +7,7 @@ import com.jfinal.plugin.activerecord.Page;
 import com.lottery.common.model.LotteryTerm;
 
 public class TermService {
-	private static final LotteryTerm dao = new LotteryTerm().dao();
+	LotteryTerm dao = new LotteryTerm().dao();
 	
 	
 	public Page<LotteryTerm> getTermByPage(int pageIndex,int pageSize){

@@ -11,7 +11,7 @@
     });
     $("#btn_login").click(function() {
         if ($("#form").valid()) {
-        	var pwd=$("[name='password']").val();
+        	var pwd=$("#pwd").val();
         	pwd=hex_md5(pwd);
         	$("[name='password']").val(pwd);
             var data = $("#form").serialize();

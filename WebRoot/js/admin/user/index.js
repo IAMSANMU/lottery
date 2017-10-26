@@ -29,7 +29,7 @@
             type: "POST",
             dataType: "json"
         },
-        "order": [[7, "desc"]],
+        "order": [[8, "desc"]],
         "columns": [
             { data: "" },
             { data: "" },
@@ -38,6 +38,7 @@
             { data: "tel" },
             { data: "email" },
             { data: "isStop" },
+            { data: "" },
             { data: "createTime" }
         ],
         "columnDefs": [
@@ -58,9 +59,9 @@
                     html.push("<button type=\"button\" class=\"btn btn-primary btn-xs btnEdit\" data-id=\"" +
                         row.id +
                         "\"><i class=\"fa fa-edit\"></i> 编辑</button>");
-                    html.push("<button type=\"button\" class=\"btn btn-danger btn-xs btnPwd\" data-id=\"" +
+                    html.push("<button type=\"button\" class=\"btn btn-danger btn-xs btnBuy\" data-id=\"" +
                             row.id +
-                            "\"><i class=\"fa fa-edit\"></i> 修改密码</button>");
+                            "\"><i class=\"fa fa-edit\"></i>购买</button>");
                     return html.join("&nbsp;");
                 },
                 "targets": 1,
@@ -70,14 +71,32 @@
                     return data ? "是" : "否";
                 },
                 "targets":6
+            }, {
+                "render": function(data, type, row) {
+                	if(row.startTime && row.endTime){
+                		return row.startTime+"<br/> "+row.endTime;
+                	}else{
+                		return "无权限";
+                	}
+                	
+                },
+                "targets":7
+            }, {
+                "render": function(data, type, row) {
+                    return $.formatJSONDate(data);
+                },
+                "targets":8
             }
         ]
     }).on("click", ".btnEdit", function () {
         var id = $(this).data("id");
         $.openWindow("/admin/user/edit?id=" + id, "修改信息");
-    }).on("click", ".btnPwd", function () {
+//    }).on("click", ".btnPwd", function () {
+//        var id = $(this).data("id");
+//        $.openWindow("/admin/user/pwd?id=" + id, "修改密码");
+    }).on("click", ".btnBuy", function () {
         var id = $(this).data("id");
-        $.openWindow("/admin/user/pwd?id=" + id, "修改信息");
+        $.openWindow("/admin/user/buy?id=" + id, "购买权限");
     });
 
 

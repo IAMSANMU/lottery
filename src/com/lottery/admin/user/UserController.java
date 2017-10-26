@@ -1,12 +1,16 @@
 package com.lottery.admin.user;
 
 import java.util.Date;
+
 import java.util.List;
 
 import com.alibaba.fastjson.JSONObject;
+import com.jfinal.aop.Before;
+import com.jfinal.aop.Duang;
 import com.jfinal.kit.HashKit;
 import com.jfinal.kit.StrKit;
 import com.jfinal.plugin.activerecord.Page;
+import com.lottery.Interceptor.admin.AdminLoginInter;
 import com.lottery.common.BaseController;
 import com.lottery.common.model.LotUser;
 import com.lottery.common.utils.BeanKit;
@@ -15,8 +19,10 @@ import com.lottery.common.utils.JsonResult;
 import com.lottery.search.ListSearchModel;
 import com.lottery.search.SearchModel;
 
+
+@Before(AdminLoginInter.class)
 public class UserController extends BaseController {
-	UserService userService = new UserService();
+	UserService userService = Duang.duang(UserService.class);
 
 	public void index() {
 		String tab = getPara("tab");
@@ -35,7 +41,7 @@ public class UserController extends BaseController {
 		json.setRecordsFiltered(page.getTotalRow());
 		json.setRecordsTotal(page.getTotalRow());
 		json.setData(page.getList());
-		renderJson(json.ToJsonString());
+		renderJson(json.toJsonString());
 
 	}
 
@@ -75,7 +81,7 @@ public class UserController extends BaseController {
 	public void update() {
 		LotUser model = getModel(LotUser.class, "", true);
 		JsonResult<LotUser> json = new JsonResult<LotUser>();
-		model.setIsStop(model.getIsStop()==null?false:model.getIsStop());
+		model.setIsStop(model.getIsStop() == null ? false : model.getIsStop());
 		LotUser user = userService.get(model.getId());
 		if (user == null) {
 			json.setMessage("会员不存在");
@@ -88,6 +94,8 @@ public class UserController extends BaseController {
 				json.setSuccess(true);
 			} catch (Exception e) {
 				e.printStackTrace();
+				json.setSuccess(false);
+				json.setMessage("系统错误");
 			}
 		}
 		renderText(JSONObject.toJSONString(json));
@@ -128,6 +136,40 @@ public class UserController extends BaseController {
 			setAttr("user", user);
 			render("pwd.html");
 		}
+	}
+
+	public void buy() {
+		int id = getParaToInt("id");
+		LotUser user = userService.get(id);
+		if (user == null) {
+			renderText("会员不存在");
+		} else {
+			setAttr("user", user);
+			render("buy.html");
+		}
+
+	}
+
+	public void doBuy() {
+		Date startTime = getParaToDate("startTime");
+		Date endTime = getParaToDate("endTime");
+		int id = getParaToInt("id");
+		String remark = getPara("remark");
+		LotUser user = userService.get(id);
+		JsonResult<LotUser> json = new JsonResult<LotUser>();
+		if (startTime.after(endTime)) {
+			json.setMessage("日期有误");
+			json.setSuccess(false);
+		} else if (user == null) {
+			json.setMessage("会员不存在");
+			json.setSuccess(false);
+		} else {
+			user.setStartTime(startTime);
+			user.setEndTime(endTime);
+			userService.buy(user, remark);
+			json.setSuccess(true);
+		}
+		renderText(JSONObject.toJSONString(json));
 	}
 
 	public void pwdUpdate() {

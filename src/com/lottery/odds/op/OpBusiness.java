@@ -4,17 +4,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 
 import com.lottery.common.model.DcArrange;
 import com.lottery.common.model.DcOp;
-import com.lottery.common.utils.DateUtil;
-import com.lottery.common.utils.HttpUtil;
 import com.lottery.odds.OddsBusiness;
 
 public class OpBusiness {

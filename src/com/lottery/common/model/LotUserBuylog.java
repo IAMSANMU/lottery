@@ -7,5 +7,19 @@ import com.lottery.common.model.base.BaseLotUserBuylog;
  */
 @SuppressWarnings("serial")
 public class LotUserBuylog extends BaseLotUserBuylog<LotUserBuylog> {
-	public static final LotUserBuylog dao = new LotUserBuylog().dao();
+	
+	private String name;
+	private String account;
+	private String tel;
+	public String getName() {
+		return getStr("name");
+	}
+	public String getAccount() {
+		return getStr("account");
+	}
+	public String getTel() {
+		return getStr("tel");
+	}
+
+
 }

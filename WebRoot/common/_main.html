@@ -1,7 +1,7 @@
-﻿
+﻿#set(newTab=tab??"list")
 <div class="wrapper wrapper-content animated fadeInRight">
     <div class="hidden">
-        <input type="hidden" id="_tab" value="#(tab)" />
+        <input type="hidden" id="_tab" value='#(newTab)' />
     </div>
     <div class="row">
         <div class="col-md-12">
@@ -9,7 +9,7 @@
                 <ul class="nav nav-tabs" id="myTabs">
                 	#for(x:tabs)
                 		#set(arr=x.split("_"))
-                        <li class='#(arr[1] == tab ? "active" : "")'>
+                        <li class='#(arr[1] == newTab ? "active" : "")'>
                         	<a data-toggle="tab" href="#tab" data-type="#(arr[1])" aria-expanded="true"> #(arr[0])</a>
 	                    </li>
                     #end
