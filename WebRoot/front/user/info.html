@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>登录页面</title>
+
+<link href="#(basepath)/css/public.css" rel="stylesheet" type="text/css" />
+<link href="#(basepath)/css/style.css" rel="stylesheet" type="text/css" />
+<link href="#(basepath)/css/uc.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="#(basepath)/js/jquery.min.js"></script>
+<script type="text/javascript"
+	src="#(basepath)/js/bootstrap/plugins/validate/jquery.validate.min.js"></script>
+<script type="text/javascript"
+	src="#(basepath)/js/bootstrap/plugins/validate/message_cn.js"></script>
+<script type="text/javascript" src="#(basepath)/js/encrypt/md5.js"></script>
+<script type="text/javascript" src="#(basepath)/js/front/login.js"></script>
+
+</head>
+<body>
+
+	#include("../top.html")
+	<div id="mycll">
+		<div class="mainbox">
+			<div class="mytitle">
+				<h2>个人中心</h2>
+			</div>
+			<div class="newaccount_info">
+				<div class="new_info_l">
+					<img src="http://img.cailele.com/img_new/images/tx.jpg">
+				</div>
+				<div class="information">
+					<ul>
+						<li><span class="to_name">#(sessionUser.account)</span></li>
+						<li><span class="to_greet red">#if(!sessionUser.ableLook) 无法查看亚盘 #end</span></li>
+						<li><span class="to_greet red">#if(sessionUser.ableLook) 有效期
+								#date(sessionUser.startTime,"yyyy/MM/dd") 至
+								#date(sessionUser.endTime,"yyyy/MM/dd") #else 申请查看请联系15669020708
+								#end </span></li>
+					</ul>
+				</div>
+				<div class="wealth"></div>
+				<div class="clear"></div>
+			</div>
+			<div class="choice_tab">
+				<ul class="mytab">
+					<li><a class="cur" href="javascript:showDiv(0);" id="href0">购买记录</a></li>
+				</ul>
+			</div>
+
+			<div>
+				<div class="entry">
+					<table cellspacing="0" cellpadding="0" width="100%"
+						class="scheme_datalist">
+						<thead>
+							<tr>
+								<th>开始日期</th>
+								<th>截止日期</th>
+								<th>购买日期</th>
+								<th>备注</th>
+							</tr>
+						</thead>
+						<tbody>
+							#for(x:list)
+							<tr #if(for.odd) class="highlight" #end>
+								<td>#date(x.startTime,"yyyy-MM-dd")</td>
+								<td>#date(x.endTime,"yyyy-MM-dd")</td>
+								<td>#date(x.createTime,"yyyy-MM-dd")</td>
+								<td>#(x.remark)</td>
+							</tr>
+							#end
+						</tbody>
+					</table>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</body>
+</html>

@@ -8,7 +8,10 @@ import java.util.Map;
 
 import org.apache.commons.lang.StringUtils;
 
+import com.jfinal.aop.Before;
 import com.jfinal.core.Controller;
+import com.lottery.Interceptor.front.AbleInter;
+import com.lottery.Interceptor.front.LoginInter;
 import com.lottery.common.model.DcArrange;
 import com.lottery.common.model.DcDxp;
 import com.lottery.common.model.DcOp;
@@ -35,6 +38,8 @@ public class DcController extends Controller {
 	final String DXP_TAG="D_";
 	final String SHOWTIME_TAG="T_";
 	final String SP_TAG="S_";
+	
+	@Before({LoginInter.class,AbleInter.class})
 	public void index() {
 		String term = getPara("term");
 		getInfo(term);
@@ -46,8 +51,6 @@ public class DcController extends Controller {
 		String matchId=getPara("matchId");
 		if(StringUtils.isNotEmpty(matchId)){
 			int mid=Integer.parseInt(matchId);
-			
-			
 			//获取对阵让球信息
 			
 			DcArrange dcInfo=dcService.getById(mid);
@@ -64,10 +67,6 @@ public class DcController extends Controller {
 		}else{
 			renderText("参数错误");
 		}
-		
-		
-		
-		
 	}
 	
 	

@@ -8,7 +8,7 @@ import com.lottery.search.Operator;
 import com.lottery.search.SearchModel;
 
 public class BaseService {
-	public String buildSqlByPage(String sort,String sortType,String alias,List<SearchModel> searchModels){
+	protected String buildSqlByPage(String sort,String sortType,String alias,List<SearchModel> searchModels){
 		StringBuilder sql=new StringBuilder(" where 1=1");
 		if(searchModels !=null && searchModels.size()>0){
 			for (SearchModel item : searchModels) {

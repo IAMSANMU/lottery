@@ -1264,88 +1264,9 @@ background:none;}
 .yungou_dialog .alertbox .show_again .cllcheckbox a{padding:3px 5px;background:green;}
 .yungou_dialog .alertbox .show_again .cllcheckbox em{color:#fff;}
 
-/*----------------------网站底部样式----------------------*/
-/*底部导航*/
-.footnav{margin-top:15px;clear:both;}
-.footnav .inner{width:1000px;margin:0 auto;padding-top:10px;border-top:2px solid #f56d00;text-align:center;color:#999;}
-.footnav a,
-.footnav a:visited{margin:0 10px;color:#666;}
-.footnav a:hover{color:#e4393c;}
-/*底部公司信息*/
-.footbase{}
-.footbase .inner{width:1000px;margin:0 auto;padding:10px 0;text-align:center;color:#666;}
-.footbase .company_info{}
-.footbase .cinfo a,
-.footbase .cinfo a:visited{margin:0 10px;color:#666;}
-.footbase .cinfo a:hover{text-decoration:underline;}
-.footbase .company_slogan{color:#e4393c;}
-.footbase img{margin:0 3px;vertical-align:middle;}
-/*底部图片链接*/
-.footsecurity .inner{width:1000px;margin:0 auto;text-align:center;}
-.footsecurity a {display:inline-block;width:108px;height:45px;margin:0 3px;}
-.footsecurity a.bottompic{background:url(http://img.cailele.com/img_new/index/foot_icon.png) no-repeat;}
-.footsecurity a.bottompic1{background-position:0px 0px;}
-.footsecurity a.bottompic2{background-position:-126px 0px;}
-.footsecurity a.bottompic3{background-position:0px -632px;}
-.footsecurity a.bottompic4{background-position:0px -790px;}
-.footsecurity a.bottompic5{background-position:0px -841px;}
-.footsecurity a.bottompic6{background-position:0px -734px; }
-.footsecurity a.bottompic7{background-position:0px -683px;}
-.footsecurity a.bottompic8{background-position:0px -945px;}
-.footsecurity a.bottompic9{background-position:0px -994px;}
-.footsecurity a.bottompic10{width:48px; height:46px; background-position:0px -1043px; }
-.footsecurity a.bottompic11{width:48px; height:46px; background-position:-55px -1043px;}
-/*底部热点链接*/
-.footguide{width:1000px;margin:5px auto;}
-.footguide .inner{overflow:hidden;padding:5px 0;border:#e1e1e1 1px solid;color:#666;}
-.footguide a,
-.footguide a:visited{display:inline-block;*display:inline;*zoom:1;margin-right:5px;color:#666;}
-.footguide a:hover{color:#e4393c;}
-.footguide .hotlinks{padding:0 5px;font-family:Arial,Simsun;*zoom:1;}
-.footguide .hotlinks:after{content:'\0020';display:block;height:0;line-height:0;font-size:0;clear:both;visibility:hidden;}
-.footguide .hotlinks .title,
-.footguide .hotlinks .links,
-.footguide .hotlinks .more{float:left;display:block;height:26px;line-height:26px;}
-.footguide .hotlinks .title{width:80px;padding:0;text-align:center;font-size:12px;font-weight:bold;}
-.footguide .hotlinks .links{overflow:hidden;width:948px;text-align:center;}
-.footguide .hotlinks .more{width:40px;text-align:center;}
+label.error {
+  color: #cc5965;
+  display: inline-block;
+  margin-left: 5px;
+}
 
-
-
-/*网站配色*/
-/*
-.sitenav{background:#2663a4;}
-.sitenav .sitelogin .signinfo .welcome{color:#fff;}
-.sitenav a, .sitenav a:visited{color:#fff;}
-.sitenav .cllmenu{background:none !important;}
-.sitenav .menu_hd{border:none;}
-.cllmenu .menu a, .cllmenu .menu a:visited{color:#FFF !important;}
-
-
-.headerarea{}
-.header .layout{height:80px;}
-.header .logo{margin-top:18px;}
-.header .sublogo{margin-top:28px;}
-.service .hongbo{display:none;}
-.service .chat{display:inline-block;margin-top:25px;}
-.service .chat .txt{color:#666;}
-.service .chat .tel .txt{font-size:15px;font-family:Arial;color:#666;}
-.menu_box{}
-.menu_panel{border-bottom:none !important;}
-.menu_panel .txt{background:#3592e2 !important;}
-.menu_box .menu_box_in{border-color:#b3d4f0;}
-
-.navigation{}
-.navigation .nav,
-.navigation .app{background:#ff6b00;border-bottom:none;}
-.navigation .nav li a,
-.navigation .nav li a:hover,
-.navigation .nav li a .iconfont_hd{color:#fff !important;}
-.navigation .app a .iconphone,
-.navigation .app a .icontxt1{color:#ff0 !important;}
-.navigation .app a .icontxt2{color:#fff !important;}
-.navigation .nav li a.home{background:#fe500b;}
-.navigation .nav li a.home, 
-.navigation .nav li a.home:visited,
-.navigation .nav li a.home .iconfont_hd{color:#fff !important;}
-*/

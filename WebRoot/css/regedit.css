@@ -1,0 +1,67 @@
+@charset "gb2312";
+html,body{height:auto;_height:100%;}
+body{background:#f9f9f9;}
+
+/*====================注册页样式====================*/
+.order_delivery .order_delivery_steps .step{position:relative;float:left;_display:inline;width:378px;margin-right:-8px}
+
+/*-----已拥有帐户-----*/
+.personlist .hasaccount{position:absolute;top:16px;right:30px;}
+.personlist .hasaccount p{text-align:right;font-size:12px;}
+.personlist .hasaccount a,
+.personlist .hasaccount a:visited{color:#284cb5;}
+.personlist .hasaccount a:hover{color:#f55100;}
+
+/*-----第三方登录-----*/
+.personlist .otherlogin{width:500px;margin:35px auto 0px auto;}
+.personlist .otherlogin .hd{position:relative;height:1px;border-bottom:#eee 1px solid;font-size:0;}
+.personlist .otherlogin .hd .tit{position:absolute;top:0;left:50%;display:block;width:100px;height:30px;line-height:30px;margin:-15px 0 0 -50px;background:#fff;color:#888;text-align:center;font-size:14px;}
+.personlist .otherlogin .bd{padding-top:40px;text-align:center;}
+.personlist .otherlogin .thirdparty a{margin:0 5px;}
+
+
+/*====================绑定彩乐乐帐号页样式====================*/
+.personreg .bindremind{}
+.personreg .bindremind p{padding:10px 0;font-size:15px;color:#333;text-align:center;}
+.personreg .bindremind p em{color:#e4393c;}
+.personreg .bindoper{width:80%;margin:10px auto;padding:15px;border:#ccc 1px dotted;cursor:pointer;}
+.personreg .bindoper:hover{background:#fefce5;}
+.personreg .bindoper .cllradio em{font-family:Microsoft Yahei,Simsun;font-size:14px;}
+.personreg  .safeintro{width:60%;margin:30px auto 0 auto;color:#333;}
+.personreg  .safeintro .hd{padding-bottom:5px;}
+.personreg  .safeintro ul{padding:10px;border:#ccc 1px dotted;}
+.personreg  .safeintro ul li{line-height:1.8;color:#999;}
+
+/*====================注册完成页样式====================*/
+.personreg .form .prosper{ margin:15px 0; font-family: Microsoft Yahei,Simsun; text-align:center; overflow:hidden;}
+.personreg .form .prosper .ticks{}
+.personreg .form .prosper .ticks em{ font-size:50px; color:#009900;}
+.personreg .form .prosper .club{ font-size:16px; color:#444;}
+.personreg .form .prosper .club .account_name{ color:#009900; font-weight:bold;}
+.personreg .form .prosper .club .perfect,
+.personreg .form .prosper .club .perfect:visited{color:#f90505;}
+.personreg .form .prosper .club .perfect:hover{color:#f90505; text-decoration:underline;}
+.personreg .form .prosper .club .time{ display:inline-block; background:#db1141; margin:0 5px 0 0; width:30px; height:30px; line-height:30px; color:#FFF; border-radius:100px;}
+.personreg .form .prosper .winning{ margin:0 auto; width:300px;}
+.personreg .form .remove{ margin-bottom:0px;}
+.make_money a,
+.make_money a:visited{  background:#ff931a; width:170px; height:34px; line-height:34px; font-size:16px; font-weight:bold;color:#FFF;}
+.make_money a:hover{  background:#fc9c2f;}
+
+/*----------垂直滚动----------*/
+.winning .cllscroll{height:25px;color:#333;}
+.winning .cllscroll .scroll{width:100%;}
+.winning .cllscroll .scroll li{float:left;width:100%;height:25px;line-height:25px;*zoom:1;}
+.winning .cllscroll .scroll li:after{content:'\0020';display:block;height:0;line-height:0;font-size:0;clear:both;visibility:hidden;}
+.winning .cllscroll .scroll li span{float:left;overflow:hidden;display:block;white-space:nowrap;text-overflow:ellipsis;-o-text-overflow:ellipsis;}
+.winning .cllscroll .scroll li .user{width:16%;font-family:Simsun;}
+.winning .cllscroll .scroll li .time{width:26%;color:#999;}
+.winning .cllscroll .scroll li .lot{width:33%;}
+.winning .cllscroll .scroll li .lot a,
+.winning .cllscroll .scroll li .lot a:visited{color:#284cb5;}
+.winning .cllscroll .scroll li .lot a:hover{color:#ff6f3d;}
+.winning .cllscroll .scroll li .money{width:25%;text-align:right;}
+.winning .cllscroll .scroll li .money em{color:#af0000;}
+
+/*-----底部样式-----*/
+.bottomDIV{margin-top:30px;}

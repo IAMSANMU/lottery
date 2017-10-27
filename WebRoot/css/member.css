@@ -1,0 +1,84 @@
+@charset "utf-8";
+
+/*--------------------头部样式--------------------*/
+.minheader{}
+.minheader .inner{width:1000px;margin:0 auto;padding:20px 0;}
+.minheader .inner:after{clear: both; content: " "; display: block; font-size:0; height:0; line-height:0; visibility:hidden;}
+.minheader .inner .company{float:left;}
+.minheader .inner .company .logo a,
+.minheader .inner .company .logo a:visited{float:left;display:inline-block;width:156px;height:44px;margin-top:5px;background:url(http://img.cailele.com/img_new/common/sprite-v4.png) no-repeat 0 0;vertical-align:middle;}
+.minheader .inner .company .rise{overflow:hidden;display:inline-block;height:44px;line-height:44px;margin:5px 0 0 10px;padding:0 0 0 10px;border-left:1px solid #e0e0e0; }
+.minheader .inner .company .rise em{font-family:Microsoft Yahei,Simsun;font-size:20px;font-weight:bold;color:#999;}
+.minheader .inner .feature{ float:right;width:250px;margin:20px 0 0 0;text-align:right;font-family:Microsoft Yahei,Simsun;color:#999;}
+.minheader .inner .feature a,
+.minheader .inner .feature a:visited{margin:0 5px;color:#666;}
+.minheader .inner .feature a:hover{color:#f55100;}
+
+/*--------------------注册/登录通用表单--------------------*/
+.personlist{position:relative;width:994px;margin:0 auto;padding:55px 0; background:#fff; border:3px solid #eeeeee;font-family:Microsoft Yahei,Simsun;color:#333;*zoom:1;}
+.personlist .inner{*zoom:1;}
+.personlist .inner:after{clear: both; content: " "; display: block; font-size:0; height:0; line-height:0; visibility:hidden;}
+.personlist .measure{padding:0 119px;overflow:hidden;}
+.personlist .form{width:350px;margin:35px auto 0 auto;}
+.personlist .form .formhd .tit{font-size:15px;color:#666;}
+.personlist .form .group{ margin:15px 0; font-family: Microsoft Yahei,Simsun;}
+.personlist .form .group .entry{position:relative;display:block;*zoom:1;}
+.personlist .form .group .entry:after{clear:both; content:" "; display:block;font-size:0;height:0;line-height: 0;visibility: hidden;}
+.personlist .form .group .entry .version{position:relative;*zoom:1;}
+.personlist .form .group .entry .version:after{clear:both; content:" "; display:block;font-size:0;height:0;line-height: 0;visibility: hidden;}
+.personlist .form .group .clarify{position:absolute;top:0;left:355px;display:block;width:300px;height:44px;line-height:44px;color:#666;}
+.personlist .form .group .clarify .iconfont{margin-right:3px;}
+.personlist .form .group .cwrong{color:#e4393c;}
+.personlist .form .group .cright .iconfont{color:#83bd39;}
+.personlist .form .group .cwrong .iconfont{color:#e4393c;}
+.personlist .form .group .cremind .iconfont{color:#87bfdf;}
+.personlist .form .group .cwarning .iconfont{color:#f56d00;}
+.personlist .form .group .warn{ display:block; margin:5px 0 0 0; color:#e4393c;}
+.personlist .form .group .remind{ display:block; margin:5px 0 -10px 0; color:#999;}
+.personlist .form .group .entry .cllinput input{display:block;width:308px;height:20px;line-height:20px;padding:11px 0 11px 40px;font-family:Microsoft Yahei,Simsun;font-size:14px;color:#999;vertical-align:middle;}
+.personlist .form .group .entry .iconadorn{display:inline-block;position:absolute;top:6px;left:10px;}
+.personlist .form .group .entry .iconadorn i{font-size:25px;color:#e4e4e4;}
+.personlist .form .group .entry .icontips{display:inline-block;}
+.personlist .form .group .entry .icontips i{font-size:18px;}
+.personlist .form .group .entry .iright i{color:#83bd39;}
+.personlist .form .group .entry .iwrong i{color:#e4393c;}
+.personlist .form .group .codebox{float:left;display:inline-block;margin-left:5px;}
+.personlist .form .group .contract{}
+.personlist .form .group .contract .cllcheckbox em{font-family:Microsoft yahei;}
+.personlist .form .group .contract .link a,
+.personlist .form .group .contract .link a:visited{color:#284cb5;}
+.personlist .form .group .contract .link a:hover{color:#f55100;}
+.personlist .form .group .submit a,
+.personlist .form .group .submit a:visited{width:320px;height:40px;line-height:38px;font-size:16px;font-weight:bold;}
+.personlist .form .code{}
+.personlist .form .code .entry .cllinput{float:left;}
+.personlist .form .code .entry .cllinput input{width:130px}
+.personlist .form .code .codeimg{width:80px;height:44px; vertical-align:middle;}
+.personlist .form .code .change a,
+.personlist .form .code .change a:visited{display:inline-block;height:44px;line-height:44px;margin-left:5px;vertical-align:middle;color:#284cb5;}
+.personlist .form .code .change a:hover{color:#f55100;}
+.personlist .form .phonecode{}
+.personlist .form .phonecode .entry .cllinput{float:left;}
+.personlist .form .phonecode .entry .cllinput input{width:180px}
+.personlist .form .phonecode .getcode .cllbtn a,
+.personlist .form .phonecode .getcode .cllbtn a:visited{width:122px;height:44px;line-height:44px;margin-left:5px;padding:0;}
+.personlist .form .remember{position:relative;margin-top:-5px;}
+.personlist .form .remember .cllcheckbox em{font-family:Microsoft Yahei,Simsun;}
+.personlist .form .remember .link{position:absolute;right:0;top:0;}
+.personlist .form .remember .link a,
+.personlist .form .remember .link a:visited{color:#284cb5;}
+.personlist .form .remember .link a:hover{color:#f55100;}
+
+/*第三方登录*/
+.personlist .otherlogin{font-family:Microsoft Yahei,Simsun;font-size:14px;}
+.personlist .otherlogin .hd{position:relative;height:30px;line-height:30px;text-align:left;}
+.personlist .otherlogin .bd{padding-top: 20px;text-align:left;}
+.personlist .otherlogin .thirdparty a{margin: 0 3px;}
+.personlist .otherlogin .thirdparty i{font-size:30px;}
+.personlist .otherlogin .alipay i{color:#ff7017;}
+.personlist .otherlogin .tenpay i{color:#0056ad;}
+.personlist .otherlogin .qq 	i{color:#318ece;}
+.personlist .otherlogin .tianya i{color:#3793e5;}
+.personlist .otherlogin .baidu  i{color:#407de7;}
+.personlist .otherlogin .tianyi i{color:#8ab015;}
+.personlist .otherlogin .thirdparty a:hover i{color:#f55100;}

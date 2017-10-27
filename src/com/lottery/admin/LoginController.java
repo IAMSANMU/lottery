@@ -12,6 +12,7 @@ public class LoginController extends Controller {
 		
 		render("login.html");
 	}
+	
 	public void login(){
 		String account=getPara("name");
 		String md5pwd=getPara("password");
@@ -33,7 +34,7 @@ public class LoginController extends Controller {
 		renderText(JSONObject.toJSONString(json));
 	}
 	public void logout(){
-		getSession().removeAttribute(Constant.ADMIN_SESSION);
+		removeSessionAttr(Constant.ADMIN_SESSION);
 		render("login.html");
 	}
 }

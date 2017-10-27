@@ -1,0 +1,172 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>IconFont</title>
+    <link rel="stylesheet" href="demo.css">
+    <link rel="stylesheet" href="iconfont.css">
+</head>
+<body>
+    <div class="main">
+        <h1>IconFont 图标</h1>
+        <ul class="icon_lists clear">
+            
+                <li>
+                <i class="icon iconfont">&#xe627;</i>
+                    <div class="name">user</div>
+                    <div class="code">&amp;#xe627;</div>
+                    <div class="fontclass">.user</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont">&#xe656;</i>
+                    <div class="name">关注</div>
+                    <div class="code">&amp;#xe656;</div>
+                    <div class="fontclass">.guanzhu</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont">&#xe629;</i>
+                    <div class="name">menu</div>
+                    <div class="code">&amp;#xe629;</div>
+                    <div class="fontclass">.menu</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont">&#xe657;</i>
+                    <div class="name">奖杯</div>
+                    <div class="code">&amp;#xe657;</div>
+                    <div class="fontclass">.jiangbei</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont">&#xe65e;</i>
+                    <div class="name">返回</div>
+                    <div class="code">&amp;#xe65e;</div>
+                    <div class="fontclass">.fanhui</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont">&#xe65f;</i>
+                    <div class="name">帮助</div>
+                    <div class="code">&amp;#xe65f;</div>
+                    <div class="fontclass">.bangzhu</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont">&#xe62b;</i>
+                    <div class="name">apple_circle</div>
+                    <div class="code">&amp;#xe62b;</div>
+                    <div class="fontclass">.140974783156apple</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont">&#xe62c;</i>
+                    <div class="name">android_circle</div>
+                    <div class="code">&amp;#xe62c;</div>
+                    <div class="fontclass">.140974808376android</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont">&#xe658;</i>
+                    <div class="name">资讯</div>
+                    <div class="code">&amp;#xe658;</div>
+                    <div class="fontclass">.12</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont">&#xe660;</i>
+                    <div class="name">二维码</div>
+                    <div class="code">&amp;#xe660;</div>
+                    <div class="fontclass">.erweima</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont">&#xe62d;</i>
+                    <div class="name">icon-news-m</div>
+                    <div class="code">&amp;#xe62d;</div>
+                    <div class="fontclass">.news</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont">&#xe631;</i>
+                    <div class="name">注册与登陆界面 手机注册</div>
+                    <div class="code">&amp;#xe631;</div>
+                    <div class="fontclass">.shoujizhuce</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont">&#xe619;</i>
+                    <div class="name">足球</div>
+                    <div class="code">&amp;#xe619;</div>
+                    <div class="fontclass">.football</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont">&#xe610;</i>
+                    <div class="name">上市公司</div>
+                    <div class="code">&amp;#xe610;</div>
+                    <div class="fontclass">.shangshi</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont">&#xe613;</i>
+                    <div class="name">提款快捷</div>
+                    <div class="code">&amp;#xe613;</div>
+                    <div class="fontclass">.quick</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont">&#xe615;</i>
+                    <div class="name">安全保障</div>
+                    <div class="code">&amp;#xe615;</div>
+                    <div class="fontclass">.safety</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont">&#xe606;</i>
+                    <div class="name">杀号</div>
+                    <div class="code">&amp;#xe606;</div>
+                    <div class="fontclass">.killball</div>
+                </li>
+            
+                <li>
+                <i class="icon iconfont">&#xe635;</i>
+                    <div class="name">比分</div>
+                    <div class="code">&amp;#xe635;</div>
+                    <div class="fontclass">.score</div>
+                </li>
+            
+        </ul>
+
+
+        <div class="helps">
+            第一步：使用font-face声明字体
+            <pre>
+@font-face {font-family: 'iconfont';
+    src: url('iconfont.eot'); /* IE9*/
+    src: url('iconfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('iconfont.woff') format('woff'), /* chrome、firefox */
+    url('iconfont.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('iconfont.svg#iconfont') format('svg'); /* iOS 4.1- */
+}
+</pre>
+第二步：定义使用iconfont的样式
+            <pre>
+.iconfont{
+    font-family:"iconfont" !important;
+    font-size:16px;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;}
+</pre>
+第三步：挑选相应图标并获取字体编码，应用于页面
+<pre>
+&lt;i class="iconfont"&gt;&amp;#x33;&lt;/i&gt;
+</pre>
+        </div>
+
+    </div>
+</body>
+</html>

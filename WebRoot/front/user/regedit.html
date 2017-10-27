@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>登录页面</title>
+
+<link href="#(basepath)/css/public.css" rel="stylesheet" type="text/css" />
+<link href="#(basepath)/css/style.css" rel="stylesheet" type="text/css" />
+<link href="#(basepath)/css/member.css" rel="stylesheet" type="text/css" />
+<link href="#(basepath)/css/regedit.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="#(basepath)/js/jquery.min.js"></script>
+<script type="text/javascript"
+	src="#(basepath)/js/bootstrap/plugins/validate/jquery.validate.min.js"></script>
+<script type="text/javascript"
+	src="#(basepath)/js/bootstrap/plugins/validate/message_cn.js"></script>
+<script type="text/javascript" src="#(basepath)/js/encrypt/md5.js"></script>
+<script type="text/javascript" src="#(basepath)/js/front/regedit.js"></script>
+<script type="text/javascript" src="#(basepath)/js/bootstrap/plugins/layer/layer.js"></script>
+
+</head>
+<body>
+
+	<div class="minheader">
+		<div class="inner">
+			<div class="company">
+				<span class="logo"><a href=""></a></span> <span class="rise"><em>用户注册</em></span>
+			</div>
+		</div>
+	</div>
+	<div class="personlist personreg">
+		<div class="inner">
+			<!--已拥有帐号begin-->
+			<div class="hasaccount">
+				<p>
+					我已经拥有帐号，<a href="/login">立刻登录</a>
+				</p>
+			</div>	
+			<form id="saveForm" method="post">
+			<!--注册表单begin-->
+			<div class="form">
+				<div class="group">
+					<div class="entry">
+						<div class="version">
+							<span class="cllinput"> <input type="text"
+								name="name" placeholder="姓名" value="" maxlength="16"
+								class="default" />
+								 <span class="iconadorn"><i class="iconfont">&#xe633;</i></span>         
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="group">
+					<div class="entry">
+						<div class="version">
+							<span class="cllinput"> <input type="text"
+								name="tel" placeholder="电话" value="" maxlength="11"
+								class="default" />
+								 <span class="iconadorn"><i class="iconfont">&#xe633;</i></span>         
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="group">
+					<div class="entry">
+						<div class="version">
+							<span class="cllinput">
+							<input id="username" name="account"
+								placeholder="账号" type="text" maxlength="16" class="default"
+								autocomplete="off" />
+								</span> 
+								<span class="iconadorn"><i
+								class="iconfont">&#xe633;</i></span>
+						</div>
+					</div>
+				</div>
+				<div class="group">
+					<div class="entry">
+						<div class="version">
+							<span class="cllinput"> <input name="pwd" id="pwd" placeholder="密码" type="password" value=""
+								maxlength="16" class="default" />
+								 <span class="iconadorn"><i class="iconfont">&#xe632;</i></span>         
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="group">
+					<div class="entry">
+						<div class="version">
+							<span class="cllinput"> <input type="password"
+								name="pwdSure" placeholder="确认密码" value="" maxlength="16"
+								class="default" />
+								 <span class="iconadorn"><i class="iconfont">&#xe632;</i></span>         
+							</span>
+						</div>
+					</div>
+				</div>
+				<div class="group code">
+					<div class="entry">
+						<div class="version">
+							<span class="cllinput"><input type="text" maxlength="4"
+								placeholder="验证码" name="randomCode" tabindex="3"
+								autocomplete="off" /></span> <span class="iconadorn"><i
+								class="iconfont"></i></span>
+							<div class="codebox">
+								<img id="validateImg" src="/login/img" class="codeimg"> <span
+									class="change"><a href="javascript:void(0);"
+									onclick="$('#validateImg')[0].src='/login/img?'+new Date().getTime()"
+									class="iconfont"/></a></span>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="group" style="margin: 30px 0px;">
+                	<span class="cllbtn submit"><a href="javascript:;" id="regedit-btn" class=""><i></i><em>提交注册</em></a></span>
+            	</div>
+			</div>
+			</form>
+		
+		</div>
+		<!--注册表单end-->
+	</div>
+	</div>
+
+</body>
+</html>

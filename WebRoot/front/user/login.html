@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>登录页面</title>
+
+<link href="#(basepath)/css/public.css" rel="stylesheet" type="text/css" />
+<link href="#(basepath)/css/style.css" rel="stylesheet" type="text/css" />
+<link href="#(basepath)/css/member.css" rel="stylesheet" type="text/css" />
+<link href="#(basepath)/css/login.css" rel="stylesheet" type="text/css" />
+
+<script type="text/javascript" src="#(basepath)/js/jquery.min.js"></script>
+<script type="text/javascript" src="#(basepath)/js/bootstrap/plugins/validate/jquery.validate.min.js" ></script>
+<script type="text/javascript" src="#(basepath)/js/bootstrap/plugins/validate/message_cn.js" ></script>
+<script type="text/javascript" src="#(basepath)/js/encrypt/md5.js" ></script>
+<script type="text/javascript" src="#(basepath)/js/front/login.js" ></script>
+
+</head>
+<body>
+
+<!--头部begin-->
+<div class="minheader">
+	<div class="inner">
+    	<div class="company">
+        	<span class="logo"><a></a></span>
+            <span class="rise"><em>用户登录</em></span>
+        </div>
+        <div class="feature">
+        </div>
+    </div>
+</div>
+<!--头部end-->
+
+<!--内容begin-->
+<div class="personlist personlogin">
+	<div class="inner">
+    	<!--推广区域begin-->
+        <div class="spread">
+        	<a href="http://www.cailele.com/shouji/index.php" target="_blank">
+        	<img src="http://img.cailele.com/img_new/member/loginad.jpg"></a>
+        </div>
+        <!--推广区域end-->
+        <!--登录区域begin-->
+        <div class="loginarea">
+        	<div class="noaccount">
+                <span class="link">还没有帐号？<a href="/login/regedit">点击这里注册</a></span>
+            </div>
+                    
+            <!--登录表单begin-->
+            <div class="form">
+            	<form action="/login/login" method="post" id="saveForm">
+            	
+                <div class="group">
+                    <div class="entry">
+                        <div class="version">
+                            <span class="cllinput"><input type="text"  maxlength="30" name="account" class="loginText" value="#(account)"  placeholder="账号"  autocomplete="off"></span>
+                            <span class="iconadorn"><i class="iconfont">&#xe633;</i></span>
+                        </div>
+                        <div class="clarify cwrong" #if(nameMsg==null) style="display:none" #end>
+                        <span class="icontips"><i class="iconfont"></i></span>#(nameMsg)</div>
+                    </div>
+                </div>
+                <div class="group">
+                    <div class="entry">
+                        <div class="version">
+                            <span class="cllinput">
+                            	<input type="hidden" name="pwd" id="pwd">
+                            	<input type="password"  placeholder="密码" id="tmpPwd" class="loginText"  maxlength="30" name="tmpPwd"  autocomplete="off">
+	        	                   </span>
+                            <span class="iconadorn"><i class="iconfont">&#xe632;</i></span>
+                        </div>
+                        <div class="clarify cwrong" #if(pwdMsg==null) style="display:none" #end ><span class="icontips"><i class="iconfont"></i></span>#(pwdMsg)</div>
+                    </div>
+                </div>
+                <div class="group code"  id="validatespan">
+                    <div class="entry">
+                        <div class="version">
+                            <span class="cllinput"><input type="text"  maxlength="4" placeholder="验证码" name="randomCode" class="loginText" autocomplete="off"></span>
+                            <span class="iconadorn"><i class="iconfont"></i></span>
+                            <div class="codebox"><img id="validateImg" src="/login/img" class="codeimg">
+                            <span  class="change"><a href="javascript:void(0);" onclick="$('#validateImg')[0].src='/login/img?'+new Date().getTime()" class="iconfont"></a></span></div>
+                        </div>
+                        <div class="clarify cwrong" #if(codeMsg==null) style="display:none" #end><span class="icontips"><i class="iconfont">&#xe623;</i></span>#(codeMsg)</div>
+                    </div>
+                </div>
+                <div class="group remember">
+                </div>
+                <div class="group">
+                    <span class="cllbtn submit"><a href="javascript:void(0);" id="login-btn" class="default"><i></i><em>登录</em></a></span>
+                </div>
+                </form>
+            </div>
+            <!--登录表单end-->
+        </div>
+        <!--登录区域end-->
+    </div>
+</div>
+<!--内容end-->
+</script> 
+
+<!--底部end-->
+
+
+
+</body>
+</html>

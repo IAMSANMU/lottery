@@ -16,12 +16,14 @@ public class LogService extends BaseService {
 		
 		sql.append(super.buildSqlByPage(sort, sortType, "u", searchModels));
 		
-		
-		
 		Page<LotUserBuylog> list=dao.paginate(pageIndex, pageSize, "select l.*,u.name,u.account,u.tel ",sql.toString());
 		
 		
 		return	list;
+	}
+	
+	public List<LotUserBuylog> getList(int userId){
+		return dao.find("select * from lot_user_buylog where userId=?",userId);
 	}
 }
  

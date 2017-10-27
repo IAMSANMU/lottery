@@ -43,6 +43,10 @@ public class UserService extends BaseService {
 	public LotUser get(int id){
 		return dao.findById(id);
 	}
+	public boolean checkAccount(String account){
+		String sql="select count(*) from lot_user where account=?  ";
+		return Db.queryInt(sql,account)>0;
+	}
 
 	@Before(Tx.class)
 	public void buy(LotUser user,String remark) {

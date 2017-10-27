@@ -1,0 +1,40 @@
+@charset "utf-8";
+html,body{height:auto;_height:100%;}
+body{background:#f9f9f9;}
+
+
+
+/*====================登录页样式====================*/
+/*-----没有帐户-----*/
+.personlist .noaccount{position:absolute;right:5px;top:5px;}
+.personlist .noaccount a,
+.personlist .noaccount a:visited{color:#284cb5;}
+.personlist .noaccount a:hover{color:#f55100;}
+
+/*-----登录表单-----*/
+.personlist .form{width:340px;margin:0 auto;padding-top:50px;}
+.personlist{padding:0;}
+.personlist .inner{padding:5px;}
+.personlist .spread{float:left;width:480px;height:380px;background:#eee;}
+.personlist .loginarea{position:relative;float:right;width:500px;height:380px;}
+.personlist .form .group{margin:12px 0;}
+.personlist .form .group .entry .cllinput input{width:298px;padding:8px 0 8px 40px;}
+.personlist .form .code  .entry .cllinput input{width:120px;}
+.personlist .form .group .entry .iconadorn{top:4px;}
+.personlist .form .group .submit a, .personlist .form .group .submit a:visited{width:310px;}
+.personlist .form .group .clarify{position:static;width:auto;height:26px;line-height:26px;margin-bottom:-5px;border:#ffbdbf 1px solid;background:#ffebec;}
+.personlist .form .code{margin:10px 0;}
+.personlist .form .code .codeimg{height:38px;}
+.personlist .form .code .change a, .personlist .form .code .change a:visited{height:38px;line-height:38px;color:#333;}
+.personlist .form .code .clarify{width:160px;}
+
+/*-----第三方登录-----*/
+.personlist .otherlogin{position:absolute;left:50%;bottom:10px;width:400px;margin:0 auto 0 -200px;}
+.personlist .otherlogin .hd{position:relative;height:1px;border-bottom:#eee 1px solid;font-size:0;}
+.personlist .otherlogin .hd .tit{position:absolute;top:0;left:50%;display:block;width:100px;height:30px;line-height:30px;margin:-15px 0 0 -50px;background:#fff;color:#888;text-align:center;font-size:14px;}
+.personlist .otherlogin .bd{padding-top:15px;text-align:center;}
+.personlist .otherlogin .thirdparty a{margin:0 5px;}
+.personlist .otherlogin .thirdparty i{font-size:28px;}
+
+/*-----底部样式-----*/
+.bottomDIV{margin-top:30px;}

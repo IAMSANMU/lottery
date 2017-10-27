@@ -1,0 +1,25 @@
+<div class="sitenav">
+		<div class="layout">
+			<div id="loginDIVbg"></div>
+			<div class="sitelogin" id="topLoginLeftDIV">
+				<div class="logged">
+					<div class="loginedinfo">
+						<span class="welcome">欢迎您:      #(sessionUser.account)</span>
+					</div>
+					<ul class="cllmenu menuaccount">
+						<li class="menu myaccount">
+							<div class="menu_hd">
+								<a href="/member" class="user">个人中心</a>
+							</div>
+						</li>
+					</ul>
+					<div class="loginedinfo">
+						<span class="welcome">#if(sessionUser.ableLook) #date(sessionUser.startTime,"yyyy/MM/dd") 至  #date(sessionUser.endTime,"yyyy/MM/dd") #else 申请查看:15669020708  #end</span>
+					</div>
+					<div class="finance">
+						<a href="/login/logout" class="exit">[退出]</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>

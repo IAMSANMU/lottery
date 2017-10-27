@@ -1,5 +1,7 @@
 package com.lottery.common.model;
 
+import java.util.Date;
+
 import com.lottery.common.model.base.BaseLotUser;
 
 /**
@@ -8,4 +10,15 @@ import com.lottery.common.model.base.BaseLotUser;
 @SuppressWarnings("serial")
 public class LotUser extends BaseLotUser<LotUser> {
 	public static final LotUser dao=new LotUser().dao();
+	
+	private Boolean ableLook;
+
+	public Boolean getAbleLook() {
+		ableLook=false;
+		if(getStartTime()!=null&&getEndTime()!=null){
+			Date now=new Date();
+			ableLook=now.after(getStartTime())&&now.before(getEndTime());
+		}
+		return ableLook ;
+	}
 }
