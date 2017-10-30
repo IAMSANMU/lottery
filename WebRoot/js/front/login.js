@@ -23,7 +23,7 @@ $(function(){
 			  $("#saveForm").submit();
 		  }
 	});
-	$(".loginText").focus(function(){
+	$(".loginText").click(function(){
 		$(this).parents(".group:first").find(".cwrong").hide();
 		
 	})

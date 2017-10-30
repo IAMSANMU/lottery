@@ -56,6 +56,7 @@ public class LoginController extends BaseController {
 		LotUser user=userService.login(account, pwd);
 		if(user==null){
 			setAttr("nameMsg","账号密码错误");
+			setAttr("error",true);
 			render("login.html");
 		}else{
 			setSessionAttr(Constant.SELLER_SESSION, user);

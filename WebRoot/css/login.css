@@ -16,7 +16,7 @@ body{background:#f9f9f9;}
 .personlist{padding:0;}
 .personlist .inner{padding:5px;}
 .personlist .spread{float:left;width:480px;height:380px;background:#eee;}
-.personlist .loginarea{position:relative;float:right;width:500px;height:380px;}
+.personlist .loginarea{position:relative;float:right;width:100%;height:380px;}
 .personlist .form .group{margin:12px 0;}
 .personlist .form .group .entry .cllinput input{width:298px;padding:8px 0 8px 40px;}
 .personlist .form .code  .entry .cllinput input{width:120px;}

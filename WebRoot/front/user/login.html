@@ -2,6 +2,11 @@
 <html>
 <head>
 <meta charset="UTF-8">
+
+<meta http-equiv="pragma" content="no-cache">
+<meta http-equiv="cache-control" content="no-cache">
+<meta http-equiv="expires" content="0">   
+
 <title>登录页面</title>
 
 <link href="#(basepath)/css/public.css" rel="stylesheet" type="text/css" />
@@ -22,7 +27,6 @@
 <div class="minheader">
 	<div class="inner">
     	<div class="company">
-        	<span class="logo"><a></a></span>
             <span class="rise"><em>用户登录</em></span>
         </div>
         <div class="feature">
@@ -35,10 +39,6 @@
 <div class="personlist personlogin">
 	<div class="inner">
     	<!--推广区域begin-->
-        <div class="spread">
-        	<a href="http://www.cailele.com/shouji/index.php" target="_blank">
-        	<img src="http://img.cailele.com/img_new/member/loginad.jpg"></a>
-        </div>
         <!--推广区域end-->
         <!--登录区域begin-->
         <div class="loginarea">
@@ -56,7 +56,7 @@
                             <span class="cllinput"><input type="text"  maxlength="30" name="account" class="loginText" value="#(account)"  placeholder="账号"  autocomplete="off"></span>
                             <span class="iconadorn"><i class="iconfont">&#xe633;</i></span>
                         </div>
-                        <div class="clarify cwrong" #if(nameMsg==null) style="display:none" #end>
+                        <div class="clarify cwrong" #if(nameMsg==null) style="display:none" #end >
                         <span class="icontips"><i class="iconfont"></i></span>#(nameMsg)</div>
                     </div>
                 </div>

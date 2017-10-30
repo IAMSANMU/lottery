@@ -7,7 +7,7 @@
 .minheader .inner .company{float:left;}
 .minheader .inner .company .logo a,
 .minheader .inner .company .logo a:visited{float:left;display:inline-block;width:156px;height:44px;margin-top:5px;background:url(http://img.cailele.com/img_new/common/sprite-v4.png) no-repeat 0 0;vertical-align:middle;}
-.minheader .inner .company .rise{overflow:hidden;display:inline-block;height:44px;line-height:44px;margin:5px 0 0 10px;padding:0 0 0 10px;border-left:1px solid #e0e0e0; }
+.minheader .inner .company .rise{overflow:hidden;display:inline-block;height:44px;line-height:44px;margin:5px 0 0 10px;padding:0 0 0 10px; }
 .minheader .inner .company .rise em{font-family:Microsoft Yahei,Simsun;font-size:20px;font-weight:bold;color:#999;}
 .minheader .inner .feature{ float:right;width:250px;margin:20px 0 0 0;text-align:right;font-family:Microsoft Yahei,Simsun;color:#999;}
 .minheader .inner .feature a,
