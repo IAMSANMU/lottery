@@ -10,7 +10,7 @@ public class AdminRoute  extends Routes{
 
 	@Override
 	public void config() {
-		setBaseViewPath("/Admin");
+		setBaseViewPath("/admin");
 		add("/admin", LoginController.class,"/");
 		add("/admin/admin", AdminController.class,"/admin");
 		add("/admin/user", UserController.class,"/user");

@@ -4,7 +4,7 @@
         rules: {
             "pwd":{
                 required: true,
-                rangelength: [5, 16]
+                rangelength: [6, 16]
             },
             "pwdSure": {
                 required: true,
@@ -13,7 +13,7 @@
             },
             "account":{
             	 required: true,
-                 rangelength: [6, 64]
+                 rangelength: [4, 64]
             }
         }
     });

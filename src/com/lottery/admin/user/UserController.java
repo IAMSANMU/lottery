@@ -52,6 +52,7 @@ public class UserController extends BaseController {
 	public void save() {
 		LotUser model = getModel(LotUser.class, "", true);
 		model.setIsDel(false);
+		model.setIsStop(false);
 		model.setCreateTime(new Date());
 		String pwdSure = getPara("pwdSure");
 		JsonResult<LotUser> json = new JsonResult<LotUser>();
