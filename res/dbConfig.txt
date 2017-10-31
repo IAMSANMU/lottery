@@ -1,5 +1,5 @@
 jdbcUrl = jdbc:mysql://120.78.71.53:3306/kf_lottery
 user = root
-password =iTHINK!@#456
+password =123456
 devMode = true
 showSql=true
