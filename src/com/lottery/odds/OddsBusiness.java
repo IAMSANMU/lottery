@@ -18,41 +18,41 @@ public class OddsBusiness {
 	public static final List<String> COMAPNYLIST=new ArrayList<String>();
 	public static final Map<String,String> WBW2CLLCOMPANY=new HashMap<String, String>();
 	static{
-		COMAPNY.put("永利高","yongligao");
+//		COMAPNY.put("永利高","yongligao");
 		COMAPNY.put("皇冠","huangguan");
-		COMAPNY.put( "伟德","weide");
-		COMAPNY.put( "立博","libo");
-		COMAPNY.put("澳门", "aomen");
-		COMAPNY.put("bet365","ribo");
-		COMAPNY.put("易胜博","yisheng");
-		COMAPNY.put("明陞","mingsheng");
-		COMAPNY.put("利记","liji");
-		COMAPNY.put("nikebet","nikebet");
-		COMAPNY.put("沙巴","shaba");
+//		COMAPNY.put( "伟德","weide");
+//		COMAPNY.put( "立博","libo");
+//		COMAPNY.put("澳门", "aomen");
+//		COMAPNY.put("bet365","ribo");
+//		COMAPNY.put("易胜博","yisheng");
+//		COMAPNY.put("明陞","mingsheng");
+//		COMAPNY.put("利记","liji");
+//		COMAPNY.put("nikebet","nikebet");
+//		COMAPNY.put("沙巴","shaba");
 		
-		WBW2CLLCOMPANY.put("永利高", "永利高");
+//		WBW2CLLCOMPANY.put("永利高", "永利高");
 		WBW2CLLCOMPANY.put("皇冠", "皇冠");
-		WBW2CLLCOMPANY.put("伟德", "伟德");
-		WBW2CLLCOMPANY.put("立博", "立博");
-		WBW2CLLCOMPANY.put("澳门", "澳门");
-		WBW2CLLCOMPANY.put("Bet365", "bet365");
-		WBW2CLLCOMPANY.put("Easybets(易胜博)", "易胜博");
-		WBW2CLLCOMPANY.put("明陞", "明陞");
-		WBW2CLLCOMPANY.put("Sbobet(利记)", "利记");
-		WBW2CLLCOMPANY.put("Nikebet", "nikebet");
-		WBW2CLLCOMPANY.put("沙巴(IBCBET)", "沙巴");
+//		WBW2CLLCOMPANY.put("伟德", "伟德");
+//		WBW2CLLCOMPANY.put("立博", "立博");
+//		WBW2CLLCOMPANY.put("澳门", "澳门");
+//		WBW2CLLCOMPANY.put("Bet365", "bet365");
+//		WBW2CLLCOMPANY.put("Easybets(易胜博)", "易胜博");
+//		WBW2CLLCOMPANY.put("明陞", "明陞");
+//		WBW2CLLCOMPANY.put("Sbobet(利记)", "利记");
+//		WBW2CLLCOMPANY.put("Nikebet", "nikebet");
+//		WBW2CLLCOMPANY.put("沙巴(IBCBET)", "沙巴");
 		
-		COMAPNYLIST.add("yongligao");
+//		COMAPNYLIST.add("yongligao");
 		COMAPNYLIST.add("huangguan");
-		COMAPNYLIST.add("weide");
-		COMAPNYLIST.add("libo");
-		COMAPNYLIST.add("aomen");
-		COMAPNYLIST.add("ribo");
-		COMAPNYLIST.add("yisheng");
-		COMAPNYLIST.add("mingsheng");
-		COMAPNYLIST.add("liji");
-		COMAPNYLIST.add("nikebet");
-		COMAPNYLIST.add("shaba");
+//		COMAPNYLIST.add("weide");
+//		COMAPNYLIST.add("libo");
+//		COMAPNYLIST.add("aomen");
+//		COMAPNYLIST.add("ribo");
+//		COMAPNYLIST.add("yisheng");
+//		COMAPNYLIST.add("mingsheng");
+//		COMAPNYLIST.add("liji");
+//		COMAPNYLIST.add("nikebet");
+//		COMAPNYLIST.add("shaba");
 	}
 	
 	

@@ -101,7 +101,7 @@ public class DcInfoTask implements Runnable {
 	}
 
 	private void snatchMatch(LotteryTerm term) {
-		List<DcArrange> snatchList = DcBusiness.snatchDcMatch();
+		List<DcArrange> snatchList = DcBusiness.snatchDcMatch(term.getTerm());
 		List<DcArrange> dbList = dcService.getDcList(term);
 		Map<String, DcArrange> dbMap = new HashMap<String, DcArrange>();
 		for (DcArrange dc : dbList) {

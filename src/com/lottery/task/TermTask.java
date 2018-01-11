@@ -35,7 +35,7 @@ public class TermTask implements Runnable{
 	}
 	public LotteryTerm updateTerm() {
 		LotteryTerm dbTerm=lotteryTermService.getCurrentTerm();
-		LotteryTerm snatchTerm =TermBusiness.snatchAIBOTerm();
+		LotteryTerm snatchTerm =TermBusiness.snatch500Term();
 		LotteryTerm term=null;
 		if (dbTerm == null) {
 			if (snatchTerm != null) {

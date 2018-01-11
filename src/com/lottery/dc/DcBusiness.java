@@ -14,19 +14,20 @@ import org.jsoup.select.Elements;
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.lottery.common.model.DcArrange;
+import com.lottery.common.model.LotteryTerm;
 import com.lottery.common.utils.DateUtil;
 import com.lottery.common.utils.HttpUtil;
 
 public class DcBusiness {
-	private static final String W500_DC_URL = "http://trade.500.com/bjdc/";
+	private static final String W500_DC_URL = "http://trade.500.com/bjdc/?expect=";
 	private static final String W500_SCORE_URL = "http://live.500.com/zqdc.php?e=";
 
 	private static Logger log = Logger.getLogger(DcBusiness.class);
 
-	public static List<DcArrange> snatchDcMatch() {
+	public static List<DcArrange> snatchDcMatch(String term) {
 		List<DcArrange> list = new ArrayList<DcArrange>();
 		try {
-			String html = HttpUtil.getUrl(W500_DC_URL);
+			String html = HttpUtil.getUrl(W500_DC_URL+term);
 			// 解析html
 			Document doc = Jsoup.parse(html);
 			Element table = doc.select("#vs_table").first();
@@ -34,7 +35,7 @@ public class DcBusiness {
 			Element termEle = doc.select("#expect_select > option[selected]").first();
 			String termData = termEle.val();
 			String[] arr = termData.split("\\|");
-			String term = arr[0];
+			String termNo = arr[0];
 
 			for (Element ele : trs) {
 				String data = ele.val();
@@ -42,7 +43,7 @@ public class DcBusiness {
 
 				String endTime = json.getString("endTime") + ":00";
 				DcArrange dc = new DcArrange();
-				dc.setTerm(term);
+				dc.setTerm(termNo);
 				dc.setLineId(json.getString("index"));
 				dc.setMatchName(json.getString("leagueName"));
 				dc.setHome(json.getString("homeTeam"));
@@ -112,9 +113,9 @@ public class DcBusiness {
 	}
 
 	public static void main(String[] args) {
-//		DcBusiness.snatchDcMatch();
-		List<DcArrange> list=snatchDcScore("170903");
-		System.out.println(list);
+		DcBusiness.snatchDcMatch("180102");
+//		List<DcArrange> list=snatchDcScore("170903");
+//		System.out.println(list);
 	}
 
 }

@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
 
 import com.lottery.common.model.LotteryTerm;
 import com.lottery.common.utils.DateUtil;
@@ -53,13 +54,28 @@ public class TermBusiness {
 			// 解析html
 			Document doc = Jsoup.parse(html);
 			// 第一期
-			Element ele = doc.select("#expect_select > option[selected]").first();
-			String data = ele.val();
-			String[] arr = data.split("|");
+			Elements eles = doc.select("#expect_select > option");
+			Element prevEle=eles.get(1);//上一期
+			//上一期的截止时间 的08:00:00当做开始 时间
+			String data = prevEle.val();
+			String[] arr = data.split("\\|");
+			Date startDate=DateUtil.getDateTimeFormat(arr[1]);
+			Calendar calendar = Calendar.getInstance();
+			calendar.setTime(startDate);
+			calendar.set(Calendar.HOUR_OF_DAY, 8);
+			calendar.set(Calendar.MINUTE, 0);
+			calendar.set(Calendar.MILLISECOND, 0);
+			startDate=calendar.getTime();
+			
+			Element ele=eles.first();
+			
+			data = ele.val();
+			arr = data.split("\\|");
 			term = new LotteryTerm();
 			term.setTerm(arr[0]);
-			term.setEndTime(DateUtil.getDateFormat(arr[1]));
+			term.setEndTime(DateUtil.getDateTimeFormat(arr[1]));
 			term.setCreateTime(new Date());
+			term.setStartTime(startDate);
 		} catch (Exception e) {
 			log.error("[彩期抓取]抓取彩期数据错误"+e.getMessage());
 			e.printStackTrace();
@@ -69,6 +85,6 @@ public class TermBusiness {
 	}
 
 	public static void main(String[] args) {
-		TermBusiness.snatchAIBOTerm();
+		TermBusiness.snatch500Term();
 	}
 }
