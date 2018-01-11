@@ -6,7 +6,7 @@ var _config={
 	stopRace:[],
 	stopRaceDate:[],
 	showStop:false,
-	fiveGameStr:",英超,德甲,西甲,意甲,法甲,",
+	fiveGameStr:",英超,德甲,意甲,西甲,法甲,欧冠,欧罗巴,亚冠,世界杯,欧洲杯,亚洲杯,世欧预,世亚预,世南美预,世北美预,世非预,亚预赛,欧预赛,友谊赛,英足总杯,国王杯,意超杯,英联杯,法联杯,西超杯,意大利杯,联合会杯,欧超杯,社区盾,",
 	hylbArr:[],
 	gylbArr:[],
 	pkArr:[]
