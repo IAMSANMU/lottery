@@ -20,7 +20,12 @@ public class LoginController extends BaseController {
 	public void index(){
 		render("login.html");
 	}
-	
+	public void logout(){
+		getSession().invalidate();
+		setCookie("JSESSIONID","",-1);
+		render("login.html");
+		
+	}
 	public void img() {
 		CaptchaRender img = new CaptchaRender();
 		render(img);
@@ -60,6 +65,7 @@ public class LoginController extends BaseController {
 			render("login.html");
 		}else{
 			setSessionAttr(Constant.SELLER_SESSION, user);
+			setCookie("JSESSIONID", getSession().getId(),86400);
 			redirect("/");
 		}
 	}

@@ -12,7 +12,7 @@ public class DataTablesJson<T> {
 	private List<T> data;
 
 	public String toJsonString() {
-		return JSONObject.toJSONString(this,SerializerFeature.WriteMapNullValue);
+		return JSONObject.toJSONString(this,SerializerFeature.WriteMapNullValue,SerializerFeature.WriteDateUseDateFormat);
 	}
 
 	public long getRecordsTotal() {

@@ -1,0 +1,38 @@
+#@emptylayout() 
+#define main()
+<div class="wrapper wrapper-content animated fadeInRight ecommerce">
+	<div class="row">
+
+		<div class="col-sm-12 ibox">
+			<div class="ibox-content">
+				<form role="form" id="saveForm" class="form-horizontal" method="post" action="#(section.id==null?'/admin/section/save':'/admin/section/update')">
+					<div class="form-group">
+						<label class="col-sm-2 control-label">栏目名称:</label>
+						<div class="col-sm-8">
+							<input type="hidden" name="id" value="#(section.id)" /> 
+							<input type="text" name="name" value="#(section.name)" class="form-control" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label class="col-sm-2 control-label">说明:</label>
+						<div class="col-sm-8">
+							<textarea name="remark" class="form-control">#(section.remark)</textarea>
+						</div>
+					</div>
+
+					<div class="form-group text-center">
+						<div class="col-sm-12">
+							<button type="button"
+								class="btn btn-w-m btn-primary ladda-button" id="btnSave"
+								data-style="expand-right">保存</button>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+#end 
+#define script()
+<script type="text/javascript"	src="#(basepath)/js/admin/section/edit.js"></script>
+#end

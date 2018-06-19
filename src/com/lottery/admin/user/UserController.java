@@ -65,7 +65,7 @@ public class UserController extends BaseController {
 			userService.save(model);
 			json.setSuccess(true);
 		}
-		renderText(JSONObject.toJSONString(json));
+		renderText(json.toJsonString());
 	}
 
 	public void edit() {
@@ -99,7 +99,7 @@ public class UserController extends BaseController {
 				json.setMessage("系统错误");
 			}
 		}
-		renderText(JSONObject.toJSONString(json));
+		renderText(json.toJsonString());
 	}
 
 	public void delete() {
@@ -113,6 +113,7 @@ public class UserController extends BaseController {
 			userService.logicDelete(idArr);
 			json.setSuccess(true);
 		}
+		renderText(json.toJsonString());
 	}
 
 	public void restore() {
@@ -126,6 +127,7 @@ public class UserController extends BaseController {
 			userService.restore(idArr);
 			json.setSuccess(true);
 		}
+		renderText(json.toJsonString());
 	}
 
 	public void pwd() {
@@ -170,7 +172,7 @@ public class UserController extends BaseController {
 			userService.buy(user, remark);
 			json.setSuccess(true);
 		}
-		renderText(JSONObject.toJSONString(json));
+		renderText(json.toJsonString());
 	}
 
 	public void pwdUpdate() {
@@ -193,7 +195,7 @@ public class UserController extends BaseController {
 			userService.update(user);
 			json.setSuccess(true);
 		}
-		renderText(JSONObject.toJSONString(json));
+		renderText(json.toJsonString());
 	}
 
 }

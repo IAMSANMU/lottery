@@ -1,0 +1,34 @@
+#define _layout()
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>前端</title>
+
+<link href="#(basepath)/css/public.css" rel="stylesheet" type="text/css" />
+<link href="#(basepath)/css/bootstrap/bootstrap.css" rel="stylesheet"/>
+<link href="#(basepath)/css/style.css" rel="stylesheet" type="text/css" />
+#@styles?()
+<!-- Primary Inspinia style -->
+<script type="text/javascript" src="#(basepath)/js/jquery.min.js"></script>
+<script type="text/javascript"
+	src="#(basepath)/js/bootstrap/bootstrap.min.js"></script>
+
+#@script?()
+
+
+</head>
+<body>
+		<!-- Navigation -->
+		#include("../../front/top.html") 
+		<div class="section">
+		</div>
+		
+		#@body()
+</body>
+</html>
+#end

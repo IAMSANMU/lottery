@@ -1,0 +1,39 @@
+﻿
+.news .title {
+    margin-bottom: 20px;
+}
+.news {padding:10px 20px;}
+.news dl {border-bottom:1px dashed #E9D8C7;color:#808080;padding:10px 0 3px;}
+.news dt {height:25px; font-weight:300}
+.news dt a {font-weight:bolder;font-size:14px; padding-left:12px}
+.news dd {line-height:20px;padding-left:12px; font-size:12px}
+.news dd a {color:#666;text-decoration:underline;}
+.news dd.newstag {line-height:30px;}
+.news .content .title {
+    color: #666;
+    padding-top: 20px;
+    font-size: 30px;
+
+}
+.news .content .autor {
+    color: #999999;
+    padding-left: 60px;
+}
+.news .content .autor span{
+    margin-right: 5px;
+}
+.news .notice li {
+    padding: 2px;
+}
+.news .notice li a{
+    font-size: 12px;
+    color: #666;
+}
+.news .notice li a:hover {
+    color: #f32;
+}
+
+.news .notice li span{
+    font-size: 12px;
+    float: right;
+}

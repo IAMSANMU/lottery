@@ -1,0 +1,49 @@
+#@emptylayout()
+#define main()
+<div class="wrapper wrapper-content animated fadeInRight ecommerce">
+    <div class="row">
+
+        <div class="col-sm-12 ibox">
+            <div class="ibox-content">
+                <form role="form" id="saveForm" class="form-horizontal" method="post" action="/admin/template/save">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">模板名称:</label>
+                        <div class="col-sm-8">
+                            <input type="text" name="name"  class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">说明:</label>
+                        <div class="col-sm-8">
+                            <textarea name="remark"  class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">详情:</label>
+                        <div class="col-sm-8">
+                            <textarea  class="form-control summernote"></textarea>
+                            <input type="hidden" name="decodeContext"  id="info"/>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group text-center">
+                        <div class="col-sm-12">
+                            <button type="button" class="btn btn-w-m btn-primary ladda-button" id="btnSave" data-style="expand-right">保存</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+#end
+#define styles()
+<link href="#(basepath)/css/bootstrap/plugins/summernote/summernote.css" rel="stylesheet" type="text/css" />
+<link href="#(basepath)/css/bootstrap/plugins/summernote/summernote-bs3.css" rel="stylesheet" type="text/css" />
+#end
+
+#define script()
+	<script type="text/javascript" src="#(basepath)/js/bootstrap/plugins/summernote/summernote.min.js"></script>
+	<script type="text/javascript" src="#(basepath)/js/bootstrap/plugins/summernote/summernote-zh-CN.js"></script>
+	<script type="text/javascript" src="#(basepath)/js/admin/template/edit.js"></script>
+#end

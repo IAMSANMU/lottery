@@ -1,0 +1,164 @@
+#@emptylayout() #define main()
+<div class="wrapper wrapper-content animated fadeInRight ecommerce">
+    <div class="row">
+        <form role="form" id="saveForm" class="form-horizontal" method="post" action='#(news.id==null?"/admin/news/save":"/admin/news/update")'>
+            <div class="col-sm-12">
+                <div class="tabs-container">
+                    <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#tab-1">基本信息</a></li>
+                        <li class=""><a data-toggle="tab" href="#tab-2" id="changeClass">内容</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div id="tab-1" class="tab-pane active">
+                            <div class="panel-body">
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <input type="hidden" name="id" value="#(news.id)" />
+                                        <label class="col-sm-4 control-label">栏目:</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control" Name="sectionId">
+                                             #for(item : sectionList)
+							                    <option value="#(item.id)" #(item.id==news.sectionId?'selected':'')>#(item.name)</option>
+							                #end
+                                            </select>
+                                        </div>
+                                    </div>
+                                   
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">seo_keywords:</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" name="keywords" class="form-control" value="#(news.Keywords)"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">seo_description:</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" name="desc" class="form-control" value="#(news.desc)"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">点击数:</label>
+                                        <div class="col-sm-8">
+                                            <input type="Number" name="viewCount" class="form-control" value="#(news.viewCount)" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">置顶:</label>
+                                        <div class="col-sm-8">
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" name="isTop" class="i-checks" value="true" #(news.isTop? "checked" : "")>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">显示:</label>
+                                        <div class="col-sm-8">
+                                            <label class="checkbox-inline">
+                                                <input type="checkbox" name="isShow" class="i-checks" value="true" #(news.isShow ? "checked" : "")>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-4 control-label">说明:</label>
+                                        <div class="col-sm-8">
+                                            <textarea class="form-control" name="remark">#(news.remark)</textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">标题:</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" name="title" class="form-control" value="#(news.Title)"/>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">Tags:<small class="text-danger block">逗号分开</small></label>
+                                        <div class="col-sm-8">
+                                            <input type="text" name="tags" class="form-control" value="#(news.tags)" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">来源:</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" name="source" class="form-control" value="#(news.source)" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">发布人:</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" name="author" class="form-control" value="#(news.author)" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group hidden">
+                                        <label class="col-sm-3 control-label">发布时间:</label>
+                                        <div class="col-sm-8">
+                                            <div class="input-group date ">
+                                                <span class="input-group-addon"><i class="fa fa-calendar"></i></span>
+                                                <input type="text" name="pushTime"  class="form-control" value='#date(news.pushTime,"yyyy-MM-dd HH:mm")'>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="col-sm-3 control-label">类型:</label>
+                                        <div class="col-sm-8">
+                                            <label class="radio-inline">
+                                                <input type="radio" name="type" class="i-radios" value="0"  #(news.type==0?"checked":"")>内容
+                                            </label>
+                                            <label class="radio-inline" title="">
+                                                <input type="radio" name="type" class="i-radios" value="1"  #(news.type==1?"checked":"")>链接
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="form-group link #(news.type==0?"hidden":"")">
+                                        <label class="col-sm-3 control-label">跳转地址:</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" Name="link" value="#(news.link)">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div id="tab-2" class="tab-pane ">
+                            <div class="panel-body">
+                                <div class="row">
+                                    <div class="form-group">
+                                        <label class="col-sm-2 control-label">模板:</label>
+                                        <div class="col-sm-8">
+                                            <select class="form-control" id="template">
+                                                <option value="" data-info="">---选择模板--</option>
+                                                #for ( item : templateList)
+                                                    <option value="#(item.id)" data-info="#(item.context)" >#(item.name)</option>
+                                                #end
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="col-sm-12">
+                                        	<input type="hidden" name="decodeContext" id="info"/>
+                                            <textarea  class="form-control summernote">#(news.decodeContext)</textarea>
+                                        </div>
+                                    </div>
+                               </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="ibox">
+                    <div class="ibox-content text-center">
+                        <button type="button" class="btn btn-w-m btn-primary ladda-button" id="btnSave" data-style="expand-right">保存</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+
+#end #define styles()
+<link href="#(basepath)/css/bootstrap/plugins/summernote/summernote.css" rel="stylesheet" type="text/css" />
+<link href="#(basepath)/css/bootstrap/plugins/summernote/summernote-bs3.css" rel="stylesheet" type="text/css" />
+#end #define script()
+<script type="text/javascript"	src="#(basepath)/js/bootstrap/plugins/summernote/summernote.min.js"></script>
+<script type="text/javascript"	src="#(basepath)/js/bootstrap/plugins/summernote/summernote-zh-CN.js"></script>
+<script type="text/javascript"	src="#(basepath)/js/admin/news/edit.js"></script>
+#end

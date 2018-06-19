@@ -9,7 +9,6 @@ import com.lottery.common.model.base.BaseLotUser;
  */
 @SuppressWarnings("serial")
 public class LotUser extends BaseLotUser<LotUser> {
-	public static final LotUser dao=new LotUser().dao();
 	
 	private Boolean ableLook;
 

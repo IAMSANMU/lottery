@@ -25,6 +25,9 @@ public class _MappingKit {
 		arp.addMapping("lot_user", "Id", LotUser.class);
 		arp.addMapping("lot_user_buylog", "Id", LotUserBuylog.class);
 		arp.addMapping("lottery_term", "id", LotteryTerm.class);
+		arp.addMapping("news_context", "id", NewsContext.class);
+		arp.addMapping("news_section", "id", NewsSection.class);
+		arp.addMapping("news_template", "id", NewsTemplate.class);
 	}
 }
 

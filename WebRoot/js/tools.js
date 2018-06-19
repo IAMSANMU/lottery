@@ -3,6 +3,45 @@
 *
 **/
 $.extend({
+
+    /**
+     * funcUrl()获取完整search值(不包含问号)
+     * funcUrl(name)返回 url 中 name 的值
+     * funcUrl(name,value) 将search中name的值设置为value,并返回完整url 
+     * funcUrl(name,value,type) 作用和第三条一样,但这只返回更新好的search字符串 
+     * @param {} name 
+     * @param {} value 
+     * @param {} type 
+     * @returns {} 
+     */
+    funcUrl: function (name, value, type) {
+        var loca = window.location;
+        var baseUrl = type == undefined ? loca.origin + loca.pathname + "?" : "";
+        var query = loca.search.substr(1);
+        // 如果没有传参,就返回 search 值 不包含问号
+        if (name == undefined) { return query }
+        // 如果没有传值,就返回要查询的参数的值
+        if (value == undefined) {
+            var val = query.match(new RegExp("(^|&)" + name + "=([^&]*)(&|$)"));
+            return val != null ? decodeURI(val[2]) : null;
+        };
+        var url;
+        if (query == "") {
+            // 如果没有 search 值,则返回追加了参数的 url
+            url = baseUrl + name + "=" + value;
+        } else {
+            // 如果没有 search 值,则在其中修改对应的值,并且去重,最后返回 url
+            var obj = {};
+            var arr = query.split("&");
+            for (var i = 0; i < arr.length; i++) {
+                arr[i] = arr[i].split("=");
+                obj[arr[i][0]] = arr[i][1];
+            };
+            obj[name] = value;
+            url = baseUrl + JSON.stringify(obj).replace(/[\"\{\}]/g, "").replace(/\:/g, "=").replace(/\,/g, "&");
+        };
+        return url;
+    },
     baseConfig: {tab: "",btns: []},
     permStr: "",
     okFn: function (fileBtn, result) {
@@ -36,6 +75,9 @@ $.extend({
         $.alert(content, callback, "warning");
     }, alertError: function (content, callback) {
         $.alert(content, callback, "error");
+    },
+    close:function() {
+        swal.close();
     },
     confirm: function (content, okFn, cancelFn) {
         swal({
@@ -74,19 +116,23 @@ $.extend({
     openWindow: function (action, title, width, height) {
         width = width || "90%";
         height = height || "90%";
-
+        
         var def = {
             type: 2,
             shade: 0.5,
             area: [width, height],
             content: action,
             title: title,
-            maxmin: true
+            fixed:false,
+            maxmin: true,
+            success: function (layero, index) {
+                $.autoFrame(layero);
+            }
         }
         layer.open(def);
     },
     openSmall: function(action, title) {
-        $.openWindow(action,title,"60%","60%");
+        $.openWindow(action,title,"60%","70%");
     },
     closeWindow: function (callback) {
         parent.layer.closeAll('iframe');
@@ -96,31 +142,47 @@ $.extend({
     },
     ajaxForm: function (elm, form, option) {
         Ladda.bind(elm,
-        {
-            callback: function (instance) {
-                if (form.valid()) {
-                    var _data = form.serialize();
-                    if (option.data) {
-                        _data = option.data(_data);
-                    }
-                    var url = form.attr("action");
-                    $.post(url,
-                        _data,
-                        function (result) {
+            {
+                callback: function (instance) {
+                	if (option.before) {
+                        var flag = option.before();
+                        if (!flag) {
                             instance.stop();
-                            if (result.success) {
-                                if (option.success) {
-                                    option.success(result);
-                                }
-                            } else {
-                                $.alertWarn(result.Message);
-                            }
-                        },
-                        "json");
-                } else {
-                    instance.stop();
+                            return false;
+                        }
+                    }
+                    var pass = true;
+                    try {
+                        pass = form.valid();
+                    } catch (e) {
+                    }
+                    if (pass) {
+                        var _data = form.serialize();
+                        if (option.data) {
+                            _data = option.data(_data, elm);
+                        }
+                        if (!_data) {
+                            instance.stop();
+                        } else {
+                            var url = form.attr("action");
+                            $.post(url,
+                                _data,
+                                function(result) {
+                                    instance.stop();
+                                    if (result.success) {
+                                        if (option.success) {
+                                            option.success(result);
+                                        }
+                                    } else {
+                                        $.alertWarn(result.Message);
+                                    }
+                                },
+                                "json");
+                        }
+                    } else {
+                        instance.stop();
+                    }
                 }
-            }
         });
     },
     padLeft: function (value, width, paddingChar) {
@@ -171,6 +233,13 @@ $.extend({
             return "";
         }
     }
+    , autoFrame: function (layero) {
+        var iframe = $("iframe")[0];
+        var bHeight = iframe.contentWindow.document.body.scrollHeight;
+        var dHeight = iframe.contentWindow.document.documentElement.scrollHeight;
+        var height = Math.max(bHeight, dHeight);
+        $(iframe).height(height);
+    }
 });
 
 
@@ -191,7 +260,53 @@ String.prototype.startWith = function (s) {
     else
         return false;
 };
+$.fn.Textarea = function(option) {
+    option = option || {};
+    var target = $(this);
+    if (!option.callback) {
+        option.callback= function(urls) {
+            for (var item in urls) {
+                if (urls.hasOwnProperty(item)) {
+                    target.summernote('insertImage', urls[item]);
+                }
+            }
+        }
+    }
 
+    function UploadFiles(files,type, func) {
+        //这里files是因为我设置了可上传多张图片，所以需要依次添加到formData中
+        var formData = new FormData();
+        for (var f in files) {
+            if (files.hasOwnProperty(f)) {
+                formData.append("file"+f, files[f]);
+            }
+        }
+        $.ajax({
+            url: "/admin/upload/"+type,//后台文件上传接口
+            type: 'POST',
+            data: formData,
+            processData: false,
+            contentType: false,
+            success: function (result) {
+                if (result.success) {
+                    func(result.data);
+                } else {
+                    $.alertError(result.message);
+                }
+            }
+        });
+    };
+
+    target.summernote({
+        lang: 'zh-CN',
+        height: 300,
+        callbacks: {
+            onImageUpload: function(files) { //the onImageUpload API  
+                UploadFiles(files,option.type,option.callback);
+            }
+        }
+    });
+};
 
 $.fn.loadArea= function() {
     var tigger = $(this);
@@ -204,8 +319,10 @@ $.fn.loadArea= function() {
         });
     });
 }
-$.fn.loadTree= function(url) {
-    var option= {
+///selectChild 选中父级,是否选择子级
+$.fn.loadTree = function (url, selectChild) {
+    selectChild = selectChild || false;
+    var option = {
         "checkbox": {
             "keep_selected_style": false
         },
@@ -222,6 +339,11 @@ $.fn.loadTree= function(url) {
                 "dataType": "json"
             }
         }
+    }
+
+    if (selectChild) {
+        option.checkbox["three_state"] = false;
+        option.checkbox["cascade"] = "up+undetermined";
     }
     this.jstree(option);
 }
@@ -243,7 +365,7 @@ $.fn.imgUpload = function (action,options, okFn, delFn) {
     if (show.length === 0) {
         var prevId = prev.replace("#", "");
         show = $("<div class=\"dropzone hidden\" id=\"" + prevId + "\"   ></div>");
-        $(this).eq(0).after(show);
+        $(this).filter(":last").after(show);
     }
     $(this).data("previews", show);
     var def = {
@@ -285,7 +407,17 @@ $.fn.ickbox= function() {
         checkboxClass: 'icheckbox_square-green'
     });
 }
+$.fn.iradio= function() {
+    $(this).iCheck({
+        radioClass: 'iradio_square-green'
+    });
 
+}
+$.fn.bindSwitch = function () {
+    $(this).each(function(index,elem) {
+       var item= new Switchery(elem, { color: '#1AB394' });
+    });
+}
 
 
 $.fn.ectoolbar = function (options) {
@@ -329,6 +461,38 @@ $.fn.tbInit = function () {
                     }
                 });
         });
+}
+/**
+ * option={data:function(){},success:function(){} }
+ * 
+**/
+$.fn.bindSubmit = function (option) {
+    option=option || {}
+    var formId =option.formId || "#saveForm";
+    //禁用input 回车自动提交
+    var btn = $(this);
+//    $(formId).keydown(function(e) {
+//        if (e.keyCode === 13) {
+//            btn.click();
+//            return false;
+//        }
+//    });
+    if (!option.success) {
+        option.success=function () {
+            $.alert("提交成功", function () {
+                $.closeWindow(function () {
+                    parent.location.reload();
+                });
+            });
+        }
+    }
+    var targets = this;
+    for (var i = 0; i < targets.length; i++) {
+        $.ajaxForm(targets[i], $(formId), option);
+    }
+
+
+   
 }
 
 
@@ -376,7 +540,7 @@ function createBatActionButton(target, options, single) {
         }
         $.confirm(single.confirmMsg, function () {
             $.post(single.action, { ids: ids.join(",") }, function (data) {
-                if (data.Success) {
+                if (data.success) {
                     if (orgClick) {
                         orgClick();
                     } else {
@@ -385,7 +549,7 @@ function createBatActionButton(target, options, single) {
                         });
                     }
                 } else {
-                    $.alertError(data.Message, function () {
+                    $.alertError(data.message, function () {
                         dataTable.ajax.reload();
                     });
                 }
@@ -401,6 +565,14 @@ function createAddButton(target, options, single) {
 
     return _buildBtn(single);
 }
+
+function createExportButton(target, options, single) {
+    single.click = function () {
+        location.href = single.action;
+    }
+    return _buildBtn(single);
+}
+
 
 function createMenuButton(target, options, single) {
     var menuId = "#" + single.menuId;
@@ -456,12 +628,15 @@ function createButton(target, single) {
                 return createAddButton(target, options, single);
             case "active":
                 if (single.text === "") { single.text = "启 用"; }
+                single.confirmMsg = single.confirmMsg == "" ? "是否确定启用?" : single.confirmMsg;
                 return createBatActionButton(target, options, single);
             case "unactive":
                 if (single.text === "") { single.text = "禁 用"; }
+                single.confirmMsg = single.confirmMsg == "" ? "是否确定禁用?" : single.confirmMsg;
                 return createBatActionButton(target, options, single);
             case "restore":
                 if (single.text === "") { single.text = "还 原"; }
+                single.confirmMsg = single.confirmMsg == "" ? "是否确定还原?" : single.confirmMsg;
                 return createBatActionButton(target, options, single);
             case "VerifySuccess":
                 if (single.text === "") { single.text = "审核通过"; }
@@ -472,6 +647,9 @@ function createButton(target, single) {
             case "SetRates":
                 if (single.text === "") { single.text = "设置阿母币抵押比例"; }
                 return createAddButton(target, options, single);
+            case "export":
+                if (single.text === "") { single.text = "导出"; }
+                return createExportButton(target, options, single);
             case "menu"://不做处理
                 break;
             default:
@@ -481,13 +659,20 @@ function createButton(target, single) {
     if (single.type === "menu") {
         return createMenuButton(target, options, single);
     }
-}
+};
 $(function(){
 	$('#myTabs a[data-toggle="tab"]').on('show.bs.tab', function (e) {
         var tabType = $(this).attr("data-type");
-        location.href = location.pathname + "?tab=" + tabType;
-    });
-	$("#_modifyPwd").click(function(){
-		$.openWindow("/admin/admin/pwd","修改密码");
-	})
+	    location.href = $.funcUrl("tab", tabType);
+	});
+	function addResetBtn() {
+	    var btn = $("<button type='button' class='btn btn-danger'>重置</button>");
+	    btn.click(function () {
+	        //重新加载
+	        $(this).closest("form")[0].reset();
+	        $("#search").click();
+	    })
+	    $("#search").after(btn).after("&nbsp;&nbsp;");
+	}
+	addResetBtn();
 })

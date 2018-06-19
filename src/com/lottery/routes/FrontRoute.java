@@ -2,6 +2,7 @@ package com.lottery.routes;
 
 import com.jfinal.config.Routes;
 import com.lottery.dc.DcController;
+import com.lottery.news.NewsController;
 import com.lottery.user.LoginController;
 import com.lottery.user.MemberController;
 
@@ -13,6 +14,7 @@ public class FrontRoute extends Routes {
 		add("/", DcController.class,"/dc");
 		add("/login", LoginController.class,"/user");
 		add("/member", MemberController.class,"/user");
+		add("/news",NewsController.class,"/news");
 	}
 
 }

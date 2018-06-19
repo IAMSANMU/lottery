@@ -1,0 +1,45 @@
+#@_layout() #define body()
+<div class="container news">
+    <div class="row clearfix content">
+        <div class="col-sm-9">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <h1 class="panel-title title text-center">
+                        <strong>
+                            #(news.title)
+                        </strong>
+                    </h1>
+                    <div class="autor">
+                        <span>#date(news.pushTime,"yyyy-MM-dd")</span> |
+                        <span>点击:#(news.viewCount*11)</span> |
+                        <span>来源:#(news.source)</span>
+                    </div>
+                </div>
+
+                <div class="panel-body">
+                    #(news.decodeContext)
+                </div>
+                <div class="panel-footer">
+                    <label class="label-info label">责任编辑：#(news.author)</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-3">
+            <div class="panel panel-default">
+				<div class="panel-heading">
+					<h1 class="panel-title ">最新资讯</h1>
+				</div>
+				<div class="panel-body">
+					#include("rank.html")
+				</div>
+			</div>
+        </div>
+    </div>
+
+
+</div>
+#end
+#define styles()
+
+<link href="#(basepath)/css/news/news.css" rel="stylesheet" type="text/css" />
+#end

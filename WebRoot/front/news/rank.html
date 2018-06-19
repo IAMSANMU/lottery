@@ -1,0 +1,12 @@
+<ul class="list-unstyled notice">
+	#for(item:rank)
+	<li>
+		#if(item.type==0)
+			<a target="_blank" href="/news/info/#(item.id)"> #(item.title) </a>
+		#else
+			<a target="_blank" href="#(item.link)"> #(item.title) </a>
+		#end
+		<span class="badge">#date(item.pushTime,"dd")日</span>
+	</li>
+	#end
+</ul>

@@ -1,7 +1,6 @@
 package com.lottery.common.model.base;
 
 import com.jfinal.plugin.activerecord.Model;
-import com.alibaba.fastjson.annotation.JSONField;
 import com.jfinal.plugin.activerecord.IBean;
 
 /**
@@ -32,7 +31,7 @@ public abstract class BaseLotUserBuylog<M extends BaseLotUserBuylog<M>> extends 
 		set("createTime", createTime);
 		return (M)this;
 	}
-	@JSONField(format="yyyy/MM/dd")
+
 	public java.util.Date getCreateTime() {
 		return get("createTime");
 	}
@@ -41,7 +40,7 @@ public abstract class BaseLotUserBuylog<M extends BaseLotUserBuylog<M>> extends 
 		set("startTime", startTime);
 		return (M)this;
 	}
-	@JSONField(format="yyyy/MM/dd")
+
 	public java.util.Date getStartTime() {
 		return get("startTime");
 	}
@@ -50,7 +49,7 @@ public abstract class BaseLotUserBuylog<M extends BaseLotUserBuylog<M>> extends 
 		set("endTime", endTime);
 		return (M)this;
 	}
-	@JSONField(format="yyyy/MM/dd")
+
 	public java.util.Date getEndTime() {
 		return get("endTime");
 	}

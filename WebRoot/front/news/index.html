@@ -1,0 +1,61 @@
+#@_layout() #define body()
+<div class="container news ">
+	<div class="row clearfix">
+		<div class="col-sm-9">
+			<div class="row clearfix">
+				<div class="col-sm-12">
+					<h2 class="title">
+						<strong> 新闻资讯</strong> <small>News</small>
+					</h2>
+				</div>
+			</div>
+
+
+			#for(item : news.list) 
+			<div class="row clearfix">
+				<div class="col-sm-12">
+					<dl>
+						<dt>
+							<span class="pull-right">#date(item.pushTime,"yyyy-MM-dd")</span> #if(item.type ==
+							0) <a target="_blank" href="/news/info/#(item.id)">
+								#(item.title) </a> #else <a target="_blank" href="#(item.link)">
+								#(item.title) </a> #end
+
+						</dt>
+						<dd>#(item.desc)</dd>
+						<dd class="newstag">
+							<b>标签：</b> 
+							#if(item.tags!=null)
+								#set(tagList=item.tags.split(","))
+								#for(tag : tagList) <span class="label label-default">#(tag)</span>
+								#end
+							#end
+						</dd>
+					</dl>
+
+				</div>
+			</div>
+			#end
+
+			<!-- 翻页 -->
+			#@paginate(news.pageNumber, news.totalPage, "/news/")
+		</div>
+		<div class="col-sm-3">
+			<div class="panel panel-default">
+				<div class="panel-heading">
+					<h1 class="panel-title ">最新资讯</h1>
+				</div>
+				<div class="panel-body">
+					#include("rank.html")
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
+</div>
+#end
+#define styles()
+
+<link href="#(basepath)/css/news/news.css" rel="stylesheet" type="text/css" />
+#end
