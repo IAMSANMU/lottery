@@ -1,5 +1,6 @@
 package com.lottery.admin.user;
 
+import java.util.Calendar;
 import java.util.Date;
 
 import java.util.List;
@@ -7,6 +8,7 @@ import java.util.List;
 import com.alibaba.fastjson.JSONObject;
 import com.jfinal.aop.Before;
 import com.jfinal.aop.Duang;
+import com.jfinal.ext.kit.DateKit;
 import com.jfinal.kit.HashKit;
 import com.jfinal.kit.StrKit;
 import com.jfinal.plugin.activerecord.Page;
@@ -153,9 +155,17 @@ public class UserController extends BaseController {
 
 	}
 
+	/**
+	 * 
+	 */
 	public void doBuy() {
 		Date startTime = getParaToDate("startTime");
 		Date endTime = getParaToDate("endTime");
+		Calendar cal=Calendar.getInstance();
+		cal.setTime(endTime);
+		cal.add(Calendar.DAY_OF_MONTH,1);
+		cal.add(Calendar.MILLISECOND,-1);
+		endTime=cal.getTime();
 		int id = getParaToInt("id");
 		String remark = getPara("remark");
 		LotUser user = userService.get(id);
@@ -197,5 +207,11 @@ public class UserController extends BaseController {
 		}
 		renderText(json.toJsonString());
 	}
-
+	public static void main(String[] args) {
+		Calendar cal=Calendar.getInstance();
+		System.out.println(DateKit.toStr(cal.getTime(),"yyyy-MM-dd HH:mm:ss"));
+		cal.add(Calendar.DAY_OF_MONTH,1);
+//		cal.add(Calendar.MILLISECOND,-1);
+		System.out.println(DateKit.toStr(cal.getTime(),"yyyy-MM-dd HH:mm:ss"));
+	}
 }

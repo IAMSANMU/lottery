@@ -26,7 +26,7 @@ public  class LogService extends BaseService<LotUserBuylog> {
 	}
 	
 	public List<LotUserBuylog> getList(int userId){
-		return dao.find("select * from lot_user_buylog where userId=?",userId);
+		return dao.find("select * from lot_user_buylog where userId=? order by createTime desc",userId);
 	}
 
 	@Override
