@@ -102,7 +102,7 @@ public class SpBusiness {
 				for (Element trEle : trs) {
 					try {
 						String lineId=trEle.child(0).text();
-						Elements spEle=trEle.child(7).select("span[id*=b_chk]");
+						Elements spEle=trEle.select("span[id*=b_chk]");
 						String homeSp=spEle.get(0).select("em").first().text();
 						String drawSp=spEle.get(1).select("em").first().text();
 						String guestSp=spEle.get(2).select("em").first().text();
@@ -116,6 +116,7 @@ public class SpBusiness {
 						sp.setLastUpDate(new Date());
 						list.add(sp);
 					} catch (Exception e) {
+						e.printStackTrace();
 					}
 				}
 			}
@@ -172,7 +173,7 @@ public class SpBusiness {
 		// String term=snatchOkCurrentTerm();
 		// System.out.println("term="+term);
 		try {
-			List<DcSpfSp> list=snatchAiboSP("170904");
+			List<DcSpfSp> list=snatchAiboSP("180604");
 			System.out.println(list.size());
 		} catch (Exception e) {
 
