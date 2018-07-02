@@ -10,25 +10,34 @@
 <title>前端</title>
 
 <link href="#(basepath)/css/public.css" rel="stylesheet" type="text/css" />
-<link href="#(basepath)/css/bootstrap/bootstrap.css" rel="stylesheet"/>
+<link href="#(basepath)/css/bootstrap/bootstrap.css" rel="stylesheet" />
 <link href="#(basepath)/css/style.css" rel="stylesheet" type="text/css" />
+<link href="#(basepath)/css/bootstrap/plugins/sweetalert/sweetalert.css" rel="stylesheet" type="text/css" />
 #@styles?()
 <!-- Primary Inspinia style -->
 <script type="text/javascript" src="#(basepath)/js/jquery.min.js"></script>
 <script type="text/javascript"
 	src="#(basepath)/js/bootstrap/bootstrap.min.js"></script>
 
+<script type="text/javascript"
+	src="#(basepath)/js/bootstrap/plugins/sweetalert/sweetalert.min.js"></script>
+<script type="text/javascript" src="#(basepath)/js/front/public.js"></script>
+<script type="text/javascript"
+	src="#(basepath)/js/bootstrap/plugins/jquery.base64/jquery.base64.js"></script>
 #@script?()
 
 
 </head>
-<body onmousemove=/HideMenu()/ oncontextmenu="return false" ondragstart="return false" onselectstart ="return false" onselect="document.selection.empty()" oncopy="document.selection.empty()" onbeforecopy="return false" onmouseup="document.selection.empty()">
-		<!-- Navigation -->
-		#include("../../front/top.html") 
-		<div class="section">
-		</div>
-		
-		#@body()
+<body oncontextmenu="return false"
+	ondragstart="return false" onselectstart="return false"
+	onselect="document.selection.empty()"
+	oncopy="document.selection.empty()" onbeforecopy="return false"
+	onmouseup="document.selection.empty()">
+	<!-- Navigation -->
+	#include("../../front/top.html")
+	<div class="section"></div>
+	#@body()
+	#include("../../front/right.html")
 </body>
 </html>
 #end

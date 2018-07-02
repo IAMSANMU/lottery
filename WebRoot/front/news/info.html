@@ -1,3 +1,4 @@
+
 #@_layout() #define body()
 <div class="container news">
     <div class="row clearfix content">
@@ -17,7 +18,28 @@
                 </div>
 
                 <div class="panel-body">
-                    #(news.decodeContext)
+                	<div>
+	                    #(news.decodeFreeContext)
+                	</div>
+                	#if(!news.isFree && !hasBuy)
+                	<div class="text-center overflow" id="overflow">
+                		<div>距离比赛时间 <span id="countdown" data-time="#(endTime)"></span></div>
+                		<div>#(news.slogan)</div>
+                		<div>
+	                		<a class="btn btn-danger" href="javascript:;" data-id="#(news.id)" id="buy_btn">
+	                			<b>#(news.money)元解锁</b>
+	                			<div>推荐玩法: #(news.lotteryType)</div>
+	                		</a>
+                		</div>
+                	</div>
+                	#end
+                	<div class="info" id="info">
+                		#if(hasBuy)
+                			#(news.decodeContext)
+                		#end
+                	</div>
+                	
+                	
                 </div>
                 <div class="panel-footer">
                 	<a href="/news" class="btn btn-danger btn-sm">返回列表</a>
@@ -38,10 +60,37 @@
         </div>
     </div>
 
-
 </div>
 #end
 #define styles()
 
 <link href="#(basepath)/css/news/news.css" rel="stylesheet" type="text/css" />
+#end
+#define script()
+
+<script type="text/javascript">
+	$(function(){
+		$("#buy_btn").click(function(){
+			var newsId=$(this).data("id");
+			$.confirm("是否确认购买该文章",function(){
+				//购买
+				$.ajaxCommit("/news/buy/"+newsId,{},function(result){
+					var html=result.message;
+					 html = $.base64.decode(html, "UTF-8");
+					 $("#overflow").remove();
+					$("#info").html(html);
+				});
+			});
+		});
+		var timeStr=$("#countdown").data("time");
+		$("#countdown").countdown(timeStr, function(event) {
+		    $(this).text(
+    	      event.strftime('%D 天 %H:%M:%S')
+    	    );
+		});
+
+	});
+</script>
+<script type="text/javascript"
+	src="#(basepath)/js/bootstrap/plugins/jquery.countdown/jquery.countdown.min.js"></script>
 #end

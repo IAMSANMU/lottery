@@ -1,4 +1,13 @@
-﻿
+﻿.news .overflow{
+	padding:15px;
+	background-color:#000;
+	opacity:0.5;
+	color:white;
+}
+.news .overflow div{
+	padding:5px;
+}
+
 .news .title {
     margin-bottom: 20px;
 }

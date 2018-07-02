@@ -23,6 +23,19 @@ public class NewsContext extends BaseNewsContext<NewsContext> {
 		setContext(this.decodeContext);
 	}
 	
+	
+	@JSONField(serialize=false)
+	private String decodeFreeContext;
+
+	public String getDecodeFreeContext() {
+		return StrKit.isBlank(getFreeContext()) ? "" : Base64Kit.decodeToStr(getFreeContext());
+	}
+
+	public void setDecodeFreeContext(String decodeFreeContext) {
+		this.decodeFreeContext = decodeFreeContext;
+		setFreeContext(this.decodeFreeContext);
+	}
+	
 	private String sectionName;
 
 

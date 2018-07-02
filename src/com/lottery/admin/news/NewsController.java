@@ -84,7 +84,11 @@ public class NewsController extends BaseController {
 		} else if (model.getSectionId() == null) {
 			json.setMessage("栏目不能为空");
 			json.setSuccess(false);
-		} else {
+		}else if(!model.getIsFree()&&model.getMoney()==null) {
+			json.setMessage("收费资讯,请填写金额");
+			json.setSuccess(false);
+		}
+		else {
 			model.setCreatetime(new Date());
 			model.setIsDel(false);
 			model.setStatus(2);
@@ -130,7 +134,7 @@ public class NewsController extends BaseController {
 				json.setSuccess(false);
 			} else {
 				try {
-					String[] excluds = new String[] { "createTime", "id", "isDel", "status", "decodeContext" };
+					String[] excluds = new String[] { "createTime", "id", "isDel", "status", "decodeContext","decodeFreeContext" };
 					BeanKit.copyPropertiesExclude(model, news, excluds);
 					service.update(news);
 					json.setSuccess(true);

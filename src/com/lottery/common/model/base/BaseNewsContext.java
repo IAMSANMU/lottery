@@ -180,4 +180,67 @@ public abstract class BaseNewsContext<M extends BaseNewsContext<M>> extends Mode
 		return getStr("source");
 	}
 
+	public M setFreeContext(java.lang.String freeContext) {
+		set("freeContext", freeContext);
+		return (M)this;
+	}
+
+	public java.lang.String getFreeContext() {
+		return getStr("freeContext");
+	}
+
+	public M setIsFree(java.lang.Boolean isFree) {
+		set("isFree", isFree);
+		return (M)this;
+	}
+
+	public java.lang.Boolean getIsFree() {
+		return get("isFree");
+	}
+
+	public M setMoney(java.math.BigDecimal money) {
+		set("money", money);
+		return (M)this;
+	}
+
+	public java.math.BigDecimal getMoney() {
+		return get("money");
+	}
+
+	public M setLotteryType(java.lang.String lotteryType) {
+		set("lotteryType", lotteryType);
+		return (M)this;
+	}
+
+	public java.lang.String getLotteryType() {
+		return getStr("lotteryType");
+	}
+
+	public M setTerm(java.lang.String term) {
+		set("term", term);
+		return (M)this;
+	}
+
+	public java.lang.String getTerm() {
+		return getStr("term");
+	}
+
+	public M setLineId(java.lang.String lineId) {
+		set("lineId", lineId);
+		return (M)this;
+	}
+
+	public java.lang.String getLineId() {
+		return getStr("lineId");
+	}
+
+	public M setSlogan(java.lang.String slogan) {
+		set("slogan", slogan);
+		return (M)this;
+	}
+
+	public java.lang.String getSlogan() {
+		return getStr("slogan");
+	}
+
 }

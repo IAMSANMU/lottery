@@ -25,4 +25,9 @@ public class DcService {
 		String sql="select * from Dc_arrange where term=?";
 		return dao.find(sql,currentTerm.getTerm());
 	}
+	
+	public DcArrange get(String term,String lineId){
+		String sql="select * from Dc_arrange where term=? and lineId=?";
+		return dao.findFirst(sql,term,lineId);
+	}
 }

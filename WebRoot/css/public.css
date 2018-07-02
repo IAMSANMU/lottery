@@ -637,4 +637,13 @@ html[xmlns] .clearfix{display:block;}
     padding-top: 50px;
 }
 
-
+.wx_code{
+	margin-left:1040px;
+	bottom:10px;
+	position: fixed;
+	width: 200px;
+	height: 200px;
+	cursor: pointer;
+	text-align:center;
+}
+.wx_code img{height:100%;width:100%}

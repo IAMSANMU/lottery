@@ -12,9 +12,12 @@
 
     $("#btnSave").bindSubmit({
         before: function () {
-            var html = $('.summernote').summernote("code");
-            html = $.base64.encode(html, "UTF-8");
-            $("#info").val(html);
+        	$(".summernote").each(function(){
+        		var target=$($(this).data("target"))
+        		 var html =$(this).summernote("code");
+        		 html = $.base64.encode(html, "UTF-8");
+        		 target.val(html);
+        	});
             return true;
         }
     });
@@ -27,14 +30,15 @@
         }
     });
 
-    $("#template").change(function () {
-        var target = $(this);
-        if (target.val()) {
+    $("[name='template']").change(function () {
+    	var $this=$(this);
+        var target =$($this.data("target"));
+        if ($this.val()) {
             $.confirm("是否替换编辑的内容",
                 function() {
-                    var html = target.find("option:selected").data("info");
+                    var html = $this.find("option:selected").data("info");
                     html=$.base64.decode(html, "UTF-8");
-                    $(".summernote").summernote("code", html);
+                    target.summernote("code", html);
                     $.close();
             });
         }

@@ -63,7 +63,12 @@ public class LoginController extends BaseController {
 			setAttr("nameMsg","账号密码错误");
 			setAttr("error",true);
 			render("login.html");
-		}else{
+		}else if(user.getIsDel() || user.getIsStop()){
+			setAttr("nameMsg","账号已停用");
+			setAttr("error",true);
+			render("login.html");
+		}
+		else{
 			setSessionAttr(Constant.SELLER_SESSION, user);
 			setCookie("JSESSIONID", getSession().getId(),86400);
 			redirect("/news");
