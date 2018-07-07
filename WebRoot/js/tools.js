@@ -100,6 +100,26 @@ $.extend({
         }
         );
     },
+    ajaxCommit : function(url, data, success, fail) {
+		$.post(url, data, function(result) {
+			if (result.success) {
+				if (success) {
+					success(result);
+				} else {
+					$.alert("操作成功",function(){
+						location.reload();
+					});
+				}
+			} else {
+				if (fail) {
+					fial(result);
+				} else {
+					$.alertError(result.message);
+				}
+			}
+
+		}, "json");
+	},
     hasPerm: function (perm) {
         var flag = true;
         if (perm) {
@@ -132,7 +152,7 @@ $.extend({
         layer.open(def);
     },
     openSmall: function(action, title) {
-        $.openWindow(action,title,"60%","70%");
+        $.openWindow(action,title,"770px","70%");
     },
     closeWindow: function (callback) {
         parent.layer.closeAll('iframe');
@@ -174,7 +194,7 @@ $.extend({
                                             option.success(result);
                                         }
                                     } else {
-                                        $.alertWarn(result.Message);
+                                        $.alertWarn(result.message);
                                     }
                                 },
                                 "json");

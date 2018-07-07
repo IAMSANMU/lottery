@@ -73,6 +73,7 @@
 		$("#buy_btn").click(function(){
 			var newsId=$(this).data("id");
 			$.confirm("是否确认购买该文章",function(){
+				$.close();
 				//购买
 				$.ajaxCommit("/news/buy/"+newsId,{},function(result){
 					var html=result.message;

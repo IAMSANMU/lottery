@@ -9,6 +9,7 @@ import java.util.Set;
 import java.util.regex.Pattern;
 
 import com.jfinal.core.Controller;
+import com.lottery.common.model.LotAdmin;
 import com.lottery.common.model.LotUser;import com.lottery.common.utils.Constant;
 
 public class BaseController extends Controller {
@@ -46,6 +47,9 @@ public class BaseController extends Controller {
 	
 	public LotUser loginUser(){
 		return (LotUser)getSessionAttr(Constant.SELLER_SESSION);
+	}
+	public LotAdmin loginAdmin(){
+		return (LotAdmin)getSessionAttr(Constant.ADMIN_SESSION);
 	}
 
 }

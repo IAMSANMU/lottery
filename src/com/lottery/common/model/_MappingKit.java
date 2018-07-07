@@ -29,6 +29,7 @@ public class _MappingKit {
 		arp.addMapping("news_section", "id", NewsSection.class);
 		arp.addMapping("news_template", "id", NewsTemplate.class);
 		arp.addMapping("user_buy", "id", UserBuy.class);
+		arp.addMapping("user_recharge", "id", UserRecharge.class);
 		arp.addMapping("user_wallet", "id", UserWallet.class);
 		arp.addMapping("user_walletlog", "id", UserWalletlog.class);
 	}

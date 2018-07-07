@@ -1,0 +1,59 @@
+#@_mlayout() #define body()
+<div class="mytitle">预充值</div>
+<!--账户信息begin-->
+<div class="selt_bank">
+	<div class="balance">
+		<ul>
+			<li>余额：<strong class="cash">#(wallet.balance)</strong>元
+			</li>
+		</ul>
+	</div>
+</div>
+<div class="back_tabe">
+	<div class="methods">请选择充值方式：</div>
+	<div class="choice">
+		<div class="choice_tab">
+			<ul class="mytab">
+				<li><a class="cur" name="scanType" data-type="WECHAT_RECHARGE" href="javascript:;">微信扫码支付</a></li>
+<!-- 				<li><a name="scanType" data-type="ALIPAY_RECHARGE"  href="javascript:;">支付宝扫码支付</a></li> -->
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="clear"></div>
+<div class="dakuang">
+	<form id="scanCodeForm" target="_blank">
+		<div class="back_tabe value recharge_money">
+			<div class="bank_main">充值金额：</div>
+			<span class="cllradio cllradio_sys"><a data-money="28"  href="javascript:;" class='select'><i></i><em>28</em></a></span>
+			<span class="cllradio cllradio_sys"><a data-money="50"  href="javascript:;" class='default'><i></i><em>50</em></a></span>
+			<span class="cllradio cllradio_sys"><a data-money="100"  href="javascript:;" class='default'><i></i><em>100</em></a></span>
+			<span class="cllradio cllradio_sys"><a data-money="200"  href="javascript:;" class='default'><i></i><em>200</em></a></span>
+			<span class="cllradio cllradio_sys"><a data-money="500"  href="javascript:;" class='default'><i></i><em>500</em></a></span>
+			<span class="cllradio cllradio_sys"><a data-money="1000"  href="javascript:;" class='default'><i></i><em>1000</em></a></span>
+		</div>
+		<div class="confirm_key">
+			<span class="cllbtn_sys">
+			<a href="javascript:;" class="btn_gobank" id="doRecharge"><i></i><span>扫码支付</span></a></span>
+		</div>
+	</form>
+	
+	<div id="pay" class=" pay" style="display:none">
+		<div class="notice">支付时,备注请填写登录账号</div>
+		<div class="pay_code">
+			<img alt="" src="/img/wechat/28.jpg">
+		</div>
+	</div>
+	<!--说明begin-->
+	<div class="unbox">
+       <div class="remind">
+           <p><strong>预充值：</strong>微信平台原因,充值不会实时到账,将由后台管理员<b>根据到账情况手动充值。如有疑问请联系:微信:cailelelingdu</b></p>
+      	   <p><strong>支付：</strong>支付时,请核对付款金额是否一致。<b>并在备注处填写会员账号</b></p>
+       </div>
+     </div>
+	<!--说明end-->
+</div>
+#end #define script()
+<script type="text/javascript"
+	src="#(basepath)/js/front/member/wallet_recharge.js"></script>
+#end

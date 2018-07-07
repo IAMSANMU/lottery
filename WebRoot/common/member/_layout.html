@@ -1,0 +1,51 @@
+#define _mlayout()
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<title>个人中心</title>
+
+<link href="#(basepath)/css/public.css" rel="stylesheet" type="text/css" />
+<link href="#(basepath)/css/uc.css" rel="stylesheet" type="text/css" />
+<link href="#(basepath)/css/style.css" rel="stylesheet" type="text/css" />
+<link href="#(basepath)/css/bootstrap/plugins/sweetalert/sweetalert.css"
+	rel="stylesheet" type="text/css" />
+<link
+	href="#(basepath)/css/bootstrap/plugins/datepicker/datepicker3.css"
+	rel="stylesheet" type="text/css" />
+#@styles?()
+<!-- Primary Inspinia style -->
+<script type="text/javascript" src="#(basepath)/js/jquery.min.js"></script>
+
+<script type="text/javascript"
+	src="#(basepath)/js/bootstrap/plugins/sweetalert/sweetalert.min.js"></script>
+<script type="text/javascript" src="#(basepath)/js/front/public.js"></script>
+<script type="text/javascript"
+	src="#(basepath)/js/bootstrap/plugins/jquery.base64/jquery.base64.js"></script>
+<script type="text/javascript"
+	src="#(basepath)/js/bootstrap/plugins/datepicker/bootstrap-datepicker.js"></script>
+<script type="text/javascript"
+	src="#(basepath)/js/bootstrap/plugins/datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+<script type="text/javascript"
+	src="#(basepath)/js/bootstrap/plugins/layer/layer.js"></script>
+#@script?()
+
+
+</head>
+<body>
+	<!-- Navigation -->
+	#include("../../front/top.html")
+	<div id="mycll">
+		<div class="mainmenu">#include("_right.html")</div>
+		<div class="mainbox">#@body()</div>
+	</div>
+
+
+	#include("../../front/right.html")
+</body>
+</html>
+#end

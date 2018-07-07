@@ -1,0 +1,39 @@
+
+#set(tabs=["钱包明细_list"])
+#@layout()
+#define searchbar()
+<form role="form"   class="form-inline">
+        <div class="form-group">
+            <input type="text" name="account" value="" placeholder="登录账号" class="form-control" searchcolum="account" searchoperator="6">
+        </div>
+        <div class="form-group">
+            
+        </div>
+        <div class="form-group">
+            <button type="button" class="btn btn-w-m btn-primary ladda-button" id="search" data-style="expand-right"><span class="ladda-label">搜索</span><span class="ladda-spinner"></span></button>
+        </div>
+    </form>
+#end
+
+#define toolbar()
+<div class="ibox-content" id="tbBars"></div>
+#end
+
+#define table()
+  <table class="table table-striped table-bordered table-hover" id="tbList">
+        <thead>
+        <tr>
+        	<th>会员账号</th>
+            <th>流水号</th>
+            <th>交易类型</th>
+            <th>金额</th>
+            <th>余额</th>
+            <th>交易时间</th>
+            <th>备注</th>
+        </tr>
+        </thead>
+    </table>
+#end
+#define script()
+	<script type="text/javascript" src="#(basepath)/js/admin/walletLog/index.js"></script>
+#end

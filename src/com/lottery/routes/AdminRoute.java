@@ -8,7 +8,9 @@ import com.lottery.admin.news.NewsController;
 import com.lottery.admin.news.section.SectionController;
 import com.lottery.admin.news.template.TemplateController;
 import com.lottery.admin.upload.UploadController;
+import com.lottery.admin.user.RechargeController;
 import com.lottery.admin.user.UserController;
+import com.lottery.admin.user.WalletLogController;
 
 public class AdminRoute  extends Routes{
 
@@ -23,6 +25,8 @@ public class AdminRoute  extends Routes{
 		add("/admin/template", TemplateController.class,"/template");
 		add("/admin/news", NewsController.class,"/news");
 		add("/admin/upload", UploadController.class,"/upload");
+		add("/admin/walletLog", WalletLogController.class,"/walletLog");
+		add("/admin/recharge", RechargeController.class,"/recharge");
 	}
 
 }

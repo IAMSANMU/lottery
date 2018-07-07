@@ -1,11 +1,12 @@
 package com.lottery.admin.user;
 
+import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Date;
 
 import java.util.List;
 
-import com.alibaba.fastjson.JSONObject;
+
 import com.jfinal.aop.Before;
 import com.jfinal.aop.Duang;
 import com.jfinal.ext.kit.DateKit;
@@ -15,16 +16,19 @@ import com.jfinal.plugin.activerecord.Page;
 import com.lottery.Interceptor.admin.AdminLoginInter;
 import com.lottery.common.BaseController;
 import com.lottery.common.model.LotUser;
+import com.lottery.common.model.UserWallet;
 import com.lottery.common.utils.BeanKit;
+import com.lottery.common.utils.Constant;
 import com.lottery.common.utils.DataTablesJson;
 import com.lottery.common.utils.JsonResult;
 import com.lottery.search.ListSearchModel;
 import com.lottery.search.SearchModel;
-
+import com.lottery.wallet.WalletService;
 
 @Before(AdminLoginInter.class)
 public class UserController extends BaseController {
 	UserService userService = Duang.duang(UserService.class);
+	WalletService walletService = Duang.duang(WalletService.class);
 
 	public void index() {
 		String tab = getPara("tab");
@@ -58,14 +62,21 @@ public class UserController extends BaseController {
 		model.setCreateTime(new Date());
 		String pwdSure = getPara("pwdSure");
 		JsonResult<LotUser> json = new JsonResult<LotUser>();
-		if (!model.getPwd().equals(pwdSure)) {
-			json.setMessage("密码不一致");
+		try {
+			if (!model.getPwd().equals(pwdSure)) {
+				json.setMessage("密码不一致");
+				json.setSuccess(false);
+			} else {
+				pwdSure = HashKit.md5(pwdSure);
+				model.setPwd(pwdSure);
+				userService.save(model);
+				json.setSuccess(true);
+			}
+		} catch (Exception e) {
+			String message=e.getMessage();
+			message=message.contains("uq_account")?"账号被占用":message;
+			json.setMessage("系统错误:"+message);
 			json.setSuccess(false);
-		} else {
-			pwdSure = HashKit.md5(pwdSure);
-			model.setPwd(pwdSure);
-			userService.save(model);
-			json.setSuccess(true);
 		}
 		renderText(json.toJsonString());
 	}
@@ -76,9 +87,45 @@ public class UserController extends BaseController {
 		if (user == null) {
 			renderText("会员不存在");
 		} else {
+			UserWallet wallet = walletService.getByUserId(user.getId());
+			setAttr("wallet", wallet);
 			setAttr("user", user);
 			render("edit.html");
 		}
+	}
+
+	public void recharge() {
+		int id = getParaToInt("id");
+		LotUser user = userService.get(id);
+		if (user == null) {
+			renderText("会员不存在");
+		} else {
+			UserWallet wallet = walletService.getByUserId(user.getId());
+			setAttr("wallet", wallet);
+			setAttr("user", user);
+			render("recharge.html");
+		}
+	}
+
+	public void doRecharge() {
+		JsonResult json = new JsonResult();
+		try {
+			int id = getParaToInt("id");
+			BigDecimal amount = new BigDecimal(getPara("amount"));
+			LotUser user = userService.get(id);
+			if (user == null) {
+				json.setMessage("会员不存在");
+				json.setSuccess(false);
+			} else {
+				walletService.doRecharge(user, amount, Constant.ADMIN_RECHARGE);
+				json.setSuccess(true);
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+			json.setMessage("充值失败:" + e.getMessage());
+			json.setSuccess(false);
+		}
+		renderJson(json.toJsonString());
 	}
 
 	public void update() {
@@ -161,11 +208,11 @@ public class UserController extends BaseController {
 	public void doBuy() {
 		Date startTime = getParaToDate("startTime");
 		Date endTime = getParaToDate("endTime");
-		Calendar cal=Calendar.getInstance();
+		Calendar cal = Calendar.getInstance();
 		cal.setTime(endTime);
-		cal.add(Calendar.DAY_OF_MONTH,1);
-		cal.add(Calendar.MILLISECOND,-1);
-		endTime=cal.getTime();
+		cal.add(Calendar.DAY_OF_MONTH, 1);
+		cal.add(Calendar.MILLISECOND, -1);
+		endTime = cal.getTime();
 		int id = getParaToInt("id");
 		String remark = getPara("remark");
 		LotUser user = userService.get(id);
@@ -192,26 +239,29 @@ public class UserController extends BaseController {
 
 		JsonResult<LotUser> json = new JsonResult<LotUser>();
 
-		LotUser user = userService.get(id);
-		if (user == null) {
-			json.setMessage("会员不存在");
-			json.setSuccess(false);
-		} else if (StrKit.isBlank(pwd) || !pwd.equals(pwdSure)) {
+		if (StrKit.isBlank(pwd) || !pwd.equals(pwdSure)) {
 			json.setMessage("密码不一致");
 			json.setSuccess(false);
 		} else {
-			pwdSure = HashKit.md5(pwdSure);
-			user.setPwd(pwdSure);
-			userService.update(user);
-			json.setSuccess(true);
+			LotUser user = userService.get(id);
+			if (user == null) {
+				json.setMessage("会员不存在");
+				json.setSuccess(false);
+			} else {
+				pwdSure = HashKit.md5(pwdSure);
+				user.setPwd(pwdSure);
+				userService.update(user);
+				json.setSuccess(true);
+			}
 		}
 		renderText(json.toJsonString());
 	}
+
 	public static void main(String[] args) {
-		Calendar cal=Calendar.getInstance();
-		System.out.println(DateKit.toStr(cal.getTime(),"yyyy-MM-dd HH:mm:ss"));
-		cal.add(Calendar.DAY_OF_MONTH,1);
-//		cal.add(Calendar.MILLISECOND,-1);
-		System.out.println(DateKit.toStr(cal.getTime(),"yyyy-MM-dd HH:mm:ss"));
+		Calendar cal = Calendar.getInstance();
+		System.out.println(DateKit.toStr(cal.getTime(), "yyyy-MM-dd HH:mm:ss"));
+		cal.add(Calendar.DAY_OF_MONTH, 1);
+		// cal.add(Calendar.MILLISECOND,-1);
+		System.out.println(DateKit.toStr(cal.getTime(), "yyyy-MM-dd HH:mm:ss"));
 	}
 }

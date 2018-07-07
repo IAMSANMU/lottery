@@ -7,9 +7,9 @@
                 <form role="form" id="saveForm" class="form-horizontal" method="post" action="/admin/user/pwdUpdate">
                     <div class="form-group">
                         <label class="col-sm-4 control-label">登录账号:</label>
-                        <div class="col-sm-6">
+                        <div class="col-sm-6 form-control-static">
                         #(user.account)
-                            <input type="hidden" name="Id" class="form-control" value="#(user.Id)"/>
+                            <input type="hidden" name="id" class="form-control" value="#(user.Id)"/>
                             <!-- 占位 -->
                         </div>
                     </div>

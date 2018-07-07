@@ -1,0 +1,41 @@
+
+#set(tabs=["未到账_list","已到账_finish","回收站_recover"])
+#@layout()
+#define searchbar()
+	 <form role="form" class="form-inline">
+        <div class="form-group">
+            <input type="text" name="account" value="" placeholder="会员账号" class="form-control" searchcolum="account" searchoperator="6">
+            <input type="hidden" name="IsDel"  value='#(tab.equals("recover")?1:0)' placeholder="" class="form-control" searchcolum="IsDel" searchoperator="1" startSearch="true">
+            #if(tab.equals("list") || tab.equals("finish"))
+            	<input type="hidden" name="status"  value='#(tab.equals("list")?1:2)' placeholder="" class="form-control" searchcolum="status" searchoperator="1" startSearch="true">
+            #end
+        </div>
+
+        <div class="form-group">
+            <button type="button" class="btn btn-w-m btn-primary ladda-button" id="search" data-style="expand-right"><span class="ladda-label">搜索</span><span class="ladda-spinner"></span></button>
+        </div>
+    </form>
+#end
+
+#define toolbar()
+<div class="ibox-content" id="tbBars"></div>
+#end
+
+#define table()
+   <table class="table table-striped table-bordered table-hover" id="tbList">
+        <thead>
+            <tr>
+                <th><input type="checkbox" class="i-checks checkAll" data-table="tbList" /></th>
+                <th>操作</th>
+                <th>会员账号</th>
+                <th>充值金额</th>
+                <th>充值平台</th>
+                <th>充值时间</th>
+                <th>到账时间</th>
+            </tr>
+        </thead>
+    </table>
+#end
+#define script()
+	<script type="text/javascript" src="#(basepath)/js/admin/recharge/index.js"></script>
+#end

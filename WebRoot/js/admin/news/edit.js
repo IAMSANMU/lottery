@@ -1,8 +1,12 @@
 ﻿$(function() {
     $("#saveForm").validate({
-        rules: {
+    	ignore:[],
+    	rules: {
             title: {
                 required: true
+            },
+            money:{
+            	digits:true
             }
         }
     });

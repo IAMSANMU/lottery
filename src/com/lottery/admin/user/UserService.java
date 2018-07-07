@@ -1,14 +1,18 @@
 package com.lottery.admin.user;
 
+import java.math.BigDecimal;
 import java.util.Date;
 
 import com.jfinal.aop.Before;
+import com.jfinal.aop.Duang;
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.TableMapping;
 import com.jfinal.plugin.activerecord.tx.Tx;
 import com.lottery.common.BaseService;
 import com.lottery.common.model.LotUser;
 import com.lottery.common.model.LotUserBuylog;
+import com.lottery.common.model.UserWallet;
+import com.lottery.wallet.WalletService;
 
 public  class UserService extends BaseService<LotUser> {
 	private LotUser dao = new LotUser().dao();
@@ -45,7 +49,17 @@ public  class UserService extends BaseService<LotUser> {
 	public String tabName() {
 		return TableMapping.me().getTable(LotUser.class).getName();
 	}
-	
+	@Override
+	@Before(Tx.class)
+	public void save(LotUser user){
+		user.save();
+		//增加钱包
+		UserWallet wallet=new UserWallet();
+		wallet.setAccount(user.getAccount());
+		wallet.setBalance(BigDecimal.ZERO);
+		wallet.setUserId(user.getId());
+		wallet.save();
+	}
 	
 	
 	

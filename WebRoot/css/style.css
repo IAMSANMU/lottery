@@ -1269,4 +1269,7 @@ label.error {
   display: inline-block;
   margin-left: 5px;
 }
-
+.pay {width: 390px;height:390px;text-align:center}
+.pay .notice{background-color:white;color:red;font-size:16px;}
+.pay .pay_code{ width:390px ;height:390px}
+.pay .pay_code img{widht:100%;height:100%}

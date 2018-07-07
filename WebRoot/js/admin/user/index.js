@@ -6,7 +6,7 @@
              btns = [
                  { type: "refresh" },
                  { type: "add", action: "/admin/user/add" },
-                 { type: "logicDelete", action: "/admin/user/logicDelete" }
+                 { type: "logicDelete", action: "/admin/user/delete" }
              ];
          } else {
              btns = [
@@ -46,7 +46,7 @@
                 "render": function(data, type, row) {
                     //创建按钮
                     var html = [];
-                    html.push("<div class=\"checkbox \"><input type=\"checkbox\" class=\"i-checks\" value=\"" +row.Id +"\"></input></div>");
+                    html.push("<div class=\"checkbox \"><input type=\"checkbox\" class=\"i-checks\" value=\"" +row.id +"\"></input></div>");
                     return html.join("");
                 },
                 "targets": 0,
@@ -59,9 +59,16 @@
                     html.push("<button type=\"button\" class=\"btn btn-primary btn-xs btnEdit\" data-id=\"" +
                         row.id +
                         "\"><i class=\"fa fa-edit\"></i> 编辑</button>");
-                    html.push("<button type=\"button\" class=\"btn btn-danger btn-xs btnBuy\" data-id=\"" +
+                    
+                    html.push("<button type=\"button\" class=\"btn btn-primary btn-xs btnPwd\" data-id=\"" +
+                            row.id +
+                            "\"><i class=\"fa fa-edit\"></i>修改密码</button>");
+                    html.push("<button type=\"button\" class=\"btn btn-warning btn-xs btnBuy\" data-id=\"" +
                             row.id +
                             "\"><i class=\"fa fa-edit\"></i>购买</button>");
+                    html.push("<button type=\"button\" class=\"btn btn-danger btn-xs btnRecharge\" data-id=\"" +
+                            row.id +
+                            "\"><i class=\"fa fa-edit\"></i>充值</button>");
                     return html.join("&nbsp;");
                 },
                 "targets": 1,
@@ -90,13 +97,16 @@
         ]
     }).on("click", ".btnEdit", function () {
         var id = $(this).data("id");
-        $.openWindow("/admin/user/edit?id=" + id, "修改信息");
-//    }).on("click", ".btnPwd", function () {
-//        var id = $(this).data("id");
-//        $.openWindow("/admin/user/pwd?id=" + id, "修改密码");
+        $.openSmall("/admin/user/edit?id=" + id, "修改信息");
+    }).on("click", ".btnPwd", function () {
+        var id = $(this).data("id");
+        $.openSmall("/admin/user/pwd?id=" + id, "修改密码");
     }).on("click", ".btnBuy", function () {
         var id = $(this).data("id");
-        $.openWindow("/admin/user/buy?id=" + id, "购买权限");
+        $.openSmall("/admin/user/buy?id=" + id, "购买权限");
+    }).on("click", ".btnRecharge", function () {
+        var id = $(this).data("id");
+        $.openSmall("/admin/user/recharge?id=" + id,"充值");
     });
 
 

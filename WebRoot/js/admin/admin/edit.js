@@ -1,6 +1,10 @@
 ﻿$(function () {
     $("#saveForm").validate({
         rules: {
+        	"oldPwd":{
+                required: true,
+                rangelength: [6, 64]
+            },
             "pwd":{
                 required: true,
                 rangelength: [6, 64]
@@ -14,10 +18,10 @@
     });
     $.ajaxForm('#btnSave', $("#saveForm"), {
         success: function(result) {
-            $.alert("保存成功", function() {
+            $.alert("保存成功,请重新登录", function() {
                 $.closeWindow(function () {
-                    parent.location.reload();
-                });
+                   location.href="/admin";
+               });
             });
         }
     });

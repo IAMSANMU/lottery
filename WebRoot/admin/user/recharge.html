@@ -1,0 +1,41 @@
+#@emptylayout()
+#define main()
+<div class="wrapper wrapper-content animated fadeInRight ecommerce">
+    <div class="row">
+        <div class="col-sm-12 ibox">
+            <div class="ibox-content">
+                <form role="form" id="saveForm" class="form-horizontal" method="post" action="/admin/user/doRecharge">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">登录账号:</label>
+                        <div class="col-sm-6 form-control-static">
+                        #(user.account)
+                            <input type="hidden" name="id" class="form-control" value="#(user.Id)"/>
+                            <!-- 占位 -->
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">余额:</label>
+                        <div class="col-sm-6 form-control-static">
+                        #(wallet.balance)元
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">充值金额:</label>
+                        <div class="col-sm-6">
+                            <input type="number" name="amount" value="" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group text-center">
+                        <div class="col-sm-12">
+                            <button type="button" class="btn btn-w-m btn-primary ladda-button" id="btnSave" data-style="expand-right">保存</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+#end
+#define script()
+	<script type="text/javascript" src="#(basepath)/js/admin/user/recharge.js"></script>
+#end

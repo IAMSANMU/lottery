@@ -1,0 +1,77 @@
+#@_mlayout()
+
+#define body()
+	 <div class="mytitle">预充值记录</div>
+	 <!--账户信息begin-->
+    <div class="selt_bank">
+        <div class="balance">
+        	<ul>
+            	<li>余额 ：<strong class="cash">#(wallet.balance)</strong>元</li>
+            </ul>
+        </div>
+        <div class="shortcut diameter">
+            <a target="_top" href="/wallet/recharge" class="buy_now">充值</a>
+        </div>
+    </div>
+    <!--账户信息end-->
+<!--订单记录查询begin-->
+	<form id="form" action="/recharge" method="post">
+    <div class="query">
+	    	<div class="thats">
+	        	<strong>交易时间：</strong>
+	            <span class="cllradio cllradio_sys"><a id="dateType_1" href="javascript:setDateType(1);" class='#(dateType==1?"select":"default")'><i></i><em>最近一周</em></a></span>
+				<span class="cllradio cllradio_sys"><a id="dateType_2" href="javascript:setDateType(2);" class='#(dateType==2?"select":"default")'><i></i><em>最近一月</em></a></span>
+				<span class="cllradio cllradio_sys"><a id="dateType_3" href="javascript:setDateType(3);" class='#(dateType==3?"select":"default")'><i></i><em>最近半年</em></a></span>
+				<span class="cllradio cllradio_sys"><a id="dateType_4" href="javascript:setDateType(4);" class='#(dateType==4?"select":"default")'><i></i><em>自定义</em></a></span>
+				<span id="selectDate" class="cllradio cllradio_sys" #if(dateType!=4) style="display:none" #end>
+				    <input onchange="formSubmit()" data-provide="datepicker"  id="startDateStr" name="start" type="text" class="schedule" value="#(start)"/>- 
+				    <input onchange="formSubmit()" data-provide="datepicker"  id="endDateStr" name="end" type="text" class="schedule" value="#(end)"/>
+				    <input type="hidden" id="dateType" name="dateType" value="#(dateType)"/>
+				</span>
+	        </div>
+        
+    </div>
+    <!--订单记录查询end-->
+    
+     <!--交易明细begin-->
+    <div class="trans_wrap">
+      <table cellspacing="0" cellpadding="0" width="100%" class="scheme_datalist">
+          <colgroup>
+              <col width="20%"/>
+              <col width="20%"/>
+              <col width="20%"/>
+              <col/>
+          </colgroup>
+          <thead>
+	          <tr>
+	              <th>流水号</th>
+	              <th>充值类型</th>
+	              <th>金额</th>
+	              <th>交易时间</th>
+	          </tr>
+          </thead>
+          <tbody>
+	        #for(item : logList.list)
+	        	<tr>
+	        		<td>#(item.id)</td>
+	        		<td>#(item.rechargeType=="WECHAT_RECHARGE"?"微信充值":"支付宝充值")</td>
+	        		<td>#(item.money)</td>
+	        		<td>#date(item.createTime)</td>
+	        	</tr>
+	        #end
+          </tbody>
+      </table>
+      <div >
+      	#@paginate(logList.pageNumber, logList.totalPage, "/recharge/")
+      </div>
+      #if(logList.totalRow==0)
+          <div class="goto"><span class="face"><img src="http://img.cailele.com/img/mycll/xiaolian.png"/></span>没有任何记录</div>
+      #end
+    </div>
+    <!--交易明细end-->
+    </form>
+#end
+
+#define script()
+ <script type="text/javascript" src="#(basepath)/js/front/member/wallet_log.js"></script>
+#end
