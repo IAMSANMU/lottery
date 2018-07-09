@@ -68,6 +68,7 @@ public class BaseConfig extends JFinalConfig {
 		me.addSharedFunction("/common/_layout.html");
 		me.addSharedFunction("/common/_emptyLayout.html");
 		me.addSharedFunction("/common/_paginate.html");
+		me.addSharedFunction("/common/_paginate2.html");
 	}
 	
 	public static DruidPlugin createDruidPlugin() {
