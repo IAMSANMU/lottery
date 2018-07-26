@@ -11,7 +11,6 @@ import com.jfinal.kit.PropKit;
 import com.jfinal.plugin.activerecord.ActiveRecordPlugin;
 import com.jfinal.plugin.cron4j.Cron4jPlugin;
 import com.jfinal.plugin.druid.DruidPlugin;
-import com.jfinal.render.ViewType;
 import com.jfinal.template.Engine;
 import com.lottery.common.model._MappingKit;
 import com.lottery.routes.AdminRoute;

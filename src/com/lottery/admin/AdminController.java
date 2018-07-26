@@ -1,13 +1,11 @@
 package com.lottery.admin;
 
 import com.jfinal.aop.Before;
-import com.jfinal.core.Controller;
 import com.jfinal.kit.HashKit;
 import com.jfinal.kit.StrKit;
 import com.lottery.Interceptor.admin.AdminLoginInter;
 import com.lottery.common.BaseController;
 import com.lottery.common.model.LotAdmin;
-import com.lottery.common.utils.Constant;
 import com.lottery.common.utils.JsonResult;
 
 @Before(AdminLoginInter.class)

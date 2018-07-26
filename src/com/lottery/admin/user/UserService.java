@@ -4,7 +4,6 @@ import java.math.BigDecimal;
 import java.util.Date;
 
 import com.jfinal.aop.Before;
-import com.jfinal.aop.Duang;
 import com.jfinal.plugin.activerecord.Db;
 import com.jfinal.plugin.activerecord.TableMapping;
 import com.jfinal.plugin.activerecord.tx.Tx;
@@ -12,7 +11,6 @@ import com.lottery.common.BaseService;
 import com.lottery.common.model.LotUser;
 import com.lottery.common.model.LotUserBuylog;
 import com.lottery.common.model.UserWallet;
-import com.lottery.wallet.WalletService;
 
 public  class UserService extends BaseService<LotUser> {
 	private LotUser dao = new LotUser().dao();

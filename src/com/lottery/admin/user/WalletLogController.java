@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.jfinal.plugin.activerecord.Page;
 import com.lottery.common.BaseController;
-import com.lottery.common.model.LotUser;
 import com.lottery.common.model.UserWalletlog;
 import com.lottery.common.utils.DataTablesJson;
 import com.lottery.search.ListSearchModel;

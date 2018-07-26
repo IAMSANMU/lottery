@@ -44,38 +44,38 @@ public class DcOddsTask implements Runnable {
 			List<DcArrange> dcList = dcService.getDcList(term);
 			
 			try {
-				log.info("---[sp抓取]北单sp维护开始-----");
+				log.info("---[sp抓取"+term.getTerm()+"]北单sp维护开始-----");
 				snatchSp(term);
-				log.info("---[sp抓取]北单sp维护结束-----");
+				log.info("---[sp抓取"+term.getTerm()+"]北单sp维护结束-----");
 			} catch (Exception e) {
 				e.printStackTrace();
-				log.info("---[sp抓取]北单sp维护错误-----");
+				log.info("---[sp抓取"+term.getTerm()+"]北单sp维护错误-----");
 			}
 			
 			try {
-				log.info("----------[yp抓取]抓取亚盘开始-------------");
+				log.info("----------[yp抓取"+term.getTerm()+"]抓取亚盘开始-------------");
 				snatchYp(dcList);
-				log.info("----------[yp抓取]抓取亚盘结束-------------");
+				log.info("----------[yp抓取"+term.getTerm()+"]抓取亚盘结束-------------");
 			} catch (Exception e) {
 				e.printStackTrace();
-				log.info("----------[yp抓取]抓取亚盘错误-------------");
+				log.info("----------[yp抓取"+term.getTerm()+"]抓取亚盘错误-------------");
 			}
 
 			try {
-				log.info("----------[op抓取]抓取op开始-------------");
+				log.info("----------[op抓取"+term.getTerm()+"]抓取op开始-------------");
 				snatchOp(dcList);
-				log.info("----------[op抓取]抓取op结束-------------");
+				log.info("----------[op抓取"+term.getTerm()+"]抓取op结束-------------");
 			} catch (Exception e) {
 				e.printStackTrace();
-				log.info("----------[op抓取]抓取op错误-------------");
+				log.info("----------[op抓取"+term.getTerm()+"]抓取op错误-------------");
 			}
 			try {
-				log.info("----------[dxp抓取]抓取大小盘开始-------------");
+				log.info("----------[dxp抓取"+term.getTerm()+"]抓取大小盘开始-------------");
 				snatchDxp(dcList);
-				log.info("----------[dxp抓取]抓取大小盘结束-------------");
+				log.info("----------[dxp抓取"+term.getTerm()+"]抓取大小盘结束-------------");
 			} catch (Exception e) {
 				e.printStackTrace();
-				log.info("----------[dxp抓取]抓取大小盘错误-------------");
+				log.info("----------[dxp抓取"+term.getTerm()+"]抓取大小盘错误-------------");
 			}
 		}
 
@@ -135,7 +135,7 @@ public class DcOddsTask implements Runnable {
 					}
 					// 抓取亚盘信息
 					String html = OpBusiness.getRealHtml(match, oddId);
-					List<DcOp> snatchList = OpBusiness.getOp(html);
+					List<DcOp> snatchList = OpBusiness.getOp(html,oddId);
 					Map<String, DcOp> firstOpMap = new HashMap<String, DcOp>();
 					Map<String, DcOp> nowOpMap = new HashMap<String, DcOp>();
 
@@ -221,8 +221,8 @@ public class DcOddsTask implements Runnable {
 					}
 					// 抓取亚盘信息
 					String html = YpBusiness.getRealHtml(match, oddId);
-					List<DcYp> nowYpList = YpBusiness.getNowYp(html);// 即时盘
-					List<DcYp> firstYpList = YpBusiness.getFirstYp(html);// 初盘
+					List<DcYp> nowYpList = YpBusiness.getNowYp(html,oddId);// 即时盘
+					List<DcYp> firstYpList = YpBusiness.getFirstYp(html,oddId);// 初盘
 					Map<String, DcYp> firstYpMap = new HashMap<String, DcYp>();
 					Map<String, DcYp> nowYpMap = new HashMap<String, DcYp>();
 
@@ -297,8 +297,8 @@ public class DcOddsTask implements Runnable {
 					}
 					// 抓取亚盘信息
 					String html = DxpBusiness.getRealHtml(match, oddId);
-					List<DcDxp> nowDxpList = DxpBusiness.getNowDxp(html);// 即时盘
-					List<DcDxp> firstDxpList = DxpBusiness.getFirstDxp(html);// 初盘
+					List<DcDxp> nowDxpList = DxpBusiness.getNowDxp(html,oddId);// 即时盘
+					List<DcDxp> firstDxpList = DxpBusiness.getFirstDxp(html,oddId);// 初盘
 					Map<String, DcDxp> firstDxpMap = new HashMap<String, DcDxp>();
 					Map<String, DcDxp> nowDxpMap = new HashMap<String, DcDxp>();
 

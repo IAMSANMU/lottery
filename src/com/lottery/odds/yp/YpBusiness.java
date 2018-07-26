@@ -11,6 +11,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import com.lottery.admin.sys.SysErrorService;
 import com.lottery.common.model.DcArrange;
 import com.lottery.common.model.DcYp;
 import com.lottery.common.utils.DateUtil;
@@ -20,6 +21,7 @@ import com.lottery.odds.OddsBusiness;
 public class YpBusiness {
 	public static final String ASIA_ODDS_URL = "http://odds.500.com/fenxi/yazhi-";
 	private static Logger log = Logger.getLogger(YpBusiness.class);
+	private static SysErrorService errorService = new SysErrorService();
 
 	public static String getRealHtml(DcArrange match, String oddId) throws Exception {
 		String url = ASIA_ODDS_URL + oddId;
@@ -30,14 +32,14 @@ public class YpBusiness {
 	/*
 	 * 即时亚盘
 	 */
-	public static List<DcYp> getNowYp(String html) throws Exception {
+	public static List<DcYp> getNowYp(String html,String oddId) throws Exception {
 		List<DcYp> list = new ArrayList<DcYp>();
 		try {
 			Document doc = Jsoup.parse(html);
 			Elements trEles = doc.select("#datatb tr[id]");
 			for (Element trEle : trEles) {
 				String company = trEle.child(1).text().trim().replace("  ", "");
-				String cllCompany = OddsBusiness.WBW2CLLCOMPANY.get(company);
+				String cllCompany = OddsBusiness.YP_WBW2CLLCOMPANY.get(company);
 				if (StringUtils.isNotEmpty(cllCompany)) {
 					DcYp yp = new DcYp();
 					yp.setCompany(cllCompany);
@@ -90,7 +92,10 @@ public class YpBusiness {
 				}
 			}
 		} catch (Exception e) {
-			log.error("--------[yp抓取]抓取即时亚盘错误--------" + e.getMessage());
+			log.error("--------[yp抓取]抓取即时亚盘错误:解析错误,请检查dom结构--------" + e.getMessage());
+			String url = ASIA_ODDS_URL + oddId;
+			errorService.add("解析500w亚盘[即时盘]页面错误", url, "解析500w亚盘页面错误,请检查dom结构 YpBusiness:getNowYp");
+			// 短信提醒
 			e.printStackTrace();
 			throw e;
 		}
@@ -101,7 +106,7 @@ public class YpBusiness {
 	/*
 	 * 初盘
 	 */
-	public static List<DcYp> getFirstYp(String html) throws Exception {
+	public static List<DcYp> getFirstYp(String html,String oddId) throws Exception {
 
 		List<DcYp> list = new ArrayList<DcYp>();
 		try {
@@ -109,7 +114,7 @@ public class YpBusiness {
 			Elements trEles = doc.select("#datatb tr[id]");
 			for (Element trEle : trEles) {
 				String company = trEle.child(1).text().trim();
-				String cllCompany = OddsBusiness.WBW2CLLCOMPANY.get(company);
+				String cllCompany = OddsBusiness.YP_WBW2CLLCOMPANY.get(company);
 				if (StringUtils.isNotEmpty(cllCompany)) {
 					DcYp yp = new DcYp();
 					yp.setCompany(cllCompany);
@@ -136,6 +141,8 @@ public class YpBusiness {
 			}
 		} catch (Exception e) {
 			log.error("--------[yp抓取]抓取初盘错误--------" + e.getMessage());
+			String url = ASIA_ODDS_URL + oddId;
+			errorService.add("解析500w亚盘[初盘]页面错误", url, "解析500w亚盘页面错误,请检查dom结构 YpBusiness:getFirstYp");
 			e.printStackTrace();
 			throw e;
 		}
@@ -146,11 +153,11 @@ public class YpBusiness {
 	public static void main(String[] args) {
 		// String a=null;
 		// System.out.println(StringUtils.isNotEmpty(a));
-//		DcArrange dc = new DcArrange().setHomeId(867).setGuestId(1775);
+		// DcArrange dc = new DcArrange().setHomeId(867).setGuestId(1775);
 		try {
-			String url=ASIA_ODDS_URL+662467;
-			String html =HttpUtil.getUrl(url); 
-			List<DcYp> list = getNowYp(html);
+			String url = ASIA_ODDS_URL + 662467;
+			String html = HttpUtil.getUrl(url);
+			List<DcYp> list = getNowYp(html,"662467");
 			System.out.println(list);
 		} catch (Exception e) {
 			e.printStackTrace();

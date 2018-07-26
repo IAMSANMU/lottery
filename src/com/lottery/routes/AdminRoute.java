@@ -7,6 +7,7 @@ import com.lottery.admin.log.LogController;
 import com.lottery.admin.news.NewsController;
 import com.lottery.admin.news.section.SectionController;
 import com.lottery.admin.news.template.TemplateController;
+import com.lottery.admin.sys.SysErrorController;
 import com.lottery.admin.upload.UploadController;
 import com.lottery.admin.user.RechargeController;
 import com.lottery.admin.user.UserController;
@@ -27,6 +28,7 @@ public class AdminRoute  extends Routes{
 		add("/admin/upload", UploadController.class,"/upload");
 		add("/admin/walletLog", WalletLogController.class,"/walletLog");
 		add("/admin/recharge", RechargeController.class,"/recharge");
+		add("/admin/syserror", SysErrorController.class,"/syserror");
 	}
 
 }

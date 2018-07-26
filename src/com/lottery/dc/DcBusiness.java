@@ -1,9 +1,7 @@
 package com.lottery.dc;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
@@ -13,8 +11,8 @@ import org.jsoup.select.Elements;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
+import com.lottery.admin.sys.SysErrorService;
 import com.lottery.common.model.DcArrange;
-import com.lottery.common.model.LotteryTerm;
 import com.lottery.common.utils.DateUtil;
 import com.lottery.common.utils.HttpUtil;
 
@@ -23,11 +21,20 @@ public class DcBusiness {
 	private static final String W500_SCORE_URL = "http://live.500.com/zqdc.php?e=";
 
 	private static Logger log = Logger.getLogger(DcBusiness.class);
+	private static SysErrorService errorService = new SysErrorService();
 
 	public static List<DcArrange> snatchDcMatch(String term) {
 		List<DcArrange> list = new ArrayList<DcArrange>();
+		String url=W500_DC_URL+term;
+		String html;
 		try {
-			String html = HttpUtil.getUrl(W500_DC_URL+term);
+			html = HttpUtil.getUrl(url);
+		}catch(Exception e){
+			log.error("[对阵抓取]抓取单场比赛数据" + e.getMessage());
+			e.printStackTrace();
+			return list;
+		}
+		try {
 			// 解析html
 			Document doc = Jsoup.parse(html);
 			Element table = doc.select("#vs_table").first();
@@ -72,7 +79,8 @@ public class DcBusiness {
 				list.add(dc);
 			}
 		} catch (Exception e) {
-			log.error("[对阵抓取]抓取单场比赛数据错误" + e.getMessage());
+			errorService.add("解析[500w对阵]页面错误", url, "解析[500w对阵]页面错误,请检查dom结构 DcBusiness:snatchDcMatch");
+			log.error("[对阵抓取]解析单场比赛数据错误" + e.getMessage());
 			e.printStackTrace();
 		}
 		return list;
@@ -81,8 +89,16 @@ public class DcBusiness {
 
 	public static List<DcArrange> snatchDcScore(String term) {
 		List<DcArrange> list= new ArrayList<DcArrange>();
+		String url=W500_SCORE_URL+term;
+		String html;
 		try {
-			String html = HttpUtil.getUrl(W500_SCORE_URL+term);
+			html = HttpUtil.getUrl(url);
+		}catch(Exception e){
+			log.error("[赛果抓取]抓取单场赛果错误" + e.getMessage());
+			e.printStackTrace();
+			return list;
+		}
+		try {
 			// 解析html
 			Document doc = Jsoup.parse(html);
 			Elements trEles= doc.select("#table_match").first().select("tr[id]");
@@ -106,7 +122,8 @@ public class DcBusiness {
 			}
 			
 		} catch (Exception e) {
-			log.error("[赛果抓取]抓取单场赛果错误" + e.getMessage());
+			errorService.add("解析[500w赛果]页面错误", url, "解析[500w赛果]页面错误,请检查dom结构DcBusiness:snatchDcScore");
+			log.error("[赛果抓取]解析单场赛果错误" + e.getMessage());
 			e.printStackTrace();
 		}
 		return list;

@@ -11,6 +11,7 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import com.lottery.admin.sys.SysErrorService;
 import com.lottery.common.model.DcArrange;
 import com.lottery.common.model.DcDxp;
 import com.lottery.common.utils.DateUtil;
@@ -19,6 +20,7 @@ import com.lottery.odds.OddsBusiness;
 public class DxpBusiness {
 	public static final String DXP_ODDS_URL = "http://odds.500.com/fenxi/daxiao-";
 	private static Logger log = Logger.getLogger(DxpBusiness.class);
+	private static SysErrorService errorService = new SysErrorService();
 
 	public static String getRealHtml(DcArrange match, String oddId) throws Exception {
 		String url = DXP_ODDS_URL + oddId;
@@ -29,14 +31,14 @@ public class DxpBusiness {
 	/*
 	 * 即时大小盘
 	 */
-	public static List<DcDxp> getNowDxp(String html) throws Exception {
+	public static List<DcDxp> getNowDxp(String html,String oddId) throws Exception {
 		List<DcDxp> list = new ArrayList<DcDxp>();
 		try {
 			Document doc = Jsoup.parse(html);
 			Elements trEles = doc.select("#datatb tr[id]");
 			for (Element trEle : trEles) {
 				String company = trEle.child(1).text().trim().replace("  ", "");
-				String cllCompany = OddsBusiness.WBW2CLLCOMPANY.get(company);
+				String cllCompany = OddsBusiness.DXP_WBW2CLLCOMPANY.get(company);
 				if (StringUtils.isNotEmpty(cllCompany)) {
 					DcDxp dxp = new DcDxp();
 					dxp.setCompany(cllCompany);
@@ -79,6 +81,8 @@ public class DxpBusiness {
 			}
 		} catch (Exception e) {
 			log.error("--------[dxp抓取]抓取dxp亚盘错误--------"+e.getMessage());
+			String url = DXP_ODDS_URL + oddId;
+			errorService.add("解析500w亚盘[dxp][即时盘]页面错误", url, "解析500w[dxp][即时盘]页面错误,请检查dom结构DxpBusiness:getNowDxp");
 			e.printStackTrace();
 			throw e;
 		}
@@ -89,7 +93,7 @@ public class DxpBusiness {
 	/*
 	 * 初盘
 	 */
-	public static List<DcDxp> getFirstDxp(String html) throws Exception {
+	public static List<DcDxp> getFirstDxp(String html,String oddId) throws Exception {
 
 		List<DcDxp> list = new ArrayList<DcDxp>();
 		try {
@@ -97,7 +101,7 @@ public class DxpBusiness {
 			Elements trEles = doc.select("#datatb tr[id]");
 			for (Element trEle : trEles) {
 				String company =  trEle.child(1).text().trim().replace("  ", "");
-				String cllCompany = OddsBusiness.WBW2CLLCOMPANY.get(company);
+				String cllCompany = OddsBusiness.DXP_WBW2CLLCOMPANY.get(company);
 				if (StringUtils.isNotEmpty(cllCompany)) {
 					DcDxp dxp = new DcDxp();
 					dxp.setCompany(cllCompany);
@@ -127,6 +131,8 @@ public class DxpBusiness {
 				}
 			}
 		} catch (Exception e) {
+			String url = DXP_ODDS_URL + oddId;
+			errorService.add("解析500w亚盘[dxp][初盘]页面错误", url, "解析500w[dxp][初盘]页面错误,请检查dom结构 DxpBusiness:getFirstDxp");
 			log.error("--------[dxp抓取]抓取初盘错误--------"+e.getMessage());
 			e.printStackTrace();
 			throw e;
@@ -139,7 +145,7 @@ public class DxpBusiness {
 		DcArrange dc = new DcArrange().setHomeId(867).setGuestId(1775);
 		try {
 			String html = getRealHtml(dc, "662467");
-			List<DcDxp> list=getNowDxp(html);
+			List<DcDxp> list=getNowDxp(html,"662467");
 			System.out.println(list);
 		} catch (Exception e) {
 			e.printStackTrace();

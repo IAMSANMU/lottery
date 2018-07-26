@@ -16,7 +16,8 @@ public class OddsBusiness {
 	
 	public static final Map<String, String> COMAPNY=new HashMap<String, String>();
 	public static final List<String> COMAPNYLIST=new ArrayList<String>();
-	public static final Map<String,String> WBW2CLLCOMPANY=new HashMap<String, String>();
+	public static final Map<String,String> YP_WBW2CLLCOMPANY=new HashMap<String, String>();
+	public static final Map<String,String> DXP_WBW2CLLCOMPANY=new HashMap<String, String>();
 	static{
 //		COMAPNY.put("永利高","yongligao");
 		COMAPNY.put("皇冠","huangguan");
@@ -29,18 +30,21 @@ public class OddsBusiness {
 //		COMAPNY.put("利记","liji");
 //		COMAPNY.put("nikebet","nikebet");
 //		COMAPNY.put("沙巴","shaba");
+		DXP_WBW2CLLCOMPANY.put("皇冠", "皇冠");
+		//所有博彩公司都当做皇冠, 数据库只记录一种公司.
+		//YP_WBW2CLLCOMPANY.put("12BET (壹貳博)", "皇冠");
 		
-//		WBW2CLLCOMPANY.put("永利高", "永利高");
-		WBW2CLLCOMPANY.put("皇冠", "皇冠");
-//		WBW2CLLCOMPANY.put("伟德", "伟德");
-//		WBW2CLLCOMPANY.put("立博", "立博");
-//		WBW2CLLCOMPANY.put("澳门", "澳门");
-//		WBW2CLLCOMPANY.put("Bet365", "bet365");
-//		WBW2CLLCOMPANY.put("Easybets(易胜博)", "易胜博");
-//		WBW2CLLCOMPANY.put("明陞", "明陞");
-//		WBW2CLLCOMPANY.put("Sbobet(利记)", "利记");
-//		WBW2CLLCOMPANY.put("Nikebet", "nikebet");
-//		WBW2CLLCOMPANY.put("沙巴(IBCBET)", "沙巴");
+//		YP_WBW2CLLCOMPANY.put("永利高", "永利高");
+		YP_WBW2CLLCOMPANY.put("皇冠", "皇冠");
+//		YP_WBW2CLLCOMPANY.put("伟德", "伟德");
+//		YP_WBW2CLLCOMPANY.put("立博", "立博");
+//		YP_WBW2CLLCOMPANY.put("澳门", "澳门");
+//		YP_WBW2CLLCOMPANY.put("Bet365", "bet365");
+//		YP_WBW2CLLCOMPANY.put("Easybets(易胜博)", "易胜博");
+//		YP_WBW2CLLCOMPANY.put("明陞", "明陞");
+//		YP_WBW2CLLCOMPANY.put("Sbobet(利记)", "利记");
+//		YP_WBW2CLLCOMPANY.put("Nikebet", "nikebet");
+//		YP_WBW2CLLCOMPANY.put("沙巴(IBCBET)", "沙巴");
 		
 //		COMAPNYLIST.add("yongligao");
 		COMAPNYLIST.add("huangguan");
@@ -53,6 +57,7 @@ public class OddsBusiness {
 //		COMAPNYLIST.add("liji");
 //		COMAPNYLIST.add("nikebet");
 //		COMAPNYLIST.add("shaba");
+		
 	}
 	
 	

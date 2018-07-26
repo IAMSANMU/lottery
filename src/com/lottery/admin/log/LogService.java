@@ -6,7 +6,6 @@ import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.activerecord.TableMapping;
 import com.lottery.common.BaseService;
 import com.lottery.common.model.LotUserBuylog;
-import com.lottery.common.model.NewsSection;
 import com.lottery.search.SearchModel;
 
 public  class LogService extends BaseService<LotUserBuylog> {

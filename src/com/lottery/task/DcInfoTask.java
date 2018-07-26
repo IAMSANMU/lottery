@@ -29,25 +29,25 @@ public class DcInfoTask implements Runnable {
 		if (term != null) {
 			LotteryTerm prevTerm = termService.getPrevTerm(term.getTerm());
 			try {
-				log.info("---[对阵抓取]北单赛事维护开始-----");
+				log.info("---[对阵抓取"+term.getTerm()+"]北单赛事维护开始-----");
 				snatchMatch(term);
-				log.info("---[对阵抓取]北单期数维护结束-----");
+				log.info("---[对阵抓取"+term.getTerm()+"]北单期数维护结束-----");
 			} catch (Exception e) {
 				e.printStackTrace();
 				log.info("---北单期数维护错误-----");
 			}
 		
 			try {
-				log.info("---[对阵截止]北单赛事截止开始-----");
+				log.info("---[对阵截止"+term.getTerm()+"]北单赛事截止开始-----");
 				stop(term);
 				// 更新上一期
 				if (prevTerm != null) {
 					stop(prevTerm);
 				}
-				log.info("---[对阵截止]北单赛事截止结束-----");
+				log.info("---[对阵截止"+term.getTerm()+"]北单赛事截止结束-----");
 			} catch (Exception e1) {
 				e1.printStackTrace();
-				log.info("---[对阵截止]北单赛事截止错误-----");
+				log.info("---[对阵截止"+term.getTerm()+"]北单赛事截止错误-----");
 			}
 			try {
 				log.info("---[赛果抓取" + term.getTerm() + "]北单赛事赛果抓取开始-----");

@@ -4,13 +4,12 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.jfinal.plugin.activerecord.Model;
 import com.jfinal.plugin.activerecord.Page;
 import com.jfinal.plugin.activerecord.TableMapping;
 import com.lottery.common.BaseService;
 import com.lottery.common.model.UserWalletlog;
 
-public class WalletLogService extends BaseService {
+public class WalletLogService extends BaseService<UserWalletlog> {
 
 	private UserWalletlog dao=new UserWalletlog().dao();
 	
@@ -44,7 +43,7 @@ public class WalletLogService extends BaseService {
 
 
 	@Override
-	public Model dao() {
+	public UserWalletlog dao() {
 		return dao;
 	}
 

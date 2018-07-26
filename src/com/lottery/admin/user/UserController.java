@@ -3,9 +3,7 @@ package com.lottery.admin.user;
 import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Date;
-
 import java.util.List;
-
 
 import com.jfinal.aop.Before;
 import com.jfinal.aop.Duang;

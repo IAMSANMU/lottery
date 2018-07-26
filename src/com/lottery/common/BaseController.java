@@ -10,7 +10,8 @@ import java.util.regex.Pattern;
 
 import com.jfinal.core.Controller;
 import com.lottery.common.model.LotAdmin;
-import com.lottery.common.model.LotUser;import com.lottery.common.utils.Constant;
+import com.lottery.common.model.LotUser;
+import com.lottery.common.utils.Constant;
 
 public class BaseController extends Controller {
 	

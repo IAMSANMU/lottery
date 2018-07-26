@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 
+import com.lottery.admin.sys.SysErrorService;
 import com.lottery.common.model.DcArrange;
 import com.lottery.common.model.DcOp;
 import com.lottery.odds.OddsBusiness;
@@ -15,6 +16,7 @@ import com.lottery.odds.OddsBusiness;
 public class OpBusiness {
 	public static final String OP_ODDS_URL = "http://odds.500.com/fenxi/ouzhi-";
 	private static Logger log = Logger.getLogger(OpBusiness.class);
+	private static SysErrorService errorService=new SysErrorService();
 
 	public static String getRealHtml(DcArrange match, String oddId) throws Exception {
 		String url = OP_ODDS_URL + oddId;
@@ -22,10 +24,15 @@ public class OpBusiness {
 		return html;
 	}
 
-	/*
+	/**
+	 * 
 	 * 即时平均欧赔
+	 * @param html
+	 * @param oddId
+	 * @return
+	 * @throws Exception
 	 */
-	public static List<DcOp> getOp(String html) throws Exception {
+	public static List<DcOp> getOp(String html,String oddId) throws Exception {
 		List<DcOp> list = new ArrayList<DcOp>();
 		try {
 			Document doc = Jsoup.parse(html);
@@ -65,6 +72,8 @@ public class OpBusiness {
 
 		} catch (Exception e) {
 			log.error("--------[op抓取]抓取OP错误--------" + e.getMessage());
+			String url = OP_ODDS_URL + oddId;
+			errorService.add("解析500w[欧赔]页面错误", url, "解析500w[欧赔]页面错误,请检查dom结构 OpBusiness:getOp");
 			e.printStackTrace();
 			throw e;
 		}
@@ -78,7 +87,7 @@ public class OpBusiness {
 		DcArrange dc = new DcArrange().setHomeId(867).setGuestId(1775);
 		try {
 			String html = getRealHtml(dc, "677240");
-			List<DcOp> list=getOp(html);
+			List<DcOp> list=getOp(html,"677240");
 			System.out.println(list);
 		} catch (Exception e) {
 			e.printStackTrace();

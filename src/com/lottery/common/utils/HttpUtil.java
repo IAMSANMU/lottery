@@ -20,6 +20,7 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSocketFactory;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
+
 import org.apache.log4j.Logger;
 
 import sun.net.www.protocol.https.HttpsURLConnectionImpl;
