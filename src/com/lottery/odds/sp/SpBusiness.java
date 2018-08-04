@@ -110,9 +110,9 @@ public class SpBusiness {
 					Elements trs = doc.select("tr[id*=tr_]");
 					for (Element trEle : trs) {
 						// 过滤停售的
-//						if (trEle.hasClass("rowStop")){
-//							continue;
-//						}
+						if (trEle.hasClass("rowStop")){
+							continue;
+						}
 						String lineId = trEle.child(0).text();
 						Elements spEle = trEle.select("span[id*=b_chk]");
 						String homeSp = spEle.get(0).select("em").first().text();
