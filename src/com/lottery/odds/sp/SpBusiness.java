@@ -109,6 +109,10 @@ public class SpBusiness {
 				try {
 					Elements trs = doc.select("tr[id*=tr_]");
 					for (Element trEle : trs) {
+						// 过滤停售的
+//						if (trEle.hasClass("rowStop")){
+//							continue;
+//						}
 						String lineId = trEle.child(0).text();
 						Elements spEle = trEle.select("span[id*=b_chk]");
 						String homeSp = spEle.get(0).select("em").first().text();
@@ -183,10 +187,10 @@ public class SpBusiness {
 		// String term=snatchOkCurrentTerm();
 		// System.out.println("term="+term);
 		try {
-			List<DcSpfSp> list = snatchAiboSP("180604");
+			List<DcSpfSp> list = snatchAiboSP("180801");
 			System.out.println(list.size());
 		} catch (Exception e) {
-
+			e.printStackTrace();
 		}
 
 	}
