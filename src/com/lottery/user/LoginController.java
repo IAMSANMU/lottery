@@ -71,7 +71,7 @@ public class LoginController extends BaseController {
 		else{
 			setSessionAttr(Constant.SELLER_SESSION, user);
 			setCookie("JSESSIONID", getSession().getId(),72000);
-			redirect("/news");
+			redirect("/");
 		}
 	}
 }
